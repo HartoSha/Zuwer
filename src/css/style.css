@@ -1,0 +1,50 @@
+body {
+    background-color:Orange;
+    margin:0;
+}
+header{
+    background-color:#212121;
+    display: flex;
+}
+.logoimg {
+    height: 52px;
+    width: 150px;
+}
+.logo {
+    margin: 20px 45% 20px 0;
+}
+.headernav {
+    display: flex;
+    justify-content:space-around;
+     vertical-align: middle;
+    flex-grow: 1;
+    margin: 0;
+    
+}
+.padding {
+    padding: 0 20px;
+}
+.navlink{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Caviar Dreams";
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+.navlink:hover{
+    background-color: #7c7c7c;
+}
+.login{
+    color: #ffffff;
+    font-family: "Caviar Dreams";
+    font-size: 18px;
+    font-weight: 400;  
+    background:transparent;
+    background-image: none;
+    border:0;
+}
+.login:hover {
+    cursor: pointer; 
+}
