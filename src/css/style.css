@@ -1,50 +1,103 @@
 body {
-    background-color:Orange;
     margin:0;
+    background-color: black;
+    font-family: "Caviar Dreams";
+    color: #ffffff;
+}
+a,
+a:visited,
+a:hover,
+button{
+    color: white;
+    font-family: "Caviar Dreams";
+    font-size: 18px;
+}
+button{
+    padding:0;
+    margin: 0;
+    border: none;
+    background: none;
+    position:absolute;
 }
 header{
     background-color:#212121;
     display: flex;
+    justify-content: space-between;
+}
+.pic{
+    width:100%;
+    height: 100%;
 }
 .logoimg {
     height: 52px;
     width: 150px;
 }
 .logo {
-    margin: 20px 45% 20px 0;
+    margin: 20px 0 20px 0;
 }
 .headernav {
     display: flex;
-    justify-content:space-around;
      vertical-align: middle;
-    flex-grow: 1;
     margin: 0;
-    
 }
 .padding {
     padding: 0 20px;
 }
 .navlink{
     text-decoration: none;
-    color: #ffffff;
-    font-family: "Caviar Dreams";
     font-size: 18px;
-    font-weight: 400;
     display: flex;
     align-items: center;
+    padding:0 25px;
 }
 .navlink:hover{
     background-color: #7c7c7c;
 }
-.login{
-    color: #ffffff;
-    font-family: "Caviar Dreams";
-    font-size: 18px;
-    font-weight: 400;  
+.login{  
     background:transparent;
     background-image: none;
     border:0;
 }
 .login:hover {
     cursor: pointer; 
+}
+.advantage{
+    width:28px;
+    height: 28px;
+    margin: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+}
+.advantage img{
+    padding-right: 10px;
+    padding-left: 82px;
+}
+.mainpage{
+    background: url(../assets/img/Слой_2.svg) no-repeat;
+    height:1000px;
+    padding-top: 207px;
+}
+.slogan{
+    background: rgba( 0, 0, 0, 0.21);
+    z-index: -1;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 42px;
+    color:white;
+}
+.slogan h1{
+    font-size: 92px;
+    padding: 0;
+    margin: 0;
+    font-weight:200;
+}
+
+.ddd{
+    background:rgba(0, 0, 0, 0.37);
+    position: relative;
+    left:0;
+    top:0;
+    display: flex;
+    flex-direction: column;
 }
