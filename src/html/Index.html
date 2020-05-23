@@ -8,38 +8,60 @@
     <title>Zuwer</title>
 </head>
 <body>
-    <header class = "padding">
-        <a href = "Index.html" class="logo">
-            <img src = "../assets/img/Logo.svg" class="logoimg"> 
-        </a>
-        <nav class = "headernav">  
-                
-                <a class = "navlink" href="Index.html">  
-                    <span>Главная</span>
-                </a>  
-                <a class = "navlink" href="#">  
-                   <span>Каталог</span>  
-                </a>  
-                <button class = "login navlink"> 
-                    <span>Вход</span>
-                </button>
-            <div class="hover">
-                <a class="ddd"><img src="../assets/img/Quality/fast.png" alt="myorder"><span>Мои заказы</span></a>
-                <a class="ddd"><img src="../assets/img/Quality/heart-2.png" alt="favourites"><span>Избранное</span></a>
-                <a class="ddd"><img src="../assets/img/Quality/signs-2.png" alt="exit"><span>Выход</span></a>
+        <header class = "wrapper header">
+            <a href = "Index.html" class="logo">
+                <img src = "../assets/img/Logo.svg" class="logoimg"> 
+            </a>
+            <nav class = "headernav"> 
+                <ul class="navlink">    
+                    <li class="navlink-item"><a  href = "#">Главная</a></li>
+                    <li class="navlink-item"><a  href = "#">Каталог</a></li>
+                    <li class="navlink-item navlink-item-dropdown"><span>Вход</span>
+                        <ul class = "hide">
+                            <li class="modal">
+                                <a class = "user-menu-link">
+                                    <img src="../assets/img/Quality/fast.png" alt="myorder">
+                                    <span class="user-menu-item">Мои заказы</span>
+                                </a>
+                            </li>
+                            <li class="modal">
+                                <a class = "user-menu-link">
+                                    <img src="../assets/img/Quality/heart-2.png" alt="favourites">
+                                    <span class="user-menu-item">Избранное</span>
+                                </a>
+                            </li>
+                            <li class="modal">
+                                <a class = "user-menu-link">
+                                    <img src="../assets/img/Quality/signs-2.png" alt="exit">
+                                    <span class="user-menu-item">Выход</span> 
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="mainpage wrapper">
+            <!-- <img src="../assets/img/Слой_2.svg" class="pic"> -->
+            <div class="slogan">
+                <h1>Zuwer</h1>
+                <div class="advantages">
+                    <div class="advantage"><img src="../assets/img/Quality/премиальность.png" alt="premium"><span>Премиальность</span></div>
+                    <div class="advantage"><img src="../assets/img/Quality/quality.png" alt="quality"><span>Качество</span></div>
+                    <div class="advantage"><img src="../assets/img/Quality/надежность.png" alt="reliability"><span>Надежность</span></div>
+                </div>
+            </div> 
+            <div class="ourpartners">
+                <h2>Наши Партнеры</h2>
+                <div class="partners">
+                    <div class="partners"><img src="../assets/img/Manufactures/b9.png" alt="Namiki" class="imgpartners"></div>
+                    <div class="partners"><img src="../assets/img/Manufactures/Logo_parker_web_150х59_tr.png" alt="Parker" class="imgpartners"></div>
+                    <div class="partners"><img src="../assets/img/Manufactures/carandache_geneve150x49.png" alt="Carandache" class="imgpartners"></div>
+                    <div class="partners"><img src="../assets/img/Manufactures/dupont150x49.png" alt="Dupont" class="imgpartners"></div>
+                    <div class="partners"><img src="../assets/img/Manufactures/montegrappa150x49.png" alt="Montegrappa" class="imgpartners"></div>
+                    <div class="partners"><img src="../assets/img/Manufactures/Dalvey150.png" alt="Dalvey" class="imgpartners"></div>
+                 </div>
             </div>
-        </nav>
-    </header>
-    <main class="mainpage padding"> 
-        <!-- <img src="../assets/img/Слой_2.svg" class="pic"> -->
-        <div class="slogan">
-            <h1>Zuwer</h1>
-            <div class="advantages">
-                <div class="advantage"><img src="../assets/img/Quality/премиальность.png" alt="premium"><span>Премиальность</span></div>
-                <div class="advantage"><img src="../assets/img/Quality/quality.png" alt="quality"><span>Качество</span></div>
-                <div class="advantage"><img src="../assets/img/Quality/надежность.png" alt="reliability"><span>Надежность</span></div>
-            </div>
-        </div>    
-    </main> 
+        </main>
 </body>
 </html>
