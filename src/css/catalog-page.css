@@ -389,7 +389,7 @@ html, body{
 .catalog-page .content-grid{
     display: grid;
     min-width: 769px;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 42px);
     column-gap: 20px;
 }
 
@@ -398,25 +398,54 @@ html, body{
 /* Catalog page sidebar (filter) */
 
 .catalog-page__filter{
+    display: flex;
+    flex-direction: column;
     grid-column: 1 / 4;
     background-color: #212121;
-    
 }
 
 .catalog-page__filter form {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
+.filter-criteria {
+  margin: 0 20px;
+}
+
 .filter-criteria__option{
     display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.filter-criteria__option input[type="checkbox"] {
+  width: 8px;
+  border-radius: 2px;
+  order: 1;
+}
+
+.filter-criteria__caption {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.filter-criteria__content{
+  margin-top: 15px;
+}
+
+.filter-criteria__option-caption{
+  font-size: 14px;
+  order: 2;
+  padding-left: 5px;
 }
 
 /* Только для критерия диапазона */
 .filter-criteria_range .filter-criteria__caption {
     font-weight: normal;
     font-size: 18px;
-    margin: 25px 75px 25px 15px;
+    margin: 5px 0 5px 0;
 }
 
 .filter-criteria_range .filter-criteria__option-caption,
@@ -425,12 +454,13 @@ html, body{
 }
 
 .filter-criteria_range .filter-criteria__option{
-    margin: 0 20px 20px 20px;
-    position: relative;  /* Для у цены подчеркивания */
+    margin: 20px 0 0 0;
+    position: relative;  /* Для подчеркивания у цены  */
 }
 
 .filter-criteria_range .filter-criteria__option-caption{
     padding-right: 5px;
+    order: 0;
 }
 
 .filter-criteria_range .filter-criteria__option input {
@@ -474,14 +504,19 @@ html, body{
 
 /* accordion */
 
-.filter-criteria_accordion .filter-criteria__accordion-checkbox {
+.filter-criteria__accordion-checkbox {
   width: 0;
   height: 0;
 } 
 
 .filter-criteria_accordion .filter-criteria__accordion-click-wrapper {
   width: 100%;
+}
+
+.filter-criteria_accordion .filter-criteria__caption {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .filter-criteria_accordion .filter-criteria__content {
@@ -493,12 +528,11 @@ html, body{
 }
 /* иконка в закрытом состоянии */
 .filter-criteria_accordion .filter-criteria__accordion-icon{
-  display: block;
-  position: absolute;
-  top: -50px;
-  left: 90px;
-  width: 30px;
-  height: 30px;
+  flex-shrink: 0;
+  margin: 0 0 0 10px;
+  position: relative;
+  width: 25px;
+  height: 25px;
   border-radius: 25px;
 }
 
@@ -506,9 +540,9 @@ html, body{
   content: "";
   position: absolute;
   display: block;
-  top: 13px;
+  top: 12px;
   left: 3px;
-  width: 15px;
+  width: 12px;
   height: 2px;
   background-color: white;
   transform: rotate(49deg);
@@ -519,31 +553,76 @@ html, body{
   content: "";
   position: absolute;
   display: block;
-  top: 13px;
+  top: 12px;
   right: 3px;
-  width: 15px;
+  width: 12px;
   height: 2px;
   background-color: white;
   transform: rotate(-49deg);
   border-radius: 2px;
 }
-
-.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon{
+/* иконка в открытом состоянии */
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__caption .filter-criteria__accordion-icon{
   background-color: white;
 }
 
-.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::after, 
-.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::before{
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__caption .filter-criteria__accordion-icon::after, 
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__caption .filter-criteria__accordion-icon::before{
   background-color: #212121;
 }
 
-.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::after{
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__caption .filter-criteria__accordion-icon::after{
   transform: rotate(-49deg);
 }
 
-.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::before{
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__caption .filter-criteria__accordion-icon::before{
   transform: rotate(49deg);
 }
+
+.catalog-page__btn-submit {
+  font-size: 18px;
+  width: 130px;
+  height: 30px;
+  color: #cdb67c;
+  border: 1px solid #cdb67c;
+  background-color: #212121;
+  border-radius: 20px;
+  align-self: center;
+  margin: 30px 0 10px 0;
+}
+
+
+.catalog-page__btn-submit:hover {
+  border: none;
+  color: #212121;
+  background-color: #cdb67c;
+}
+
+/* 
+.filter-criteria__caption::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  background-color: red;
+}
+
+.filter-criteria__caption::after::after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 0;
+  left: 90px;
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  background-color: red;
+} */
+
 
 /* accordion ends */
 
