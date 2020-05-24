@@ -652,6 +652,8 @@ html, body{
 .item__new-icon {
   width: 33px;
   height: 33px;
+  background: url(../assets/img/icons/new_icon.svg) no-repeat;
+  transform: rotate(45deg);
 }
 
 .item__bottom-row {
