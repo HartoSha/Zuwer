@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <link rel = "stylesheet" type="text/css" href = "../css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/catalog-page.css">
     <title>Zuwer</title>
 </head>
 <body>
@@ -64,5 +65,33 @@
             </nav>
         </div>
     </header>
+    <main class="catalog-page">
+        <div class="content-grid">
+            <aside class="catalog-page__filter">
+                <form action="filter.php">
+                    <section class="filter-criteria filter-criteria_range filter-criteria_accordion">
+                        <label class="filter-criteria__accordion-click-wrapper">
+                            <h3 class="filter-criteria__caption">Цена, $</h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
+                            <span class="filter-criteria__accordion-icon"></span>
+                            <div class="filter-criteria__content">
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">От:</span>
+                                    <input type="number" min="0" max="1000">
+                                    <span class="filter-criteria__option-underline"></span> <!-- было решено добавить пустой span после input для создания золотистого подчеркивания, т.к. input::after не поддерживается -->
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">До:</span>
+                                    <input type="number">
+                                    <span class="filter-criteria__option-underline"></span>
+                                </label>
+                            </div>
+                        </label>
+                    </section>
+                    <button>Применить</button>
+                </form>
+            </aside>
+        </div>
+    </main>
 </body>
 </html>
