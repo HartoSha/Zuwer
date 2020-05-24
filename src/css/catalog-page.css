@@ -1,0 +1,550 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+ html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+  
+  /* Sections
+     ========================================================================== */
+  
+  /**
+   * Remove the margin in all browsers.
+   */
+  
+  body {
+    margin: 0;
+  }
+  
+  /**
+   * Render the `main` element consistently in IE.
+   */
+  
+  main {
+    display: block;
+  }
+  
+  /**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  /* Grouping content
+     ========================================================================== */
+  
+  /**
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
+  
+  hr {
+    box-sizing: content-box; /* 1 */
+    height: 0; /* 1 */
+    overflow: visible; /* 2 */
+  }
+  
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  
+  pre {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  
+  /* Text-level semantics
+     ========================================================================== */
+  
+  /**
+   * Remove the gray background on active links in IE 10.
+   */
+  
+  a {
+    background-color: transparent;
+  }
+  
+  /**
+   * 1. Remove the bottom border in Chrome 57-
+   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+  
+  abbr[title] {
+    border-bottom: none; /* 1 */
+    text-decoration: underline; /* 2 */
+    text-decoration: underline dotted; /* 2 */
+  }
+  
+  /**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+  
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  
+  /**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+  
+  code,
+  kbd,
+  samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: 1em; /* 2 */
+  }
+  
+  /**
+   * Add the correct font size in all browsers.
+   */
+  
+  small {
+    font-size: 80%;
+  }
+  
+  /**
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
+  
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  /* Embedded content
+     ========================================================================== */
+  
+  /**
+   * Remove the border on images inside links in IE 10.
+   */
+  
+  img {
+    border-style: none;
+  }
+  
+  /* Forms
+     ========================================================================== */
+  
+  /**
+   * 1. Change the font styles in all browsers.
+   * 2. Remove the margin in Firefox and Safari.
+   */
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+  }
+  
+  /**
+   * Show the overflow in IE.
+   * 1. Show the overflow in Edge.
+   */
+  
+  button,
+  input { /* 1 */
+    overflow: visible;
+  }
+  
+  /**
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of text transform in Firefox.
+   */
+  
+  button,
+  select { /* 1 */
+    text-transform: none;
+  }
+  
+  /**
+   * Correct the inability to style clickable types in iOS and Safari.
+   */
+  
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button;
+  }
+  
+  /**
+   * Remove the inner border and padding in Firefox.
+   */
+  
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+  
+  /**
+   * Restore the focus styles unset by the previous rule.
+   */
+  
+  button:-moz-focusring,
+  [type="button"]:-moz-focusring,
+  [type="reset"]:-moz-focusring,
+  [type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+  
+  /**
+   * Correct the padding in Firefox.
+   */
+  
+  fieldset {
+    padding: 0.35em 0.75em 0.625em;
+  }
+  
+  /**
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
+  
+  legend {
+    box-sizing: border-box; /* 1 */
+    color: inherit; /* 2 */
+    display: table; /* 1 */
+    max-width: 100%; /* 1 */
+    padding: 0; /* 3 */
+    white-space: normal; /* 1 */
+  }
+  
+  /**
+   * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
+  
+  progress {
+    vertical-align: baseline;
+  }
+  
+  /**
+   * Remove the default vertical scrollbar in IE 10+.
+   */
+  
+  textarea {
+    overflow: auto;
+  }
+  
+  /**
+   * 1. Add the correct box sizing in IE 10.
+   * 2. Remove the padding in IE 10.
+   */
+  
+  [type="checkbox"],
+  [type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+  }
+  
+  /**
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
+  
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  /**
+   * 1. Correct the odd appearance in Chrome and Safari.
+   * 2. Correct the outline style in Safari.
+   */
+  
+  [type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    outline-offset: -2px; /* 2 */
+  }
+  
+  /**
+   * Remove the inner padding in Chrome and Safari on macOS.
+   */
+  
+  [type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /**
+   * 1. Correct the inability to style clickable types in iOS and Safari.
+   * 2. Change font properties to `inherit` in Safari.
+   */
+  
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button; /* 1 */
+    font: inherit; /* 2 */
+  }
+  
+  /* Interactive
+     ========================================================================== */
+  
+  /*
+   * Add the correct display in Edge, IE 10+, and Firefox.
+   */
+  
+  details {
+    display: block;
+  }
+  
+  /*
+   * Add the correct display in all browsers.
+   */
+  
+  summary {
+    display: list-item;
+  }
+  
+  /* Misc
+     ========================================================================== */
+  
+  /**
+   * Add the correct display in IE 10+.
+   */
+  
+  template {
+    display: none;
+  }
+  
+  /**
+   * Add the correct display in IE 10.
+   */
+  
+  [hidden] {
+    display: none;
+  }
+
+  /* End of the normalize.css
+     ========================================================================== */
+  
+/* Fonts */
+
+@font-face {
+    src: url("../fonts/CaviarDreams.ttf");
+    font-family: 'Caviar Dreams', sans-serif;
+} 
+
+@font-face {
+    src: url("../fonts/VeraCrouz.ttf");
+    font-family: 'Vera Crouz', serif;
+} 
+
+/* Fonts */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html, body{
+    height: 100vh;
+}
+
+/* Catalog page */
+
+.catalog-page{
+    font-family: 'Caviar Dreams';
+    color: white;
+    padding-top: 20px;
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.catalog-page .content-grid{
+    display: grid;
+    min-width: 769px;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+}
+
+/* Catalog page */
+
+/* Catalog page sidebar (filter) */
+
+.catalog-page__filter{
+    grid-column: 1 / 4;
+    background-color: #212121;
+    
+}
+
+.catalog-page__filter form {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-criteria__option{
+    display: flex;
+}
+
+/* Только для критерия диапазона */
+.filter-criteria_range .filter-criteria__caption {
+    font-weight: normal;
+    font-size: 18px;
+    margin: 25px 75px 25px 15px;
+}
+
+.filter-criteria_range .filter-criteria__option-caption,
+.filter-criteria_range input {
+    font-size: 12px;
+}
+
+.filter-criteria_range .filter-criteria__option{
+    margin: 0 20px 20px 20px;
+    position: relative;  /* Для у цены подчеркивания */
+}
+
+.filter-criteria_range .filter-criteria__option-caption{
+    padding-right: 5px;
+}
+
+.filter-criteria_range .filter-criteria__option input {
+    width: 100%;
+    background: none;
+    border: 0;
+    outline: none;
+    color: #999999;
+    caret-color: #ddcea7;
+}
+/* Золотистое подчеркивание */
+.filter-criteria_range .filter-criteria__option-underline {
+    content: '';
+    position: absolute;
+    top: 90%;
+    left: 0;
+    display: block;
+    width: 110%;
+    height: 1px;
+    margin: 5px 0 0 -5%;
+    background-color: white;
+}
+.filter-criteria_range input:focus {
+    color: white;
+}
+/* Белое подчеркивание для активного*/
+.filter-criteria_range input:focus + .filter-criteria__option-underline{
+    background-color: #ddcea7;
+}
+
+/* Отключаем стрелочки у поля цены */
+.filter-criteria_range .filter-criteria__option input::-webkit-outer-spin-button,
+.filter-criteria_range .filter-criteria__option input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+.filter-criteria_range .filter-criteria__option input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* accordion */
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox {
+  width: 0;
+  height: 0;
+} 
+
+.filter-criteria_accordion .filter-criteria__accordion-click-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.filter-criteria_accordion .filter-criteria__content {
+  display: none;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__content {
+  display: block;
+}
+/* иконка в закрытом состоянии */
+.filter-criteria_accordion .filter-criteria__accordion-icon{
+  display: block;
+  position: absolute;
+  top: -50px;
+  left: 90px;
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-icon::after{
+  content: "";
+  position: absolute;
+  display: block;
+  top: 13px;
+  left: 3px;
+  width: 15px;
+  height: 2px;
+  background-color: white;
+  transform: rotate(49deg);
+  border-radius: 2px;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-icon::before{
+  content: "";
+  position: absolute;
+  display: block;
+  top: 13px;
+  right: 3px;
+  width: 15px;
+  height: 2px;
+  background-color: white;
+  transform: rotate(-49deg);
+  border-radius: 2px;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon{
+  background-color: white;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::after, 
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::before{
+  background-color: #212121;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::after{
+  transform: rotate(-49deg);
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked ~ .filter-criteria__accordion-icon::before{
+  transform: rotate(49deg);
+}
+
+/* accordion ends */
+
+/* Catalog page sidebar (filter) */
