@@ -731,4 +731,47 @@
 
 /* pagination ends */
 
+@media (max-width: 769px) {
 
+  .catalog-page {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .catalog-page .content-grid {
+    grid-template-columns: repeat(9, 1fr);
+    column-gap: 20px;
+  }
+
+  .catalog-page__filter {
+    grid-column: 1 / 10;
+  }
+
+  .catalog-page__filter form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .filter-criteria {
+    flex-basis: 20%;
+    flex-grow: 1;
+  }
+
+  .catalog-page__btn-submit{
+    margin: 0 calc(50% - (140px / 2)); /* выравниваем кнопку шириной 140 px по центру */
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .filter-criteria_accordion .filter-criteria__accordion-icon{
+    margin-left: 5px;
+  }
+
+  .catalog-page__items-container{
+    display: none;
+  }
+
+  .catalog-page__pagination {
+    grid-column: 1 / 10;
+  }
+}
