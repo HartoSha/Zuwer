@@ -87,6 +87,24 @@
                             </div>
                         </label>
                     </section>
+                    <section class="filter-criteria filter-criteria_accordion filter-criteria_range">
+                        <label class="filter-criteria__accordion-click-wrapper">
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Вес, г<span class="filter-criteria__accordion-icon"></span></h3>
+                            <div class="filter-criteria__content">
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">От:</span>
+                                    <input type="number">
+                                    <span class="filter-criteria__option-underline"></span>
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">До:</span>
+                                    <input type="number">
+                                    <span class="filter-criteria__option-underline"></span>
+                                </label>
+                            </div>
+                        </label>
+                    </section>
                     <section class="filter-criteria filter-criteria_accordion">
                         <label class="filter-criteria__accordion-click-wrapper">
                             <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
@@ -204,24 +222,36 @@
                                     <span class="filter-criteria__option-caption">4</span>
                                     <input type="checkbox">
                                 </label>
-                            </div>
-                        </label>
-                    </section>
-                    <section class="filter-criteria filter-criteria_accordion">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Вес, г<span class="filter-criteria__accordion-icon"></span></h3>
-                            <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
-                                    <span class="filter-criteria__option-caption">1</span>
+                                    <span class="filter-criteria__option-caption">4</span>
                                     <input type="checkbox">
                                 </label>
                                 <label class="filter-criteria__option">
-                                    <span class="filter-criteria__option-caption">2</span>
+                                    <span class="filter-criteria__option-caption">4</span>
                                     <input type="checkbox">
                                 </label>
                                 <label class="filter-criteria__option">
-                                    <span class="filter-criteria__option-caption">3</span>
+                                    <span class="filter-criteria__option-caption">4</span>
+                                    <input type="checkbox">
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">4</span>
+                                    <input type="checkbox">
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">4</span>
+                                    <input type="checkbox">
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">4</span>
+                                    <input type="checkbox">
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">4</span>
+                                    <input type="checkbox">
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span class="filter-criteria__option-caption">4</span>
                                     <input type="checkbox">
                                 </label>
                                 <label class="filter-criteria__option">
@@ -231,6 +261,7 @@
                             </div>
                         </label>
                     </section>
+                    
                     <button class="catalog-page__btn-submit">Применить</button>
                 </form>
             </aside>
@@ -337,22 +368,24 @@
                         </span>
                     </div>
                 </figure>
+                <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
+                <nav class="catalog-page__pagination pagination"> 
+                    <a class="pagination__page pagination__page_back" href="#">< Назад</a>
+                    <a class="pagination__page" href="#">1</a>
+                    <a class="pagination__page pagination__page_current" href="#">2</a>
+                    <a class="pagination__page" href="#">3</a>
+                    <a class="pagination__page" href="#">4</a>
+                    <a class="pagination__page" href="#">5</a>
+                    <a class="pagination__page" href="#">6</a>
+                    <a class="pagination__page" href="#">7</a>
+                    <a class="pagination__page" href="#">8</a>
+                    <a class="pagination__page" href="#">9</a>
+                    <a class="pagination__page pagination__page_select" href="#">...</a>
+                    <a class="pagination__page pagination__page_last" href="#">20</a>
+                    <a class="pagination__page pagination__page_next" href="#">Вперед ></a>
+                </nav>
             </section>
-            <nav class="catalog-page__pagination pagination">
-                <a class="pagination__page pagination__page_back" href="#">< Назад</a>
-                <a class="pagination__page" href="#">1</a>
-                <a class="pagination__page pagination__page_current" href="#">2</a>
-                <a class="pagination__page" href="#">3</a>
-                <a class="pagination__page" href="#">4</a>
-                <a class="pagination__page" href="#">5</a>
-                <a class="pagination__page" href="#">6</a>
-                <a class="pagination__page" href="#">7</a>
-                <a class="pagination__page" href="#">8</a>
-                <a class="pagination__page" href="#">9</a>
-                <a class="pagination__page pagination__page_select" href="#">...</a>
-                <a class="pagination__page pagination__page_last" href="#">20</a>
-                <a class="pagination__page pagination__page_next" href="#">Вперед ></a>
-            </nav>
+            
         </div>
     </main>
 </body>
