@@ -1,27 +1,6 @@
 body {
     margin:0;
-    background-color: black;
     font-family: "Caviar Dreams";
-    color: #ffffff;
-}
-a,
-a:visited,
-button,
-ul,
-li{
-    color: white;
-    font-family: "Caviar Dreams";
-    font-size: 18px;
-    text-decoration: none;
-    margin:0;
-    padding:0;
-    border: none;
-    background: none;
-    list-style: none;
-}
-.wrapper {
-    padding-left: 20px;
-    /* padding:0 30%; */
 }
 /* header */
 
@@ -31,122 +10,104 @@ li{
     justify-content: space-between;
     background-color:#212121;
     display: flex;
+    padding:0 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
-.pic{
-    width:100%;
-    height: 100%;
+.wrapper {
+    display: flex;
+    min-width:764px;
+    justify-content: space-between;
+}
+.header ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.header a,
+.header a:visited{
+    text-decoration: none;
+    font-size: 18px;
+    color:white;
 }
 .logoimg {
     height: 52px;
     width: 150px;
 }
 .logo {
-    margin: 20px 0 20px 0;
+    margin: 20px 0;
+    margin-left: 20px;
 }
 .headernav {
     display: flex;
-    vertical-align:middle;
-    margin: 0;
+    margin-right: 20px;
 }
-
-.navlink{
+.headernav .navlink{
     display: flex;
+    width:100%;
+    justify-content: space-between;
 }
 .navlink-item{
+    display: flex;
     font-size: 18px;
     align-items: center;
-    padding:35px 15px;
-    flex-direction: column;
-    list-style: none;
+    list-style-type: none;
     cursor:pointer;
+    color:white;
+    padding: 0 20px;
 }
-.navlink-item-dropdown{
+.navlink-item_dropdown{
     position: relative;
 }
 .navlink-item:hover{
     background-color: #7c7c7c;
 }
-.hide{
+.dropdown-menu{
     display:none;
     position:absolute;
     top:100%;
+    left:0;
+    min-width:100%;
     background:rgba(232, 232, 232, 0.37);
 }
-.modal{
-    position: relative;
-}
-.navlink-item-dropdown:hover > .hide{
+.navlink-item_dropdown:hover > .dropdown-menu{
     display: flex;
     flex-direction: column;
     cursor:pointer;
 }
-
-.user-menu-link{
+.dropdown-menu-link{
     display: flex;
     align-items:center;
     padding-left:10px;
 }
-.user-menu-link:hover{
+.my-orders-icon{
+    background:url(../assets/img/Quality/fast.png) no-repeat;
+    width: 40px;
+    height: 27px;
+}
+.favorites-icon{
+    background:url(../assets/img/Quality/heart-2.png) no-repeat;
+    width: 25px;
+    height: 23px;
+}
+.exit-icon{
+    background: url(../assets/img/Quality/signs-2.png) no-repeat;
+    width: 25px;
+    height: 23px;
+}
+.dropdown-menu-link:hover{
     background: rgba(0, 0, 0, 0.66);
 } 
-.user-menu-item {
+.dropdown-menu-item {
     padding:15px 10px;
 }
 
 /* header */
 
 
-/* main page */
-.advantage{
-    width:28px;
-    height: 28px;
-    margin: 10px 0 0 0;
-    display: flex;
-    align-items: center;
-}
-.advantage img{
-    padding-right: 10px;
-    padding-left: 82px;
-}
-.mainpage{
-    background: url(../assets/img/Слой_2.svg) no-repeat;
-    height:1000px;
-    padding-top: 207px;
-}
-.slogan{
-    background: rgba( 0, 0, 0, 0.21);
-    z-index: -1;
-    width:50%;
-    display: flex;
-    flex-direction: column;
-    margin-left: 42px;
-    color:white;
-}
-.slogan h1{
-    font-size: 92px;
-    padding: 0;
-    margin: 0;
-    font-weight:200;
-}
-.ourpartners h2{
-    font-size: 60px;
-    font-family: "Vera Crouz";
-    margin-left:230px;
-    margin-top:90px;
-    font-weight:200;
-}
-.partners{
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start;
-    margin-left:160px;
-}
-.imgpartners{
-    display:flex;
-    flex-direction: row;
-    width:185px;
-    height:60px;
-}
 
-/* main page */
 
+  
+  
+  
