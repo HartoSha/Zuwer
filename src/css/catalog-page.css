@@ -613,10 +613,14 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  /* space-around выравнивает содержимое при увеличении соседнего товара */
+  justify-content: space-around;
+
 }
 
 .item__type {
   display: block;
+  margin: 10px 0;
   font-size: 14px;
 }
 
@@ -731,8 +735,8 @@
 
 /* pagination ends */
 
-@media (max-width: 769px) {
-
+@media screen and (max-width: 769px) {
+  /* tablet 769px - 481px */
   .catalog-page {
     padding-right: 20px;
     padding-left: 20px;
@@ -740,7 +744,7 @@
 
   .catalog-page .content-grid {
     grid-template-columns: repeat(9, 1fr);
-    column-gap: 20px;
+    column-gap: 10px;
   }
 
   .catalog-page__filter {
@@ -768,10 +772,89 @@
   }
 
   .catalog-page__items-container{
-    display: none;
+    padding-top: 20px;
+    grid-column: 1 / 10;
+  }
+
+  .item__image-wrapper {
+    width: 150px;
+    height: 150px;
+    margin: 0 25px;
+  }
+
+  .item__image {
+    transform: scale(0.21);
+  }
+
+  .item__bottom-row{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .item__name {
+    font-size: 14px;
+  }
+
+  .item__line {
+    margin: 2px 0 5px 0;
+  }
+
+  .item__price {
+    font-size: 14px;
   }
 
   .catalog-page__pagination {
-    grid-column: 1 / 10;
+    margin: 0 0 20px 0;
+    grid-column: 1 / 3;
+  }
+}
+@media screen and (max-width: 479px) {
+  .catalog-page{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .catalog-page .content-grid {
+    column-gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .filter-criteria {
+    flex-basis: 40%;
+    margin: 0 15px;
+  }
+
+  .catalog-page__items-container {
+    display: block;
+  }
+
+  .item {
+    margin: 0 30px;
+    margin-bottom: 20px;
+  }
+
+  .item__upper-row{
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .item__bottom-row {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .pagination{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pagination__page {
+    margin: 0 2px;
+  }
+
+  .pagination__back-text,
+  .pagination__next-text {
+    display: none;
   }
 }

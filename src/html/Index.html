@@ -310,9 +310,29 @@
                         </span>
                     </div>
                 </figure>
+                <figure class="catalog-page__item item">
+                    <div class="item__upper-row">
+                        <span class="item__type">Перьевая</span>
+                        <span class="item__new-icon"></span>
+                    </div>
+                    <div class="item__image-wrapper">
+                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                    </div>
+                    <div class="item__bottom-row">
+                        <span class="item__name">Montegrappa European</span>
+                        <span class="item__line"></span>
+                        <span class="item__price">
+                            <span class="item__price-value">7845,65</span>
+                            <span class="item__price-currency-sign">$</span>
+                        </span>
+                    </div>
+                </figure>
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
                 <nav class="catalog-page__pagination pagination"> 
-                    <a class="pagination__page pagination__page_back" href="#">< Назад</a>
+                    <a class="pagination__page pagination__page_back" href="#">
+                        <span class="pagination__back-icon">< </span><!--
+                    --><span class="pagination__back-text">Назад</span>
+                    </a>
                     <a class="pagination__page" href="#">1</a>
                     <a class="pagination__page pagination__page_current" href="#">2</a>
                     <a class="pagination__page" href="#">3</a>
@@ -324,7 +344,10 @@
                     <a class="pagination__page" href="#">9</a>
                     <a class="pagination__page pagination__page_select" href="#">...</a>
                     <a class="pagination__page pagination__page_last" href="#">20</a>
-                    <a class="pagination__page pagination__page_next" href="#">Вперед ></a>
+                    <a class="pagination__page pagination__page_next" href="#">
+                        <span class="pagination__next-text">Вперед</span>
+                        <span class="pagination__next-icon">></span>
+                    </a>
                 </nav>
             </section>
             
