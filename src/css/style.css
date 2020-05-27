@@ -31,7 +31,7 @@ body {
 }
 .logoimg {
     height: 52px;
-    width: 150px;
+    width: 170px;
 }
 .logo {
     margin: 20px 0;
@@ -52,6 +52,7 @@ body {
     cursor:pointer;
     color:white;
     padding: 0 20px;
+    text-align: center;
 }
 .navlink-item_dropdown{
     position: relative;
@@ -98,6 +99,158 @@ body {
 .dropdown-menu-item {
     padding:15px 10px;
 }
+
+.burger-menu input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+.burger-menu-nav-wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    background-color: #212121;
+    height: 100vh;
+    z-index: 2;
+    transition: 0.3s;
+}
+
+.burger-menu-nav {
+    padding-top: 92px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.burger-menu-nav a {
+    padding: 15px 0;
+}
+
+@media screen and (max-width: 769px) {
+    .navlink-item {
+        display: none;
+    }
+    .navlink-item.navlink-item_dropdown {
+        display: flex;
+    }
+
+    .burger-menu {
+        display: flex;
+        align-items: flex-end;
+        margin: auto 10px auto 0;
+    }
+
+    .burger-menu-button {
+        display: block;
+        width: 35px;
+        height: 25px;
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    /* burger menu animation starts */
+
+    /* Центральная линия */
+    .burger-menu-button-icon {
+        width: 100%;
+        position: absolute;
+        top: 10px;
+        left: 0; 
+        height: 3px;
+        background-color: white;
+        border-radius: 1px;
+    }
+
+    /* Нижняя линия */
+    .burger-menu-button-icon::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 0; 
+        display: block;
+        width: 100%;
+        background-color: white;
+        height: 3px;
+        border-radius: 1px;
+        transition: 0.3s;
+    }
+
+    /* Верхняя линия */
+    .burger-menu-button-icon::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        display: block;
+        width: 100%;
+        background-color: white;
+        height: 3px;
+        border-radius: 1px;
+        transition: 0.3s;
+    }
+
+    .burger-menu-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        background: #3b3b3b;
+        opacity: 0.82;
+        transition: 0.3s;
+        transition-property: width;
+        z-index: 1;
+    }
+
+    /* Исчезает центральная линия */
+    .burger-menu input[type="checkbox"]:checked + .burger-menu-button .burger-menu-button-icon {
+        background: 0;
+        transition: 0.2s;
+    }
+
+    /* Нижняя линия поворачивается и располагается в центре */
+    .burger-menu input[type="checkbox"]:checked + .burger-menu-button .burger-menu-button-icon::after {
+        transform: rotate(45deg);
+        top: 0;
+        transition: 0.3s;
+    }
+
+    /* Верхняя линия */
+    .burger-menu input[type="checkbox"]:checked + .burger-menu-button .burger-menu-button-icon::before {
+        transform: rotate(-45deg);
+        top: 0;
+        transition: 0.3s;
+    }
+
+    /* Появляется активная часть меню */
+    .burger-menu input[type="checkbox"]:checked ~ .burger-menu-nav-wrapper {
+        position: absolute;
+        opacity: 1;
+        background-color: #212121;
+        width: 44%;
+        /* padding-top: 92px; */
+    }
+
+    /* Появляется бекграунд */
+    .burger-menu input[type="checkbox"]:checked ~ .burger-menu-background {
+        width: 100%;
+        height: 100vh;
+    }
+
+    /* burger menu animation ends */
+
+    .burger-menu-nav a:hover{
+        background-color: #7c7c7c;
+    }
+}
+
 
 /* header */
 

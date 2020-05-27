@@ -9,9 +9,24 @@
 </head>
 <body>
     <header class = "header">
-        <div class="wrapper">
+        <div class="burger-menu">
+            <input id="header-burger-menu-checkbox" type="checkbox">
+            <label class="burger-menu-button" for="header-burger-menu-checkbox">
+                <span class="burger-menu-button-icon">
+                    <div class="burger-menu-icon"></div>
+                </span>
+            </label>
+            <div class="burger-menu-nav-wrapper">
+                <nav class="burger-menu-nav">
+                    <a href = "#">Главная</a>
+                    <a href = "#">Каталог</a>
+                </nav>
+            </div>
+            <div class="burger-menu-background"></div>
+        </div>
+        <div class="wrapper">      
             <a href = "Index.html" class="logo">
-                <img src = "../assets/img/Logo-image/Logo.svg" class="logoimg"> 
+                <object class="logoimg" data="../assets/img/Logo-image/logo.svg"></object> 
             </a>
             <nav class = "headernav"> 
                 <ul class="navlink">    
