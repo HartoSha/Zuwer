@@ -2,66 +2,128 @@
 <html lang="en">
 <head>
     <link rel = "stylesheet" type="text/css" href = "../css/style.css">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zuwer</title>
 </head>
 <body>
-        <header class = "wrapper header">
+    <header class = "header">
+        <div class="wrapper">
             <a href = "Index.html" class="logo">
-                <img src = "../assets/img/Logo.svg" class="logoimg"> 
+                <img src = "../assets/img/logo-icon/logo.svg" class="logoimg"> 
             </a>
             <nav class = "headernav"> 
                 <ul class="navlink">    
                     <li class="navlink-item"><a  href = "#">Главная</a></li>
                     <li class="navlink-item"><a  href = "#">Каталог</a></li>
-                    <li class="navlink-item navlink-item-dropdown"><span>Вход</span>
-                        <ul class = "hide">
-                            <li class="modal">
-                                <a class = "user-menu-link">
-                                    <img src="../assets/img/Quality/fast.png" alt="myorder">
-                                    <span class="user-menu-item">Мои заказы</span>
+                    <li class="navlink-item navlink-item_dropdown">
+                        <span>Шадрин Алексей</span>
+                        <ul class = "dropdown-menu">
+                            <li class="dropdown-item">
+                                <a class = "dropdown-menu-link">
+                                    <span class="my-orders-icon"></span>
+                                    <span class="dropdown-menu-item">Мои заказы</span>
                                 </a>
                             </li>
                             <li class="modal">
-                                <a class = "user-menu-link">
-                                    <img src="../assets/img/Quality/heart-2.png" alt="favourites">
-                                    <span class="user-menu-item">Избранное</span>
+                                <a class = "dropdown-menu-link">
+                                    <span class="favorites-icon"></span>
+                                    <span class="dropdown-menu-item">Избранное</span>
                                 </a>
                             </li>
                             <li class="modal">
-                                <a class = "user-menu-link">
-                                    <img src="../assets/img/Quality/signs-2.png" alt="exit">
-                                    <span class="user-menu-item">Выход</span> 
+                                <a class = "dropdown-menu-link">
+                                    <span class="exit-icon"></span>
+                                    <span class="dropdown-menu-item">Выход</span> 
                                 </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
-        </header>
-        <main class="mainpage wrapper">
-            <!-- <img src="../assets/img/Слой_2.svg" class="pic"> -->
+        </div>
+    </header>
+        <main class="mainpage">
             <div class="slogan">
                 <h1>Zuwer</h1>
                 <div class="advantages">
-                    <div class="advantage"><img src="../assets/img/Quality/премиальность.png" alt="premium"><span>Премиальность</span></div>
+                    <div class="advantage"><img src="../assets/img/Quality/premium.png" alt="premium"><span>Премиальность</span></div>
                     <div class="advantage"><img src="../assets/img/Quality/quality.png" alt="quality"><span>Качество</span></div>
-                    <div class="advantage"><img src="../assets/img/Quality/надежность.png" alt="reliability"><span>Надежность</span></div>
+                    <div class="advantage"><img src="../assets/img/Quality/realibility.png" alt="reliability"><span>Надежность</span></div>
                 </div>
             </div> 
             <div class="ourpartners">
                 <h2>Наши Партнеры</h2>
-                <div class="partners">
-                    <div class="partners"><img src="../assets/img/Manufactures/b9.png" alt="Namiki" class="imgpartners"></div>
-                    <div class="partners"><img src="../assets/img/Manufactures/Logo_parker_web_150х59_tr.png" alt="Parker" class="imgpartners"></div>
-                    <div class="partners"><img src="../assets/img/Manufactures/carandache_geneve150x49.png" alt="Carandache" class="imgpartners"></div>
-                    <div class="partners"><img src="../assets/img/Manufactures/dupont150x49.png" alt="Dupont" class="imgpartners"></div>
-                    <div class="partners"><img src="../assets/img/Manufactures/montegrappa150x49.png" alt="Montegrappa" class="imgpartners"></div>
-                    <div class="partners"><img src="../assets/img/Manufactures/Dalvey150.png" alt="Dalvey" class="imgpartners"></div>
-                 </div>
+                <div class="partners-wrapper">
+                    <div class="partners"><img class="imgpartners" src="../assets/img/partners/Namiki.png" alt="Namiki"></div>
+                    <div class="partners"><img class="imgpartners" src="../assets/img/partners/Dupont.png" alt="Dupont"></div>
+                    <div class="partners"><img class="imgpartners" src="../assets/img/partners/parker1.png" alt="parker"></div>
+                    <div class="partners"><img class="imgpartners" src="../assets/img/partners/Montegrappa.png" alt="Montegrappa"></div>
+                </div>
+                <div class="partners-wrapper-fix">
+                    <div class="partners"><img class="imgpartners" src="../assets/img/partners/Carandache.png" alt="Carandache"></div>
+                    <div class="partners"><img class="imgpartners" src="../assets/img/partners/Dalvey.png" alt="Dalvey"></div>
+                </div>
             </div>
         </main>
+            <div class="slider-decoration">
+                <div id="slider" class="slider">
+                <button class="slider__leftButton">
+                    <svg width="20px" height="100%" viewBox = "130 -35 290 504" style="transform: scale(-1, 1)">
+                        <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"/>
+                    </svg>
+                </button>   
+                <div class="slider__content">
+                    <article class="slider__item">
+                        <a href="#">
+                            <h3 class="slider__item_text">Итоговое сочинение (изложение) написали одиннадцатиклассники</h3>
+                            <span class="slider__item_date">04.12.2019</span>
+                        </a>
+                    </article>
+                    <article class="slider__item">
+                        <a href="#">
+                            <h3 class="slider__item_text">Темы итогового сочинения</h3>
+                            <span class="slider__item_date">29.11.2019</span >
+                        </a>
+                    </article>
+                    <article class="slider__item">
+                        <a href="#">
+                            <h3 class="slider__item_text">Планируемые изменения в организации и проведении ГИА</h3>
+                            <span class="slider__item_date">04.12.2019</span >
+                        </a>
+                    </article>
+                    <article class="slider__item">
+                        <a href="#">
+                            <h3 class="slider__item_text">4</h3>
+                            <span class="slider__item_date">04.12.2019</span >
+                        </a>
+                    </article>
+                    <article class="slider__item">
+                        <a href="#">
+                            <h3 class="slider__item_text">5</h3>
+                            <span class="slider__item_date">04.12.2019</span >
+                        </a>
+                    </article>
+                    <article class="slider__item">
+                        <a href="#">
+                            <h3 class="slider__item_text">6</h3>
+                            <span class="slider__item_date">04.12.2019</span >
+                        </a>
+                    </article>
+                    <article class="slider__item">
+                        <a href="#">
+                            <h3 class="slider__item_text">7</h3>
+                            <span class="slider__item_date">04.12.2019</span >
+                        </a>
+                    </article>
+                </div>
+                <button class="slider__rightButton">
+                    <svg width="20px" height="100%" viewBox = "100 -35 290 504">
+                        <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    <script type="text/javascript" src="../js/slider.js"></script>
 </body>
 </html>
