@@ -1,0 +1,200 @@
+*{
+    padding: 0;
+    margin: 0; 
+} 
+
+body{
+    margin: 0;
+    background-color: rgb(48, 48, 48);
+    font-family: "Caviar Dreams";
+    
+}
+.main-container{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.container{
+    max-width: 764px;
+    margin: 0px auto;
+   
+}
+
+.product{
+    color: #ffffff;
+    font-style: 18px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.product-img-container{
+    display: flex;
+    position: relative;
+    align-self: start;
+}
+.product-img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 50%;  
+    overflow: hidden;
+    
+}
+.product-img{
+    width: 200px;
+    height: 200px;
+}
+.like{
+    background: url(../img/heart.svg) no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.characteristics{
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    flex-basis: 30%;
+}
+
+table{
+   
+    width: 100%;
+}
+
+td {
+    padding-top: 20px;
+    padding-left: 5px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.name{
+    font-size: 48px;
+    color: #cdb67c;
+    order: 1;
+}
+
+.colortext{
+    background-color: #484848;
+    color: white;
+    border: 1px solid #cdb67c;
+}
+
+.purchase-form{
+    font-size: 24px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    /* display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px; */
+}
+.buy{
+    font-size: 24px;
+    border-radius: 30px;
+    text-align: center;
+    width: 170px;
+    height: 64px;
+    background-color: #212121;
+    color: #cdb67c;
+    border: 1px solid #cdb67c;
+    font-family: "Caviar Dreams";
+}
+
+.quantity-wrapper{
+    align-self:center;
+}
+.price{
+    align-self:center;
+}
+
+.description-wrapper{
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.description{
+    font-size: 24px;
+}
+.content-description{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 480px){
+    .product-img-container{
+        height: 190px;
+        width: 190px;
+    } 
+    .product-img-wrapper{
+        height: 190px;
+        width: 190px;
+    }
+    .product-img{
+        height: 130px;
+        width: 130px;
+    }
+    .like{
+        height: 27px;
+        width: 27px;
+    }
+    .name{
+        font-size: 30px;
+    }
+    td{
+        padding-top: 15px;
+        font-size: 14px;
+        padding-left: 0;
+    }
+    .characteristics{
+        margin-left: 10px;
+        max-width: 240px;
+    }
+    table{
+        width: 100%;
+    }
+    /* .quantity{
+        font-size: 18px;
+        margin-left: -35%;
+    }
+    .price{
+        font-size: 18px;
+        margin-top: -25%;
+    }
+    .price-wrapper{
+        flex: 0 1 30%;
+        margin-top: -30%;
+        align-self: center;
+    }
+    .purchase-form{
+        padding: 0;
+    } */
+    .price{
+        font-size: 18px;
+        position: relative;
+        bottom: 85px;
+    }
+    .quantity-wrapper{
+        font-size: 18px;
+        position: relative;
+        bottom: 50px;
+        right: 293px;
+    }
+    .buy{
+        margin: auto;
+    }
+    .purchase-form{
+        margin: 0;
+    }
+}
