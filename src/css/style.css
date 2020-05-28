@@ -348,6 +348,7 @@ body {
         display: none;
     }
 
+    /* Текущая максимальная длина имени 11 символов без переносов */
     .headernav .username {
         min-width: 125px;
     }
