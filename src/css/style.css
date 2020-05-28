@@ -327,6 +327,10 @@ body {
 /* от 480px и ниже - телефон */
 
 @media screen and (max-width: 480px) {
+    .header {
+        padding: 0 10px;
+    }
+
     .logoimg {
         width: 100px;
     }
@@ -344,7 +348,7 @@ body {
     }
 
     .headernav .username {
-        margin: 0 auto;
+        min-width: 125px;
     }
 
     .headernav .dropdown-menu {
