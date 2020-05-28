@@ -136,7 +136,9 @@ body {
     padding: 15px 0;
 }
 
-@media screen and (max-width: 769px) {
+/* от 769px до 480 - планшет */ 
+
+@media screen and (max-width: 769px) and (min-width: 480px) {
     .navlink-item {
         display: none;
     }
@@ -255,6 +257,13 @@ body {
     }
 }
 
+/* от 480px и ниже - телефон */
+
+@media screen and (max-width: 480px) {
+    .header {
+        display: none;
+    } 
+}
 
 /* header */
 
