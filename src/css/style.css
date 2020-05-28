@@ -1,7 +1,13 @@
+.test {
+    height: 200vh;
+    background: url(../assets/img/test.img.png);
+}
+
 body {
     margin:0;
     font-family: "Caviar Dreams";
 }
+
 /* header */
 
 .header{
@@ -29,13 +35,17 @@ body {
     font-size: 18px;
     color:white;
 }
-.logoimg {
-    height: 52px;
-    width: 170px;
-}
 .logo {
-    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 17px 0;
 }
+.logoimg {
+    cursor: pointer;
+    height: 55px;
+    width: 170px;
+} 
 .headernav {
     display: flex;
 }
@@ -53,6 +63,7 @@ body {
     color:white;
     padding: 0 20px;
     text-align: center;
+    background-color: #212121;
 }
 .navlink-item_dropdown{
     position: relative;
@@ -60,27 +71,65 @@ body {
 .navlink-item:hover{
     background-color: #7c7c7c;
 }
-.dropdown-menu{
-    display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    min-width:100%;
-    background:rgba(232, 232, 232, 0.37);
-}
+
 .navlink-item_dropdown:hover > .dropdown-menu{
     display: flex;
     flex-direction: column;
     cursor:pointer;
 }
+
+.navlink-item_dropdown:hover {
+    background: 0;
+    cursor: unset;
+}
+
+/* Для нормального отображения у пользователей с короткими именами */
+.username {
+    min-width: 130px;
+}
+
+/* dropdownd-menu starts */
+
+.header .dropdown-menu{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    min-width:100%;
+    background:rgba(59, 59, 59, 0.37);
+    padding-top: 10px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.53);
+    z-index: -1; /* z-index -1 Для отображения тени под header'ом */
+}
+
+.header .dropdown-menu:hover {
+    z-index: -1;
+}
+
+.dropdown-menu-item {
+    padding: 15px 10px;
+}
+
+.dropdown-menu-item:hover {
+    background: rgba(33, 33, 33, 0.66);
+}
+
 .dropdown-menu-link{
     display: flex;
     align-items:center;
-    padding-left:10px;
 }
+
+.icon-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    flex-basis: 25%;
+    padding-right: 10px;
+}
+
 .my-orders-icon{
     background:url(../assets/img/icons/my-orders-icon.png) no-repeat;
-    width: 40px;
+    width: 35px;
     height: 27px;
 }
 .favorites-icon{
@@ -93,12 +142,8 @@ body {
     width: 25px;
     height: 23px;
 }
-.dropdown-menu-link:hover{
-    background: rgba(0, 0, 0, 0.66);
-} 
-.dropdown-menu-item {
-    padding:15px 10px;
-}
+
+/* dropdown menu ends */
 
 .burger-menu input[type="checkbox"] {
     position: absolute;
@@ -138,13 +183,33 @@ body {
 
 /* от 769px до 480 - планшет */ 
 
-@media screen and (max-width: 769px) and (min-width: 480px) {
+@media screen and (max-width: 769px) {
+
+    /* dropdown menu starts */
+
+    .header .dropdown-menu {
+        box-shadow: 0 0 7px rgba(53, 53, 53, 0.87);
+        background: rgba(33, 33, 33, 0.66);
+    }
+
+    .dropdown-menu-item:hover {
+        background-color: #7c7c7c;
+    }
+
+    .navlink-item_dropdown:hover {
+        background: #212121;
+    }
+
+    /* dropdown menu ends */
+
     .navlink-item {
         display: none;
     }
     .navlink-item.navlink-item_dropdown {
         display: flex;
     }
+
+    /* burger menu starts */
 
     .burger-menu {
         display: flex;
@@ -213,6 +278,7 @@ body {
         transition: 0.3s;
         transition-property: width;
         z-index: 1;
+        cursor: pointer;
     }
 
     /* Исчезает центральная линия */
@@ -241,28 +307,59 @@ body {
         opacity: 1;
         background-color: #212121;
         width: 44%;
-        /* padding-top: 92px; */
+        overflow-y: hidden
     }
 
     /* Появляется бекграунд */
     .burger-menu input[type="checkbox"]:checked ~ .burger-menu-background {
         width: 100%;
         height: 100vh;
+        overflow-y: hidden
     }
-
-    /* burger menu animation ends */
 
     .burger-menu-nav a:hover{
         background-color: #7c7c7c;
     }
+
+    /* burger menu animation ends */
 }
 
 /* от 480px и ниже - телефон */
 
 @media screen and (max-width: 480px) {
-    .header {
+    .logoimg {
+        width: 100px;
+    }
+
+    .burger-menu-button {
+        width: 30px;
+    }
+
+    .burger-menu input[type="checkbox"]:checked ~ .burger-menu-nav-wrapper {
+        width: 65%;
+    }
+
+    .headernav .icon-wrapper{
         display: none;
-    } 
+    }
+
+    .headernav .username {
+        margin: 0 auto;
+    }
+
+    .headernav .dropdown-menu {
+        width: 100%;
+    }
+
+    .navlink-item_dropdown {
+        padding: 0;
+    }
+
+    .headernav .dropdown-menu-link {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
 }
 
 /* header */
