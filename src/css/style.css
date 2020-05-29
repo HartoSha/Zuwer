@@ -307,7 +307,6 @@ td {
     background-color: #212121;
     border-radius: 35px;
     padding: 20px 15px;
-    /* margin: 30px 0 10px 0; */
 }
 
 .bottom-row .purchase-btn:hover {
@@ -315,7 +314,5 @@ td {
     color: #212121;
     background-color: #cdb67c;
   }
-
-/* Отключение жетлого фона при автозаполнении формы (найдено в интернете) */
 
 /* modal ends */
