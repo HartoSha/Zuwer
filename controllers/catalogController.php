@@ -1,5 +1,4 @@
 <?php 
-    require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "productModel.php");
     require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "catalogModel.php");
     
     class catalogController # Контроллер каталога
@@ -38,4 +37,3 @@
 
             var_dump($productInfo);
         }
-    }

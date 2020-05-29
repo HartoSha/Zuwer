@@ -47,7 +47,7 @@ function route($uriParts) {
         if(!empty($uriParts[1])) {
             $actionName = $uriParts[1];
             unset($uriParts[0], $uriParts[1]);
-            $params = array_values($uriParts); # Сбрасываем индексы элементов массива, чтобы индексы параметров начинались не с 2 (0 - controller, 1 - action), а с 0; 
+            $params = $uriParts;
         }
     }
 
