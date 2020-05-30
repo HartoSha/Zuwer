@@ -1,6 +1,6 @@
 'use strict';
 
-const START_INDEX = 0;                                          //Стартовый индекс
+const START_INDEX = 1;                                          //Стартовый индекс
 const TRANSITION_TIME = 0.8;                                    //Время смещения в секундах
 
                                              
@@ -26,7 +26,7 @@ leftButton.addEventListener("click", function(){
 function moveItems(){
     checkOffset();                     
     items.forEach(item => {
-        item.style.transform = `translateX(${-(100 * currentOffset)}%)`;    // Двигаем элементы на 100% их ширины * currentOffset (отрицательное значение, тк.к currentOffset положительный)
+        item.style.transform = `translateX(${-(100 * currentOffset)}%)`;   // Двигаем элементы на 100% их ширины * currentOffset (отрицательное значение, тк.к currentOffset положительный)
         console.log("Все элементы смещены на = " + item.style.transform);
     });   
     
