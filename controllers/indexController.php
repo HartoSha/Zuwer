@@ -1,12 +1,12 @@
 <?php
-class indexController {
-    public function index($param1) {
-        print "Index html";
+class indexController # Контроллер галвной сайта
+{ 
+    public function index($param1) 
+    {
+        print "Главная страница ";
         // var_dump($param1);
-        print "<br> param1: " . $param1;
+        // print "<br> param1: " . $param1[0];
+        // print "<br> param2: " . $param1[1];
         
-    }
-    public function catalog($param1) {
-        print "Catalog";
     }
 }
