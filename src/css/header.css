@@ -1,8 +1,7 @@
 body {
+    background-color:Orange;
     margin:0;
-    font-family: "Caviar Dreams";
 }
-
 /* header */
 
 .header{
@@ -30,11 +29,6 @@ body {
     text-decoration: none;
     font-size: 18px;
     color:white;
-}
-.logo {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
     margin: 17px 0;
 }
 .logoimg {
@@ -45,14 +39,16 @@ body {
 .headernav {
     display: flex;
 }
-.headernav .navlink{
-    display: flex;
-    width:100%;
-    justify-content: space-between;
+.padding {
+    padding: 0 20px;
 }
-.navlink-item{
-    display: flex;
+.navlink{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Caviar Dreams";
     font-size: 18px;
+    font-weight: 400;
+    display: flex;
     align-items: center;
     list-style-type: none;
     cursor:pointer;
@@ -64,7 +60,7 @@ body {
 .navlink-item_dropdown{
     position: relative;
 }
-.navlink-item:hover{
+.navlink:hover{
     background-color: #7c7c7c;
 }
 
@@ -361,5 +357,3 @@ body {
         padding: 0;
     }
 }
-
-/* header */
