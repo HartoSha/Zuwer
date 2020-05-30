@@ -4,19 +4,29 @@
     
     class catalogController # Контроллер каталога
      {
-        public function index($params) 
+        public function index() # базовый action
         {
-            #Если page не указан в запросе, то считаем его равным 0
-            $page = (isset($params[0]) && !empty($params[0])) ? $params[0] : 0;
+            self::page([]); # Переходим на первую страницу по-умолчанию
+        }
+        public function page($params)  # Переход на страницу по номеру
+        {
+            # Если страница не передана или не число, то страница = 1
+            $page = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 1;
 
             $products = catalogModel::getProducts($page);
-            print "Просмотр Каталога page: " . $page;
+            
+            # Если не получили информацию о товарах, отправляем пользователя на страницу каталогана каталог
+            if($products == NULL) {
+                header('Location: ../../catalog');
+            }
+
+            print "Просмотр Каталога. page: " . $page . "<br>";
             var_dump($products);
         }
-        public function product($params) # action для просмотра одного товара
+        public function product($params) # Просмотр одного товара
         {
-            #Если id продукта не указан в запросе, то считаем его равным 0
-            $productId = (isset($params[0]) && !empty($params[0])) ? $params[0] : 0;
+            # Если id продукта не указан в запросе или не число, то считаем его равным 0 (следовательно продукт с id = 0 не будет найден и выполнится перенаправление на ../../catalog)
+            $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
             $productInfo = productModel::getProductById($productId);
 
             # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
@@ -24,6 +34,8 @@
                 header('Location: ../../catalog');
             }
             
+            print "Просмотр Товара. ID: " . $productId . "<br>";
+
             var_dump($productInfo);
         }
     }

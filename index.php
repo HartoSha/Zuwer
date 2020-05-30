@@ -52,9 +52,6 @@ function route($uriParts) {
     }
 
     $controllerFullPath = CONTROLLERS . $controllerName . ".php";
-
-    # print $controllerName;
-
     require_once($controllerFullPath);
     $controller = new $controllerName();
     executeActionIfExists($controller, $actionName, $params);
