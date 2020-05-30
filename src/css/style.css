@@ -1,7 +1,8 @@
 body {
-    background-color:Orange;
     margin:0;
+    font-family: "Caviar Dreams";
 }
+
 /* header */
 
 .header{
@@ -29,6 +30,11 @@ body {
     text-decoration: none;
     font-size: 18px;
     color:white;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
     margin: 17px 0;
 }
 .logoimg {
@@ -39,16 +45,14 @@ body {
 .headernav {
     display: flex;
 }
-.padding {
-    padding: 0 20px;
-}
-.navlink{
-    text-decoration: none;
-    color: #ffffff;
-    font-family: "Caviar Dreams";
-    font-size: 18px;
-    font-weight: 400;
+.headernav .navlink{
     display: flex;
+    width:100%;
+    justify-content: space-between;
+}
+.navlink-item{
+    display: flex;
+    font-size: 18px;
     align-items: center;
     list-style-type: none;
     cursor:pointer;
@@ -60,7 +64,7 @@ body {
 .navlink-item_dropdown{
     position: relative;
 }
-.navlink:hover{
+.navlink-item:hover{
     background-color: #7c7c7c;
 }
 
@@ -357,3 +361,5 @@ body {
         padding: 0;
     }
 }
+
+/* header */
