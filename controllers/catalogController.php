@@ -22,7 +22,7 @@
 
            
             require_once VIEWS . "catalogView.php";
-            var_dump($products);
+            // var_dump($products);
             
         }
         public function product($params) # Просмотр одного товара

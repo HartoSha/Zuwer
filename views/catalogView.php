@@ -215,125 +215,34 @@
                 </form>
             </aside>
             <section class="catalog-page__items-container">
+                <?php foreach ($products as $product): ?> 
                 <figure class="catalog-page__item item">
                     <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
+                        <span class="item__type">
+                            <?php echo $product["typeName"] ?>
+                        </span>
+                        <?php if($product["status"] == true) echo "<span class=\"item__new-icon\"></span>"?>
                     </div>
                     <div class="item__image-wrapper">
-                        <img src="../../src/assets/img/pen.jpg" alt="item image" class="item__image">
+                        <?php 
+                            $img = base64_encode($product["picture"]);
+                            echo "<img src=\"data:image/jpeg; base64,$img\" alt=\"item image\" class=\"item__image\">";
+                        ?>
                     </div>
                     <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
+                        <span class="item__name">
+                            <?php echo $product["title"];?>
+                        </span>
                         <span class="item__line"></span>
                         <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
+                            <span class="item__price-value">
+                                <?php echo $product["price"] ?>
+                            </span>
                             <span class="item__price-currency-sign">$</span>
                         </span>
                     </div>
                 </figure>
-                <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../../src/assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </figure>
-                <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../../src/assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </figure>
-                <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../../src/assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </figure>
-                <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../../src/assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </figure>
-                <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../../src/assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </figure>
-                <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../../src/assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </figure>
+                <?php endforeach; ?>
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
                 <nav class="catalog-page__pagination pagination"> 
                     <a class="pagination__page pagination__page_back" href="#">
