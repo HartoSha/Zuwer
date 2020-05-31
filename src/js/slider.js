@@ -50,7 +50,7 @@ function initMove(){ // Если это первое смещение, то см
 function checkOffset(){
     console.log("Проверяем offset: " + currentOffset);
 
-    let itemsInRow = Math.round(contentRoot.offsetWidth / items[0].offsetWidth); // Находим кол-во видимых item'ов в строке делая ширину контейнера на ширину 1 item'a и округляя до целого
+    let itemsInRow = 1; // Math.floor(contentRoot.offsetWidth / items[0].offsetWidth) Находим кол-во видимых item'ов в строке делая ширину контейнера на ширину 1 item'a и округляя до целого
     if (currentOffset < 0) { // Если смещение меньше 0, то ставим смещение на конец сладера (на последние n видимых элиментов)
         currentOffset = items.length - itemsInRow;
     }

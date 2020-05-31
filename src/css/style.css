@@ -370,25 +370,41 @@ body {
 /* upper section starts */
 
 .advantage{
-    margin: 10px 0 0 0;
     display: flex;
+    margin: 2px 0;
+}
+.advantage span {
+    text-align: center;
 }
 .advantage img{
     padding-right: 10px;
     padding-left: 82px;
 }
 .mainpage{
-    background: url(../assets/img/main-icon/main.svg) no-repeat;
-    padding:0 20px;
-    padding-top:207px;
-}
-.slogan{
-    background: rgba( 0, 0, 0, 0.21);
-    width:50%;
     display: flex;
     flex-direction: column;
-    margin-left: 42px;
+    background: url(../assets/img/main-background/background.png) no-repeat center center;
+    padding:0 20px;
+    padding-top:207px;
+    background-size: cover;
+}
+.mainpage .center {
+    margin: 0 auto;
+    width: 769px;
+    display: flex;
+    flex-direction: column;
+}
+
+.slogan{
+    background: rgba( 0, 0, 0, 0.21);
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
     color:white;
+    font-size: 18px;
+    align-self: start;
+    padding: 5px 20px 5px 20px;
+
 }
 .slogan h1{
     font-size: 92px;
@@ -440,12 +456,18 @@ body {
 @media screen and (max-width: 768px){
    
     .mainpage{
-        background: url(../assets/img/main-icon/main.svg) no-repeat;
+        
         display: flex;
         flex-direction: column;
         padding-top:20px;
     }
     
+    .mainpage .center {
+        width: auto;
+        display: block;
+        margin: 0;
+    }
+
     .advantages{
         margin:15px 0;
         margin-right: 20px;
@@ -509,33 +531,42 @@ body {
         margin-bottom:30px;
         
     }
-    .img-partners{
-        width:200px;
-        height:60px;
-    }
 }
 
 /* Upper section mobile */
 @media screen and (max-width: 480px){
+    .mainpage {
+        align-items: center;
+        background: url(../assets/img/main-background/background-smartphone.png) no-repeat;
+    }
     .slogan{
         flex-direction: column;
+        flex-wrap: wrap;
+        /* align-items: center; */
+        width: auto;
+        padding-top: 5px;
+        padding-bottom: 20px;
     }
     .slogan h1{
         text-align: left;
     }
     .advantages{
         margin: 0;
+        margin-left: 100px;
+        margin-right: 20px;
     }
     .advantage{
         display: flex;
-        margin: 10px 0 0 0;
     }
     .advantage img{
         padding-right: 10px;
-        padding-left: 110px;
+    }
+    .our-partners h2 {
+        margin: 0;
     }
    .partners{
        flex-basis: 100%;
+       margin-bottom: 24px;
    }
 }
 
@@ -544,7 +575,7 @@ body {
 .slider-decoration{
     display: flex;
     justify-content: center;
-    background: url(../assets/img/slider/Decoration.png) no-repeat;
+    background: url(../assets/img/slider/Decoration.png) center center no-repeat;
     padding:65px 0;
 }
 
@@ -612,10 +643,9 @@ body {
     display: flex;
     flex-wrap:wrap;
     font-size: 18px;
+    color:white;
 }
 .item__name {
-    font-size: 18px;
-    color:white;
     flex-basis: 100%;
   }
 .item__line {
@@ -627,8 +657,6 @@ body {
   }
 
 .item__price {
-    font-size: 18px;
-    color:white;
     flex-basis: 100%;
   }
 
@@ -663,13 +691,45 @@ body {
 
 @media (max-width: 769px){
 
+    .slider-decoration {
+        padding: 10px 20px;
+    }
     .slider{
         width: 100%;
     }
-    .circle {
-        margin: 20px 40px 0 40px;
+    .slider__content {
+        margin: 0 10px;
     }
-
+    .circle {
+        width: 160px;
+        height: 155px;
+        margin: 10px 20px 0 20px;
+    }
+    .pen-icon {
+        width: 110px;
+        height: auto;
+    }
+    .item__new-icon {
+        z-index: 1;
+        width: 37px;
+        height: 37px;
+        top: 10px;
+        right: 10px;
+        position:absolute;
+        background: url(../assets/img/slider/new.svg) no-repeat;
+        transform: rotate(45deg);
+      }
+    .slider-fix {
+        margin: 5px;
+        padding-bottom: 10px;
+    }
+    .item__bottom-row {
+        font-size: 14px;
+    }
+    .slider button svg {
+        width: 40px;
+        height: 75px;
+    }
 }
 
 
@@ -678,7 +738,7 @@ body {
 	
 
 .slider__item{
-    min-width: 100%;    
+    /* min-width: 100%;     */
     }
 
 
