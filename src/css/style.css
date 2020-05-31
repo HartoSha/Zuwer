@@ -175,6 +175,16 @@ tr{
     cursor: pointer;
 }
 
+.quantity__value {
+    -moz-appearance: textfield; /* В браузере mozilla не удастся удалить стрелочки, меняем тип поля на textfield*/
+}
+/* Убираем стрелочки у поля ввода количества (не работает в Mozilla) */
+.quantity__value::-webkit-outer-spin-button,
+.quantity__value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
 .entry:focus{
     border-color:#cdb67c ;
     color: white;
@@ -425,9 +435,7 @@ tr{
 
 /* Убираем стрелочки у поля ввода количества (не работает в Mozilla) */
 .purchase-form-modal__quantity::-webkit-outer-spin-button,
-.purchase-form-modal__quantity::-webkit-inner-spin-button,
-.quantity__value::-webkit-outer-spin-button,
-.quantity__value::-webkit-inner-spin-button {
+.purchase-form-modal__quantity::-webkit-inner-spin-button {
     -webkit-appearance: none;
     display: none;
 }
