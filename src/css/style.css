@@ -259,6 +259,7 @@ td {
     padding: 5px 16px;
     border-bottom: 1px solid white;
     font-size: 18px;
+    font-family: "Caviar Dreams";
     color: white;
     font-weight: normal;
 }
@@ -271,17 +272,14 @@ td {
 .purchase-form-modal__inputs .bottom-row {
     flex-basis: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 50px 0;
 }
 
-.purchase-form-modal__price-container {
-    color: white;
-    font-size: 18px;
-}
-
 .purchase-form-modal__quantity-container {
+    flex-basis: 30%;
     display: flex;
     align-items: center;
     color: white;
@@ -289,9 +287,26 @@ td {
     font-family: "Caviar Dreams";
 }
 
+.purchase-form-modal__price-container {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.purchase-form-modal__price-value {
+    margin-left: 5px;
+}
+
 .bottom-row .purchase-form-modal__quantity {
+    flex-basis: auto;
+    flex-grow: 0;
     font-family: "Caviar Dreams";
-    width: 50px;
+    width: 30px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    text-align: center;
 }
 
 .purchase-form-modal__quantity::-webkit-outer-spin-button,
@@ -313,6 +328,54 @@ td {
     border-color: none;
     color: #212121;
     background-color: #cdb67c;
+  }
+
+  @media screen and (max-width: 769px) {
+    .purchase-form-modal__inputs {
+        margin: 0 40px;
+    }
+    .purchase-form-modal__inputs .bottom-row {
+        margin: 20px 0 40px 0;
+    }
+    .purchase-form-modal__quantity-container {
+        display: flex;
+        justify-content: flex-start;
+        flex-basis: 45%;
+    }
+    .purchase-form-modal__price-container {
+        display: flex;
+        justify-content: flex-end;
+        flex-basis: 45%;
+    }
+    .purchase-form-modal__inputs .bottom-row {
+        justify-content: space-between;
+    }
+    .bottom-row .purchase-btn {
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .purchase-form-modal__inputs {
+        margin: 0;
+    }
+    .purchase-modal .form-container  {
+        padding: 20px;
+    }
+
+    .purchase-form-modal__quantity-container, 
+    .purchase-form-modal__price-container {
+        flex-basis: 100%;
+        justify-content: center;
+    }
+    .purchase-form-modal__inputs .bottom-row{
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    .bottom-row .purchase-btn {
+        margin-top: 20px;   
+    }
   }
 
 /* modal ends */

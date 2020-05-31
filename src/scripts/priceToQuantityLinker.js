@@ -1,3 +1,5 @@
+'use strict'
+
 const linkPriceAndQuantity = (quantityInput, priceOutput, initialPriceInput) => {
     const initialPrice = +initialPriceInput.innerHTML;
     quantityInput.addEventListener('change', () => {
