@@ -420,12 +420,15 @@ tr{
     padding: 5px 10px;
     margin-left: 5px;
     text-align: center;
+    -moz-appearance: textfield; /* В браузере mozilla не удастся удалить стрелочки, меняем тип поля на textfield*/
 }
 
+/* Убираем стрелочки у поля ввода количества (не работает в Mozilla) */
 .purchase-form-modal__quantity::-webkit-outer-spin-button,
 .purchase-form-modal__quantity::-webkit-inner-spin-button,
 .quantity__value::-webkit-outer-spin-button,
 .quantity__value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
     display: none;
 }
 
