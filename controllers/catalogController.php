@@ -19,8 +19,10 @@
                 header('Location: ../../catalog');
             }
 
-            print "Просмотр Каталога. page: " . $page . "<br>";
+           
+            require_once VIEWS . "catalogView.php";
             var_dump($products);
+            
         }
         public function product($params) # Просмотр одного товара
         {
@@ -37,3 +39,4 @@
 
             var_dump($productInfo);
         }
+    } 

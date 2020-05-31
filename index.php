@@ -2,6 +2,7 @@
 
 define("ROOT", dirname(__FILE__) . DIRECTORY_SEPARATOR);
 define("CONTROLLERS", ROOT . "controllers" . DIRECTORY_SEPARATOR);
+define("VIEWS", ROOT . "views" . DIRECTORY_SEPARATOR);
 
 define("DEFAULT_CONTROLLER", "indexController");
 define("DEFAULT_ACTION", "index");
