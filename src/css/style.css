@@ -27,62 +27,8 @@ body{
     flex-wrap: wrap;
     justify-content: center;
 }
-.product-img-container{
-    display: flex;
-    position: relative;
-    align-self: center;
-}
-.product-img-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 300px;
-    height: 300px;
-    background-color: white;
-    border-radius: 50%;  
-    overflow: hidden;
-    
-}
-.product-img{
-    width: 200px;
-    height: 200px;
-}
-.like{
-    background: url(../img/heart.svg) no-repeat;
-    width: 30px;
-    height: 30px;
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
 
-.characteristics{
-    margin-left: 20px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-table{
-    width: 100%;
-}
-
-td:first-child{
-    width: 228px;
-}
-
-td {
-    padding-top: 20px;
-    text-align: left;
-    font-size: 18px;
-}
-tr{
-    padding: 10px;
-}
-
-
-.name{
+.product-name{
     font-size: 48px;
     color: #cdb67c;
     order: -1;
@@ -94,10 +40,144 @@ tr{
     margin-bottom: 20px;
 }
 
-.colortext{
-    background-color: #484848;
+.product-img-container{
+    display: flex;
+    position: relative;
+    align-self: center;
+}
+
+.product-img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 50%;  
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product-img{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+.like-animation{
+    height: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.like{
+    background: url(../img/heart.svg) no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.like-active{
+    background: url(../img/heartactiv.svg)no-repeat;
+    width: 30px;
+    height: 30px; 
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    transform: scale(0);
+    cursor: default;
+}
+
+/* анимация */
+ input[type="checkbox"]:checked + .like-animation .like .like-active{
+    display: block;
+    transition: 0.3s;
+    transform: scale(1);
+  }
+  
+    input[type="checkbox"]:not(:checked) + .like-animation .like .like-active{
+    transition: 0.3s;
+  }
+/* анимация */
+  .product-img-container input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -100;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+/* .product-img-container input[type="checkbox"] {
+    position: relative;
+    top: -9999px;
+    left: -9999px;
+    z-index: -100;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+} */
+
+.characteristics{
+    margin-left: 20px;
+    width: 50%;
+}
+
+table{
+    width: 100%;
+}
+
+td:first-child{
+    width: 65%;
+}
+
+td:last-child{
+    width: 35%;
+}
+
+td {
+    padding-top: 20px;
+    text-align: left;
+    font-size: 18px;
+}
+
+tr{
+    padding: 10px;
+}
+.quantity-wrapper{
+    margin: 20px 20px 20px 20px;
+}
+/* .entry-field{
+    display: flex;
+} */
+
+.entry{
+    font: 0;
+    font-family: "Caviar Dreams";
+    background-color: inherit;
+    font-size: 14px;
+    color: #b6b6b6;
+    padding: 0 5px 5px 5px;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid white;
+    width: 16px;
+    cursor: pointer;
+}
+
+.entry:focus{
+    border-color:#cdb67c ;
     color: white;
-    border: 1px solid #cdb67c;
 }
 
 .purchase-form{
@@ -107,11 +187,8 @@ tr{
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 20px;
-    /* display: grid;
-    justify-content: space-between;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 20px; */
 }
+
 .buy{
     font-size: 24px;
     border-radius: 30px;
@@ -121,14 +198,11 @@ tr{
     background-color: #212121;
     color: #cdb67c;
     border: 1px solid #cdb67c;
-    
+    outline: none;
     font-family: "Caviar Dreams";
+    cursor: pointer;
 }
 
-.quantity-wrapper{
-    align-self:center;
-    margin: 20px 20px 20px 20px;
-}
 .price{
     align-self:center;
 }
@@ -139,15 +213,21 @@ tr{
     flex-wrap: wrap;
     flex-direction: column;
 }
+
 .description{
     font-size: 24px;
 }
+
 .content-description{
     margin-top: 20px;
     font-size: 18px;
 }
 
-@media screen and (max-width: 769px) and (min-width: 480px){
+@media screen and (max-width: 769px){
+     .product-name{
+        font-size: 30px;
+        margin: 0;
+    }
     .product-img-container{
         height: 190px;
         width: 190px;
@@ -160,42 +240,22 @@ tr{
         height: 130px;
         width: 130px;
     }
-    .like{
+    .like,
+    .like-active{
         height: 27px;
         width: 27px;
     }
-    .name{
-        font-size: 30px;
-        margin: 0;
-    }
+   
     td{
         padding-top: 15px;
         font-size: 14px;
-       
     }
     .characteristics{
         margin-left: 10px;
-        max-width: 240px;
+        flex-basis: 45%;
+        flex-grow: 1;
+        padding: 0 2%;
     }
-    td:first-child{
-        width: 140px;
-    }
-    /* .quantity{
-        font-size: 18px;
-        margin-left: -35%;
-    }
-    .price{
-        font-size: 18px;
-        margin-top: -25%;
-    }
-    .price-wrapper{
-        flex: 0 1 30%;
-        margin-top: -30%;
-        align-self: center;
-    }
-    .purchase-form{
-        padding: 0;
-    } */
     .price{
         font-size: 18px;
     }
@@ -205,8 +265,9 @@ tr{
 }
 
 @media screen  and (max-width: 480px){
-    .name{
+    .product-name{
         font-size: 30px;
+        margin-bottom: 20px;
     }
     .product-img-container{
         height: 190px;
@@ -234,17 +295,20 @@ tr{
     }
     .characteristics{
         margin-left: 0;
-        max-width: 240px;
+        flex-basis: 100%;
     }
     .buy{
-        width: 180px;
         font-size: 24px;
     }
     .quantity-wrapper{
-        margin: 20px 0 20px 20px;
+        margin: 20px 0 20px 10px;
         font-size: 18px;
     }
     .price{
         font-size: 18px;
     }
+    .description-wrapper{
+        margin-top: 20px;
+    }
+    
 }
