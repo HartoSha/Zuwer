@@ -537,7 +537,9 @@ body {
 @media screen and (max-width: 480px){
     .mainpage {
         align-items: center;
-        background: url(../assets/img/main-background/background-smartphone.png) no-repeat;
+        background: url(../assets/img/main-background/background-smartphone.png) no-repeat center center;
+        background-size: cover;
+
     }
     .slogan{
         flex-direction: column;
@@ -566,7 +568,7 @@ body {
     }
    .partners{
        flex-basis: 100%;
-       margin-bottom: 24px;
+       margin-bottom: 10px;
    }
 }
 
@@ -735,13 +737,36 @@ body {
 
 
 @media (max-width: 480px){
-	
-
-.slider__item{
-    /* min-width: 100%;     */
+    
+    .slider{
+        padding:20px 0;
     }
 
+    .slider__content{
+        margin:0 2px;
+    }
+    
+    .slider-fix{
+        padding:10px 30px;
+    }
+    .circle {
+        width: 90px;
+        height: 90px;
+        margin: 0;
 
+    }
+    .pen-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .item__new-icon {
+        top: -5px;
+        right: -5px;
+      }
+      .slider button svg {
+        width: 30px;
+        height: 60px;
+    }
 }
 
 /* main page ends */
