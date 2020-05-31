@@ -1,8 +1,9 @@
 <?php 
     require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "catalogModel.php");
-    
+    require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "productModel.php");
+
     class catalogController # Контроллер каталога
-     {
+    {
         public function index() # базовый action
         {
             self::page([]); # Переходим на первую страницу по-умолчанию
@@ -37,3 +38,4 @@
 
             var_dump($productInfo);
         }
+    }
