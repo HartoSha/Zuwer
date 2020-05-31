@@ -7,172 +7,43 @@
     <title>Zuwer</title>
 </head>
 <body>
-    <header class = "header">
-        <div class="burger-menu">
-            <input id="header-burger-menu-checkbox" type="checkbox">
-            <label class="burger-menu-button" for="header-burger-menu-checkbox">
-                <span class="burger-menu-button-icon">
-                    <div class="burger-menu-icon"></div>
-                </span>
-            </label>
-            <div class="burger-menu-nav-wrapper">
-                <nav class="burger-menu-nav">
-                    <a href="#">Главная</a>
-                    <a href="#">Каталог</a>
-                </nav>
+    <footer>
+        <div class="footer">
+          <div class="social">
+            <a href="#"><img src="../assets/img/footer-icons/facebook.svg" alt="facebook" class="social-img social-img-facebook"></a>
+            <a href="#"><img src="../assets/img/footer-icons/instagramm.svg" alt="instagramm" class="social-img social-img-instagramm"></a>
+            <a href="#"><img src="../assets/img/footer-icons/telegramm.svg" alt="telegram" class="social-img social-img-telegram"></a>
+            <a href="#"><img src="../assets/img/footer-icons/twitter.svg" alt="twitter" class="social-img social-img-twitter"></a>
+          </div>
+          <div class="contact-info">
+            <span class="telephone">
+              <span>Обратная связь:</span> <span>+7(912) 872 65 45</span>
+            </span>
+            <span class="email">
+              <span>Почта:</span> <span>nihoxa4187@3mailapp.net</span>
+            </span>
+          </div>
+          <div class="time" id="clock">
+            <div class="date">
+                <span class="year"></span>
+                <span class="month"></span>
+                <span class="day"></span>
             </div>
-            <label for="header-burger-menu-checkbox" class="burger-menu-background"></label>
-        </div>
-        <div class="wrapper">      
-            <a href = "#" class="logo">
-                <img class="logoimg" src="../assets/img/logo-icon/logo.svg"></img> 
-            </a>
-            <nav class = "headernav"> 
-                <ul class="navlink">    
-                    <li class="navlink-item"><a href="#">Главная</a></li>
-                    <li class="navlink-item"><a href="#">Каталог</a></li>
-                    <li class="navlink-item navlink-item_dropdown">
-                        <span class="username">Алексей Шадрин</span>
-                        <ul class = "dropdown-menu">
-                            <li class="dropdown-menu-item">
-                                <a class = "dropdown-menu-link">
-                                    <div class="icon-wrapper">
-                                        <span class="my-orders-icon"></span>
-                                    </div>
-                                    <span class="dropdown-menu-item-name">Мои заказы</span>
-                                </a>
-                            </li>
-                            <li class="dropdown-menu-item">
-                                <a class = "dropdown-menu-link" href="#">
-                                    <div class="icon-wrapper">
-                                        <span class="favorites-icon"></span>
-                                    </div>
-                                    <span class="dropdown-menu-item-name">Избранное</span>
-                                </a>
-                            </li>
-                            <li class="dropdown-menu-item">
-                                <a class = "dropdown-menu-link" href="#">
-                                    <div class="icon-wrapper">
-                                        <span class="exit-icon"></span>
-                                    </div>
-                                    <span class="dropdown-menu-item-name">Выход</span> 
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-        <main class="mainpage">
-            <div class="center">
-                <div class="slogan">
-                    <h1>Zuwer</h1>
-                    <div class="advantages">
-                        <div class="advantage"><img src="../assets/img/Quality/premium.png" alt="premium"><span>Премиальность</span></div>
-                        <div class="advantage"><img src="../assets/img/Quality/quality.png" alt="quality"><span>Качество</span></div>
-                        <div class="advantage"><img src="../assets/img/Quality/realibility.png" alt="reliability"><span>Надежность</span></div>
-                    </div>
-                </div> 
+            <span class="weekday"></span>
+            <div class="hour-mins">
+                <span class="hour"></span>
+                <span class="min"></span>
             </div>
-            <div class="our-partners">
-                <h2>Наши Партнеры</h2>
-                <div class="partners-wrapper">
-                    <div class="partners"><img class="img-partners" src="../assets/img/partners/Namiki.png" alt="Namiki"></div>
-                    <div class="partners"><img class="img-partners" src="../assets/img/partners/Dupont.png" alt="Dupont"></div>
-                    <div class="partners"><img class="img-partners" src="../assets/img/partners/parker1.png" alt="parker"></div>
-                    <div class="partners"><img class="img-partners" src="../assets/img/partners/Montegrappa.png" alt="Montegrappa"></div>
-                    <div class="partners"><img class="img-partners" src="../assets/img/partners/Carandache.png" alt="Carandache"></div>
-                    <div class="partners"><img class="img-partners" src="../assets/img/partners/Dalvey.png" alt="Dalvey"></div>
-                </div>
-            </div>
-        </main>
-        <div class="slider-decoration">
-                <div id="slider" class="slider">
-                    <button class="slider__leftButton">
-                        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 253.02 476.74"><defs><style>.cls-1{fill:#fff;}</style></defs><title>next 2</title>
-                            <path class="cls-1" d="M3.84,247.1,228,473.16a13.51,13.51,0,0,0,19.18-19L32.58,237.72,249,23.14a13.45,13.45,0,0,0,.15-19L249.09,4a13.65,13.65,0,0,0-9.49-4,13.15,13.15,0,0,0-9.51,4L4,228.1a13.43,13.43,0,0,0-.2,19Z" transform="translate(0 -0.04)"/>
-                        </svg>
-                    </button>   
-                    <div class="slider__content">
-                        <article class="slider__item">
-                            <a class="slider-fix" href="#">
-                                <span class="item__new-icon"></span>
-                                <div class="circle"><img src="../assets/img/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                                <div class="item__bottom-row">
-                                    <span class="item__name">Montegrappa European</span>
-                                    <span class="item__line"></span>
-                                    <span class="item__price">
-                                        <span class="item__price-value">7845,65</span>
-                                        <span class="item__price-currency-sign">$</span>
-                                    </span>
-                                </div> 
-                            </a>
-                        </article>
-                        <article class="slider__item">
-                            <a class="slider-fix" href="#">
-                                <span class="item__new-icon"></span>
-                                <div class="circle"><img src="../assets/img/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                                <div class="item__bottom-row">
-                                    <span class="item__name">Montegrappa European</span>
-                                    <span class="item__line"></span>
-                                    <span class="item__price">
-                                        <span class="item__price-value">7845,65</span>
-                                        <span class="item__price-currency-sign">$</span>
-                                    </span>
-                                </div> 
-                            </a>
-                        </article>
-                        <article class="slider__item">
-                            <a class="slider-fix" href="#">
-                                <span class="item__new-icon"></span>
-                                <div class="circle"><img src="../assets/img/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                                <div class="item__bottom-row">
-                                    <span class="item__name">Montegrappa European</span>
-                                    <span class="item__line"></span>
-                                    <span class="item__price">
-                                        <span class="item__price-value">7845,65</span>
-                                        <span class="item__price-currency-sign">$</span>
-                                    </span>
-                                </div> 
-                            </a>
-                        </article>
-                        <article class="slider__item">
-                            <a class="slider-fix" href="#">
-                                <span class="item__new-icon"></span>
-                                <div class="circle"><img src="../assets/img/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                                <div class="item__bottom-row">
-                                    <span class="item__name">Montegrappa European</span>
-                                    <span class="item__line"></span>
-                                    <span class="item__price">
-                                        <span class="item__price-value">7845,65</span>
-                                        <span class="item__price-currency-sign">$</span>
-                                    </span>
-                                </div> 
-                            </a>
-                        </article>
-                        <article class="slider__item">
-                            <a class="slider-fix" href="#">
-                                <span class="item__new-icon"></span>
-                                <div class="circle"><img src="../assets/img/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                                <div class="item__bottom-row">
-                                    <span class="item__name">Montegrappa European</span>
-                                    <span class="item__line"></span>
-                                    <span class="item__price">
-                                        <span class="item__price-value">7845,65</span>
-                                        <span class="item__price-currency-sign">$</span>
-                                    </span>
-                                </div> 
-                            </a>
-                        </article>
-                    </div>
-                    <button class="slider__rightButton">
-                        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252.06 477.18"><defs><style>.cls-1{fill:#fff;}</style></defs><title>next1</title>
-                            <path class="cls-1" d="M360.73,229.07,135.63,4a13.51,13.51,0,0,0-19.1,19.1L332,238.57,116.53,454.08a13.55,13.55,0,0,0,9.5,23.1,13.17,13.17,0,0,0,9.5-4l225.1-225.1A13.44,13.44,0,0,0,360.73,229.07Z" transform="translate(-112.56 0)"/>
-                        </svg>
-                    </button>
-                </div>
+            <button class="btn-mute muted" id="buttonTikTak"><span class="button-img"></span></button>
+          </div>
         </div>
-    <script type="text/javascript" src="../js/slider.js"></script>
+      </footer>
+      <audio
+      src="../JavaScript/tik-tak/tik-tak.mp3"
+      autoplay="autoplay"
+      loop
+      id="tik-tak"
+    ></audio>
+    <script src="../js/data-time.js"></script>
 </body>
 </html>
