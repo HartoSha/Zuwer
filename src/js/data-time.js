@@ -69,12 +69,13 @@ clockStart();
 let vid = document.getElementById("tik-tak");
 let swtich = document.getElementById("buttonTikTak");
 
-document.addEventListener("DOMContentLoaded") {
+document.addEventListener("DOMContentLoaded", function() {
+  vid.volume = 0;
   buttonTikTak.addEventListener("click", TurnOffOnVolume);
   function TurnOffOnVolume() {
     swtich.classList.toggle("muted");
     if (swtich.classList.contains("muted")) vid.volume = 0;
     else vid.volume = 1;
   }
-}
+});
 
