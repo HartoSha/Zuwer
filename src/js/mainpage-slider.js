@@ -15,7 +15,7 @@ let currentOffset = START_INDEX;
 let centering_var = calcCenteringVar();                                     // переменная центровки - дополнительное смещение в %. необходима для выравнивания элементов.
 console.log(`отступ слева для центровки: ${centering_var} %`);
 
-initMove();                                                     // Сдвигаем элементы на стартовую позицию
+initMove();                                                              // Сдвигаем элементы на стартовую позицию
 
 rightButton.addEventListener("click", function(){
     currentOffset++;

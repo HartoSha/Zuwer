@@ -1,12 +1,14 @@
 <?php ?>
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../src/css/normalize.css">
-        <link rel = "stylesheet" type="text/css" href = "../../src/css/header.css">
-        <link rel="stylesheet" href="../../src/css/catalog-page.css">
+        <link rel="stylesheet" href="src/css/normalize.css">
+        <link rel = "stylesheet" type="text/css" href = "src/css/header.css">
+        <link rel = "stylesheet" type="text/css" href = "src/css/mainpage.css">
+        <link rel="stylesheet" href="src/css/catalog-page.css">
+        
         <title>Zuwer</title>
     </head>
     <body>
@@ -27,7 +29,7 @@
                 <label for="header-burger-menu-checkbox" class="burger-menu-background"></label>
             </div>
             <div class="wrapper">      
-                <a href = "#" class="logo">
+                <a href = "/" class="logo">
                     <img class="logoimg" src="src\assets\img\shared\icons\logo.svg"></img> 
                 </a>
                 <nav class = "headernav"> 

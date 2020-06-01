@@ -4,7 +4,7 @@ define("ROOT", dirname(__FILE__) . DIRECTORY_SEPARATOR);
 define("CONTROLLERS", ROOT . "controllers" . DIRECTORY_SEPARATOR);
 define("VIEWS", ROOT . "views" . DIRECTORY_SEPARATOR);
 
-define("DEFAULT_CONTROLLER", "indexController");
+define("DEFAULT_CONTROLLER", "mainpageController");
 define("DEFAULT_ACTION", "index");
 
 # Включаем показ всех ошибок
@@ -16,8 +16,6 @@ ini_set('display_startup_errors', 1);
 
 # разделяем url на составляющие
 $uri = prepareURI($_SERVER["REQUEST_URI"]);
-
-//  var_dump($uri);
 
 # определяем контроллер и action по url : Zuwer\controller_name\action_name\param1\param2\param3
 route($uri);
@@ -60,7 +58,7 @@ function route($uriParts) {
 
 # controller - obj
 # actionName - string
-# Вызавает action у контроллера если он существует, если action не существует, то вызывается метод index, иначе - ошибка
+# Вызавает action у контроллера если он существует, если action не существует, то вызывается action index, иначе - ошибка
 function executeActionIfExists($controller, $actionName, $params) {
     if(method_exists($controller, $actionName)) 
     {
