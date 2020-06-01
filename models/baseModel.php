@@ -23,38 +23,40 @@
             if(!isset(self::$connection) || !self::$connection) self::getConnection();
             mysqli_set_charset(self::$connection, self::enctype);
 
-            # Подготавливаем запрос
-            $prepared = self::$connection->prepare($sql);
+            # Подготавливаем 
+            if($prepared = self::$connection->prepare($sql)){
+                if(is_bool($prepared)) return $prepared;
+                // var_dump($prepared);
 
-            # Выполняем запрос и получаем статус
-            $good = $prepared->execute() or die("<br/>Ошибка в sql запросе: " . $prepared.error());
+                # Выполняем запрос и получаем статус
+                $good = $prepared->execute() or die("<br/>Ошибка в sql запросе: " . $prepared->error);
 
-            # получаем результат запроса если он прошел успешно
-            if($good) $responce = $prepared->get_result();
+                # получаем результат запроса если он прошел успешно
+                if($good) $responce = $prepared->get_result();
 
-            // $responce = mysqli_query(self::$connection, $sql) or die("<br/>Ошибка в sql запросе: " . mysqli_error(self::$connection)); # старый вариант. выдавал ошибку Commands out of sync; you can't run this command now при вызове нескольких sql запросов подряд
-            // print "<br> responce: "; var_dump($responce); print "<br>";
+                // $responce = mysqli_query(self::$connection, $sql) or die("<br/>Ошибка в sql запросе: " . mysqli_error(self::$connection)); # старый вариант. выдавал ошибку Commands out of sync; you can't run this command now при вызове нескольких sql запросов подряд
+                // print "<br> responce: "; var_dump($responce); print "<br>";
+                if(is_bool($responce)) return $responce;
+                $result = null;
 
-            $result = null;
-
-            # получаем кол-во строк в нем
-            $rows = mysqli_num_rows($responce);
-            if($rows == 1) {
-                # если полученная строка всего одна, то возвращаем ее в виде ассоциативного массива 
-                $result = mysqli_fetch_assoc($responce);
-            }
-            else 
-            {
-                # иначе, оборачиваем полученные строки в массив
-                for ($i = 0 ; $i < $rows ; ++$i)
-                {
-                    # каждое значение полученного массива $result - ассоциативный массив
-                    $result[$i] = mysqli_fetch_assoc($responce);
+                # получаем кол-во строк в нем
+                $rows = mysqli_num_rows($responce);
+                if($rows == 1) {
+                    # если полученная строка всего одна, то возвращаем ее в виде ассоциативного массива 
+                    $result = mysqli_fetch_assoc($responce);
                 }
+                else 
+                {
+                    # иначе, оборачиваем полученные строки в массив
+                    for ($i = 0 ; $i < $rows ; ++$i)
+                    {
+                        # каждое значение полученного массива $result - ассоциативный массив
+                        $result[$i] = mysqli_fetch_assoc($responce);
+                    }
+                }
+                # Закрываем запрос
+                $prepared->close();
+                return $result;
             }
-
-            # Закрываем запрос
-            $prepared->close();
-            return $result;
         }
     }
