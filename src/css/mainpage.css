@@ -266,6 +266,15 @@ body {
     width: 100%;
 }
 
+.slider__item {
+    display: flex;
+    flex-direction: column;
+}
+
+.slider__item .slider-fix {
+    flex-grow: 1;
+}
+
 .slider__content {
     background-color: #495257;
     flex-grow: 1;
@@ -455,6 +464,9 @@ body {
     .slider button svg {
         width: 30px;
         height: 60px;
+    }
+    .slider__item .slider-fix {
+        justify-content: space-between;
     }
 }
 
