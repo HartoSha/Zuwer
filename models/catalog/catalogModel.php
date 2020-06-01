@@ -37,7 +37,8 @@
 
             $result = self::query($query);
             
-            // if(!is_iterable($result))$result = array($result);
+            #если возвращается 1 товар (а 1 товар возвращается в виде ассоциативного массива (т.е. в нем нет элемента с индексом 0)), то оборачиваем его в доп. массив (необходимо для работы цикла foreach во catalogView.php)
+            if(!isset($result[0]))$result = array($result);
             
             return $result;
         }
