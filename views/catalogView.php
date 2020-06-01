@@ -217,7 +217,7 @@
             <section class="catalog-page__items-container">
                 <?php foreach ($products as $product): ?> 
                 <figure class="catalog-page__item item">
-                    <a class="item__href" href="catalog/product/<?php print $product["id_product"] ?>" >
+                    <a class="item__href" href="/catalog/product/<?php print $product["id_product"] ?>" >
                         <div class="item__upper-row">
                             <span class="item__type">
                                 <?php echo $product["typeName"] ?>
@@ -272,4 +272,4 @@
     </main>
 
 <?php
-require_once (VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");
+require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");

@@ -1,8 +1,7 @@
 *{
     padding: 0;
     margin: 0; 
-} 
-
+}
 body{
     margin: 0;
     background-color: rgb(48, 48, 48);
@@ -69,7 +68,7 @@ body{
     bottom: 0;
 }
 .like{
-    background: url(../img/heart.svg) no-repeat;
+    background: url(../../src/assets/img/product-page/heart.svg) no-repeat;
     width: 30px;
     height: 30px;
     display: block;
@@ -81,7 +80,7 @@ body{
 }
 
 .like-active{
-    background: url(../img/heartactiv.svg)no-repeat;
+    background: url(../../src/assets/img/product-page/heartactiv.svg) no-repeat;
     width: 30px;
     height: 30px; 
     position: absolute;

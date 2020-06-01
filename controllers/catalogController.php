@@ -35,10 +35,9 @@
                 header('Location: ../../catalog');
             }
             
-            print "Просмотр Товара. ID: " . $productId . "<br>";
+            // print "Просмотр Товара. ID: " . $productId . "<br>";
+            // var_dump($productInfo);
 
-            var_dump($productInfo);
-
-            
+            require_once VIEWS . "productView.php";
         }
     } 
