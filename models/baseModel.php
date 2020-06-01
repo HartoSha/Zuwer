@@ -23,25 +23,38 @@
             if(!isset(self::$connection) || !self::$connection) self::getConnection();
             mysqli_set_charset(self::$connection, self::enctype);
 
-            # получаем результат запроса
-            $responce = mysqli_query(self::$connection, $sql) or die("<br/>Ошибка в sql запросе: " . mysqli_error(self::$connection));
+            # Подготавливаем запрос
+            $prepared = self::$connection->prepare($sql);
 
+            # Выполняем запрос и получаем статус
+            $good = $prepared->execute() or die("<br/>Ошибка в sql запросе: " . $prepared.error());
+
+            # получаем результат запроса если он прошел успешно
+            if($good) $responce = $prepared->get_result();
+
+            // $responce = mysqli_query(self::$connection, $sql) or die("<br/>Ошибка в sql запросе: " . mysqli_error(self::$connection)); # старый вариант. выдавал ошибку Commands out of sync; you can't run this command now при вызове нескольких sql запросов подряд
             // print "<br> responce: "; var_dump($responce); print "<br>";
+
+            $result = null;
 
             # получаем кол-во строк в нем
             $rows = mysqli_num_rows($responce);
-
-            // # если полученная строка всего одна, то возвращаем ее в виде ассоциативного массива 
-            if($rows == 1) return mysqli_fetch_assoc($responce);
-
-            # иначе, оборачиваем полученные строки в массив
-            $result = null;
-            for ($i = 0 ; $i < $rows ; ++$i)
+            if($rows == 1) {
+                # если полученная строка всего одна, то возвращаем ее в виде ассоциативного массива 
+                $result = mysqli_fetch_assoc($responce);
+            }
+            else 
             {
-                $result[$i] = mysqli_fetch_assoc($responce);
+                # иначе, оборачиваем полученные строки в массив
+                for ($i = 0 ; $i < $rows ; ++$i)
+                {
+                    # каждое значение полученного массива $result - ассоциативный массив
+                    $result[$i] = mysqli_fetch_assoc($responce);
+                }
             }
 
-            # каждое значение полученного массива $result - ассоциативный массив
+            # Закрываем запрос
+            $prepared->close();
             return $result;
         }
     }
