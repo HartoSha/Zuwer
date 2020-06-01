@@ -217,30 +217,32 @@
             <section class="catalog-page__items-container">
                 <?php foreach ($products as $product): ?> 
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">
-                            <?php echo $product["typeName"] ?>
-                        </span>
-                        <?php if($product["status"] == true) echo "<span class=\"item__new-icon\"></span>"?>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <?php 
-                            $img = base64_encode($product["picture"]);
-                            echo "<img class=\"item__image\" src=\"data:image/jpeg; base64,$img\" alt=\"item image\" >";
-                        ?>
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">
-                            <?php echo $product["title"];?>
-                        </span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">
-                                <?php echo $product["price"] ?>
+                    <a class="item__href" href="catalog/product/<?php print $product["id_product"] ?>" >
+                        <div class="item__upper-row">
+                            <span class="item__type">
+                                <?php echo $product["typeName"] ?>
                             </span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                            <?php if($product["status"] == true) echo "<span class=\"item__new-icon\"></span>"?>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <?php 
+                                $img = base64_encode($product["picture"]);
+                                echo "<img class=\"item__image\" src=\"data:image/jpeg; base64,$img\" alt=\"item image\" >";
+                            ?>
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">
+                                <?php echo $product["title"];?>
+                            </span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">
+                                    <?php echo $product["price"] ?>
+                                </span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
                 <?php endforeach; ?>
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->

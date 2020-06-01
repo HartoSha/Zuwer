@@ -23,7 +23,7 @@
             if(!isset(self::$connection) || !self::$connection) self::getConnection();
             mysqli_set_charset(self::$connection, self::enctype);
 
-            # Подготавливаем запрос
+            # Подготавливаем 
             $prepared = self::$connection->prepare($sql);
             // var_dump($prepared);
 

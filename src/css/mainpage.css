@@ -297,6 +297,15 @@ body {
     background-color: #484848;
 }
 
+.slider-fix .item__line {
+    transition: 0.3s;
+}
+
+.slider-fix:hover .item__line {
+    transition: 0.3s;
+    transform: scale(0.6);
+}
+
 .slider-decoration .item__new-icon {
     z-index: 1;
     width: 66px;

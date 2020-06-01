@@ -294,10 +294,21 @@
 .item {
     background-color: #212121;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
+}
+
+.item a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
     /* space-around выравнивает содержимое при увеличении соседнего товара */
-    justify-content: space-around;
+  justify-content: space-around;
+  text-decoration: none;
+  color: white;
+}
+
+.item a:visited {
+  text-decoration: none;
 }
 
 .item__type {
