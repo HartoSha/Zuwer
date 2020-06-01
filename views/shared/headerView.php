@@ -28,7 +28,7 @@
             </div>
             <div class="wrapper">      
                 <a href = "#" class="logo">
-                    <img class="logoimg" src="../../src/assets/img/Logo-image/logo.svg"></img> 
+                    <img class="logoimg" src="src\assets\img\shared\icons\logo.svg"></img> 
                 </a>
                 <nav class = "headernav"> 
                     <ul class="navlink">    

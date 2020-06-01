@@ -123,17 +123,17 @@ body {
 }
 
 .my-orders-icon{
-    background:url(../assets/img/icons/my-orders-icon.png) no-repeat;
+    background:url(../assets/img/shared/icons/my-orders-icon.png) no-repeat;
     width: 35px;
     height: 27px;
 }
 .favorites-icon{
-    background:url(../assets/img/icons/favorites-icon.png) no-repeat;
+    background:url(../assets/img/shared/icons/favorites-icon.png) no-repeat;
     width: 25px;
     height: 23px;
 }
 .exit-icon{
-    background: url(../assets/img/icons/exit-icon.png) no-repeat;
+    background: url(../assets/img/shared/icons/exit-icon.png) no-repeat;
     width: 25px;
     height: 23px;
 }
