@@ -19,7 +19,6 @@
             if($products == NULL) {
                 header('Location: ../../catalog');
             }
-
            
             require_once VIEWS . "catalogView.php";
             // var_dump($products);

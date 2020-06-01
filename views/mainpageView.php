@@ -15,12 +15,14 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
     <div class="our-partners">
         <h2>Наши Партнеры</h2>
         <div class="partners-wrapper">
-            <div class="partners"><img class="img-partners" src="src/assets/img/mainpage/partners/Namiki.png" alt="Namiki"></div>
-            <div class="partners"><img class="img-partners" src="src/assets/img/mainpage/partners/Dupont.png" alt="Dupont"></div>
-            <div class="partners"><img class="img-partners" src="src/assets/img/mainpage/partners/parker1.png" alt="parker"></div>
-            <div class="partners"><img class="img-partners" src="src/assets/img/mainpage/partners/Montegrappa.png" alt="Montegrappa"></div>
-            <div class="partners"><img class="img-partners" src="src/assets/img/mainpage/partners/Carandache.png" alt="Carandache"></div>
-            <div class="partners"><img class="img-partners" src="src/assets/img/mainpage/partners/Dalvey.png" alt="Dalvey"></div>
+            <?php foreach ($manufacturers as $m):?>
+                <div class="partners">
+                    <?php 
+                        $img = base64_encode($m["picture"]);
+                        echo "<img class=\"img-partners\" src=\"data:image/jpeg; base64,$img\" alt=\"Partner image\" >";
+                    ?>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </main>
@@ -40,76 +42,28 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
             </svg>
         </button>
         <div class="slider__content">
-            <article class="slider__item">
-                <a class="slider-fix" href="#">
-                    <span class="item__new-icon"></span>
-                    <div class="circle"><img src="src/assets/img/mainpage/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </a>
-            </article>
-            <article class="slider__item">
-                <a class="slider-fix" href="#">
-                    <span class="item__new-icon"></span>
-                    <div class="circle"><img src="src/assets/img/mainpage/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </a>
-            </article>
-            <article class="slider__item">
-                <a class="slider-fix" href="#">
-                    <span class="item__new-icon"></span>
-                    <div class="circle"><img src="src/assets/img/mainpage/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </a>
-            </article>
-            <article class="slider__item">
-                <a class="slider-fix" href="#">
-                    <span class="item__new-icon"></span>
-                    <div class="circle"><img src="src/assets/img/mainpage/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </a>
-            </article>
-            <article class="slider__item">
-                <a class="slider-fix" href="#">
-                    <span class="item__new-icon"></span>
-                    <div class="circle"><img src="src/assets/img/mainpage/slider/pen.png" alt="new-pen" class="pen-icon"></div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
-                </a>
-            </article>
+            <?php foreach ($newProducts as $product):?>
+                <article class="slider__item">
+                    <a class="slider-fix" href="/catalog/product/<?php print $product["id_product"]?>">
+                        <span class="item__new-icon"></span>
+                        <div class="circle">
+                            <?php 
+                                $img = base64_encode($product["picture"]);
+                                echo "<img class=\"pen-icon\" src=\"data:image/jpeg; base64,$img\" alt=\"new product\" >";
+                            ?>
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name"><?php print $product["title"] ?></span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value"><?php print $product["price"] ?></span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
+                </article>
+
+            <?php endforeach; ?>
         </div>
         <button class="slider__rightButton">
             <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252.06 477.18">
@@ -128,5 +82,5 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
 </div>
 <script type="text/javascript" src="src/js/mainpage-slider.js"></script>
 <?php
-
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");
+?>

@@ -226,7 +226,7 @@
                     <div class="item__image-wrapper">
                         <?php 
                             $img = base64_encode($product["picture"]);
-                            echo "<img src=\"data:image/jpeg; base64,$img\" alt=\"item image\" class=\"item__image\">";
+                            echo "<img class=\"item__image\" src=\"data:image/jpeg; base64,$img\" alt=\"item image\" >";
                         ?>
                     </div>
                     <div class="item__bottom-row">
