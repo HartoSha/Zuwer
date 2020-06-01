@@ -1,0 +1,514 @@
+*{
+    padding: 0;
+    margin: 0; 
+}
+body{
+    margin: 0;
+    background-color: rgb(48, 48, 48);
+    font-family: "Caviar Dreams";
+    
+}
+.main-container{
+    margin: 20px;
+}
+.container{
+    max-width: 769px;
+    margin: 0px auto;
+   
+}
+
+.product{
+    color: #ffffff;
+    font-style: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product-name{
+    font-size: 48px;
+    color: #cdb67c;
+    order: -1;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-img-container{
+    display: flex;
+    position: relative;
+    align-self: center;
+}
+
+.product-img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 50%;  
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product-img{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+.like-animation{
+    height: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.like{
+    background: url(../../src/assets/img/product-page/heart.svg) no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.like-active{
+    background: url(../../src/assets/img/product-page/heartactiv.svg) no-repeat;
+    width: 30px;
+    height: 30px; 
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: scale(0);
+    cursor: default;
+}
+
+/* анимация */
+ input[type="checkbox"]:checked + .like-animation .like .like-active{
+    display: block;
+    transition: 0.3s;
+    transform: scale(1);
+  }
+  
+    input[type="checkbox"]:not(:checked) + .like-animation .like .like-active{
+    transition: 0.3s;
+  }
+/* анимация */
+  .product-img-container input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -100;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+.characteristics{
+    margin-left: 20px;
+    width: 50%;
+}
+
+table{
+    width: 100%;
+}
+
+td:first-child{
+    width: 65%;
+}
+
+td:last-child{
+    width: 35%;
+}
+
+td {
+    padding-top: 20px;
+    text-align: left;
+    font-size: 18px;
+}
+
+tr{
+    padding: 10px;
+}
+.quantity-wrapper{
+    margin: 20px 20px 20px 20px;
+}
+.entry{
+    font: 0;
+    font-family: "Caviar Dreams";
+    background-color: inherit;
+    font-size: 14px;
+    color: #b6b6b6;
+    padding: 0 5px 5px 5px;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid white;
+    width: 16px;
+    cursor: pointer;
+}
+
+.quantity__value {
+    -moz-appearance: textfield; /* В браузере mozilla не удастся удалить стрелочки, меняем тип поля на textfield*/
+}
+/* Убираем стрелочки у поля ввода количества (не работает в Mozilla) */
+.quantity__value::-webkit-outer-spin-button,
+.quantity__value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.entry:focus{
+    border-color:#cdb67c ;
+    color: white;
+}
+
+.purchase-form{
+    font-size: 24px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.buy{
+    font-size: 24px;
+    border-radius: 30px;
+    text-align: center;
+    width: 166px;
+    height: 64px;
+    background-color: #212121;
+    color: #cdb67c;
+    border: 1px solid #cdb67c;
+    outline: none;
+    font-family: "Caviar Dreams";
+    cursor: pointer;
+}
+
+.buy:hover {
+    border-color: none;
+    color: #212121;
+    background-color: #cdb67c;
+}
+/* кнопка для админестратора */
+.change{
+    font-size: 24px;
+    border-radius: 30px;
+    text-align: center;
+    width: 166px;
+    height: 64px;
+    background-color: #212121;
+    color: #cdb67c;
+    border: 1px solid #cdb67c;
+    outline: none;
+    font-family: "Caviar Dreams";
+    cursor: pointer;
+}
+.change:hover {
+    border-color: none;
+    color: #212121;
+    background-color: #cdb67c;
+}
+/* кнопка для админестратора */
+.price{
+    align-self:center;
+}
+
+.description-wrapper{
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.description{
+    font-size: 24px;
+}
+
+.content-description{
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 769px){
+     .product-name{
+        font-size: 30px;
+        margin: 0;
+    }
+    .product-img-container{
+        height: 190px;
+        width: 190px;
+    } 
+    .product-img-wrapper{
+        height: 190px;
+        width: 190px;
+    }
+    .product-img{
+        height: 130px;
+        width: 130px;
+    }
+    .like,
+    .like-active{
+        height: 27px;
+        width: 27px;
+    }
+   
+    td{
+        padding-top: 15px;
+        font-size: 14px;
+    }
+    .characteristics{
+        margin-left: 10px;
+        flex-basis: 45%;
+        flex-grow: 1;
+        padding: 0 2%;
+    }
+    .price{
+        font-size: 18px;
+    }
+    .quantity-wrapper{
+        font-size: 18px;
+    }
+}
+
+@media screen  and (max-width: 480px){
+    .product-name{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .product-img-container{
+        height: 190px;
+        width: 190px;
+    } 
+    .product-img-wrapper{
+        height: 190px;
+        width: 190px;
+    }
+    .product-img{
+        height: 126px;
+        width: 122px;
+    }
+    .like{
+        height: 27px;
+        width: 27px;
+    }
+    td:first-child{
+        width: 130px;
+    }
+    td{
+        padding-top: 15px;
+        font-size: 14px;
+       
+    }
+    .characteristics{
+        margin-left: 0;
+        flex-basis: 100%;
+    }
+    .buy{
+        font-size: 24px;
+    }
+    .quantity-wrapper{
+        margin: 20px 0 20px 10px;
+        font-size: 18px;
+    }
+    .price{
+        font-size: 18px;
+    }
+    .description-wrapper{
+        margin-top: 20px;
+    }
+}
+
+/* modal starts */
+
+.purchase-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.purchase-modal_hidden {
+    display: none;
+}
+
+.purchase-modal .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(59, 59, 59, 0.82);
+    z-index: 998;
+}
+
+.purchase-modal .form-container {
+    max-width: 769px;
+    max-height: initial;
+    margin: 0 20px;
+    background-color: #212121;
+    z-index: 999;
+}
+
+.purchase-modal .caption {
+    font-size: 24px;
+    padding: 20px 0;
+    font-weight: normal;
+    text-align: center;
+    color: #cdb67c;
+}
+
+.purchase-form-modal__inputs{
+    margin: 0 62px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.purchase-form-modal__inputs input {
+    flex-basis: 100%;
+    flex-grow: 1;
+    background: 0;
+    border: 0;
+    outline: none;
+    margin: 12px 0;
+    padding: 5px 16px;
+    border-bottom: 1px solid white;
+    font-size: 18px;
+    font-family: "Caviar Dreams";
+    color: white;
+    font-weight: normal;
+}
+
+.purchase-form-modal__inputs input:focus {
+    border-color: #ddcea7;
+    
+}
+
+.purchase-form-modal__inputs .bottom-row {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+
+.purchase-form-modal__quantity-container {
+    flex-basis: 30%;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    font-family: "Caviar Dreams";
+}
+
+.purchase-form-modal__price-container {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
+
+.purchase-form-modal__price-value {
+    margin-left: 5px;
+}
+
+.bottom-row .purchase-form-modal__quantity {
+    flex-basis: auto;
+    flex-grow: 0;
+    font-family: "Caviar Dreams";
+    width: 30px;
+    padding: 5px 10px;
+    margin-left: 5px;
+    text-align: center;
+    -moz-appearance: textfield; /* В браузере mozilla не удастся удалить стрелочки, меняем тип поля на textfield*/
+}
+
+/* Убираем стрелочки у поля ввода количества (не работает в Mozilla) */
+.purchase-form-modal__quantity::-webkit-outer-spin-button,
+.purchase-form-modal__quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+.bottom-row .purchase-btn {
+    color: #cdb67c;
+    background: #cdb67c;
+    font: 18px "Caviar Dreams";
+    border: 1px solid #cdb67c;
+    background-color: #212121;
+    border-radius: 35px;
+    padding: 20px 15px;
+}
+
+.bottom-row .purchase-btn:hover {
+    border-color: none;
+    color: #212121;
+    background-color: #cdb67c;
+  }
+
+  @media screen and (max-width: 769px) {
+    .purchase-form-modal__inputs {
+        margin: 0 40px;
+    }
+    .purchase-form-modal__inputs .bottom-row {
+        margin: 20px 0 40px 0;
+    }
+    .purchase-form-modal__quantity-container {
+        display: flex;
+        justify-content: flex-start;
+        flex-basis: 45%;
+    }
+    .purchase-form-modal__price-container {
+        display: flex;
+        justify-content: flex-end;
+        flex-basis: 45%;
+    }
+    .purchase-form-modal__inputs .bottom-row {
+        justify-content: space-between;
+    }
+    .bottom-row .purchase-btn {
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .purchase-form-modal__inputs {
+        margin: 0;
+    }
+    .purchase-modal .form-container  {
+        padding: 20px;
+    }
+
+    .purchase-form-modal__quantity-container, 
+    .purchase-form-modal__price-container {
+        flex-basis: 100%;
+        justify-content: center;
+    }
+    .purchase-form-modal__inputs .bottom-row{
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    .bottom-row .purchase-btn {
+        margin-top: 20px;   
+    }
+  }
+
+/* modal ends */

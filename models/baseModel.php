@@ -2,6 +2,7 @@
     # Родительский класс всех моделей. Подключается к бд и выполняет запросы.
     class baseModel 
     {
+        # Если вы получаете ошибку Parse error: syntax error, unexpected 'const' (T_CONST), expecting variable (T_VARIABLE) in _путь_ on line 6, то вам нужно обновить версию php пример: https://i.imgur.com/5j5VQPK.png
         private const hostName = "localhost";
         private const userName = "root";
         private const password = "";
@@ -13,7 +14,7 @@
         private static function getConnection() 
         {
             if(!isset(self::$connection)) {
-                self::$connection = mysqli_connect(self::hostName, self::userName, self::password, self::dbName) or die('Ошибка соединения: ' . mysql_error());
+                self::$connection = mysqli_connect(self::hostName, self::userName, self::password, self::dbName) or die('Ошибка соединения: ' . mysqli_error(self::$connection));
             }
         }
 

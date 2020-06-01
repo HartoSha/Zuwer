@@ -97,7 +97,6 @@
                     // header('Location: ../../catalog');
                 }
             }
-
             require_once VIEWS . "catalogView.php";
             // var_dump($products);
             
@@ -113,8 +112,9 @@
                 // header('Location: ../../catalog');
             }
             
-            print "Просмотр Товара. ID: " . $productId . "<br>";
-
+            // print "Просмотр Товара. ID: " . $productId . "<br>";
             // var_dump($productInfo);
+
+            require_once VIEWS . "productView.php";
         }
     } 

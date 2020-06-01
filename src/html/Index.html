@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/normalize.css">
-    <link rel = "stylesheet" type="text/css" href = "../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" href="../css/catalog-page.css">
     <title>Zuwer</title>
 </head>
+
 <body>
-    <header class = "header">
+    <header class="header">
         <div class="burger-menu">
             <input id="header-burger-menu-checkbox" type="checkbox">
             <label class="burger-menu-button" for="header-burger-menu-checkbox">
@@ -25,19 +27,19 @@
             </div>
             <label for="header-burger-menu-checkbox" class="burger-menu-background"></label>
         </div>
-        <div class="wrapper">      
-            <a href = "#" class="logo">
-                <img class="logoimg" src="../assets/img/Logo-image/logo.svg"></img> 
+        <div class="wrapper">
+            <a href="#" class="logo">
+                <img class="logoimg" src="../assets/img/Logo-image/logo.svg"></img>
             </a>
-            <nav class = "headernav"> 
-                <ul class="navlink">    
-                    <li class="navlink-item"><a href="#">Главная</a></li>
-                    <li class="navlink-item"><a href="#">Каталог</a></li>
+            <nav class="headernav">
+                <ul class="navlink">
+                    <li class="navlink-item"><a href="/">Главная</a></li>
+                    <li class="navlink-item"><a href="/catalog">Каталог</a></li>
                     <li class="navlink-item navlink-item_dropdown">
                         <span class="username">Алексей Шадрин</span>
-                        <ul class = "dropdown-menu">
+                        <ul class="dropdown-menu">
                             <li class="dropdown-menu-item">
-                                <a class = "dropdown-menu-link">
+                                <a class="dropdown-menu-link">
                                     <div class="icon-wrapper">
                                         <span class="my-orders-icon"></span>
                                     </div>
@@ -45,7 +47,7 @@
                                 </a>
                             </li>
                             <li class="dropdown-menu-item">
-                                <a class = "dropdown-menu-link" href="#">
+                                <a class="dropdown-menu-link" href="#">
                                     <div class="icon-wrapper">
                                         <span class="favorites-icon"></span>
                                     </div>
@@ -53,11 +55,11 @@
                                 </a>
                             </li>
                             <li class="dropdown-menu-item">
-                                <a class = "dropdown-menu-link" href="#">
+                                <a class="dropdown-menu-link" href="#">
                                     <div class="icon-wrapper">
                                         <span class="exit-icon"></span>
                                     </div>
-                                    <span class="dropdown-menu-item-name">Выход</span> 
+                                    <span class="dropdown-menu-item-name">Выход</span>
                                 </a>
                             </li>
                         </ul>
@@ -72,13 +74,16 @@
                 <form action="filter.php">
                     <section class="filter-criteria filter-criteria_accordion filter-criteria_range">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Цена, $<span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Цена, $<span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
                                     <input type="number" min="0" max="1000">
-                                    <span class="filter-criteria__option-underline"></span> <!-- было решено добавить пустой span после input для создания золотистого подчеркивания, т.к. input::after не поддерживается -->
+                                    <span class="filter-criteria__option-underline"></span>
+                                    <!-- было решено добавить пустой span после input для создания золотистого подчеркивания, т.к. input::after не поддерживается -->
                                 </label>
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">До:</span>
@@ -90,8 +95,10 @@
                     </section>
                     <section class="filter-criteria filter-criteria_accordion filter-criteria_range">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Вес, г<span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Вес, г<span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
@@ -108,8 +115,10 @@
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Производители <span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Производители <span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">Montegrappa</span>
@@ -132,8 +141,10 @@
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Материал <span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Материал <span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">1</span>
@@ -156,8 +167,10 @@
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Цвет<span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Цвет<span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">1</span>
@@ -180,8 +193,10 @@
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Тип<span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Тип<span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">1</span>
@@ -204,8 +219,10 @@
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Толщина пиш. части, мм<span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Толщина пиш. части, мм<span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">1</span>
@@ -264,8 +281,10 @@
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
                         <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption">Показывать только новинки<span class="filter-criteria__accordion-icon"></span></h3>
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox">
+                            <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption">Показывать только новинки<span
+                                    class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">Да</span>
@@ -274,134 +293,151 @@
                             </div>
                         </label>
                     </section>
-                    
+
                     <button class="catalog-page__btn-submit">Применить</button>
                 </form>
             </aside>
-            <section class="catalog-page__items-container">
+            <section class="catalog-page__items-container">                    
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                    <a class="item__href">
+                        <div class="item__upper-row">
+                            <span class="item__type">Перьевая</span>
+                            <span class="item__new-icon"></span>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">Montegrappa European</span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">7845,65</span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                    <a class="item__href">
+                        <div class="item__upper-row">
+                            <span class="item__type">Перьевая</span>
+                            <span class="item__new-icon"></span>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">Montegrappa European</span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">7845,65</span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                    <a class="item__href">
+                        <div class="item__upper-row">
+                            <span class="item__type">Перьевая</span>
+                            <span class="item__new-icon"></span>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">Montegrappa European</span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">7845,65</span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                    <a class="item__href">
+                        <div class="item__upper-row">
+                            <span class="item__type">Перьевая</span>
+                            <span class="item__new-icon"></span>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">Montegrappa European</span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">7845,65</span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                    <a class="item__href">
+                        <div class="item__upper-row">
+                            <span class="item__type">Перьевая</span>
+                            <span class="item__new-icon"></span>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">Montegrappa European</span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">7845,65</span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                    <a class="item__href">
+                        <div class="item__upper-row">
+                            <span class="item__type">Перьевая</span>
+                            <span class="item__new-icon"></span>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">Montegrappa European</span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">7845,65</span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
                 <figure class="catalog-page__item item">
-                    <div class="item__upper-row">
-                        <span class="item__type">Перьевая</span>
-                        <span class="item__new-icon"></span>
-                    </div>
-                    <div class="item__image-wrapper">
-                        <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
-                    </div>
-                    <div class="item__bottom-row">
-                        <span class="item__name">Montegrappa European</span>
-                        <span class="item__line"></span>
-                        <span class="item__price">
-                            <span class="item__price-value">7845,65</span>
-                            <span class="item__price-currency-sign">$</span>
-                        </span>
-                    </div>
+                    <a class="item__href">
+                        <div class="item__upper-row">
+                            <span class="item__type">Перьевая</span>
+                            <span class="item__new-icon"></span>
+                        </div>
+                        <div class="item__image-wrapper">
+                            <img src="../assets/img/pen.jpg" alt="item image" class="item__image">
+                        </div>
+                        <div class="item__bottom-row">
+                            <span class="item__name">Montegrappa European</span>
+                            <span class="item__line"></span>
+                            <span class="item__price">
+                                <span class="item__price-value">7845,65</span>
+                                <span class="item__price-currency-sign">$</span>
+                            </span>
+                        </div>
+                    </a>
                 </figure>
+
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
-                <nav class="catalog-page__pagination pagination"> 
+                <nav class="catalog-page__pagination pagination">
                     <a class="pagination__page pagination__page_back" href="#">
-                        <span class="pagination__back-icon">< </span><!--
+                        <span class="pagination__back-icon">
+                            < </span>
+                                <!--
                     --><span class="pagination__back-text">Назад</span>
                     </a>
                     <a class="pagination__page" href="#">1</a>
@@ -421,8 +457,9 @@
                     </a>
                 </nav>
             </section>
-            
+
         </div>
     </main>
 </body>
+
 </html>
