@@ -10,9 +10,7 @@ body{
     
 }
 .main-container{
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-right: 20px;
+    margin: 20px;
 }
 .container{
     max-width: 769px;
@@ -116,17 +114,6 @@ body{
     padding: 0;
     opacity: 0;
   }
-/* .product-img-container input[type="checkbox"] {
-    position: relative;
-    top: -9999px;
-    left: -9999px;
-    z-index: -100;
-    width: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-} */
 
 .characteristics{
     margin-left: 20px;
@@ -157,10 +144,6 @@ tr{
 .quantity-wrapper{
     margin: 20px 20px 20px 20px;
 }
-/* .entry-field{
-    display: flex;
-} */
-
 .entry{
     font: 0;
     font-family: "Caviar Dreams";
@@ -218,7 +201,26 @@ tr{
     color: #212121;
     background-color: #cdb67c;
 }
-
+/* кнопка для админестратора */
+.change{
+    font-size: 24px;
+    border-radius: 30px;
+    text-align: center;
+    width: 166px;
+    height: 64px;
+    background-color: #212121;
+    color: #cdb67c;
+    border: 1px solid #cdb67c;
+    outline: none;
+    font-family: "Caviar Dreams";
+    cursor: pointer;
+}
+.change:hover {
+    border-color: none;
+    color: #212121;
+    background-color: #cdb67c;
+}
+/* кнопка для админестратора */
 .price{
     align-self:center;
 }
