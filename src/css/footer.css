@@ -98,6 +98,12 @@ footer{
     filter:invert(1);
   }
 
+  .footer .hour-mins,
+  .footer .date {
+    display: flex;
+    justify-content: center;
+  }
+
   
   @media (max-width: 768px){
     footer{
