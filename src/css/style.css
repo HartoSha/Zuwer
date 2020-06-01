@@ -371,7 +371,8 @@ body {
 
 .advantage{
     display: flex;
-    margin: 2px 0;
+    margin: 4px 0;
+    align-items: center;
 }
 .advantage span {
     text-align: center;
@@ -379,6 +380,19 @@ body {
 .advantage img{
     padding-right: 10px;
     padding-left: 82px;
+
+}
+.advantage img:nth-child(1){
+  width:24px;
+  height: 28px;
+}
+.advantage img:nth-child(2){
+  width:28px;
+  height: 28px;
+}
+.advantage img:nth-child(3){
+  width: 24px;
+  height: 30px;
 }
 .mainpage{
     display: flex;
@@ -390,7 +404,8 @@ body {
 }
 .mainpage .center {
     margin: 0 auto;
-    width: 769px;
+    width: 100%;
+    max-width: 769px;
     display: flex;
     flex-direction: column;
 }
@@ -401,9 +416,9 @@ body {
     flex-direction: column;
     margin-left: 50px;
     color:white;
-    font-size: 18px;
+    font-size: 30px;
     align-self: start;
-    padding: 5px 20px 5px 20px;
+    padding: 5px 25px 5px 20px;
 
 }
 .slogan h1{
@@ -420,6 +435,7 @@ body {
     font-family: "Vera Crouz";
     font-weight:200;
     text-align: center;
+    margin-top: 90px;
     color:white;
 }
 .partners-wrapper{
@@ -453,7 +469,7 @@ body {
 
 
 /*Upper section tablet*/
-@media screen and (max-width: 768px){
+@media screen and (max-width: 769px){
    
     .mainpage{
         
@@ -486,12 +502,25 @@ body {
         padding-right: 10px;
         padding-left: 0;
     }
+
+    .advantage img:nth-child(1){
+      width:16px;
+      height: 19px;
+    }
+    .advantage img:nth-child(2){
+      width:17px;
+      height: 17px;
+    }
+    .advantage img:nth-child(3){
+      width: 15px;
+      height: 19px;
+    }
     .slogan{
         background: rgba( 0, 0, 0, 0.21);
-        width:100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        font-size: 18px;
         margin: 0;
         color:white;
     }
@@ -546,8 +575,10 @@ body {
         flex-wrap: wrap;
         /* align-items: center; */
         width: auto;
+        padding: 0;
         padding-top: 5px;
         padding-bottom: 20px;
+        margin: 0;
     }
     .slogan h1{
         text-align: left;
@@ -584,24 +615,17 @@ body {
 .slider{
     display: flex;
     max-width: 769px;
+    width: 100%;
 }
 
 .slider__content{
     background-color:#495257;
-	flex-grow: 1;
-	display: flex;
+	  flex-grow: 1;
+	  display: flex;
     overflow: hidden;
-    margin:0 20px;
+    margin:0 10px;
     border-radius:10px;
 }
-.slider__item{
-    /* min-height: 390px; */
-    /* text-align: center; */
-    /* flex-basis: 100%; */
-    /* position: relative; */
-}
-
-  
   .slider-fix{
     background:#212121;
     display: flex;
@@ -612,6 +636,13 @@ body {
     padding: 10px 20px 20px 20px;
     margin:10px 20px;
     border-radius: 10px;
+    transition-duration: 0.3s;
+}
+.slider-fix:hover{
+  cursor: pointer;
+  transition-duration: 0.3s;
+  transform: scale(0.95);
+  background-color: #484848;
 }
 
 .item__new-icon {
@@ -693,6 +724,10 @@ body {
 
 @media (max-width: 769px){
 
+  .slider-decoration{
+    background: url(../assets/img/slider/Decoration-smartphone.png) no-repeat center center;
+  }
+
     .slider-decoration {
         padding: 10px 20px;
     }
@@ -743,7 +778,7 @@ body {
     }
 
     .slider__content{
-        margin:0 2px;
+        margin:0 5px;
     }
     
     .slider-fix{
