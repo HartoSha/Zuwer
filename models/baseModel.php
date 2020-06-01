@@ -13,7 +13,7 @@
         private static function getConnection() 
         {
             if(!isset(self::$connection)) {
-                self::$connection = mysqli_connect(self::hostName, self::userName, self::password, self::dbName) or die('Ошибка соединения: ' . mysql_error());
+                self::$connection = mysqli_connect(self::hostName, self::userName, self::password, self::dbName) or die('Ошибка соединения: ' . mysqli_error(self::$connection));
             }
         }
 
@@ -27,7 +27,7 @@
             $prepared = self::$connection->prepare($sql);
 
             # Выполняем запрос и получаем статус
-            $good = $prepared->execute() or die("<br/>Ошибка в sql запросе: " . $prepared.error());
+            $good = $prepared->execute() or die("<br/>Ошибка в sql запросе: " . $prepared->error);
 
             # получаем результат запроса если он прошел успешно
             if($good) $responce = $prepared->get_result();
