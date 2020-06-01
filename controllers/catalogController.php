@@ -38,5 +38,7 @@
             print "Просмотр Товара. ID: " . $productId . "<br>";
 
             var_dump($productInfo);
+
+            
         }
     } 
