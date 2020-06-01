@@ -282,7 +282,7 @@ body {
   background-color: #484848;
 }
 
-.item__new-icon {
+.slider-decoration .item__new-icon {
     z-index: 1;
     width: 66px;
     height: 66px;
@@ -383,7 +383,7 @@ body {
         width: 110px;
         height: auto;
     }
-    .item__new-icon {
+    .slider-decoration .item__new-icon {
         z-index: 1;
         width: 37px;
         height: 37px;
@@ -431,7 +431,7 @@ body {
         width: 60px;
         height: 60px;
     }
-    .item__new-icon {
+    .slider-decoration .item__new-icon {
         top: -5px;
         right: -5px;
       }

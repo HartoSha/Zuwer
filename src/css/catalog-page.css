@@ -301,7 +301,7 @@
   margin: 10px 10px 0 10px;
 }
 
-.item__new-icon {
+.catalog-page .item__new-icon {
   width: 33px;
   height: 33px;
   background: url(../assets/img/shared/icons/new_icon.svg) no-repeat;
