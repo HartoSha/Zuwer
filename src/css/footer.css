@@ -94,7 +94,7 @@ footer{
     top: 0;
     width: 32px;
     height: 30px;
-    background: url(../assets/img/footer-icons/mute-button.svg) no-repeat;
+    background: url(../assets/img/icons/footer/mute-button.svg) no-repeat;
     filter:invert(1);
   }
 
