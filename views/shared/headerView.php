@@ -4,13 +4,16 @@
     <html lang="ru">
     <head>
         <meta charset="UTF-8">
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../../src/assets/img/shared/icons/favicon.ico">
         <link rel="stylesheet" type="text/css" href="../../src/css/normalize.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/header.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/mainpage.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/catalog-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/product-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/modal.css">
+        
         <title>Zuwer</title>
     </head>
     <body>
