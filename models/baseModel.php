@@ -25,6 +25,8 @@
 
             # Подготавливаем 
             $prepared = self::$connection->prepare($sql);
+            if(is_bool($prepared)) return $prepared;
+            // var_dump($prepared);
 
             # Выполняем запрос и получаем статус
             $good = $prepared->execute() or die("<br/>Ошибка в sql запросе: " . $prepared->error);
@@ -34,7 +36,7 @@
 
             // $responce = mysqli_query(self::$connection, $sql) or die("<br/>Ошибка в sql запросе: " . mysqli_error(self::$connection)); # старый вариант. выдавал ошибку Commands out of sync; you can't run this command now при вызове нескольких sql запросов подряд
             // print "<br> responce: "; var_dump($responce); print "<br>";
-
+            if(is_bool($responce)) return $responce;  
             $result = null;
 
             # получаем кол-во строк в нем

@@ -1,0 +1,220 @@
+.modal-log-reg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.invisible {
+  display: none;
+}
+.open-modal{
+  width: 100px;
+  height: 100px;
+}
+.background{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(59, 59, 59, 0.82);
+  z-index: 0;
+}
+.modal-registration,
+.modal-login{
+  z-index: 100;
+}
+.modal-header {
+  position: absolute;
+  bottom: 100%;
+  left: 0%;
+}
+
+input[type="text"],
+input[type="password"] {
+  flex-basis: 100%;
+  flex-grow: 1;
+  background: 0;
+  border: 0;
+  outline: none;
+  margin: 15px 0;
+  padding: 5px 16px;
+  border-bottom: 1px solid white;
+  transition: 0.3s;
+
+  color: #ffffff;
+  font-family: "Caviar Dreams";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid rgba(205, 182, 124, 0.67);
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #b6b6b6;
+}
+
+.login-btn,
+.registration-btn {
+  cursor: pointer;
+  border: 0;
+  background-color: #212121;
+  padding: 15px 50px;
+  outline: none;
+  opacity: 0.7;
+  color: #fff;
+  font-family: "Caviar Dreams";
+  font-size: 18px;
+  font-weight: 400;
+}
+.login:hover,
+.registration:hover {
+  border: none;
+  color: #212121;
+  background-color: #cdb67c;
+}
+.selected-btn {
+  opacity: 1;
+}
+
+.login{
+  margin-top: 140px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid #cdb67c;
+  background-color: transparent;
+  padding: 15px 50px;
+
+  color: #cdb67c;
+  font-family: "Caviar Dreams";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.form-login,
+.form-registration{
+  position: relative;
+}
+
+.modal-log,
+.form-container,
+.modal-reg{
+  max-width: 640px;
+  max-height: 605px;
+  background-color: #212121;
+  z-index: 10;
+}
+
+.modal-log{
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+  color: #cdb67c;
+}
+
+.modal-login{
+  margin: 0 80px;
+  padding-top: 170px;
+  padding-bottom: 130px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-reg{
+  margin: 0 80px;
+  padding-top: 35px;
+  padding-bottom: 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.registration-field {
+  color: #b6b6b6;
+  font-family: "Caviar Dreams";
+  font-size: 16px;
+  font-weight: 400;
+}
+.registration {
+  margin-top: 35px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid #cdb67c;
+  background-color: transparent;
+  padding: 15px 50px;
+
+  color: #cdb67c;
+  font-family: "Caviar Dreams";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@media (max-width: 769px){
+  .modal-log,
+  .form-container,
+  .modal-reg{
+    max-width: 440px;
+    background-color: #212121;
+    z-index: 10;
+  }
+  .modal-login{
+    margin: 0 40px;
+    padding-top: 55px;
+    padding-bottom: 20px;
+  }
+
+  .modal-reg{
+    margin: 0 40px;
+    padding-top: 35px;
+    padding-bottom: 45px;
+    max-height: 575px;
+  }
+
+  .login{
+    margin-top: 55px;
+  }
+}
+
+@media (max-width: 480px){
+  .modal-log,
+  .form-container,
+  .modal-reg{
+    max-width: 280px;
+    background-color: #212121;
+    z-index: 10;
+  }
+  .modal-header {
+    position: absolute;
+    bottom: 100%;
+    left: 0%;
+    width: 100%;
+  }
+  .login-btn,
+  .registration-btn {
+  width: 50%;
+  padding: 15px;
+  }
+  .modal-login{
+    margin: 0 30px;
+    padding-top: 75px;
+    padding-bottom: 95px;
+  }
+
+  .modal-reg{
+    margin: 0 30px;
+    padding-top: 35px;
+    padding-bottom: 45px;
+    max-height: 575px;
+  }
+  .registration{
+    padding: 15px 20px;
+  }
+}

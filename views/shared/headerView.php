@@ -1,5 +1,6 @@
-<?php ?>
-<!DOCTYPE html>
+<?php
+?>
+    <!DOCTYPE html>
     <html lang="ru">
     <head>
         <meta charset="UTF-8">
@@ -9,10 +10,15 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/mainpage.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/catalog-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/product-page.css">
+        <link rel="stylesheet" type="text/css" href="../../src/css/modal.css">
         <title>Zuwer</title>
     </head>
     <body>
+    <?php
+        require_once(VIEWS ."shared" . DIRECTORY_SEPARATOR . "modalLogRegView.php");
+    ?>
         <header class = "header">
+            <button class="open-modal" style="width: 100px; height: 100px;">Test</button>
             <div class="burger-menu">
                 <input id="header-burger-menu-checkbox" type="checkbox">
                 <label class="burger-menu-button" for="header-burger-menu-checkbox">

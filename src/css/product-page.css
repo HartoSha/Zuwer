@@ -359,6 +359,7 @@ tr{
 
 .purchase-modal .form-container {
     max-width: 769px;
+    max-height: initial;
     margin: 0 20px;
     background-color: #212121;
     z-index: 999;
