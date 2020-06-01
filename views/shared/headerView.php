@@ -20,8 +20,8 @@
                 </label>
                 <div class="burger-menu-nav-wrapper">
                     <nav class="burger-menu-nav">
-                        <a href="#">Главная</a>
-                        <a href="#">Каталог</a>
+                        <a href="/"><span>Главная</span></a>
+                        <a href="/catalog"><span>Каталог</span></a>
                     </nav>
                 </div>
                 <label for="header-burger-menu-checkbox" class="burger-menu-background"></label>
@@ -32,8 +32,8 @@
                 </a>
                 <nav class = "headernav"> 
                     <ul class="navlink">    
-                        <li class="navlink-item"><a href="/">Главная</a></li>
-                        <li class="navlink-item"><a href="/catalog">Каталог</a></li>
+                        <li class="navlink-item"><a href="/"><span>Главная</span></a></li>
+                        <li class="navlink-item"><a href="/catalog"><span>Каталог</span></a></li>
                         <li class="navlink-item navlink-item_dropdown">
                             <span class="username">Алексей Шадрин</span>
                             <ul class = "dropdown-menu">
