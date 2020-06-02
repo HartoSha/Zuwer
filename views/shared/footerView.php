@@ -30,7 +30,7 @@
             </div>
         </div>
     </footer>
-    <audio src="../../src/sounds/tik-tak/tik.mp3" autoplay="" loop="loop" id="tik-tak"></audio>
+    <audio src="../../src/assets/sounds/tik-tak/tik.mp3" loop="loop" id="tik-tak"></audio>
     <script src="../../src/js/data-time.js"></script>
     </body>
 </html>
