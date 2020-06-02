@@ -11,10 +11,14 @@ body{
 .main-container{
     margin: 20px;
 }
-.container{
+.product-page .container{
     max-width: 769px;
     margin: 0px auto;
    
+}
+
+.product-page {
+    min-height: 100vh;
 }
 
 .product{

@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/catalog-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/product-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/modal-login-register.css">
+        <link rel = "stylesheet" type="text/css" href = "../../src/css/footer.css">
         <title>Zuwer</title>
     </head>
     <body>
@@ -20,7 +21,7 @@
         require_once(VIEWS ."shared" . DIRECTORY_SEPARATOR . "modalLogRegView.php");
     ?>
         <header class = "header">
-            <button class="open-modal" style="width: 100px; height: 100px;">Login/register test</button>
+            <button class="open-modal" style="width: 20px; height: 20px; position: absolute; left: 0; top: 0;">Login/register test</button>
             <div class="burger-menu">
                 <input id="header-burger-menu-checkbox" type="checkbox">
                 <label class="burger-menu-button" for="header-burger-menu-checkbox">

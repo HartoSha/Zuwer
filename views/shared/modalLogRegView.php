@@ -61,5 +61,3 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
 
 <script type="text/javascript" src="../../src/js/modal-login-register.js"></script>
 
-<?php
-require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");
