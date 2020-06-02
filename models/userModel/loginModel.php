@@ -1,23 +1,34 @@
-<?php 
-    require_once(ROOT. "models". DIRECTORY_SEPARATOR . "baseModel.php");
+<?php
 
-    class loginModel extends baseModel
+class loginModel extends baseModel
+{
+    public static function loginVerification($login)
     {
-        public static function getUserInfo($login, $password) 
-        {
-            self::query("SET @p0='".$login."'");
-            self::query("SET @p1='".$password."'");
+        self::query("SET @p0='" . $login . "'");
 
-            $query = self::query('CALL authMe(@p0, @p1)');
+        $result = self::query('CALL loginVerification(@p0)');
 
-            return $query;
-        }
-        public static function getUserPassword($id) 
-        {
-            self::query("SET @p0='".$id."'");
-
-            $query = self::query('CALL selectPassword(@p0)');
-
-            return $query;
-        }
+        if(isset($result["id_user"])) return $result["id_user"];
+        else return false;
     }
+    public static function getUserInfo($login, $password)
+    {
+        self::query("SET @p0='" . $login . "'");
+        self::query("SET @p1='" . $password . "'");
+
+        $result = self::query('CALL authMe(@p0, @p1)');
+
+        return $result;
+    }
+
+    public static function getUserPassword($id)
+    {
+        self::query("SET @p0='" . $id . "'");
+
+        $result = self::query('CALL selectPassword(@p0)');
+
+        if(isset($result["password"])) return $result["password"];
+        else return false;
+    }
+
+}

@@ -1,4 +1,5 @@
 <?php
+    require_once(CONTROLLERS . "userController.php");
 ?>
     <!DOCTYPE html>
     <html lang="ru">
@@ -21,7 +22,6 @@
         require_once(VIEWS ."shared" . DIRECTORY_SEPARATOR . "modalLogRegView.php");
     ?>
         <header class = "header">
-            <button class="open-modal" style="width: 20px; height: 20px; position: absolute; left: 0; top: 0;">Login/register test</button>
             <div class="burger-menu">
                 <input id="header-burger-menu-checkbox" type="checkbox">
                 <label class="burger-menu-button" for="header-burger-menu-checkbox">
@@ -45,8 +45,11 @@
                     <ul class="navlink">    
                         <li class="navlink-item"><a href="/"><span>Главная</span></a></li>
                         <li class="navlink-item"><a href="/catalog"><span>Каталог</span></a></li>
+                        <?php if(empty($_SESSION)):?>
+                        <li class="navlink-item"><button class="open-modal">Логин</button></li>
+                        <?php else:?>
                         <li class="navlink-item navlink-item_dropdown">
-                            <span class="username">Алексей Шадрин</span>
+                            <span class="username"><?php echo $_SESSION["user"]['name'] . " " . $_SESSION["user"]['surname'] ?></span>
                             <ul class = "dropdown-menu">
                                 <li class="dropdown-menu-item">
                                     <a class = "dropdown-menu-link">
@@ -65,7 +68,7 @@
                                     </a>
                                 </li>
                                 <li class="dropdown-menu-item">
-                                    <a class = "dropdown-menu-link" href="#">
+                                    <a class = "dropdown-menu-link" href="/user/logout">
                                         <div class="icon-wrapper">
                                             <span class="exit-icon"></span>
                                         </div>
@@ -73,6 +76,7 @@
                                     </a>
                                 </li>
                             </ul>
+                        <?php endif; ?>
                         </li>
                     </ul>
                 </nav>

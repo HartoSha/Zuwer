@@ -10,12 +10,12 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
         <div>
 
           <div class="modal-header">
-            <button class="login-btn selected-btn"><span class="btn-text">Вход</span></button>
+            <button class="login-btn selected-btn" name="login-btn"><span class="btn-text">Вход</span></button>
             <!--
-              --><button class="registration-btn" id="registr-btn"><span class="btn-text">Регистрация</span></button>
+            --><button class="registration-btn" id="registr-btn" name="register-btn"><span class="btn-text">Регистрация</span></button>
           </div>
 
-          <form action="user/login" method="POST" class="modal-login">
+          <form action="/user/login" method="POST" class="modal-login">
             <input type="text" placeholder="Введите логин" name="user-name" />
 
             <input type="password" placeholder="Введите пароль" name="user-psw" />
@@ -36,7 +36,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
             <!--
           --><button class="registration-btn"> <span class="btn-text">Регистрация</span> </button>
           </div>
-          <form action="user/register" method="POST" class="modal-reg">
+          <form action="/user/register" method="POST" class="modal-reg">
 
             <input type="text" placeholder="Имя" class="name registration-field" name="reg-name" />
             <input type="text" placeholder="Фамилия" class="surname registration-field" name="reg-surname" />
