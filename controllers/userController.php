@@ -120,6 +120,15 @@ class userController
             header('Location: /' );
         }
     }
+
+    public function logout(){
+        if(isset($_SESSION)){
+            $_SESSION = array();
+            session_destroy();
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+    }
+    
     public function myorders() 
     {
         require_once(VIEWS . "myordersView.php");
