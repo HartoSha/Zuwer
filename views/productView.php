@@ -77,7 +77,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
     <div class="background"></div>
     <section class="form-container">
         <h2 class="caption">Оформление заказа</h2>
-        <form class="purchase-form-modal" action="purchase.php">
+        <form class="purchase-form-modal" method="POST" action="/">
             <div class="purchase-form-modal__inputs">
                 <input class="purchase-form-modal__name" name="name" type="text" placeholder="Имя">
                 <input class="purchase-form-modal__surname" name="surname" type="text" placeholder="Фамилия">

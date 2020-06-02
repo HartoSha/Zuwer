@@ -13,7 +13,8 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/catalog-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/product-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/modal-login-register.css">
-        <link rel = "stylesheet" type="text/css" href = "../../src/css/footer.css">
+        <link rel="stylesheet" type="text/css" href = "../../src/css/footer.css">
+        <link rel="stylesheet" type="text/css" href="../../src/css/my-orders.css"/>
         <title>Zuwer</title>
     </head>
     <body>
@@ -49,7 +50,7 @@
                             <span class="username">Алексей Шадрин</span>
                             <ul class = "dropdown-menu">
                                 <li class="dropdown-menu-item">
-                                    <a class = "dropdown-menu-link">
+                                    <a class = "dropdown-menu-link" href="/user/myorders/">
                                         <div class="icon-wrapper">
                                             <span class="my-orders-icon"></span>
                                         </div>
