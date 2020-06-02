@@ -21,6 +21,11 @@
 
 /* Catalog page */
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 .catalog-page {
     font-family: 'Caviar Dreams';
     color: white;
@@ -30,6 +35,7 @@
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
+    flex-grow: 1;
 }
 
 .catalog-page .content-grid {

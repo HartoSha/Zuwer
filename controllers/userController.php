@@ -48,28 +48,28 @@ class userController
             if($_POST['reg-name'] == '') {
                 $errors[] = "Введите имя";
             }
-            elseif(strlen($_POST['reg-name']) > 15){
+            elseif(mb_strlen($_POST['reg-name']) > 15){
                 $errors[] = "имя слишком длинное";
             }
 
             if($_POST["reg-surname"] == '') {
                 $errors[] = "Введите Фамилию";
             }
-            elseif(strlen($_POST["reg-surname"]) > 20){
+            elseif(mb_strlen($_POST["reg-surname"]) > 20){
                 $errors[] = "Фамилия слишком длинная";
             }
 
             if($_POST['reg-middlename'] == '') {
                 $errors[] = "Введите имя";
             }
-            elseif(strlen($_POST['reg-middlename']) > 20){
+            elseif(mb_strlen($_POST['reg-middlename']) > 20){
                 $errors[] = "Отчество слишком длинное";
             }
 
             if($_POST['reg-account-name'] == '') {
                 $errors[] = "Введите логин";
             }
-            elseif(strlen($_POST['reg-account-name']) > 30){
+            elseif(mb_strlen($_POST['reg-account-name']) > 30){
                 $errors[] = "Логин слишком длинный";
             }
             else {
@@ -80,7 +80,7 @@ class userController
             if($_POST['reg-pass'] == '') {
                 $errors[] = "Введите пароль";
             }
-            elseif(strlen($_POST['reg-pass']) > 100){
+            elseif(mb_strlen($_POST['reg-pass']) > 100){
                 $errors[] = "Пароль слишком длинный";
             }
             if($_POST['reg-pass-again'] != $_POST['reg-pass']) {
@@ -90,10 +90,10 @@ class userController
             if($_POST['reg-telephone'] == ''){
                 $errors[] = "Введите Телефон";
             }
-            elseif(strlen($_POST['reg-telephone']) > 11) {
+            elseif(mb_strlen($_POST['reg-telephone']) > 11) {
                 $errors[] = "Телефон слишком длинный";
             }
-            elseif(strlen($_POST['reg-telephone']) < 11) {
+            elseif(mb_strlen($_POST['reg-telephone']) < 11) {
                 $errors[] = "Телефон слишком короткий";
             }
 
