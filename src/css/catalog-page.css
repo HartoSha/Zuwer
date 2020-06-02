@@ -1,0 +1,536 @@
+/* Fonts */
+
+@font-face {
+    src: url("../fonts/CaviarDreams.ttf");
+    font-family: 'Caviar Dreams', sans-serif;
+}
+
+@font-face {
+    src: url("../fonts/VeraCrouz.ttf");
+    font-family: 'Vera Crouz', serif;
+}
+
+
+/* Fonts */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Catalog page */
+
+.catalog-page {
+    font-family: 'Caviar Dreams';
+    color: white;
+    padding-top: 20px;
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.catalog-page .content-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 42px);
+    column-gap: 20px;
+}
+
+
+/* Catalog page */
+
+
+/* Catalog page sidebar (filter) */
+
+.catalog-page__filter {
+    display: flex;
+    flex-direction: column;
+    grid-row: 1 / 3;
+    grid-column: 1 / 4;
+    background-color: #212121;
+}
+
+.catalog-page__filter form {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-criteria {
+    margin: 0 20px;
+}
+
+.filter-criteria__option {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.filter-criteria__option input[type="checkbox"] {
+    width: 8px;
+    border-radius: 2px;
+    order: 1;
+}
+
+.filter-criteria__caption {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.filter-criteria__content {
+    margin-top: 15px;
+}
+
+.filter-criteria__option-caption {
+    font-size: 14px;
+    order: 2;
+    padding-left: 5px;
+}
+
+
+/* Только для критерия диапазона */
+
+.filter-criteria_range .filter-criteria__caption {
+    font-weight: normal;
+    font-size: 18px;
+    margin: 5px 0 5px 0;
+}
+
+.filter-criteria_range .filter-criteria__option-caption,
+.filter-criteria_range input {
+    font-size: 12px;
+}
+
+.filter-criteria_range .filter-criteria__option {
+    margin: 20px 0 0 0;
+    position: relative;
+    /* Для подчеркивания у цены  */
+}
+
+.filter-criteria_range .filter-criteria__option-caption {
+    padding-right: 5px;
+    order: 0;
+}
+
+.filter-criteria_range .filter-criteria__option input {
+    width: 100%;
+    background: none;
+    border: 0;
+    outline: none;
+    color: #999999;
+    caret-color: #ddcea7;
+}
+
+
+/* Золотистое подчеркивание */
+
+.filter-criteria_range .filter-criteria__option-underline {
+    position: absolute;
+    top: 90%;
+    left: 0;
+    display: block;
+    width: 110%;
+    height: 1px;
+    margin: 5px 0 0 -5%;
+    background-color: white;
+}
+
+.filter-criteria_range input:focus {
+    color: white;
+}
+
+
+/* Белое подчеркивание для активного*/
+
+.filter-criteria_range input:focus+.filter-criteria__option-underline {
+    background-color: #ddcea7;
+}
+
+
+/* Отключаем стрелочки у поля цены */
+
+.filter-criteria_range .filter-criteria__option input::-webkit-outer-spin-button,
+.filter-criteria_range .filter-criteria__option input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+.filter-criteria_range .filter-criteria__option input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+/* accordion */
+
+.filter-criteria__accordion-checkbox {
+    position: relative;
+    top: -9999px;
+    left: -9999px;
+    z-index: -100;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-click-wrapper {
+    width: 100%;
+}
+
+.filter-criteria_accordion .filter-criteria__caption {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filter-criteria_accordion .filter-criteria__content {
+    display: none;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__content {
+    display: block;
+}
+
+
+/* иконка в закрытом состоянии */
+
+.filter-criteria_accordion .filter-criteria__accordion-icon {
+    flex-shrink: 0;
+    margin: 0 0 0 10px;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-icon::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 12px;
+    left: 3px;
+    width: 12px;
+    height: 2px;
+    background-color: white;
+    transform: rotate(49deg);
+    border-radius: 2px;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-icon::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 12px;
+    right: 3px;
+    width: 12px;
+    height: 2px;
+    background-color: white;
+    transform: rotate(-49deg);
+    border-radius: 2px;
+}
+
+
+/* иконка в открытом состоянии */
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__caption .filter-criteria__accordion-icon {
+    background-color: white;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__caption .filter-criteria__accordion-icon::after,
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__caption .filter-criteria__accordion-icon::before {
+    background-color: #212121;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__caption .filter-criteria__accordion-icon::after {
+    transform: rotate(-49deg);
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__caption .filter-criteria__accordion-icon::before {
+    transform: rotate(49deg);
+}
+
+
+/* accordion ends */
+
+.catalog-page__btn-submit {
+    cursor: pointer;
+    font-size: 18px;
+    width: 130px;
+    height: 40px;
+    color: #cdb67c;
+    border: 1px solid #cdb67c;
+    background-color: #212121;
+    border-radius: 20px;
+    align-self: center;
+    margin: 30px 0 10px 0;
+}
+
+.catalog-page__btn-submit:hover {
+    border: none;
+    color: #212121;
+    background-color: #cdb67c;
+}
+
+
+/* sidebar ends */
+
+
+/* items */
+
+.catalog-page__items-container {
+    grid-column: 4 / 13;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.item {
+    background-color: #212121;
+    border-radius: 10px;
+}
+
+.item a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+    /* space-around выравнивает содержимое при увеличении соседнего товара */
+  justify-content: space-around;
+  text-decoration: none;
+  color: white;
+}
+
+.item a:visited {
+  text-decoration: none;
+}
+
+.item__type {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.item__image-wrapper {
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    align-self: center;
+}
+
+.item__image {
+    width: 115px;
+}
+
+.item__upper-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px 0 10px;
+}
+
+.catalog-page .item__new-icon {
+  width: 33px;
+  height: 33px;
+  background: url(../assets/img/shared/icons/new_icon.svg) no-repeat;
+  transform: rotate(45deg);
+}
+
+.catalog-page .item__bottom-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 15px 10px 20px 10px;
+}
+
+.item__name,
+.item__price {
+    width: 100%;
+    text-align: center;
+}
+
+.item__line {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    margin: 5px 0 8px 0;
+}
+
+.catalog-page .item {
+    transition-duration: 0.3s;
+}
+
+.catalog-page .item:hover {
+    cursor: pointer;
+    transition-duration: 0.3s;
+    transform: scale(0.95);
+    background-color: #484848;
+}
+
+.catalog-page .item__line {
+    transition-duration: 0.3s;
+}
+
+.catalog-page .item:hover .item__line {
+    transform: scale(0.7);
+}
+
+
+/* Catalog page filter ends */
+
+
+/* pagination */
+
+.pagination {
+    align-self: start;
+    grid-column: 1 / 3;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.pagination__page:visited,
+.pagination__page {
+    transition: 0.2s;
+    color: white;
+    padding: 5px 2px;
+    text-decoration: none;
+}
+
+.pagination__page:hover,
+.pagination__page_current {
+    background-color: #212121;
+    border-radius: 8px;
+}
+
+.pagination__page_back,
+.pagination__page_next,
+.pagination__page_back:hover,
+.pagination__page_next:hover {
+    background-color: #212121;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.pagination__page_back:hover,
+.pagination__page_next:hover {
+    background-color: #484848;
+}
+
+
+/* pagination ends */
+
+@media screen and (max-width: 769px) {
+    /* tablet 769px - 481px */
+    .catalog-page {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    .catalog-page .content-grid {
+        grid-template-columns: repeat(9, 1fr);
+        column-gap: 10px;
+    }
+    .catalog-page__filter {
+        grid-column: 1 / 10;
+    }
+    .catalog-page__filter form {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .filter-criteria {
+        flex-basis: 20%;
+        flex-grow: 1;
+    }
+    .catalog-page__btn-submit {
+        margin: 0 calc(50% - (140px / 2));
+        /* выравниваем кнопку шириной 140 px по центру */
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .filter-criteria_accordion .filter-criteria__accordion-icon {
+        margin-left: 5px;
+    }
+    .catalog-page__items-container {
+        padding-top: 20px;
+        grid-column: 1 / 10;
+    }
+    .item__image-wrapper {
+        width: 150px;
+        height: 150px;
+        margin: 0 25px;
+    }
+    .item__image {
+        width: 95px;
+    }
+    .catalog-page .item__bottom-row {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .item__name {
+        font-size: 14px;
+    }
+    .item__line {
+        margin: 2px 0 5px 0;
+    }
+    .item__price {
+        font-size: 14px;
+    }
+    .catalog-page__pagination {
+        margin: 0 0 20px 0;
+        grid-column: 1 / 3;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .catalog-page {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .catalog-page .content-grid {
+        column-gap: 20px;
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .filter-criteria {
+        flex-basis: 40%;
+        margin: 0 15px;
+    }
+    .catalog-page__items-container {
+        display: block;
+    }
+    .item {
+        margin: 0 30px;
+        margin-bottom: 20px;
+    }
+    .item__upper-row {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    .catalog-page .item__bottom-row {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .pagination__page {
+        margin: 0 2px;
+    }
+    .pagination__back-text,
+    .pagination__next-text {
+        display: none;
+    }
+}

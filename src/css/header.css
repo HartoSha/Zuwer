@@ -1,0 +1,374 @@
+body {
+    margin:0;
+    font-family: "Caviar Dreams";
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* header */
+
+.header{
+    position:sticky;
+    top:0;
+    background-color:#212121;
+    display: flex;
+    padding:0 20px;
+    justify-content: center;
+    z-index: 1;
+}
+.wrapper {
+    display: flex;
+    max-width:764px;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+.header ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.header a,
+.header a:visited{
+    text-decoration: none;
+    font-size: 18px;
+    color:white;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 17px 0;
+}
+.logoimg {
+    cursor: pointer;
+    height: 55px;
+    width: 170px;
+} 
+.headernav {
+    display: flex;
+}
+.headernav .navlink{
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+}
+.navlink-item{
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+    list-style-type: none;
+    cursor:pointer;
+    color:white;
+    padding: 0 20px;
+    text-align: center;
+    background-color: #212121;
+}
+.navlink-item a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.navlink-item_dropdown{
+    position: relative;
+}
+.navlink-item:hover{
+    background-color: #7c7c7c;
+}
+
+.navlink-item_dropdown:hover > .dropdown-menu{
+    display: flex;
+    flex-direction: column;
+    cursor:pointer;
+}
+
+.navlink-item_dropdown:hover {
+    background: #212121;
+    cursor: unset;
+}
+
+/* Для нормального отображения у пользователей с короткими именами */
+.username {
+    min-width: 130px;
+}
+
+/* dropdownd-menu starts */
+
+.header .dropdown-menu{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    min-width:100%;
+    background:rgba(59, 59, 59, 0.37);
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.53);
+    z-index: -1; /* z-index -1 Для отображения тени под header'ом */
+}
+
+.header .dropdown-menu:hover {
+    z-index: -1;
+}
+
+.dropdown-menu-item {
+    padding: 15px 10px;
+}
+
+.dropdown-menu-item:hover {
+    background: rgba(33, 33, 33, 0.66);
+}
+
+.dropdown-menu-link{
+    display: flex;
+    align-items:center;
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    flex-basis: 25%;
+    padding-right: 10px;
+}
+
+.my-orders-icon{
+    background:url(../assets/img/shared/icons/header/my-orders-icon.png) no-repeat;
+    width: 35px;
+    height: 27px;
+}
+.favorites-icon{
+    background:url(../assets/img/shared/icons/header/favorites-icon.png) no-repeat;
+    width: 25px;
+    height: 23px;
+}
+.exit-icon{
+    background: url(../assets/img/shared/icons/header/exit-icon.png) no-repeat;
+    width: 25px;
+    height: 23px;
+}
+
+/* dropdown menu ends */
+
+.burger-menu input[type="checkbox"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    z-index: -100;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+.burger-menu-nav-wrapper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    background-color: #212121;
+    height: 100vh;
+    z-index: 2;
+    transition: 0.3s;
+}
+
+.burger-menu-nav {
+    padding-top: 92px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.burger-menu-nav a {
+    padding: 15px 0;
+}
+
+/* от 769px до 480 - планшет */ 
+
+@media screen and (max-width: 769px) {
+
+    /* dropdown menu starts */
+
+    .header .dropdown-menu {
+        box-shadow: 0 0 7px rgba(53, 53, 53, 0.87);
+        background: rgba(33, 33, 33, 0.8);
+    }
+
+    .dropdown-menu-item:hover {
+        background-color: #7c7c7c;
+    }
+
+    .navlink-item_dropdown:hover {
+        background: #212121;
+    }
+
+    /* dropdown menu ends */
+
+    .navlink-item {
+        display: none;
+    }
+    .navlink-item.navlink-item_dropdown {
+        display: flex;
+    }
+
+    /* burger menu starts */
+
+    .burger-menu {
+        display: flex;
+        align-items: flex-end;
+        margin: auto 10px auto 0;
+    }
+
+    .burger-menu-button {
+        display: block;
+        width: 35px;
+        height: 25px;
+        position: relative;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    /* burger menu animation starts */
+
+    /* Центральная линия */
+    .burger-menu-button-icon {
+        width: 100%;
+        position: absolute;
+        top: 10px;
+        left: 0; 
+        height: 3px;
+        background-color: white;
+        border-radius: 1px;
+    }
+
+    /* Нижняя линия */
+    .burger-menu-button-icon::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 0; 
+        display: block;
+        width: 100%;
+        background-color: white;
+        height: 3px;
+        border-radius: 1px;
+        transition: 0.3s;
+    }
+
+    /* Верхняя линия */
+    .burger-menu-button-icon::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        display: block;
+        width: 100%;
+        background-color: white;
+        height: 3px;
+        border-radius: 1px;
+        transition: 0.3s;
+    }
+
+    .burger-menu-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        background: #3b3b3b;
+        opacity: 0.82;
+        transition: 0.3s;
+        transition-property: width;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    /* Исчезает центральная линия */
+    .burger-menu input[type="checkbox"]:checked + .burger-menu-button .burger-menu-button-icon {
+        background: 0;
+        transition: 0.2s;
+    }
+
+    /* Нижняя линия поворачивается и располагается в центре */
+    .burger-menu input[type="checkbox"]:checked + .burger-menu-button .burger-menu-button-icon::after {
+        transform: rotate(45deg);
+        top: 0;
+        transition: 0.3s;
+    }
+
+    /* Верхняя линия */
+    .burger-menu input[type="checkbox"]:checked + .burger-menu-button .burger-menu-button-icon::before {
+        transform: rotate(-45deg);
+        top: 0;
+        transition: 0.3s;
+    }
+
+    /* Появляется активная часть меню */
+    .burger-menu input[type="checkbox"]:checked ~ .burger-menu-nav-wrapper {
+        position: absolute;
+        opacity: 1;
+        background-color: #212121;
+        width: 44%;
+        overflow-y: hidden
+    }
+
+    /* Появляется бекграунд */
+    .burger-menu input[type="checkbox"]:checked ~ .burger-menu-background {
+        width: 100%;
+        height: 100vh;
+        overflow-y: hidden
+    }
+
+    .burger-menu-nav a:hover{
+        background-color: #7c7c7c;
+    }
+
+    /* burger menu animation ends */
+}
+
+/* от 480px и ниже - телефон */
+
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 0 10px;
+    }
+
+    .logoimg {
+        width: 100px;
+    }
+
+    .burger-menu-button {
+        width: 30px;
+    }
+
+    .burger-menu input[type="checkbox"]:checked ~ .burger-menu-nav-wrapper {
+        width: 65%;
+    }
+
+    .headernav .icon-wrapper{
+        display: none;
+    }
+
+    /* Текущая максимальная длина имени 11 символов без переносов */
+    .headernav .username {
+        min-width: 125px;
+    }
+
+    .headernav .dropdown-menu {
+        width: 100%;
+    }
+
+    .navlink-item_dropdown {
+        padding: 0;
+    }
+
+    .headernav .dropdown-menu-link {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/* header */
