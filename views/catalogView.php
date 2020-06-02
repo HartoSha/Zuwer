@@ -165,22 +165,21 @@
                 <?php endif; ?>
                 
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
-                <?php if((isset($resultStatus) && !empty($resultStatus)))$QuantityPage=0;
-                ?>
+
                 <nav class="catalog-page__pagination pagination"> 
                     <a class="pagination__page pagination__page_back" href="../../catalog/page/<?php if($QuantityPage!=1)print($page-1);else print($page)?>">
-                        <span class="pagination__back-icon">< </span><!--
-                    --><span class="pagination__back-text"><?php if((isset($resultStatus) && !empty($resultStatus)))print("в разработке");else  print("Назад")?></span>
+                        <span class="pagination__back-icon">< </span>
+                    <span class="pagination__back-text">Назад</span>
                     </a>
+                    
                     <?php 
-                    
-                    for($i=1;$i<=$QuantityPage;$i++){
-                        ?><a class="pagination__page <?php  if($i==$page)print("pagination__page_current")  ?>" href="../../catalog/page/<?php print ($i) ?>"><?php print ($i) ?></a><?php
-                    }
+                        for($i=1;$i<=$QuantityPage;$i++){
+                            ?><a class="pagination__page <?php  if($i==$page)print("pagination__page_current")  ?>" href="../../catalog/page/<?php print ($i) ?>"><?php print ($i) ?></a><?php
+                        }
                     ?>
-                    
+
                     <a class="pagination__page pagination__page_next" href="../../catalog/page/<?php if($QuantityPage!=1)print($page+1);else print($page)?>">
-                        <span class="pagination__next-text"><?php if((isset($resultStatus) && !empty($resultStatus)))print("в разработке");else  print("Вперед")?></span>
+                        <span class="pagination__next-text">Вперед</span>
                         <span class="pagination__next-icon">></span>
                     </a>
                 </nav>

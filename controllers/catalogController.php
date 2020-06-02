@@ -16,7 +16,7 @@
             #Возвращает данные о минимальной и максимальной цене, весе
             $PriceWeightProducts = catalogModel::getPriceWeightProducts();
 
-            if(!isset($_POST["button"])){
+            if(!isset($_POST["button"]) && !isset($_COOKIE['resultStatus'])){
                 $products = catalogModel::getProducts($page,$PriceWeightProducts['priceMin'],$PriceWeightProducts['priceMax'],$PriceWeightProducts['weightMin'],$PriceWeightProducts['weightMax']);
                 # Если не получили информацию о товарах, отправляем пользователя на страницу каталога
                 
@@ -27,8 +27,6 @@
                 #Возвращает количество товаров, попадающих под критерии поиска, их характеристики
                 $QuantityPage = catalogModel::getQuantityProducts($PriceWeightProducts['priceMin'],$PriceWeightProducts['priceMax'],$PriceWeightProducts['weightMin'],$PriceWeightProducts['weightMax']);
             }
-
-            
 
             #Возвращает список данных о производителях товара
             $ProductManufacturers = catalogModel::getProductManufacturers();
@@ -46,59 +44,54 @@
             $ProductsTipThickness = catalogModel::getProductsTipThickness();
 
             #Применение фильтров
-            if(isset($_POST["button"])){
-
-                // isset($_POST["filterPriceMin"])?$PriceMin = :$resultId_manufacturer="";
-                // isset($_POST["filterPriceMax"])?$PriceMax = :$resultId_material="";
-                // if(!isset($_POST["filterPriceMax"]))$PriceMax=$PriceWeightProducts['priceMin'];
+            if(isset($_POST["button"]) || isset($_COOKIE['resultStatus'])){
                 
-                // var_dump( $PriceWeightProducts['priceMax']);
+                #Проверка на пустые поля  isset($_COOKIE['resultStatus']
                 $PriceMin = isset($_POST["filterPriceMin"]) && !empty($_POST["filterPriceMin"]) ? $_POST['filterPriceMin'] : $PriceWeightProducts['priceMin'];
                 $PriceMax = isset($_POST["filterPriceMax"]) && !empty($_POST["filterPriceMax"]) ? $_POST['filterPriceMax'] : $PriceWeightProducts['priceMax'];
-
-                $weightMin = isset($_POST["filterWeightMin"]) && !empty($_POST["filterWeightMin"])?$_POST['filterWeightMin']:$PriceWeightProducts['weightMin'];
+                $weightMin = isset($_POST["filterWeightMin"]) && !empty($_POST["filterWeightMin"]) ?$_POST['filterWeightMin']: $PriceWeightProducts['weightMin'];
                 $weightMax = isset($_POST["filterWeightMax"]) && !empty($_POST["filterWeightMax"]) ? $_POST['filterWeightMax'] : $PriceWeightProducts['weightMax'] ;
                 
+                #Проверка выбранных фильтров
+                $resultId_manufacturer = isset($_POST["filterManufacturer"]) ?  catalogModel::_getVariableForFiltering("filterManufacturer") : NULL;
+                $resultId_material = isset($_POST["filterMaterial"]) ?  catalogModel::_getVariableForFiltering("filterMaterial") : NULL;
+                $resultId_inkColor = isset($_POST["filterColor"]) ?  catalogModel::_getVariableForFiltering("filterColor") : NULL;
+                $resultId_type = isset($_POST["filterType"]) ?  catalogModel::_getVariableForFiltering("filterType") : NULL;
+                $resultTipThickness = isset($_POST["filterTipThickness"]) ?  catalogModel::_getVariableForFiltering("filterTipThickness") : NULL;
+                $resultStatus = isset($_POST["filterNewProduct"]) ?  "IN(1)" : "IN (0,1)";
+                
+                #Создание cookie
+                setcookie('resultId_manufacturer',$resultId_manufacturer);
+                setcookie('resultId_material',$resultId_material);
+                setcookie('resultId_inkColor',$resultId_inkColor);
+                setcookie('resultId_type',$resultId_type);
+                setcookie('resultTipThickness',$resultTipThickness);
+                setcookie('resultStatus',$resultStatus);
+                
+                #Заполнение переменных для фильтрации
+                if(isset($_COOKIE['PriceMin']) && !isset($_POST["button"]))$PriceMin = $_COOKIE['PriceMin'];
+                if(isset($_COOKIE['PriceMax']) && !isset($_POST["button"]))$PriceMax = $_COOKIE['PriceMax'];
+                if(isset($_COOKIE['weightMin']) && !isset($_POST["button"]))$weightMin = $_COOKIE['weightMin'];
+                if(isset($_COOKIE['weightMax']) && !isset($_POST["button"]))$weightMax = $_COOKIE['weightMax'];
+                if(isset($_COOKIE['resultId_manufacturer']) && !isset($_POST["button"]))$resultId_manufacturer = $_COOKIE['resultId_manufacturer'];
+                if(isset($_COOKIE['resultId_material']) && !isset($_POST["button"]))$resultId_material = $_COOKIE['resultId_material'];
+                if(isset($_COOKIE['resultId_inkColor']) && !isset($_POST["button"]))$resultId_inkColor = $_COOKIE['resultId_inkColor'];
+                if(isset($_COOKIE['resultId_type']) && !isset($_POST["button"]))$resultId_type = $_COOKIE['resultId_type'];
+                if(isset($_COOKIE['resultTipThickness']) && !isset($_POST["button"]))$resultTipThickness = $_COOKIE['resultTipThickness'];
+                if(isset($_COOKIE['resultStatus']) && !isset($_POST["button"]))$resultStatus = $_COOKIE['resultStatus'];
+                
+                setcookie('PriceMin',$PriceMin);
+                setcookie('PriceMax',$PriceMax);
+                setcookie('weightMin',$weightMin);
+                setcookie('weightMax',$weightMax);
 
-                // echo $PriceMin;
-                // echo '<br>';
-                // echo $PriceMax;
-                // echo '<br>';
-                // echo $weightMin;
-                // echo '<br>';
-                // echo $weightMax;
-                $resultId_manufacturer = isset($_POST["filterManufacturer"]) ?  catalogModel::_getVariableForFiltering("filterManufacturer") : "";
-                $resultId_material = isset($_POST["filterMaterial"]) ?  catalogModel::_getVariableForFiltering("filterMaterial") : "";
-                $resultId_inkColor = isset($_POST["filterColor"]) ?  catalogModel::_getVariableForFiltering("filterColor") : "";
-                $resultId_type = isset($_POST["filterType"]) ?  catalogModel::_getVariableForFiltering("filterType") : "";
-                $resultTipThickness = isset($_POST["filterTipThickness"]) ?  catalogModel::_getVariableForFiltering("filterTipThickness") : "";
-                $resultStatus = isset($_POST["filterNewProduct"]) ?  catalogModel::_getVariableForFiltering("filterNewProduct") : "IN (0,1)";
-
-                // var_dump($resultId_manufacturer);
-                // echo '<br>';
-                // var_dump($resultId_material);
-                // echo '<br>';
-                // var_dump($resultId_inkColor);
-                // echo '<br>';
-                // var_dump($resultId_type);
-                // echo '<br>';
-                // var_dump($resultTipThickness);
-                // // echo '<br>';
-
-                // var_dump($resultStatus);
-
-            
+                #Возвращает количество товаров, попадающих под критерии поиска, их характеристики
                 $QuantityPage = catalogModel::getQuantityProducts($PriceMin,$PriceMax,$weightMin,$weightMax,$resultTipThickness,$resultStatus,$resultId_inkColor,$resultId_material,$resultId_manufacturer,$resultId_type);
-                // var_dump($QuantityPage);
+                
+                #Возвращает список товаров, попадающих под критерии поиска, их характеристики
                 $products = catalogModel::getProducts($page,$PriceMin,$PriceMax,$weightMin,$weightMax,$resultTipThickness,$resultStatus,$resultId_inkColor,$resultId_material,$resultId_manufacturer,$resultId_type);
-                // var_dump($products);
-                # Если не получили информацию о товарах, отправляем пользователя на страницу каталога
-                if($products == NULL) {
-                    // header('Location: ../../catalog');
-                }
             }
             require_once VIEWS . "catalogView.php";
-            // var_dump($products);
             
         }
         public function product($params) # Просмотр одного товара
