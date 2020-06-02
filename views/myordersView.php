@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/my-orders.css" />
-</head>
-<!-- держу header (ノ＞▽＜。)ノ -->
-
-<body>
-  <main class="my-orders">
+<?php
+require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
+// var_dump($productInfo);
+?>
+    <main class="my-orders">
     <div class="orders-container">
       <article class="order-item">
         <a class="" href="#">
@@ -75,6 +68,5 @@
       </article>
     </div>
   </main>
-</body>
-
-</html>
+<?php
+require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");

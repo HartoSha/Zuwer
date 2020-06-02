@@ -1,8 +1,7 @@
 <?php
     require_once(ROOT. "models". DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "loginModel.php");
     require_once(ROOT. "models". DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "registrationModel.php");
-
-    $errors = array();
+    
 
     class userController
     {
@@ -12,7 +11,7 @@
             if(isset($_POST['user-name']) && isset($_POST['user-psw'])) 
             {
                 $loginInfo = $_POST;
-                
+                $errors = array();
                 $login = registrationModel::loginVerification($loginInfo['user-name']);
                 // var_dump($login);
                 // (string)$userId = $login["id_user"];
@@ -44,7 +43,7 @@
             && isset($_POST['reg-pass-again']) && isset($_POST['reg-telephone'])) 
             {
                 $regInfo = $_POST;
-
+                $errors = array();
                 if($regInfo['reg-name'] == '') {
                     $errors[] = "Введите имя";
                 }
@@ -112,5 +111,9 @@
             else {
                 header('Location: /' );
             }
+        }
+        public function myorders() 
+        {
+            require_once(VIEWS . "myordersView.php");
         }
     } 
