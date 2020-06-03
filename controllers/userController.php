@@ -137,10 +137,9 @@ class userController
             $_SESSION['user'] = NULL;
             $_SESSION = array();
             session_destroy();
-            header('Location: /');
         }
+        header('Location: /');
     }
-    
     public function myorders() 
     {
         if(self::userIsLoggedIn())
