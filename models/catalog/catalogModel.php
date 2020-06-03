@@ -102,13 +102,14 @@
             $comma=",";
             $bracket = ")";
             #Создание переменной путем склейки нескольких элементов
-            if(isset($_POST[$filterName])){
+            if(isset($_COOKIE[$filterName])){
                 $result=$IN;
-                for($i=0;$i<count($_POST[$filterName]);$i++){
-                    $result.=($_POST[$filterName])[$i];
-                    if($i<count($_POST[$filterName])-1)$result.=$comma;
+                for($i=0;$i<count( unserialize( $_COOKIE[$filterName]) );$i++){
+                    $result.=( unserialize( $_COOKIE[$filterName]) )[$i];
+                    if($i<count( unserialize( $_COOKIE[$filterName] ))-1)$result.=$comma;
                 }
                 $result.=$bracket;
+                
             }
             return $result;
         }
