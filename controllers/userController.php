@@ -9,10 +9,17 @@ session_start();
 
 class userController
 {
+    public  function index() 
+    {
+        # может быть вызван лишь при переходе по адресу zuwer/user либо zuwer/user/несуществующий_action_name
+        # в следствии этого перенаправляет пользователя на главную
+        # при дальнейшем расширении сайта здесь может быть личный кабинет пользователя
+        header("location: /");
+    }
     public function login() 
     {
-        # если пользователь отправил форму логина => инициализированы переменные. (эта проверка предотвращает пользователя от попадания в action авторизации не из формы авторизации)
-        if(isset($_POST['user-name']) && isset($_POST['user-psw'])) 
+        # если пользователь не авторизован и отправил форму логина => инициализированы переменные. (эта проверка предотвращает пользователя от попадания в action авторизации не из формы авторизации)
+        if(!self::userIsLoggedIn() && isset($_POST['user-name']) && isset($_POST['user-psw'])) 
         {
             $errors[] = array();
             $login = $_POST['user-name'];
@@ -43,7 +50,7 @@ class userController
     public function register() //метод который будет вызываться при регистрации
     {
         # аналогично проверке оправки логина
-        if(isset($_POST['reg-name']) && isset($_POST['reg-surname'])
+        if(!self::userIsLoggedIn() && isset($_POST['reg-name']) && isset($_POST['reg-surname'])
         && isset($_POST['reg-surname']) && isset($_POST['reg-middlename'])
         && isset($_POST['reg-account-name']) && isset($_POST['reg-pass'])
         && isset($_POST['reg-pass-again']) && isset($_POST['reg-telephone'])) 
@@ -126,7 +133,8 @@ class userController
     }
 
     public function logout(){
-        if(isset($_SESSION)){
+        if(self::userIsLoggedIn()){
+            $_SESSION['user'] = NULL;
             $_SESSION = array();
             session_destroy();
             header('Location: /');
@@ -135,6 +143,13 @@ class userController
     
     public function myorders() 
     {
-        require_once(VIEWS . "myordersView.php");
+        if(self::userIsLoggedIn())
+        {
+            require_once(VIEWS . "myordersView.php");
+        }
+        else header('Location: /');
+    }
+    public static function userIsLoggedIn() {
+        return boolval($_SESSION && $_SESSION['user']);
     }
 }
