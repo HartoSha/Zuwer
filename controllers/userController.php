@@ -1,8 +1,6 @@
 <?php
 require_once(ROOT . "models" . DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "userModel.php");
 
-session_start();
-
 // $errors = array(); СУПЕРГЛОБАЛЬНЫЙСУПЕРМАССИВ с нами навечно
 
 class userController
@@ -96,7 +94,8 @@ class userController
                 $errors[] = "Введены разные пароли";
             }
             
-            if($_POST['reg-telephone'] == ''){
+            //TODO: сделать нормальную проверку телефона
+            if($_POST['reg-telephone'] == ''){ 
                 $errors[] = "Введите Телефон";
             }
             elseif(mb_strlen($_POST['reg-telephone']) > 11) {

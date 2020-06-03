@@ -47,7 +47,7 @@
                         <li class="navlink-item"><a href="/"><span>Главная</span></a></li>
                         <li class="navlink-item"><a href="/catalog"><span>Каталог</span></a></li>
                         <?php if(empty($_SESSION)):?>
-                        <li class="navlink-item navlink-open-modal"><button class="open-modal">Логин</button></li>
+                        <li class="navlink-item navlink-open-modal"><button class="open-modal-login">Логин</button></li>
                         <?php else:?>
                         <li class="navlink-item navlink-item_dropdown">
                             <span class="username"><?php echo $_SESSION["user"]['name'] . " " . $_SESSION["user"]['surname'] ?></span>

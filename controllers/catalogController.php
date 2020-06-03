@@ -1,6 +1,7 @@
 <?php 
     require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "catalogModel.php");
     require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "productModel.php");
+    require_once(ROOT . "models" . DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "userModel.php");
 
     class catalogController # Контроллер каталога
     {
@@ -96,9 +97,17 @@
         }
         public function product($params) # Просмотр одного товара
         {
+            //получаем данные пользователя если он есть
+            $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
+            $userSurename = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['surname'] : '';
+            $userPatronymic = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['patronymic'] : '';
+            $userPhone = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['telephone'] : '';
             # Если id продукта не указан в запросе или не число, то считаем его равным 0 (следовательно продукт с id = 0 не будет найден и выполнится перенаправление на ../../catalog)
             $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
             $productInfo = productModel::getProductById($productId);
+
+            //записываем цену одного товара для отправки при совершении заказа addOrder()
+            $_POST['oneProductPrice'] = $productInfo["price"];
 
             # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
             if($productInfo == NULL) {
@@ -109,5 +118,112 @@
             // var_dump($productInfo);
 
             require_once VIEWS . "productView.php";
+        }
+        public function addOrder()
+        {
+            if(userModel::userIsLoggedIn())
+            {
+                $errors = array();
+                if($_POST['name'] == '') {
+                    $errors[] = "Введите имя";
+                }
+                elseif(mb_strlen($_POST['name']) > 15){
+                    $errors[] = "имя слишком длинное";
+                }
+
+                if($_POST["surname"] == '') {
+                    $errors[] = "Введите Фамилию";
+                }
+                elseif(mb_strlen($_POST["surname"]) > 20){
+                    $errors[] = "Фамилия слишком длинная";
+                }
+
+                if($_POST['patronymic'] == '') {
+                    $errors[] = "Введите имя";
+                }
+                elseif(mb_strlen($_POST['patronymic']) > 20){
+                    $errors[] = "Отчество слишком длинное";
+                }
+
+                if($_POST['city'] == '') {
+                    $errors[] = "Введите город";
+                }
+                elseif(mb_strlen($_POST['city']) > 30){
+                    $errors[] = "Название города слишком длинное";
+                }
+
+                if($_POST['street'] == '') {
+                    $errors[] = "Введите улицу";
+                }
+                elseif(mb_strlen($_POST['street']) > 30){
+                    $errors[] = "Название улицы слишком длинное";
+                }
+
+                if($_POST['house'] == '') {
+                    $errors[] = "Введите номер дома";
+                }
+                elseif(mb_strlen($_POST['house']) > 10){
+                    $errors[] = "Номер дома слишком длинный";
+                }
+
+                if($_POST['postal-code'] == '') {
+                    $errors[] = "Введите почтовый индекс";
+                }
+                elseif(mb_strlen($_POST['postal-code']) > 100){
+                    $errors[] = "Почтовый индекс слишком длинный";
+                }
+                
+                //TODO: сделать нормальную проверку телефона
+                if($_POST['phone'] == ''){ 
+                    $errors[] = "Введите Телефон";
+                }
+                elseif(mb_strlen($_POST['phone']) > 11) {
+                    $errors[] = "Телефон слишком длинный";
+                }
+                elseif(mb_strlen($_POST['phone']) < 11) {
+                    $errors[] = "Телефон слишком короткий";
+                }
+
+                if (empty($errors)) {
+                    if(!empty($_SESSION))
+                    {
+                        
+                        $userId = $_SESSION['user']["id_user"];
+                        // $totalPrice = $productInfo["quantity"] 
+
+                        //проверяем существует ли такой адрес в бд иначе создаем его
+                        $adressId = productModel::adressCheck(
+                            $_POST['city'], 
+                            $_POST['street'], 
+                            $_POST['house'], 
+                            $_POST['postal-code']
+                        );
+                        // order-product-quantity
+
+                        if(!$adressId)
+                        {
+                            $adressId = productModel::createDeliveryAddress(
+                                $_POST['city'], 
+                                $_POST['street'], 
+                                $_POST['house'], 
+                                $_POST['postal-code']
+                            );
+                        }
+                        // productModel::ordering($productId, 
+                            //     $_POST['name'], 
+                            //     $_POST["surname"], 
+                            //     $_POST['patronymic'],  
+                            //     $adressId, $_POST['phone'],
+                            //     $productInfo
+                            // );
+                    }
+                } else {
+                    echo '<div style="color: red;">' . array_shift($errors) . '</div>';
+                }
+            }
+            else
+            {
+                
+            }
         }
     } 

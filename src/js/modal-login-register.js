@@ -7,16 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const RegBtn = document.querySelector(
     ".modal-registration .registration-btn"
   );
-  const openModal = document.querySelector(".open-modal");
+  const openModal = document.querySelector(".open-modal-login");
   const modal = document.querySelector(".modal-log-reg");
   const background = document.querySelector(".modal-log-reg .background");
 
   changeLogin.addEventListener("click", switchWindow);
   changeReg.addEventListener("click", switchWindow);
-  openModal.addEventListener("click", function () {
+  openModal.addEventListener("click", function(e){  //TODO: пофиксить краш скрипта при залогиненом пользователе
+    e.preventDefault();
     modal.classList.toggle("invisible");
   });
-  background.addEventListener("click", function () {
+  background.addEventListener("click", function (){
     modal.classList.toggle("invisible");
   });
 
