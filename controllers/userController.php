@@ -23,11 +23,15 @@ class userController
                 $userPassword = loginModel::getUserPassword($userId);
 
                 //проверка пароля пользователя
-                if (!password_verify($_POST['user-psw'], $userPassword)) $errors[] = "Пароль неверный";
+                if (!password_verify($_POST['user-psw'], $userPassword)) header('Location: /');
                 else {
                     //если ошибок нет заносим уникальный id пользователя в сессию
                     $_SESSION['user'] = loginModel::getUserInfo($login, $userPassword);
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
+                }
+
+                if(!empty($errors)){
+                    echo '<div style="color: red;">' . array_shift($errors) . '</div>';
                 }
             }
         }
@@ -125,7 +129,7 @@ class userController
         if(isset($_SESSION)){
             $_SESSION = array();
             session_destroy();
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+            header('Location: /');
         }
     }
     
