@@ -1,0 +1,157 @@
+/* My orders starts */
+body {
+  margin: 0;
+}
+.my-orders{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #333333;
+}
+
+.my-orders .orders-container {
+  width: calc(100% - 40px);
+  margin: 0 20px;
+  max-width: 769px;
+}
+
+.my-orders .order-item {
+  font-family: "Caviar Dreams";
+  margin: 10px 0;
+  transition: 0.3s;
+}
+
+.my-orders .order-item:hover{
+  transform: scale(0.95);
+}
+
+.order-item a{
+  color: white;
+  display: flex;
+  padding: 20px 40px;
+  background-color: #212121;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.my-orders .order-item:hover a{
+  background-color: #484848;
+}
+
+.order-item a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.order-item-img {
+  display: flex;
+  align-items: center;
+}
+
+.order-item-line {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  width: 2px;
+  transition: 0.25s;
+}
+
+.my-orders .order-item:hover .order-item-line {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #484848;
+}
+
+.order-item-line::after {
+  content: "";
+  display: block;
+  width: 2px;
+  flex-grow: 1;
+  background-color: white;
+}
+
+.my-orders .order-item-img-wrapper {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.my-orders .order-item-img-wrapper img {
+  width: 140px;
+  height: 150px;
+}
+
+.order-item-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-item-info table {
+  width: 100%;
+}
+
+.order-item-info h2 {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.order-item-info table td {
+  font-size: 18px;
+  padding: 5px 0;
+}
+
+@media screen and (max-width: 769px) {
+  
+  .my-orders .order-item-img-wrapper img {
+    width: 80px;
+    height: 85px;
+  }
+  .my-orders .order-item-img-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+  .order-item a {
+    padding: 15px;
+  }
+  .order-item-info h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  .order-item-info table td {
+    font-size: 14px;
+  }
+  .my-orders .order-item-img-wrapper {
+    margin: 0;
+  }
+  .order-item-line {
+    margin: 0 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .order-item-img {
+    justify-content: center;
+  }
+  .order-item a {
+    flex-direction: column;
+  }
+  .order-item-info h2 {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .order-item-line {
+    display: none;
+  }
+}
+/* My orders ends */
