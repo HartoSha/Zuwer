@@ -1,7 +1,5 @@
 <?php
-require_once(ROOT . "models" . DIRECTORY_SEPARATOR . "baseModel.php");
-require_once(ROOT . "models" . DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "loginModel.php");
-require_once(ROOT . "models" . DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "registrationModel.php");
+require_once(ROOT . "models" . DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "userModel.php");
 
 session_start();
 
@@ -19,21 +17,21 @@ class userController
     public function login() 
     {
         # если пользователь не авторизован и отправил форму логина => инициализированы переменные. (эта проверка предотвращает пользователя от попадания в action авторизации не из формы авторизации)
-        if(!self::userIsLoggedIn() && isset($_POST['user-name']) && isset($_POST['user-psw'])) 
+        if(!userModel::userIsLoggedIn() && isset($_POST['user-name']) && isset($_POST['user-psw'])) 
         {
             $errors[] = array();
             $login = $_POST['user-name'];
-            $userId = loginModel::loginVerification($login);
+            $userId = userModel::loginVerification($login);
 
             if (!$userId) $errors[] = "Логин неверный";
             else{
-                $userPassword = loginModel::getUserPassword($userId);
+                $userPassword = userModel::getUserPassword($userId);
 
                 //проверка пароля пользователя
                 if (!password_verify($_POST['user-psw'], $userPassword)) header('Location: /');
                 else {
                     //если ошибок нет заносим уникальный id пользователя в сессию
-                    $_SESSION['user'] = loginModel::getUserInfo($login, $userPassword);
+                    $_SESSION['user'] = userModel::getUserInfo($login, $userPassword);
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
 
@@ -50,7 +48,7 @@ class userController
     public function register() //метод который будет вызываться при регистрации
     {
         # аналогично проверке оправки логина
-        if(!self::userIsLoggedIn() && isset($_POST['reg-name']) && isset($_POST['reg-surname'])
+        if(!userModel::userIsLoggedIn() && isset($_POST['reg-name']) && isset($_POST['reg-surname'])
         && isset($_POST['reg-surname']) && isset($_POST['reg-middlename'])
         && isset($_POST['reg-account-name']) && isset($_POST['reg-pass'])
         && isset($_POST['reg-pass-again']) && isset($_POST['reg-telephone'])) 
@@ -84,7 +82,7 @@ class userController
                 $errors[] = "Логин слишком длинный";
             }
             else {
-                $login = registrationModel::loginVerification($_POST['reg-account-name']);
+                $login = userModel::loginVerification($_POST['reg-account-name']);
                 if($login > 0) $errors[] = "ПОЛЬЗОВАТЕЛЬ С ТАКИМ ЛОГЕНОМ УЖЕ ЗАРЕГИСТРИРОВАН";
             }
 
@@ -109,7 +107,7 @@ class userController
             }
 
             if (empty($errors)) {
-                registrationModel::register(
+                userModel::register(
                     $_POST['reg-account-name'],
                     password_hash($_POST['reg-pass'], PASSWORD_DEFAULT),
                     $_POST['reg-name'],
@@ -120,9 +118,9 @@ class userController
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 
                 $login = $_POST['reg-account-name'];
-                $userId = loginModel::loginVerification($login);
-                $userPassword = loginModel::getUserPassword($userId);
-                $_SESSION['user'] = loginModel::getUserInfo($login, $userPassword);
+                $userId = userModel::loginVerification($login);
+                $userPassword = userModel::getUserPassword($userId);
+                $_SESSION['user'] = userModel::getUserInfo($login, $userPassword);
             } else {
                 echo '<div style="color: red;">' . array_shift($errors) . '</div>';
             }
@@ -133,7 +131,7 @@ class userController
     }
 
     public function logout(){
-        if(self::userIsLoggedIn()){
+        if(userModel::userIsLoggedIn()){
             $_SESSION['user'] = NULL;
             $_SESSION = array();
             session_destroy();
@@ -142,13 +140,10 @@ class userController
     }
     public function myorders() 
     {
-        if(self::userIsLoggedIn())
+        if(userModel::userIsLoggedIn())
         {
             require_once(VIEWS . "myordersView.php");
         }
         else header('Location: /');
-    }
-    public static function userIsLoggedIn() {
-        return boolval($_SESSION && $_SESSION['user']);
     }
 }
