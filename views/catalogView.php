@@ -200,7 +200,7 @@
             <section class="catalog-page__items-container">
                 <?php if($products != NULL && isset($products) && !empty($products)):?>
                 <?php foreach ($products as $product):?> 
-                <figure class="catalog-page__item item">
+                <figure class="catalog-page__item item" <?php if(!is_array($product))print ('style="display: none;"');?>>
                     <a class="item__href" href="/catalog/product/<?php print $product["id_product"] ?>" >
                         <div class="item__upper-row">
                             <span class="item__type">
@@ -233,7 +233,7 @@
                 
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
 
-                <nav class="catalog-page__pagination pagination"> 
+                <nav class="catalog-page__pagination pagination" <?php if(!is_array($product))print ('style="display: none;"'); ?>> 
                     <a class="pagination__page pagination__page_back" href="../../catalog/page/<?php if($QuantityPage!=1)print($page-1);else print($page)?>">
                         <span class="pagination__back-icon">< </span>
                     <span class="pagination__back-text">Назад</span>
