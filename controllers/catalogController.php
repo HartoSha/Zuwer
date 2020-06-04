@@ -107,7 +107,7 @@
             $productInfo = productModel::getProductById($productId);
 
             //записываем цену одного товара для отправки при совершении заказа addOrder()
-            $_POST['oneProductPrice'] = $productInfo["price"];
+            $_SESSION['productId'] = $productId;
 
             # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
             if($productInfo == NULL) {
@@ -187,9 +187,13 @@
                 if (empty($errors)) {
                     if(!empty($_SESSION))
                     {
-                        
+                        //
                         $userId = $_SESSION['user']["id_user"];
-                        // $totalPrice = $productInfo["quantity"] 
+                        $productInfo = productModel::getProductById($_SESSION["productId"]);
+                        $productId = $_SESSION["productId"];
+                        $productPrice = $productInfo["price"];
+                        $quantity = $_POST['order-product-quantity'];
+                        var_dump($productPrice);
 
                         //проверяем существует ли такой адрес в бд иначе создаем его
                         $adressId = productModel::adressCheck(
@@ -198,7 +202,6 @@
                             $_POST['house'], 
                             $_POST['postal-code']
                         );
-                        // order-product-quantity
 
                         if(!$adressId)
                         {
@@ -209,15 +212,18 @@
                                 $_POST['postal-code']
                             );
                         }
-                        // productModel::ordering($productId, 
-                            //     $_POST['name'], 
-                            //     $_POST["surname"], 
-                            //     $_POST['patronymic'],  
-                            //     $adressId, $_POST['phone'],
-                            //     $productInfo
-                            // );
+                        productModel::ordering($productId, 
+                                $_POST['name'], 
+                                $_POST["surname"], 
+                                $_POST['patronymic'],  
+                                $adressId["id_deliveryAddress"], 
+                                $_POST['phone'],
+                                $quantity,
+                                $userId,
+                                $productPrice   
+                            );
                     }
-                } else {
+                // } else {
                     echo '<div style="color: red;">' . array_shift($errors) . '</div>';
                 }
             }

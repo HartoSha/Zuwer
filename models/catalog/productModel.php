@@ -30,12 +30,12 @@
             $result = self::query('CALL insertDeliveryAddress(@p0,@p1,@p2,@p3)');
         }
 
-        public static function ordering($productId, $name, $surname, $patronymic, $adressId, $phone, $productInfo, $userId, $totalPrice)
+        public static function ordering($productId, $name, $surname, $patronymic, $adressId, $phone, $quantity, $userId, $totalPrice)
         {   
-            var_dump($productInfo);
+            var_dump($adressId);
             self::query("SET @p0='" . $productId . "'");
             self::query("SET @p1='" . $userId . "'");
-            self::query("SET @p2='" . $productInfo["quantity"] . "'");
+            self::query("SET @p2='" . $quantity . "'");
             self::query("SET @p3='" . $totalPrice . "'");
             self::query("SET @p4='" . $name . "'");
             self::query("SET @p5='" . $surname . "'");
