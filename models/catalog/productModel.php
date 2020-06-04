@@ -32,7 +32,7 @@
 
         public static function ordering($productId, $name, $surname, $patronymic, $adressId, $phone, $quantity, $userId, $totalPrice)
         {   
-            var_dump($adressId);
+            var_dump($totalPrice);
             self::query("SET @p0='" . $productId . "'");
             self::query("SET @p1='" . $userId . "'");
             self::query("SET @p2='" . $quantity . "'");
@@ -44,5 +44,14 @@
             self::query("SET @p8='" . $adressId . "'");
 
             $result = self::query('CALL insertOrder(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)');
+        }
+
+        public static function updateProductQuantity($productId, $quantity, $sales)
+        {
+            self::query("SET @p0='" . $productId . "'");
+            self::query("SET @p1='" . $quantity . "'");
+            self::query("SET @p2='" . $sales . "'");
+
+            $result = self::query('CALL updateProductQuantity(@p0,@p1,@p2)');
         }
     }

@@ -191,8 +191,9 @@
                         $userId = $_SESSION['user']["id_user"];
                         $productInfo = productModel::getProductById($_SESSION["productId"]);
                         $productId = $_SESSION["productId"];
-                        $productPrice = $productInfo["price"];
+                        $totalQuantity = $productInfo["quantity"];
                         $quantity = $_POST['order-product-quantity'];
+                        $productPrice = $productInfo["price"] * $quantity;
                         var_dump($productPrice);
 
                         //проверяем существует ли такой адрес в бд иначе создаем его
@@ -213,15 +214,16 @@
                             );
                         }
                         productModel::ordering($productId, 
-                                $_POST['name'], 
-                                $_POST["surname"], 
-                                $_POST['patronymic'],  
-                                $adressId["id_deliveryAddress"], 
-                                $_POST['phone'],
-                                $quantity,
-                                $userId,
-                                $productPrice   
-                            );
+                            $_POST['name'], 
+                            $_POST["surname"], 
+                            $_POST['patronymic'],  
+                            $adressId["id_deliveryAddress"], 
+                            $_POST['phone'],
+                            $quantity,
+                            $userId,
+                            $productPrice   
+                        );
+                        productModel::updateProductQuantity($productId, $totalQuantity, $quantity);
                     }
                 // } else {
                     echo '<div style="color: red;">' . array_shift($errors) . '</div>';
