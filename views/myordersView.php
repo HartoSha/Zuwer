@@ -7,7 +7,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
     <?php for($i = 0; $i < count($ordersInfo); $i++):?>
       <div class="orders-container">
           <article class="order-item">
-          <a class="" href="#">
+          <a class="" href="/catalog/product/<?php echo $ordersInfo[$i]["id_product"]?>">
             <div class="order-item-img">
               <div class="order-item-img-wrapper">
               <?php 
