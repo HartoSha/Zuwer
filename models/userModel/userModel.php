@@ -46,4 +46,29 @@ class userModel extends baseModel
     public static function userIsLoggedIn() {
         return boolval($_SESSION && $_SESSION['user']);
     }
+
+    public static function ordersCount($userId)
+    {
+        self::query("SET @p0='" . $userId . "'");
+        $result = self::query('CALL insertUser(@p0)');
+
+        return $result;
+    }
+
+    public static function ordersInfo($userId)
+    {
+        self::query("SET @p0='" . $userId . "'");
+        $result = self::query('CALL selectOrders(@p0)');
+
+        return $result;
+    }
+
+    public static function getProductById($productId) 
+    {
+        $query = "CALL selectProduct(".$productId.");";
+        $ProductInfo = self::query($query);
+
+        $result = $ProductInfo["title"];
+        return $result;
+    }
 }

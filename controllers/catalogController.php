@@ -169,8 +169,11 @@
                 if($_POST['postal-code'] == '') {
                     $errors[] = "Введите почтовый индекс";
                 }
-                elseif(mb_strlen($_POST['postal-code']) > 100){
+                elseif(mb_strlen($_POST['postal-code']) > 6){
                     $errors[] = "Почтовый индекс слишком длинный";
+                }
+                if(!preg_match("/^\d{6}$/", $_POST['postal-code'])){
+                    $errors[] = "Почтовый индекс должен содержать только цифры";
                 }
                 
                 //TODO: сделать нормальную проверку телефона
@@ -194,7 +197,6 @@
                         $totalQuantity = $productInfo["quantity"];
                         $quantity = $_POST['order-product-quantity'];
                         $productPrice = $productInfo["price"] * $quantity;
-                        var_dump($productPrice);
 
                         //проверяем существует ли такой адрес в бд иначе создаем его
                         $adressId = productModel::adressCheck(
@@ -224,9 +226,11 @@
                             $productPrice   
                         );
                         productModel::updateProductQuantity($productId, $totalQuantity, $quantity);
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
                     }
-                // } else {
+                } else {
                     echo '<div style="color: red;">' . array_shift($errors) . '</div>';
+                    var_dump($errors);
                 }
             }
             else

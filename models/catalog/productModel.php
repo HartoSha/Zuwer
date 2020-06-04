@@ -27,12 +27,15 @@
             self::query("SET @p2='" . $house . "'");
             self::query("SET @p3='" . $postalCode . "'");
 
-            $result = self::query('CALL insertDeliveryAddress(@p0,@p1,@p2,@p3)');
+            self::query('CALL insertDeliveryAddress(@p0,@p1,@p2,@p3)');
+            
+            //получаем новый id адреса доставки так как insertDeliveryAddress не возвращает новый id, а он необходим для дальнейшей работы 
+            $result = self::query('CALL selectDeliveryAddress_id(@p0,@p1,@p2,@p3)');
+            return $result;
         }
 
         public static function ordering($productId, $name, $surname, $patronymic, $adressId, $phone, $quantity, $userId, $totalPrice)
         {   
-            var_dump($totalPrice);
             self::query("SET @p0='" . $productId . "'");
             self::query("SET @p1='" . $userId . "'");
             self::query("SET @p2='" . $quantity . "'");
