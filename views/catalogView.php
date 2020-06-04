@@ -1,22 +1,5 @@
 <?php
     require_once (VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
-    // $QuantityPage=1;
-    if(isset($_COOKIE['priceMin'])){
-            // var_dump($_COOKIE);
-            // print ('<br>');
-            // var_dump($_COOKIE['priceMax']);
-            // print ('<br>');
-            // var_dump($_COOKIE['weightMin']);
-            // print ('<br>');
-            // var_dump($_COOKIE['weightMax']);
-            // print ('<br>');
-            // var_dump($_COOKIE['resultId_manufacturer']);
-            // $pp=unserialize($_COOKIE['arrManufacturer']);
-            // var_dump(unserialize($_COOKIE['arrManufacturer'])[2]);
-            
-        }
-
-    
 ?>
 
     <main class="catalog-page">
@@ -52,14 +35,14 @@
                                     <span class="filter-criteria__option-caption">От:</span>
                                     <input <?php isset($_COOKIE['weightMin']) ? print('style="color:#cdb67c"'): print('style="color:white"');?> 
                                     name="filterWeightMin" type="number" min="<?php print($PriceWeightProducts['weightMin'])?>" max="<?php print($PriceWeightProducts['weightMax'])?>" 
-                                    value="<?php print($PriceWeightProducts['weightMin'])?>">
+                                    value="<?php print( isset($_COOKIE['weightMin']) ? $_COOKIE['weightMin'] : $PriceWeightProducts['weightMin'])?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">До:</span>
                                     <input <?php isset($_COOKIE['weightMax']) ? print('style="color:#cdb67c"'): print('style="color:white"');?> 
                                     name="filterWeightMax" type="number" min="<?php print($PriceWeightProducts['weightMin'])?>" max="<?php print($PriceWeightProducts['weightMax'])?>" 
-                                    value="<?php print($PriceWeightProducts['weightMax'])?>">
+                                    value="<?php print( isset($_COOKIE['weightMax']) ? $_COOKIE['weightMax'] : $PriceWeightProducts['weightMax'])?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
                             </div>
@@ -205,7 +188,7 @@
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption" <?php if(isset($_COOKIE['Status'])==1)print('style="color:#cdb67c"') ?>>Да</span>
-                                    <input type="checkbox" name="filterNewProduct" value="1">
+                                    <input type="checkbox" name="filterNewProduct" value="1"<?php if(isset($_COOKIE['Status'])==1)print('checked="checked"') ?>>
                                 </label>
                             </div>
                         </label>
