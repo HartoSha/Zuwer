@@ -121,7 +121,7 @@
         }
         public function addOrder()
         {
-            var_dump($_POST['oneProductPrice']);
+            // var_dump($_POST['oneProductPrice']);
             if(userModel::userIsLoggedIn())
             {
                 $errors = array();
