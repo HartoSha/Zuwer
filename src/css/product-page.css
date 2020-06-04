@@ -360,7 +360,7 @@ tr{
     z-index: 998;
 }
 
-.purchase-modal .form-container {
+.purchase-form-container {
     max-width: 769px;
     max-height: initial;
     margin: 0 20px;
@@ -497,7 +497,7 @@ tr{
     .purchase-form-modal__inputs {
         margin: 0;
     }
-    .purchase-modal .form-container  {
+    .purchase-form-container  {
         padding: 20px;
     }
 

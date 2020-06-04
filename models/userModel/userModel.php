@@ -44,7 +44,7 @@ class userModel extends baseModel
         $query = self::query('CALL insertUser(@p0,@p1,@p2,@p3,@p4,@p5)');
     }
     public static function userIsLoggedIn() {
-        return boolval($_SESSION && $_SESSION['user']);
+        return boolval($_SESSION && isset($_SESSION['user']));
     }
 
     public static function ordersCount($userId)

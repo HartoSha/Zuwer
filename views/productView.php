@@ -18,8 +18,10 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                     </label>
                     <input type="checkbox" id="like-checkbox">
                     <label class="like-animation" for="like-checkbox">
-                        <span class="like">
+                        <span class="like <?php echo !userModel::userIsLoggedIn() ? 'toggle-modal-log-reg' : ''?>">
+                        <?php if(userModel::userIsLoggedIn()) : ?>
                             <div class="like-active"></div>
+                        <?php endif; ?>
                         </span>
                     </label>
                 </div>
@@ -63,7 +65,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                         <span class="quantity">Количество: </span>
                         <input class="quantity__value entry" type="number" min="1" max="<?php echo $productInfo["quantity"]; ?>" value="1">
                     </div>
-                    <button class="buy">Купить</button>
+                    <button class="buy <?php echo userModel::userIsLoggedIn() ? "toggle-modal-buy" : "toggle-modal-log-reg"  ; ?>">Купить</button>
                 </form>
             </div>
             <div class="description-wrapper">
@@ -75,7 +77,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
 </main>
 <div class="purchase-modal purchase-modal_hidden">
     <div class="background"></div>
-    <section class="form-container">
+    <section class="purchase-form-container">
         <h2 class="caption">Оформление заказа</h2>
         <form class="purchase-form-modal" method="POST" action=<?php echo userModel::userIsLoggedIn() ? "/catalog/addOrder/" : "#"; ?>>
             <div class="purchase-form-modal__inputs">
@@ -98,7 +100,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                         <output class="purchase-form-modal__price-value"></output>
                         <span class="purchase-form-modal__currency-sign">$</span>
                     </span>
-                    <button class="purchase-btn <?php echo !userModel::userIsLoggedIn() ? " open-modal-login" : "";?>">Совершить заказ</button>
+                    <button class="purchase-btn">Совершить заказ</button>
                 </div>
             </div>
         </form>

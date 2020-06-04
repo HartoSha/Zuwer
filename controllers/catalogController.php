@@ -22,7 +22,7 @@
                 # Если не получили информацию о товарах, отправляем пользователя на страницу каталога
                 
                 if($products == NULL) {
-                    header('Location: ../../catalog');
+                    header('Location: /catalog/');
                 }
 
                 #Возвращает количество товаров, попадающих под критерии поиска, их характеристики
@@ -99,9 +99,9 @@
         {
             //получаем данные пользователя если он есть
             $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
-            $userSurename = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['surname'] : '';
-            $userPatronymic = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['patronymic'] : '';
-            $userPhone = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['telephone'] : '';
+            $userSurename = (!empty($_SESSION['user']['surname'])) ? $_SESSION['user']['surname'] : '';
+            $userPatronymic = (!empty($_SESSION['user']['patronymic'])) ? $_SESSION['user']['patronymic'] : '';
+            $userPhone = (!empty($_SESSION['user']['telephone'])) ? $_SESSION['user']['telephone'] : '';
             # Если id продукта не указан в запросе или не число, то считаем его равным 0 (следовательно продукт с id = 0 не будет найден и выполнится перенаправление на ../../catalog)
             $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
             $productInfo = productModel::getProductById($productId);
@@ -111,7 +111,7 @@
 
             # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
             if($productInfo == NULL) {
-                // header('Location: ../../catalog');
+                header('Location: ../../catalog');
             }
             
             // print "Просмотр Товара. ID: " . $productId . "<br>";
@@ -121,6 +121,7 @@
         }
         public function addOrder()
         {
+            var_dump($_POST['oneProductPrice']);
             if(userModel::userIsLoggedIn())
             {
                 $errors = array();

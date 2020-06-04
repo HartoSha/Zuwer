@@ -17,26 +17,25 @@ class userController
         # если пользователь не авторизован и отправил форму логина => инициализированы переменные. (эта проверка предотвращает пользователя от попадания в action авторизации не из формы авторизации)
         if(!userModel::userIsLoggedIn() && isset($_POST['user-name']) && isset($_POST['user-psw'])) 
         {
-            $errors[] = array();
+            $errors = array();
             $login = $_POST['user-name'];
             $userId = userModel::loginVerification($login);
 
-            if (!$userId) $errors[] = "Логин неверный";
+            if (!$userId) $errors[] = "Логин или пароль неверный";
             else{
                 $userPassword = userModel::getUserPassword($userId);
-
+                
                 //проверка пароля пользователя
                 if (!password_verify($_POST['user-psw'], $userPassword)) header('Location: /');
                 else {
                     //если ошибок нет заносим уникальный id пользователя в сессию
                     $_SESSION['user'] = userModel::getUserInfo($login, $userPassword);
-                    header('Location: ' . $_SERVER['HTTP_REFERER']);
-                }
-
-                if(!empty($errors)){
-                    echo '<div style="color: red;">' . array_shift($errors) . '</div>';
                 }
             }
+            if(!empty($errors)){
+                $_SESSION['login-errors'] = $errors;
+            }
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
         else {
             # Иначе отправляем пользователя на страницу главной
@@ -67,7 +66,7 @@ class userController
             }
 
             if($_POST['reg-middlename'] == '') {
-                $errors[] = "Введите имя";
+                $errors[] = "Введите oтчество";
             }
             elseif(mb_strlen($_POST['reg-middlename']) > 20){
                 $errors[] = "Отчество слишком длинное";
@@ -79,9 +78,8 @@ class userController
             elseif(mb_strlen($_POST['reg-account-name']) > 30){
                 $errors[] = "Логин слишком длинный";
             }
-            else {
-                $login = userModel::loginVerification($_POST['reg-account-name']);
-                if($login > 0) $errors[] = "ПОЛЬЗОВАТЕЛЬ С ТАКИМ ЛОГЕНОМ УЖЕ ЗАРЕГИСТРИРОВАН";
+            elseif(userModel::loginVerification($_POST['reg-account-name'])) {
+                $errors[] = "Пользователь с таким логином уже зарегистрирован";
             }
 
             if($_POST['reg-pass'] == '') {
@@ -96,7 +94,7 @@ class userController
             
             //TODO: сделать нормальную проверку телефона
             if($_POST['reg-telephone'] == ''){ 
-                $errors[] = "Введите Телефон";
+                $errors[] = "Введите телефон";
             }
             elseif(mb_strlen($_POST['reg-telephone']) > 11) {
                 $errors[] = "Телефон слишком длинный";
@@ -114,15 +112,21 @@ class userController
                     $_POST['reg-middlename'],
                     $_POST['reg-telephone']
                 );
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                
                 
                 $login = $_POST['reg-account-name'];
                 $userId = userModel::loginVerification($login);
                 $userPassword = userModel::getUserPassword($userId);
                 $_SESSION['user'] = userModel::getUserInfo($login, $userPassword);
-            } else {
-                echo '<div style="color: red;">' . array_shift($errors) . '</div>';
             }
+            else {
+                # Записываем ошибки регистрации в сессии, для отображения их в форме регистрации
+                $_SESSION["registration-errors"] = $errors;
+            }
+            // var_dump($errors);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+           
         }
         else {
             header('Location: /' );
@@ -135,7 +139,7 @@ class userController
             $_SESSION = array();
             session_destroy();
         }
-        header('Location: /');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
     public function myorders() 
     {
