@@ -5,6 +5,7 @@
     <main class="catalog-page">
         <div class="content-grid">
             <aside class="catalog-page__filter">
+            <button class="plus-orders">+ Добавить товар</button>
                 <form action="../../catalog" method="POST">
                     <section class="filter-criteria filter-criteria_accordion filter-criteria_range">
                         <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров(выбранные фильтры будут активны,filter-criteria__accordion-checkbox активирован). -->
