@@ -1,6 +1,7 @@
 <?php 
     require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "catalogModel.php");
     require_once(ROOT. "models". DIRECTORY_SEPARATOR. "catalog". DIRECTORY_SEPARATOR . "productModel.php");
+    require_once(ROOT . "models" . DIRECTORY_SEPARATOR . "userModel" . DIRECTORY_SEPARATOR . "userModel.php");
 
     class catalogController # Контроллер каталога
     {
@@ -21,7 +22,7 @@
                 # Если не получили информацию о товарах, отправляем пользователя на страницу каталога
                 
                 if($products == NULL) {
-                    header('Location: ../../catalog');
+                    header('Location: /catalog/');
                 }
 
                 #Возвращает количество товаров, попадающих под критерии поиска, их характеристики
@@ -96,18 +97,150 @@
         }
         public function product($params) # Просмотр одного товара
         {
+            # Получаем данные пользователя если он есть (используем в productView.php)
+            $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
+            $userSurename = (!empty($_SESSION['user']['surname'])) ? $_SESSION['user']['surname'] : '';
+            $userPatronymic = (!empty($_SESSION['user']['patronymic'])) ? $_SESSION['user']['patronymic'] : '';
+            $userPhone = (!empty($_SESSION['user']['telephone'])) ? $_SESSION['user']['telephone'] : '';
             # Если id продукта не указан в запросе или не число, то считаем его равным 0 (следовательно продукт с id = 0 не будет найден и выполнится перенаправление на ../../catalog)
             $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
             $productInfo = productModel::getProductById($productId);
 
+            # Записываем цену одного товара для отправки при совершении заказа addOrder()
+            $_SESSION['productId'] = $productId;
+
             # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
             if($productInfo == NULL) {
-                // header('Location: ../../catalog');
+                header('Location: ../../catalog');
             }
             
             // print "Просмотр Товара. ID: " . $productId . "<br>";
-            // var_dump($productInfo);
+            // var_dump($productInfo)
 
             require_once VIEWS . "productView.php";
+        }
+        public function addOrder()
+        {
+            // var_dump($_POST['oneProductPrice']);
+            if(userModel::userIsLoggedIn())
+            {
+                $errors = array();
+                if($_POST['name'] == '') {
+                    $errors[] = "Введите имя";
+                }
+                elseif(mb_strlen($_POST['name']) > 15){
+                    $errors[] = "имя слишком длинное";
+                }
+
+                if($_POST["surname"] == '') {
+                    $errors[] = "Введите Фамилию";
+                }
+                elseif(mb_strlen($_POST["surname"]) > 20){
+                    $errors[] = "Фамилия слишком длинная";
+                }
+
+                if($_POST['patronymic'] == '') {
+                    $errors[] = "Введите имя";
+                }
+                elseif(mb_strlen($_POST['patronymic']) > 20){
+                    $errors[] = "Отчество слишком длинное";
+                }
+
+                if($_POST['city'] == '') {
+                    $errors[] = "Введите город";
+                }
+                elseif(mb_strlen($_POST['city']) > 30){
+                    $errors[] = "Название города слишком длинное";
+                }
+
+                if($_POST['street'] == '') {
+                    $errors[] = "Введите улицу";
+                }
+                elseif(mb_strlen($_POST['street']) > 30){
+                    $errors[] = "Название улицы слишком длинное";
+                }
+
+                if($_POST['house'] == '') {
+                    $errors[] = "Введите номер дома";
+                }
+                elseif(mb_strlen($_POST['house']) > 10){
+                    $errors[] = "Номер дома слишком длинный";
+                }
+
+                if($_POST['postal-code'] == '') {
+                    $errors[] = "Введите почтовый индекс";
+                }
+                elseif(mb_strlen($_POST['postal-code']) > 6){
+                    $errors[] = "Почтовый индекс слишком длинный";
+                }
+                if(!preg_match("/^\d{6}$/", $_POST['postal-code'])){
+                    $errors[] = "Почтовый индекс должен состоять из 6 цифр";
+                }
+                
+                //TODO: сделать нормальную проверку телефона
+                if($_POST['phone'] == ''){ 
+                    $errors[] = "Введите Телефон";
+                }
+                elseif(mb_strlen($_POST['phone']) > 11) {
+                    $errors[] = "Телефон слишком длинный";
+                }
+                elseif(mb_strlen($_POST['phone']) < 11) {
+                    $errors[] = "Телефон слишком короткий";
+                }
+
+                if (empty($errors)) {
+                    if(!empty($_SESSION))
+                    {
+                        //
+                        $userId = $_SESSION['user']["id_user"];
+                        $productInfo = productModel::getProductById($_SESSION["productId"]);
+                        $productId = $_SESSION["productId"];
+                        $totalQuantity = $productInfo["quantity"];
+                        $quantity = $_POST['order-product-quantity'];
+                        $productPrice = $productInfo["price"] * $quantity;
+
+                        //проверяем существует ли такой адрес в бд иначе создаем его
+                        $adressId = productModel::adressCheck(
+                            $_POST['city'], 
+                            $_POST['street'], 
+                            $_POST['house'], 
+                            $_POST['postal-code']
+                        );
+
+                        if(!$adressId)
+                        {
+                            $adressId = productModel::createDeliveryAddress(
+                                $_POST['city'], 
+                                $_POST['street'], 
+                                $_POST['house'], 
+                                $_POST['postal-code']
+                            );
+                        }
+                        productModel::makeAnOrder(
+                            $productId, 
+                            $_POST['name'], 
+                            $_POST["surname"], 
+                            $_POST['patronymic'],  
+                            $adressId["id_deliveryAddress"], 
+                            $_POST['phone'],
+                            $quantity,
+                            $userId,
+                            $productPrice   
+                        );
+                        productModel::updateProductQuantity($productId, $totalQuantity, $quantity);
+                        header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    }
+                } 
+                else 
+                {
+                    // Сохраняем сообщения об ошибках в сессии и возвращаем пользователя обратно на страницу заказа
+                    $_SESSION['order-errors'] = $errors;
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                }
+            }
+            else
+            {
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+            }
         }
     } 

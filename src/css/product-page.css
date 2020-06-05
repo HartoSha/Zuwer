@@ -14,7 +14,6 @@ body{
 .product-page .container{
     max-width: 769px;
     margin: 0px auto;
-   
 }
 
 .product-page {
@@ -335,7 +334,7 @@ tr{
 /* modal starts */
 
 .purchase-modal {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -350,6 +349,15 @@ tr{
     display: none;
 }
 
+.purchase-modal .modal-errors {
+    color: red;
+    font-size: 20px;
+    text-decoration: none;
+    list-style-type: none;
+    margin-bottom: 0px;
+    margin-right: auto;
+}
+
 .purchase-modal .background {
     position: absolute;
     left: 0;
@@ -360,7 +368,7 @@ tr{
     z-index: 998;
 }
 
-.purchase-modal .form-container {
+.purchase-form-container {
     max-width: 769px;
     max-height: initial;
     margin: 0 20px;
@@ -468,6 +476,9 @@ tr{
   }
 
   @media screen and (max-width: 769px) {
+    .purchase-modal .modal-errors {
+        font-size: 16px;
+    }
     .purchase-form-modal__inputs {
         margin: 0 40px;
     }
@@ -497,10 +508,12 @@ tr{
     .purchase-form-modal__inputs {
         margin: 0;
     }
-    .purchase-modal .form-container  {
+    .purchase-form-container  {
         padding: 20px;
     }
-
+    .purchase-modal .modal-errors {
+        font-size: 14px;
+    }
     .purchase-form-modal__quantity-container, 
     .purchase-form-modal__price-container {
         flex-basis: 100%;
