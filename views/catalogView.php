@@ -200,19 +200,21 @@
                 
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
 
-                <nav class="catalog-page__pagination pagination" <?php if(!is_array($product) ||$QuantityPage==1)print ('style="display: none;"'); ?>> 
-                    <a class="pagination__page pagination__page_back" href="../../catalog/page/<?php if($QuantityPage!=1)print($page-1);else print($page)?>">
-                        <span class="pagination__back-icon">< </span>
-                    <span class="pagination__back-text">Назад</span>
+                <nav class="catalog-page__pagination pagination" <?php if(!is_array($product))print('style="display: none;"'); ?>> 
+                    <a class="pagination__page pagination__page_back" <?php if($QuantityPage==1 || $page==1)print('style="display: none;"');?>
+                    href="../../catalog/page/<?php print($page-1)?>">
+                        <span class="pagination__back-icon"><</span>
+                        <span class="pagination__back-text">Назад</span>
                     </a>
                     
                     <?php 
                         for($i=1;$i<=$QuantityPage;$i++){
-                            ?><a class="pagination__page <?php  if($i==$page)print("pagination__page_current")  ?>" href="../../catalog/page/<?php print ($i) ?>"><?php print ($i) ?></a><?php
+                            ?><a style="margin-left: 5px" class="pagination__page <?php  if($i==$page)print("pagination__page_current")  ?>" href="../../catalog/page/<?php print($i) ?>"><?php print($i) ?></a><?php
                         }
                     ?>
 
-                    <a class="pagination__page pagination__page_next" href="../../catalog/page/<?php if($QuantityPage!=1)print($page+1);else print($page)?>">
+                    <a class="pagination__page pagination__page_next" <?php if($QuantityPage==1 || $page==$QuantityPage)print('style="display: none;"'); ?>
+                    href="../../catalog/page/<?php print($page+1)?>">
                         <span class="pagination__next-text">Вперед</span>
                         <span class="pagination__next-icon">></span>
                     </a>
