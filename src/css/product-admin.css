@@ -1,0 +1,258 @@
+*{
+    padding: 0;
+    margin: 0; 
+} 
+
+body{
+    margin: 0;
+    background-color: rgb(48, 48, 48);
+    font-family: "Caviar Dreams";
+    
+}
+.main-container{
+   margin: 20px;
+}
+.container{
+    max-width: 769px;
+    margin: 0px auto;
+   
+}
+
+.product{
+    color: #ffffff;
+    font-style: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.product-img-container{
+    display: flex;
+    position: relative;
+    align-self: center;
+}
+
+.product-img-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 50%;  
+    overflow: hidden;
+    
+}
+
+.camera-icon{
+    width: 70px;
+    height: 70px;
+}
+.photo{
+    color: #212121;
+    font-size: 30px;
+    order: -1;
+}
+
+.characteristics{
+    margin-left: 20px;
+    width: 50%;
+}
+
+table{
+    width: 100%;
+}
+
+td:first-child{
+    width: 65%;
+}
+
+td:last-child{
+    width: 35%;
+}
+
+td {
+    padding-top: 20px;
+    text-align: left;
+    font-size: 18px;
+}
+tr{
+    padding: 10px;
+}
+.new{
+    margin-top: 20px; 
+    font-size: 18px;
+    cursor: pointer;
+}
+.new-checkbox{
+    background-color: #212121;
+
+}
+.quantity-wrapper{
+    display: flex;
+    align-self:center;
+    margin: 20px 20px 20px 20px;
+}
+
+.entry-field{
+    font-family: "Caviar Dreams";
+    background-color: inherit;
+    color: #b6b6b6;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid white;
+    width: 100%;
+}
+
+.entry-field:focus{
+    border-color:#cdb67c ;
+    color: white;
+}
+
+.delete-form-and-save{
+    font-size: 24px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.delete{
+    font-size: 24px;
+    border-radius: 30px;
+    text-align: center;
+    width: 166px;
+    height: 64px;
+    background-color: #212121;
+    color: #ff6666;
+    border: 1px solid #ff6666;
+    outline: none;
+    font-family: "Caviar Dreams";
+    cursor: pointer;
+}
+.save{
+    font-size: 24px;
+    border-radius: 30px;
+    text-align: center;
+    width: 166px;
+    height: 64px;
+    background-color: #212121;
+    color: #cdb67c;
+    border: 1px solid #cdb67c;
+    outline: none;
+    font-family: "Caviar Dreams";
+    cursor: pointer;
+}
+
+.save:hover {
+    border-color: none;
+    color: #212121;
+    background-color: #cdb67c;
+}
+.delete:hover {
+    border-color: none;
+    color: #212121;
+    background-color: #ff6666;
+}
+
+.description-wrapper{
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.description-content{
+    outline: none;
+
+    font-size: 24px;
+    background-color: inherit;
+    color: white;
+    border-color: #b6b6b6;
+}
+.description-content:focus{
+    border-color:#cdb67c ;
+    color: white;
+}
+.description-edit{
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 769px){
+
+    .product-img-container{
+        height: 190px;
+        width: 190px;
+    } 
+
+    .product-img-wrapper{
+        height: 190px;
+        width: 190px;
+    }
+
+    .photo{
+    font-size: 24px;
+    width: 60%;
+    text-align: center;
+    }
+
+    td{
+        padding-top: 15px;
+        font-size: 14px;
+    }
+
+    .characteristics{
+        margin-left: 10px;
+        flex-basis: 45%;
+        flex-grow: 1;
+        padding: 0 2%;
+    }
+}
+
+@media screen  and (max-width: 480px){
+
+    .product-img-container{
+        height: 190px;
+        width: 190px;
+    } 
+
+    td{
+        padding-top: 15px;
+        font-size: 14px; 
+    }
+
+    .photo{
+        font-size: 24px;
+    }
+
+    .characteristics{
+        margin-left: 0;
+        flex-basis: 100%;
+    }
+
+    .delete{
+        margin-top:20px;
+    }
+
+    .save{
+        margin-top:20px; 
+    }
+
+    .quantity-wrapper{
+        margin: 20px 0 20px 10px;
+        font-size: 18px;
+    }
+
+    .description-wrapper{
+        margin-top: 20px;
+    }
+
+    .description-edit{
+        font-size: 18px;
+    }
+    
+}
