@@ -13,13 +13,13 @@
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
-                                    <input <?php isset($_COOKIE['priceMin']) ? print('style="color:#cdb67c"'): print('style="color:white"');?> name="filterPriceMin" type="number"
+                                    <input name="filterPriceMin" type="number"
                                       value="<?php  print( ceil( isset($_COOKIE['priceMin']) ? $_COOKIE['priceMin'] : $PriceWeightProducts['priceMin']))?>">
                                     <span class="filter-criteria__option-underline"></span> <!-- было решено добавить пустой span после input для создания золотистого подчеркивания, т.к. input::after не поддерживается -->
                                 </label>
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">До:</span>
-                                    <input <?php isset($_COOKIE['priceMax']) ? print('style="color:#cdb67c"'): print('style="color:white"');?> name="filterPriceMax" type="number"
+                                    <input name="filterPriceMax" type="number"
                                       value="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] : $PriceWeightProducts['priceMax']))?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
@@ -33,15 +33,13 @@
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
-                                    <input <?php isset($_COOKIE['weightMin']) ? print('style="color:#cdb67c"'): print('style="color:white"');?> 
-                                    name="filterWeightMin" type="number" min="<?php print($PriceWeightProducts['weightMin'])?>" max="<?php print($PriceWeightProducts['weightMax'])?>" 
+                                    <input name="filterWeightMin" type="number" min="<?php print($PriceWeightProducts['weightMin'])?>" max="<?php print($PriceWeightProducts['weightMax'])?>" 
                                     value="<?php print( isset($_COOKIE['weightMin']) ? $_COOKIE['weightMin'] : $PriceWeightProducts['weightMin'])?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">До:</span>
-                                    <input <?php isset($_COOKIE['weightMax']) ? print('style="color:#cdb67c"'): print('style="color:white"');?> 
-                                    name="filterWeightMax" type="number" min="<?php print($PriceWeightProducts['weightMin'])?>" max="<?php print($PriceWeightProducts['weightMax'])?>" 
+                                    <input name="filterWeightMax" type="number" min="<?php print($PriceWeightProducts['weightMin'])?>" max="<?php print($PriceWeightProducts['weightMax'])?>" 
                                     value="<?php print( isset($_COOKIE['weightMax']) ? $_COOKIE['weightMax'] : $PriceWeightProducts['weightMax'])?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
@@ -233,7 +231,7 @@
                 
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
 
-                <nav class="catalog-page__pagination pagination" <?php if(!is_array($product))print ('style="display: none;"'); ?>> 
+                <nav class="catalog-page__pagination pagination" <?php if(!is_array($product) ||$QuantityPage==1)print ('style="display: none;"'); ?>> 
                     <a class="pagination__page pagination__page_back" href="../../catalog/page/<?php if($QuantityPage!=1)print($page-1);else print($page)?>">
                         <span class="pagination__back-icon">< </span>
                     <span class="pagination__back-text">Назад</span>
