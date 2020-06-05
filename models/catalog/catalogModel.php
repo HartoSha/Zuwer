@@ -76,7 +76,7 @@
             return self::query($query);
              
         }
-        public static function _createAndDeleteCookie($filterName,$cookieName) 
+        public static function createAndDeleteCookie($filterName,$cookieName) 
         {   
             #Удаление cookie
             if(isset($_COOKIE[$cookieName]) && isset($_POST["button"]))setcookie($cookieName,'',time()-3600,"/");
@@ -90,7 +90,7 @@
             }
         }
         // Private
-        public static function _getVariableForFiltering($filterName) 
+        Private static function getVariableForFiltering($filterName) 
         {
             $IN="IN (";
             $comma=",";
@@ -107,21 +107,21 @@
             }
             return $result;
         }
-        public static function _fillingVariablesForFilteringArr($cookieName) 
+        public static function fillingVariablesForFilteringArr($cookieName) 
         {   
-            if(isset($_COOKIE[$cookieName]) && !isset($_POST["button"]))$result = self::_getVariableForFiltering($cookieName);
+            if(isset($_COOKIE[$cookieName]) && !isset($_POST["button"]))$result = self::getVariableForFiltering($cookieName);
 
-            if(isset($_COOKIE[$cookieName])) $result = self::_getVariableForFiltering($cookieName);
+            if(isset($_COOKIE[$cookieName])) $result = self::getVariableForFiltering($cookieName);
 
             if(isset($result))return $result;
         }
-        public static function _fillingVariablesForFiltering($cookieName) 
+        public static function fillingVariablesForFiltering($cookieName) 
         {   
             if(isset($_COOKIE[$cookieName]) && !isset($_POST["button"]))$result=$_COOKIE[$cookieName];
 
             if(isset($result))return $result;
         }
-        public static function _fillingInResultStatusVariableForFiltering($cookieName) 
+        public static function fillingInResultStatusVariableForFiltering($cookieName) 
         {   
             if(isset($_COOKIE[$cookieName]) && !isset($_POST["button"]))$result= "IN(1)";
 
