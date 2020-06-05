@@ -5,7 +5,6 @@
     <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="../../src/assets/img/shared/icons/favicon.ico">
         <link rel="stylesheet" type="text/css" href="../../src/css/normalize.css">
@@ -14,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/catalog-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/product-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/modal-login-register.css">
-        <link rel="stylesheet" type="text/css" href = "../../src/css/footer.css">
+        <link rel="stylesheet" type="text/css" href="../../src/css/footer.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/my-orders.css"/>
         <title>Zuwer</title>
     </head>
@@ -44,13 +43,23 @@
                 </a>
                 <nav class = "headernav"> 
                     <ul class="navlink">    
+                        <!-- TODO: Добавить отображение текущей страницы -->
                         <li class="navlink-item"><a href="/"><span>Главная</span></a></li>
                         <li class="navlink-item"><a href="/catalog"><span>Каталог</span></a></li>
                         <?php if(!userModel::userIsLoggedIn()):?>
                         <li class="navlink-item navlink-open-modal"><button class="toggle-modal-log-reg">Логин</button></li>
                         <?php else:?>
                         <li class="navlink-item navlink-item_dropdown">
-                            <span class="username"><?php echo $_SESSION["user"]['name'] . " " . $_SESSION["user"]['surname'] ?></span>
+                            <span class="username">
+                                <?php
+                                # Отображаем имя и фамилию пользователя, если они у него есть, иначе, отображаем только фамилию или только логин.
+                                    $headerUserName = "";
+                                    $headerUserName .= $_SESSION["user"]['name'];
+                                    $headerUserName .= $_SESSION["user"]['surname'] ? " " . $_SESSION["user"]['surname'] : "";
+                                    $headerUserName .= !$headerUserName ? $_SESSION["user"]['login'] : "";
+                                    echo $headerUserName;
+                                ?>
+                            </span>
                             <ul class = "dropdown-menu">
                                 <li class="dropdown-menu-item">
                                     <a class = "dropdown-menu-link" href="/user/myorders/">

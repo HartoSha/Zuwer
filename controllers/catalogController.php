@@ -97,7 +97,7 @@
         }
         public function product($params) # Просмотр одного товара
         {
-            //получаем данные пользователя если он есть
+            # Получаем данные пользователя если он есть (используем в productView.php)
             $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
             $userSurename = (!empty($_SESSION['user']['surname'])) ? $_SESSION['user']['surname'] : '';
             $userPatronymic = (!empty($_SESSION['user']['patronymic'])) ? $_SESSION['user']['patronymic'] : '';
@@ -106,7 +106,7 @@
             $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
             $productInfo = productModel::getProductById($productId);
 
-            //записываем цену одного товара для отправки при совершении заказа addOrder()
+            # Записываем цену одного товара для отправки при совершении заказа addOrder()
             $_SESSION['productId'] = $productId;
 
             # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
@@ -115,7 +115,7 @@
             }
             
             // print "Просмотр Товара. ID: " . $productId . "<br>";
-            // var_dump($productInfo);
+            // var_dump($productInfo)
 
             require_once VIEWS . "productView.php";
         }
@@ -174,7 +174,7 @@
                     $errors[] = "Почтовый индекс слишком длинный";
                 }
                 if(!preg_match("/^\d{6}$/", $_POST['postal-code'])){
-                    $errors[] = "Почтовый индекс должен содержать только цифры";
+                    $errors[] = "Почтовый индекс должен состоять из 6 цифр";
                 }
                 
                 //TODO: сделать нормальную проверку телефона
@@ -216,7 +216,8 @@
                                 $_POST['postal-code']
                             );
                         }
-                        productModel::ordering($productId, 
+                        productModel::makeAnOrder(
+                            $productId, 
                             $_POST['name'], 
                             $_POST["surname"], 
                             $_POST['patronymic'],  
@@ -229,14 +230,17 @@
                         productModel::updateProductQuantity($productId, $totalQuantity, $quantity);
                         header('Location: ' . $_SERVER['HTTP_REFERER']);
                     }
-                } else {
-                    echo '<div style="color: red;">' . array_shift($errors) . '</div>';
-                    var_dump($errors);
+                } 
+                else 
+                {
+                    // Сохраняем сообщения об ошибках в сессии и возвращаем пользователя обратно на страницу заказа
+                    $_SESSION['order-errors'] = $errors;
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
             }
             else
             {
-                
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
             }
         }
     } 

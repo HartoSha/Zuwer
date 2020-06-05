@@ -43,6 +43,8 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
         
       </div>
     <?php endfor;?>
+    <?php else: ?>
+      <h1 style="color: white; font-size: 25px;">Здесь ничего нет ＼(º □ º l|l)/ <br> <span style="font-size: 16px; font-weight: 200;"> <a href="/catalog/" style="color: white;">Закажите</a> что-нибудь. </span> </h1>
     <?php endif; ?>  
   </main>
 <?php

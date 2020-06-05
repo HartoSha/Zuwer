@@ -1,6 +1,5 @@
 <?php
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
-// var_dump($productInfo);
 ?>
 <main class="product-page">
     <div class="container">
@@ -18,10 +17,10 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                     </label>
                     <input type="checkbox" id="like-checkbox">
                     <label class="like-animation" for="like-checkbox">
-                        <span class="like <?php echo !userModel::userIsLoggedIn() ? 'toggle-modal-log-reg' : ''?>">
-                        <?php if(userModel::userIsLoggedIn()) : ?>
-                            <div class="like-active"></div>
-                        <?php endif; ?>
+                        <span class="like <?php echo !userModel::userIsLoggedIn() ? 'toggle-modal-log-reg' : '' ?>">
+                            <?php if (userModel::userIsLoggedIn()) : ?>
+                                <div class="like-active"></div>
+                            <?php endif; ?>
                         </span>
                     </label>
                 </div>
@@ -65,7 +64,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                         <span class="quantity">Количество: </span>
                         <input class="quantity__value entry" type="number" min="1" max="<?php echo $productInfo["quantity"]; ?>" value="1">
                     </div>
-                    <button class="buy <?php echo userModel::userIsLoggedIn() ? "toggle-modal-buy" : "toggle-modal-log-reg"  ; ?>">Купить</button>
+                    <button class="buy <?php echo userModel::userIsLoggedIn() ? "toggle-modal-buy" : "toggle-modal-log-reg"; ?>">Купить</button>
                 </form>
             </div>
             <div class="description-wrapper">
@@ -75,20 +74,27 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
         </div>
     </div>
 </main>
-<div class="purchase-modal purchase-modal_hidden">
+<div class="purchase-modal <?php echo isset($_SESSION["order-errors"]) && count($_SESSION["order-errors"]) ? "": "purchase-modal_hidden" ?>">
     <div class="background"></div>
     <section class="purchase-form-container">
         <h2 class="caption">Оформление заказа</h2>
         <form class="purchase-form-modal" method="POST" action=<?php echo userModel::userIsLoggedIn() ? "/catalog/addOrder/" : "#"; ?>>
             <div class="purchase-form-modal__inputs">
-                <input class="purchase-form-modal__name" name="name" type="text" placeholder="Имя" value=<?php echo $userName ?>>
-                <input class="purchase-form-modal__surname" name="surname" type="text" placeholder="Фамилия" value=<?php echo $userSurename ?>>
-                <input class="purchase-form-modal__patronymic" name="patronymic" type="text" placeholder="Отчество" value=<?php echo $userPatronymic ?>>
-                <input class="purchase-form-modal__text" name="city" type="text" placeholder="Город">
-                <input class="purchase-form-modal__street" name="street" type="text" placeholder="Улица">
-                <input class="purchase-form-modal__house" name="house" type="text" placeholder="Дом">
-                <input class="purchase-form-modal__postal-code" name="postal-code" type="text" placeholder="Почтовый индекс">
-                <input class="purchase-form-modal__phone" name="phone" type="text" placeholder="Телефон" value=<?php echo $userPhone ?>>
+                
+                <?php if (isset($_SESSION["order-errors"]) && count($_SESSION["order-errors"])) : ?>
+                    <ul class="modal-errors">
+                        <?php foreach ($_SESSION["order-errors"] as $error) echo '<li class="modal-error-text">' . array_shift($_SESSION["order-errors"]) . '</li>'; ?>
+                    </ul>
+                <?php endif; ?>
+                
+                <input class="purchase-form-modal__name" name="name" type="text" placeholder="Имя" required value=<?php echo $userName; ?>>
+                <input class="purchase-form-modal__surname" name="surname" type="text" placeholder="Фамилия" required value=<?php echo $userSurename ?>>
+                <input class="purchase-form-modal__patronymic" name="patronymic" type="text" placeholder="Отчество" required value=<?php echo $userPatronymic ?>>
+                <input class="purchase-form-modal__text" name="city" type="text" required placeholder="Город">
+                <input class="purchase-form-modal__street" name="street" type="text" required placeholder="Улица">
+                <input class="purchase-form-modal__house" name="house" type="text" required placeholder="Дом">
+                <input class="purchase-form-modal__postal-code" name="postal-code" type="text" required placeholder="Почтовый индекс">
+                <input class="purchase-form-modal__phone" name="phone" type="text" placeholder="Телефон" required value=<?php echo $userPhone ?>>
 
                 <div class="bottom-row">
                     <label class="purchase-form-modal__quantity-container">

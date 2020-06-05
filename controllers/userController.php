@@ -21,14 +21,14 @@ class userController
             $login = $_POST['user-name'];
             $userId = userModel::loginVerification($login);
 
-            if (!$userId) $errors[] = "Логин или пароль неверный";
+            if (!$userId) $errors[] = "Введен неверный логин или пароль";
             else{
                 $userPassword = userModel::getUserPassword($userId);
                 
                 //проверка пароля пользователя
-                if (!password_verify($_POST['user-psw'], $userPassword)) header('Location: /');
+                if (!password_verify($_POST['user-psw'], $userPassword)) $errors[] = "Введен неверный логин или пароль";
                 else {
-                    //если ошибок нет заносим уникальный id пользователя в сессию
+                    //если ошибок нет заносим пользователя в сессию
                     $_SESSION['user'] = userModel::getUserInfo($login, $userPassword);
                 }
             }
@@ -51,29 +51,23 @@ class userController
         && isset($_POST['reg-pass-again']) && isset($_POST['reg-telephone'])) 
         {
             $errors = array();
-            if($_POST['reg-name'] == '') {
-                $errors[] = "Введите имя";
-            }
-            elseif(mb_strlen($_POST['reg-name']) > 15){
-                $errors[] = "имя слишком длинное";
+            if(mb_strlen($_POST['reg-name']) > 15){
+                $errors[] = "Имя слишком длинное";
             }
 
-            if($_POST["reg-surname"] == '') {
-                $errors[] = "Введите Фамилию";
-            }
-            elseif(mb_strlen($_POST["reg-surname"]) > 20){
+            if(mb_strlen($_POST["reg-surname"]) > 20){
                 $errors[] = "Фамилия слишком длинная";
             }
 
-            if($_POST['reg-middlename'] == '') {
-                $errors[] = "Введите oтчество";
-            }
-            elseif(mb_strlen($_POST['reg-middlename']) > 20){
+            if(mb_strlen($_POST['reg-middlename']) > 20){
                 $errors[] = "Отчество слишком длинное";
             }
 
             if($_POST['reg-account-name'] == '') {
                 $errors[] = "Введите логин";
+            }
+            elseif(mb_strlen($_POST['reg-account-name']) < 3){
+                $errors[] = "Логин слишком короткий";
             }
             elseif(mb_strlen($_POST['reg-account-name']) > 30){
                 $errors[] = "Логин слишком длинный";
@@ -85,6 +79,9 @@ class userController
             if($_POST['reg-pass'] == '') {
                 $errors[] = "Введите пароль";
             }
+            elseif(mb_strlen($_POST['reg-pass']) < 5){
+                $errors[] = "Пароль слишком короткий";
+            }
             elseif(mb_strlen($_POST['reg-pass']) > 100){
                 $errors[] = "Пароль слишком длинный";
             }
@@ -93,13 +90,10 @@ class userController
             }
             
             //TODO: сделать нормальную проверку телефона
-            if($_POST['reg-telephone'] == ''){ 
-                $errors[] = "Введите телефон";
-            }
-            elseif(mb_strlen($_POST['reg-telephone']) > 11) {
+            if(mb_strlen($_POST['reg-telephone']) > 11) {
                 $errors[] = "Телефон слишком длинный";
             }
-            elseif(mb_strlen($_POST['reg-telephone']) < 11) {
+            if($_POST['reg-telephone'] && mb_strlen($_POST['reg-telephone']) < 11) {
                 $errors[] = "Телефон слишком короткий";
             }
 
@@ -112,8 +106,6 @@ class userController
                     $_POST['reg-middlename'],
                     $_POST['reg-telephone']
                 );
-                
-                
                 $login = $_POST['reg-account-name'];
                 $userId = userModel::loginVerification($login);
                 $userPassword = userModel::getUserPassword($userId);
@@ -125,8 +117,6 @@ class userController
             }
             // var_dump($errors);
             header('Location: ' . $_SERVER['HTTP_REFERER']);
-
-           
         }
         else {
             header('Location: /' );
@@ -147,10 +137,14 @@ class userController
         {
             $userId = $_SESSION['user']["id_user"];
             $ordersInfo = userModel::ordersInfo($userId);
-            foreach ($ordersInfo as $order)
+            if($ordersInfo)
             {
-                $ordersName[] = userModel::getProductById($order["id_product"]);
+                foreach ($ordersInfo as $order)
+                {
+                    $ordersName[] = userModel::getProductById($order["id_product"]);
+                }
             }
+            
             require_once(VIEWS . "myordersView.php");
         }
         else header('Location: /');

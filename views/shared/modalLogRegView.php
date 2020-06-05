@@ -27,8 +27,8 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
           </ul>
         <?php endif; ?>
         <form action="/user/login" method="POST" class="modal-login">
-          <input type="text" placeholder="Введите логин" name="user-name" />
-          <input type="password" placeholder="Введите пароль" name="user-psw" />
+          <input type="text" placeholder="Введите логин" required name="user-name" />
+          <input type="password" placeholder="Введите пароль" required name="user-psw" />
           <button class="login"><span class="btn-text">Войти</span></button>
         </form>
       </div>
@@ -45,9 +45,9 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
           <input type="text" placeholder="Имя" class="registration-field" name="reg-name" />
           <input type="text" placeholder="Фамилия" class="registration-field" name="reg-surname" />
           <input type="text" placeholder="Отчество" class="registration-field" name="reg-middlename" />
-          <input type="text" placeholder="Логин" class="registration-field" name="reg-account-name" />
-          <input type="password" placeholder="Пароль" class="registration-field" name="reg-pass" />
-          <input type="password" placeholder="Пароль повторно" class="registration-field" name="reg-pass-again" />
+          <input type="text" placeholder="Логин" required class="registration-field" name="reg-account-name" />
+          <input type="password" placeholder="Пароль" required class="registration-field" name="reg-pass" />
+          <input type="password" placeholder="Пароль повторно" required class="registration-field" name="reg-pass-again" />
           <input type="text" placeholder="Телефон" class="registration-field" name="reg-telephone" />
           <button class="registration">
             <span class="btn-text">Зарегистрироваться</span>

@@ -34,7 +34,7 @@
             return $result;
         }
 
-        public static function ordering($productId, $name, $surname, $patronymic, $adressId, $phone, $quantity, $userId, $totalPrice)
+        public static function makeAnOrder($productId, $name, $surname, $patronymic, $adressId, $phone, $quantity, $userId, $totalPrice)
         {   
             self::query("SET @p0='" . $productId . "'");
             self::query("SET @p1='" . $userId . "'");
