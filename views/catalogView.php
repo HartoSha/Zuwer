@@ -7,9 +7,9 @@
             <aside class="catalog-page__filter">
                 <form action="../../catalog" method="POST">
                     <section class="filter-criteria filter-criteria_accordion filter-criteria_range">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['priceMin']) || isset($_COOKIE['priceMax']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Цена, $<span class="filter-criteria__accordion-icon"></span></h3>
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров(выбранные фильтры будут активны,filter-criteria__accordion-checkbox активирован). -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['priceMin']) || isset($_COOKIE['priceMax']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['priceMin']) || isset($_COOKIE['priceMax']) ? print('style="color:#cdb67c"'):""?>>Цена, $<span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
@@ -27,9 +27,9 @@
                         </label>
                     </section>
                     <section class="filter-criteria filter-criteria_accordion filter-criteria_range">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['priceMax']) || isset($_COOKIE['weightMin']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Вес, г<span class="filter-criteria__accordion-icon"></span></h3>
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['weightMin']) || isset($_COOKIE['weightMax']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['priceMax']) || isset($_COOKIE['weightMin']) ? print('style="color:#cdb67c"'):""?>>Вес, г<span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
@@ -47,18 +47,13 @@
                         </label>
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrManufacturer']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Производители <span class="filter-criteria__accordion-icon"></span></h3>
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['arrManufacturer']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrManufacturer']) ? print('style="color:#cdb67c"'):""?>>Производители <span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                             <?php foreach ($ProductManufacturers as $ProductManufacturer): ?>
                                 <label class="filter-criteria__option">
-                                    <span class="filter-criteria__option-caption" <?php 
-                                    #выделение выбранных товаров
-                                    if (isset($_COOKIE['arrManufacturer']))for($i=0;$i<count( unserialize($_COOKIE['arrManufacturer']));$i++){
-                                        if($ProductManufacturer['id_manufacturer']==unserialize($_COOKIE['arrManufacturer'])[$i])print('style="color:#cdb67c"');
-                                    }
-                                    ?>><?php print($ProductManufacturer['manufacturerName'])?></span>
+                                    <span class="filter-criteria__option-caption"><?php print($ProductManufacturer['manufacturerName'])?></span>
                                     <input type="checkbox" name="filterManufacturer[]" value="<?php print($ProductManufacturer['id_manufacturer'])?>"
                                     <?php 
                                     #выделение выбранных товаров
@@ -72,20 +67,13 @@
                         </label>
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrMaterial']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Материал <span class="filter-criteria__accordion-icon"></span></h3>
-                            <div class="filter-criteria__content">
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['arrMaterial']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3  class="filter-criteria__caption" <?php isset($_COOKIE['arrMaterial']) ? print('style="color:#cdb67c"'):""?>>Материал <span class="filter-criteria__accordion-icon"></span></h3>
+                            <div  class="filter-criteria__content">
                             <?php foreach ($ProductMaterials as $ProductMaterial): ?> 
-                                <label class="filter-criteria__option">
-                                    <span class="filter-criteria__option-caption"
-                                    <?php 
-                                    #выделение выбранных товаров
-                                    if (isset($_COOKIE['arrMaterial']))for($i=0;$i<count( unserialize($_COOKIE['arrMaterial']));$i++){
-                                        if($ProductMaterial['id_material']==unserialize($_COOKIE['arrMaterial'])[$i])print('style="color:#cdb67c"');
-                                    }
-                                    ?>
-                                    ><?php print($ProductMaterial['materialName'])?></span>
+                                <label class="filter-criteria__option" >
+                                    <span class="filter-criteria__option-caption"><?php print($ProductMaterial['materialName'])?></span>
                                     <input type="checkbox" name="filterMaterial[]" value="<?php print($ProductMaterial['id_material'])?>"
                                     <?php 
                                     #выделение выбранных товаров
@@ -99,20 +87,13 @@
                         </label>
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrInkColor']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Цвет<span class="filter-criteria__accordion-icon"></span></h3>
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['arrInkColor']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrInkColor']) ? print('style="color:#cdb67c"'):""?>>Цвет<span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                             <?php foreach ($ProductInkColors as $ProductInkColor): ?> 
                                 <label class="filter-criteria__option">
-                                    <span class="filter-criteria__option-caption"
-                                    <?php 
-                                    #выделение выбранных товаров
-                                    if (isset($_COOKIE['arrInkColor']))for($i=0;$i<count( unserialize($_COOKIE['arrInkColor']));$i++){
-                                        if($ProductInkColor['id_inkColor']==unserialize($_COOKIE['arrInkColor'])[$i])print('style="color:#cdb67c"');
-                                    }
-                                    ?>
-                                    ><?php print($ProductInkColor['colorName'])?></span>
+                                    <span class="filter-criteria__option-caption"><?php print($ProductInkColor['colorName'])?></span>
                                     <input type="checkbox" name="filterColor[]" value="<?php print($ProductInkColor['id_inkColor'])?>"
                                     <?php 
                                     #выделение выбранных товаров
@@ -127,18 +108,13 @@
                         </label>
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrType']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Тип<span class="filter-criteria__accordion-icon"></span></h3>
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['arrType']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrType']) ? print('style="color:#cdb67c"'):""?>>Тип<span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                             <?php foreach ($ProductTypes as $ProductType): ?> 
                                 <label class="filter-criteria__option">
-                                    <span  class="filter-criteria__option-caption" <?php 
-                                    #выделение выбранных товаров
-                                    if (isset($_COOKIE['arrType']))for($i=0;$i<count( unserialize($_COOKIE['arrType']));$i++){
-                                        if($ProductType['id_type']==unserialize($_COOKIE['arrType'])[$i])print('style="color:#cdb67c"');
-                                    }
-                                    ?> ><?php print($ProductType['typeName'])?> </span>
+                                    <span  class="filter-criteria__option-caption"><?php print($ProductType['typeName'])?> </span>
                                     <input  type="checkbox" name="filterType[]" value="<?php print($ProductType['id_type']) ?>"
                                     <?php 
                                     #выделение выбранных товаров
@@ -153,20 +129,13 @@
                         </label>
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrTipThickness']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Толщина пиш. части, мм<span class="filter-criteria__accordion-icon"></span></h3>
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['arrTipThickness']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['arrTipThickness']) ? print('style="color:#cdb67c"'):""?>>Толщина пиш. части, мм<span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                             <?php foreach ($ProductsTipThickness as $ProductTipThickness): ?> 
                                 <label class="filter-criteria__option">
-                                    <span class="filter-criteria__option-caption"
-                                    <?php 
-                                    #выделение выбранных товаров
-                                    if (isset($_COOKIE['arrTipThickness']))for($i=0;$i<count( unserialize($_COOKIE['arrTipThickness']));$i++){
-                                        if($ProductTipThickness['tipThickness']==unserialize($_COOKIE['arrTipThickness'])[$i])print('style="color:#cdb67c"');
-                                    }
-                                    ?>
-                                    ><?php print($ProductTipThickness['tipThickness'])?></span>
+                                    <span class="filter-criteria__option-caption"><?php print($ProductTipThickness['tipThickness'])?></span>
                                     <input type="checkbox" name="filterTipThickness[]" value="<?php print($ProductTipThickness['tipThickness'])?>"
                                     <?php 
                                     #выделение выбранных товаров
@@ -180,9 +149,9 @@
                         </label>
                     </section>
                     <section class="filter-criteria filter-criteria_accordion">
-                        <label class="filter-criteria__accordion-click-wrapper">
-                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['Status']) ? print('style="color:#cdb67c"'): print('style="color:white"');?>>Показывать только новинки<span class="filter-criteria__accordion-icon"></span></h3>
+                        <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['Status']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['Status']) ? print('style="color:#cdb67c"'):""?>>Показывать только новинки<span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption" <?php if(isset($_COOKIE['Status'])==1)print('style="color:#cdb67c"') ?>>Да</span>
