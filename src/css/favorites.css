@@ -150,6 +150,10 @@ body {
   .item-price{
     font-size: 14px;
   }
+  .item__image {
+    width: 75px;
+    height: 75px;
+  }
   .btn-text{
     font-size: 16px;
   }
