@@ -12,14 +12,14 @@ body {
 }
 
 .my-orders .orders-container {
-  width: calc(100% - 40px);
-  margin: 0 20px;
   max-width: 769px;
+  width: 100%;
 }
 
 .my-orders .order-item {
   font-family: "Caviar Dreams";
-  margin: 10px 0;
+  margin: 0 20px;
+  margin-top: 20px;
   transition: 0.3s;
 }
 

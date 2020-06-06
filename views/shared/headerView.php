@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/modal-login-register.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/footer.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/my-orders.css"/>
+        <link rel="stylesheet" type="text/css" href="../../src/css/favorites.css"/>
         <title>Zuwer</title>
     </head>
     <body>
@@ -41,7 +42,8 @@
                 <a href = "/" class="logo">
                     <img class="logoimg" src="../../src/assets/img/shared/icons/logo.svg"></img> 
                 </a>
-                <nav class = "headernav"> 
+                <nav class = "headernav">
+                    
                     <ul class="navlink">    
                         <!-- TODO: Добавить отображение текущей страницы -->
                         <li class="navlink-item"><a href="/"><span>Главная</span></a></li>
@@ -61,6 +63,7 @@
                                 ?>
                             </span>
                             <ul class = "dropdown-menu">
+                                <!-- TODO: Починить высоту кликабильной части кнопок -->
                                 <li class="dropdown-menu-item">
                                     <a class = "dropdown-menu-link" href="/user/myorders/">
                                         <div class="icon-wrapper">
@@ -70,7 +73,7 @@
                                     </a>
                                 </li>
                                 <li class="dropdown-menu-item">
-                                    <a class = "dropdown-menu-link" href="#">
+                                    <a class = "dropdown-menu-link" href="/user/myfavorites/">
                                         <div class="icon-wrapper">
                                             <span class="favorites-icon"></span>
                                         </div>
