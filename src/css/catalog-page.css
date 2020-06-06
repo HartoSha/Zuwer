@@ -57,7 +57,7 @@ body {
     grid-row: 1 / 3;
     grid-column: 1 / 4;
 }
-.plus-orders{
+.catalog-page .plus-orders{
     cursor: pointer;
     font-size: 16px;
     width:100%;
@@ -68,7 +68,7 @@ body {
     border-radius: 10px;
     margin-bottom:20px;
 }
-.plus-orders:hover {
+.catalog-page .plus-orders:hover {
     border: none;
     color: #212121;
     background-color: #cdb67c;
@@ -456,14 +456,12 @@ body {
 
 @media screen and (max-width: 769px) {
     /* tablet 769px - 481px */
-    .plus-orders{
-        grid-column:1 / 10;
-    }
+    
     .catalog-page {
         padding-right: 20px;
         padding-left: 20px;
     }
-    
+
     .catalog-page .content-grid {
         grid-template-columns: repeat(9, 1fr);
         column-gap: 10px;
@@ -530,7 +528,7 @@ body {
         column-gap: 20px;
         grid-template-columns: repeat(6, 1fr);
     }
-    .plus-orders{
+    .catalog-page .plus-orders{
         width:calc(100% - 40px);
         margin:0 20px;
         margin-bottom: 20px;
