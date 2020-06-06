@@ -146,6 +146,8 @@ class userController
     {
         if(userModel::userIsLoggedIn())
         {
+            $userId = $_SESSION['user']["id_user"];
+            $favorites = userModel::getMyFavorites($userId);
             require_once(VIEWS . "favoritesView.php");
         }
         else header('Location: /');

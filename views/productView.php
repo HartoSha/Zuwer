@@ -9,16 +9,18 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
             </div>
             <div class="product">
                 <div class="product-img-container">
-                    <label class="product-img-wrapper <?php echo !userModel::userIsLoggedIn() ? 'toggle-modal-log-reg' : '' ?>" for="like-checkbox">
+                    <label class="product-img-wrapper <?php echo !$userIsLoggedIn ? 'toggle-modal-log-reg' : '' ?>" for="like-checkbox">
                         <?php
                         $img = base64_encode($productInfo["picture"]);
                         echo "<img class=\"product-img\" src=\"data:image/jpeg; base64,$img\" alt=\"product image\" >";
                         ?>
                     </label>
-                    <input type="checkbox" id="like-checkbox">
+                    <?php if ($userIsLoggedIn) : ?>
+                        <input type="checkbox" id="like-checkbox" <?php echo $isFavorite ? "checked" : "" ?> >
+                    <?php endif; ?>
                     <label class="like-animation" for="like-checkbox">
-                        <span class="like <?php echo !userModel::userIsLoggedIn() ? 'toggle-modal-log-reg' : '' ?>">
-                            <?php if (userModel::userIsLoggedIn()) : ?>
+                        <span class="like <?php echo !$userIsLoggedIn ? 'toggle-modal-log-reg' : '' ?>">
+                            <?php if ($userIsLoggedIn) : ?>
                                 <div class="like-active"></div>
                             <?php endif; ?>
                         </span>
@@ -64,7 +66,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                         <span class="quantity">Количество: </span>
                         <input class="quantity__value entry" type="number" min="1" max="<?php echo $productInfo["quantity"]; ?>" value="1">
                     </div>
-                    <button class="buy <?php echo userModel::userIsLoggedIn() ? "toggle-modal-buy" : "toggle-modal-log-reg"; ?>">Купить</button>
+                    <button class="buy <?php echo $userIsLoggedIn ? "toggle-modal-buy" : "toggle-modal-log-reg"; ?>">Купить</button>
                 </form>
             </div>
             <div class="description-wrapper">
@@ -78,7 +80,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
     <div class="background"></div>
     <section class="purchase-form-container">
         <h2 class="caption">Оформление заказа</h2>
-        <form class="purchase-form-modal" method="POST" action=<?php echo userModel::userIsLoggedIn() ? "/catalog/addOrder/" : "#"; ?>>
+        <form class="purchase-form-modal" method="POST" action=<?php echo $userIsLoggedIn ? "/catalog/addOrder/" : "#"; ?>>
             <div class="purchase-form-modal__inputs">
                 
                 <?php if (isset($_SESSION["order-errors"]) && count($_SESSION["order-errors"])) : ?>
@@ -114,5 +116,6 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
 </div>
 <script src="../../src/js/purchase-modal.js"></script>
 <script src="../../src/js/priceToQuantityLinker.js"></script>
+<script src="../../src/js/switch-favorite-product.js"></script>
 <?php
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");

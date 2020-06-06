@@ -18,8 +18,7 @@ body {
 
 .my-orders .order-item {
   font-family: "Caviar Dreams";
-  margin: 0 20px;
-  margin-top: 20px;
+  margin: 20px;
   transition: 0.3s;
 }
 

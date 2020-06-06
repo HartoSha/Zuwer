@@ -1,5 +1,6 @@
 <?php
 require_once(ROOT. "models". DIRECTORY_SEPARATOR . "baseModel.php");
+require_once(ROOT. "models". DIRECTORY_SEPARATOR . "catalog" . DIRECTORY_SEPARATOR . "productModel.php");
 
 class userModel extends baseModel
 {
@@ -57,26 +58,25 @@ class userModel extends baseModel
         {
             foreach ($orders as $i => $order)
             {
-                $orders[$i]["product-name"] = self::getProductById($order["id_product"]);
+                $orders[$i]["product-name"] = productModel::getProductById($order["id_product"])["title"];
             }
             return $orders;
         }
         # Если полученный результат - один заказ (просто ассициоативный массив)
         elseif($orders)
         {
-            $orders["product-name"] = self::getProductById($orders["id_product"]);
+            $orders["product-name"] = productModel::getProductById($orders["id_product"])["title"];
             # Оборачиваем результат(1 заказ) в дополнительный массив для корректной работы цикла for в myordersView.php
             return array($orders);
         }
         return false;
     }
-
-    private static function getProductById($productId) 
+    public static function getMyFavorites($userId) 
     {
-        $query = "CALL selectProduct(".$productId.");";
-        $ProductInfo = self::query($query);
-
-        $result = $ProductInfo["title"];
-        return $result;
+        $favorites = self::query("CALL selectElectProducts($userId)");
+        if(!$favorites) return false;
+        # Оборачиваем результат в доп массив, если он один (т.е. если он вернулся в виде ассициотаивного массива и у него нет элемента с индексом 0)
+        if(!isset($favorites[0])) $favorites = array($favorites);
+        return $favorites;
     }
 }

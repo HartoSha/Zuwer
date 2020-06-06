@@ -2,9 +2,10 @@
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
 ?>
     <main class="my-orders">
+    <div class="orders-container">
     <?php if($orders && isset($orders) && !empty($orders)):?>
     <?php for($i = 0; $i < count($orders); $i++):?>
-      <div class="orders-container">
+      
           <article class="order-item">
           <a class="" href="/catalog/product/<?php echo $orders[$i]["id_product"]?>">
             <div class="order-item-img">
@@ -40,11 +41,12 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
           </a>
         </article>
         
-      </div>
+
     <?php endfor;?>
     <?php else: ?>
       <h1 style="color: white; font-size: 25px;">Здесь ничего нет ＼(º □ º l|l)/ <br> <span style="font-size: 16px; font-weight: 200;"> <a href="/catalog/" style="color: white;">Закажите</a> что-нибудь. </span> </h1>
     <?php endif; ?>  
+    </div>
   </main>
 <?php
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");
