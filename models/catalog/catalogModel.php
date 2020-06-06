@@ -52,7 +52,8 @@
             #Количество страниц
             $resultPage = ceil(($result['quantityProducts']) /6); 
             
-            return $resultPage;
+            if(isset($resultPage) && $resultPage!=0)return $resultPage;
+            else return 1;
         }
         public static function getPriceWeightProducts() 
         {
