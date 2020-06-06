@@ -4,6 +4,19 @@
     class catalogModel extends baseModel
     {
         private const DEFAULT_QUANTITY = 6; # Изначально продукты отображаются по 6 на странице
+        Private static function getSortOrder() 
+        {
+            if(isset($_COOKIE["sortOrder"])){
+                if($_COOKIE["sortOrder"]=="descendingPrice")$reset = "`products`.`Price` DESC";
+                elseif($_COOKIE["sortOrder"]=="ascendingPrice")$reset = "`products`.`Price`";
+                elseif($_COOKIE["sortOrder"]=="descendingWeight")$reset = "`products`.`weight` DESC";
+                elseif($_COOKIE["sortOrder"]=="ascendingWeight")$reset = "`products`.`weight`";
+            }
+            else $reset = "`products`.`id_product`";
+
+            return $reset;
+             
+        }
         public static function getProducts($page,$PriceMin,$PriceMax,$weightMin ,$weightMax, $resultTipThickness="",$resultStatus="IN (0,1)",$resultId_inkColor="", $resultId_material="",$resultId_manufacturer="",$resultId_type="") 
         {
             $PriceMin--;
@@ -16,7 +29,7 @@
             WHERE `products`.`price` BETWEEN '.$PriceMin.' AND '.$PriceMax.' AND `products`.`weight`  BETWEEN '.$weightMin.' AND '.$weightMax.' AND
             `products`.`tipThickness` '.$resultTipThickness.' AND `products`.`status` '.$resultStatus.' AND `products`.`id_inkColor` '.$resultId_inkColor.' AND
             `products`.`id_material` '.$resultId_material.' AND `products`.`id_manufacturer` '.$resultId_manufacturer.' AND `products`.`id_type`'.$resultId_type.' AND 
-            `products`.`quantity` <> 0  ORDER BY  `products`.`id_product` 
+            `products`.`quantity` <> 0  ORDER BY  '.self::getSortOrder().'
             LIMIT ' . self::DEFAULT_QUANTITY . " OFFSET " . $offset;
 
             $result = self::query($query);
@@ -76,7 +89,7 @@
             return self::query($query);
              
         }
-        public static function createAndDeleteCookie($filterName,$cookieName) 
+        Private static function createAndDeleteCookie($filterName,$cookieName) 
         {   
             #Удаление cookie
             if(isset($_COOKIE[$cookieName]) && isset($_POST["button"]))setcookie($cookieName,'',time()-3600,"/");
@@ -128,6 +141,34 @@
             $result = isset($_COOKIE[$cookieName]) ?  "IN(1)" : "IN (0,1)";
             
             return $result;
+        }
+        public static function manipulationCookie() 
+        {   
+            self::createAndDeleteCookie("filterPriceMin","priceMin");
+            self::createAndDeleteCookie("filterPriceMax","priceMax");
+            self::createAndDeleteCookie("filterWeightMin","weightMin");
+            self::createAndDeleteCookie("filterWeightMax","weightMax");
+            self::createAndDeleteCookie("filterManufacturer","arrManufacturer");
+            self::createAndDeleteCookie("filterMaterial","arrMaterial");
+            self::createAndDeleteCookie("filterColor","arrInkColor");
+            self::createAndDeleteCookie("filterType","arrType");
+            self::createAndDeleteCookie("filterTipThickness","arrTipThickness");
+            self::createAndDeleteCookie("filterNewProduct","Status");
+            self::createAndDeleteCookie("sortOrder","sortOrder");
+        }
+        public static function resetCookie() 
+        {   
+            setcookie('priceMin','',time()-3600,'/');
+            setcookie('priceMax','',time()-3600,'/');
+            setcookie('weightMin','',time()-3600,'/');
+            setcookie('weightMax','',time()-3600,'/');
+            setcookie('arrManufacturer','',time()-3600,'/');
+            setcookie('arrMaterial','',time()-3600,'/');
+            setcookie('arrInkColor','',time()-3600,'/');
+            setcookie('arrType','',time()-3600,'/');
+            setcookie('arrTipThickness','',time()-3600,'/');
+            setcookie('Status','',time()-3600,'/');
+            setcookie('sortOrder','',time()-3600,'/');
         }
 
     }

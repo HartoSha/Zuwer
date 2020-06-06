@@ -17,6 +17,14 @@ class catalogController # Контроллер каталога
         #Возвращает данные о минимальной и максимальной цене, весе
         $PriceWeightProducts = catalogModel::getPriceWeightProducts();
 
+        #Cброс фильтров
+        if(isset($_POST["reset"])){
+            catalogModel::resetCookie();
+            #Переадресация для cookie
+            header('Location: ../../catalog');
+            var_dump("");
+        }
+
         if (!isset($_POST["button"]) && !isset($_COOKIE['priceMin'])) {
             $products = catalogModel::getProducts($page, $PriceWeightProducts['priceMin'], $PriceWeightProducts['priceMax'], $PriceWeightProducts['weightMin'], $PriceWeightProducts['weightMax']);
             # Если не получили информацию о товарах, отправляем пользователя на страницу каталога
@@ -31,7 +39,7 @@ class catalogController # Контроллер каталога
 
         #Возвращает список данных о производителях товара
         $ProductManufacturers = catalogModel::getProductManufacturers();
-
+            
         #Возвращает список данных о материалах товара
         $ProductMaterials = catalogModel::getProductMaterial();
 
@@ -45,23 +53,14 @@ class catalogController # Контроллер каталога
         $ProductsTipThickness = catalogModel::getProductsTipThickness();
 
         #Применение фильтров
-        if (isset($_POST["button"]) || isset($_COOKIE['priceMin'])) {
+        if(isset($_POST["button"]) || isset($_COOKIE['priceMin'])){
 
             #создать и удалить cookie
-            catalogModel::createAndDeleteCookie("filterPriceMin", "priceMin");
-            catalogModel::createAndDeleteCookie("filterPriceMax", "priceMax");
-            catalogModel::createAndDeleteCookie("filterWeightMin", "weightMin");
-            catalogModel::createAndDeleteCookie("filterWeightMax", "weightMax");
-            catalogModel::createAndDeleteCookie("filterManufacturer", "arrManufacturer");
-            catalogModel::createAndDeleteCookie("filterMaterial", "arrMaterial");
-            catalogModel::createAndDeleteCookie("filterColor", "arrInkColor");
-            catalogModel::createAndDeleteCookie("filterType", "arrType");
-            catalogModel::createAndDeleteCookie("filterTipThickness", "arrTipThickness");
-            catalogModel::createAndDeleteCookie("filterNewProduct", "Status");
+            catalogModel::manipulationCookie();
 
             #Переадресация для cookie
-            if (isset($_POST["button"])) header('Location: ../../catalog');
-
+            if(isset($_POST["button"]))header('Location: ../../catalog');
+            
             #Заполнение переменных для фильтрации(number)
             $PriceMin = catalogModel::fillingVariablesForFiltering("priceMin");
             $PriceMax = catalogModel::fillingVariablesForFiltering("priceMax");
@@ -77,10 +76,10 @@ class catalogController # Контроллер каталога
             $resultStatus = catalogModel::fillingInResultStatusVariableForFiltering("Status");
 
             #Возвращает количество товаров, попадающих под критерии поиска, их характеристики
-            $QuantityPage = catalogModel::getQuantityProducts($PriceMin, $PriceMax, $weightMin, $weightMax, $resultTipThickness, $resultStatus, $resultId_inkColor, $resultId_material, $resultId_manufacturer, $resultId_type);
-
+            $QuantityPage = catalogModel::getQuantityProducts($PriceMin,$PriceMax,$weightMin,$weightMax,$resultTipThickness,$resultStatus,$resultId_inkColor,$resultId_material,$resultId_manufacturer,$resultId_type);
+            
             #Возвращает список товаров, попадающих под критерии поиска, их характеристики
-            $products = catalogModel::getProducts($page, $PriceMin, $PriceMax, $weightMin, $weightMax, $resultTipThickness, $resultStatus, $resultId_inkColor, $resultId_material, $resultId_manufacturer, $resultId_type);
+            $products = catalogModel::getProducts($page,$PriceMin,$PriceMax,$weightMin,$weightMax,$resultTipThickness,$resultStatus,$resultId_inkColor,$resultId_material,$resultId_manufacturer,$resultId_type);
         }
         require_once VIEWS . "catalogView.php";
     }
@@ -122,7 +121,7 @@ class catalogController # Контроллер каталога
             } elseif (mb_strlen($_POST['name']) > 15) {
                 $errors[] = "имя слишком длинное";
             }
-
+                        
             if ($_POST["surname"] == '') {
                 $errors[] = "Введите Фамилию";
             } elseif (mb_strlen($_POST["surname"]) > 20) {
