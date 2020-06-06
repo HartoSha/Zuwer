@@ -95,6 +95,17 @@ body {
     order: 2;
     padding-left: 5px;
 }
+.filter-criteria__option-section, p{
+    padding-left: 5px;
+}
+.filter-criteria__option-section{
+    font-size: 18px;
+    padding-left:0;
+
+}
+.filter-criteria__option-section, input{
+    width: 8px;
+}
 
 
 /* Только для критерия диапазона */

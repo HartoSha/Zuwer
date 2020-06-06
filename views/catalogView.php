@@ -160,6 +160,34 @@
                             </div>
                         </label>
                     </section>
+
+                    <section class="filter-criteria filter-criteria_accordion">
+                        <label class="filter-criteria__accordion-click-wrapper" style="font-size: 13px;"><!-- Визуальное отображение выбранных фильтров -->
+                            <input class="filter-criteria__accordion-checkbox" type="checkbox"> <!-- accordion на css, чтобы не загружать js -->
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['sortOrder']) ? print('style="color:#cdb67c"'):""?>>Порядок сортировки<span class="filter-criteria__accordion-icon"></span></h3>
+                            <div class="filter-criteria__content">
+                            <p class="filter-criteria__option-section">Цена</p>
+                                <label class="filter-criteria__option">
+                                    <span  class="filter-criteria__option-caption"> </span>
+                                        <input  type="radio" name="sortOrder" value="descendingPrice" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="descendingPrice")print('checked="checked"')?>><p>По убыванию</p>
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span  class="filter-criteria__option-caption"> </span>
+                                        <input  type="radio" name="sortOrder" value="ascendingPrice" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="ascendingPrice")print('checked="checked"')?>><p>По возрастанию</p>
+                                </label>
+                            
+                            <p class="filter-criteria__option-section">Вес</p>
+                                <label class="filter-criteria__option">
+                                    <span  class="filter-criteria__option-caption"> </span>
+                                        <input type="radio" name="sortOrder" value="descendingWeight" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="descendingWeight")print('checked="checked"')?>><p>По убыванию</p>
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <span  class="filter-criteria__option-caption"> </span>
+                                        <input  type="radio" name="sortOrder" value="ascendingWeight" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="ascendingWeight")print('checked="checked"')?>><p>По возрастанию</p>
+                                </label>
+                            </div>
+                        </label>
+                    </section>
                     
                     <button class="catalog-page__btn-submit" name="button">Применить</button>
                     <button class="catalog-page__btn-reset" name="reset"  <?php if(!isset($_COOKIE['priceMin']))print('style="display: none;"');?>>Cбросить</button>
