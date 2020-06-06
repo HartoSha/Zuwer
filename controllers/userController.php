@@ -136,15 +136,8 @@ class userController
         if(userModel::userIsLoggedIn())
         {
             $userId = $_SESSION['user']["id_user"];
-            $ordersInfo = userModel::ordersInfo($userId);
-            if($ordersInfo)
-            {
-                foreach ($ordersInfo as $order)
-                {
-                    $ordersName[] = userModel::getProductById($order["id_product"]);
-                }
-            }
-            
+            $orders = userModel::getMyOrders($userId);
+
             require_once(VIEWS . "myordersView.php");
         }
         else header('Location: /');

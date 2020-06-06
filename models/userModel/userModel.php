@@ -47,23 +47,31 @@ class userModel extends baseModel
         return boolval($_SESSION && isset($_SESSION['user']));
     }
 
-    public static function ordersCount($userId)
+    public static function getMyOrders($userId)
     {
         self::query("SET @p0='" . $userId . "'");
-        $result = self::query('CALL insertUser(@p0)');
+        $orders = self::query('CALL selectOrders(@p0)');
 
-        return $result;
+        # Если полученный результат - массив с массивами
+        if(isset($orders[0]))
+        {
+            foreach ($orders as $i => $order)
+            {
+                $orders[$i]["product-name"] = self::getProductById($order["id_product"]);
+            }
+            return $orders;
+        }
+        # Если полученный результат - один заказ (просто ассициоативный массив)
+        elseif($orders)
+        {
+            $orders["product-name"] = self::getProductById($orders["id_product"]);
+            # Оборачиваем результат(1 заказ) в дополнительный массив для корректной работы цикла for в myordersView.php
+            return array($orders);
+        }
+        return false;
     }
 
-    public static function ordersInfo($userId)
-    {
-        self::query("SET @p0='" . $userId . "'");
-        $result = self::query('CALL selectOrders(@p0)');
-
-        return $result;
-    }
-
-    public static function getProductById($productId) 
+    private static function getProductById($productId) 
     {
         $query = "CALL selectProduct(".$productId.");";
         $ProductInfo = self::query($query);
