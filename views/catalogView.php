@@ -202,7 +202,7 @@
                 
                 <!-- pagination расположен в items-container для удобного прикрепления его к последней строке item'ов -->
 
-                <nav class="catalog-page__pagination pagination" <?php if(!is_array($product))print('style="display: none;"'); ?>> 
+                <nav class="catalog-page__pagination pagination" <?php if(!is_array($product) || $QuantityPage==1)print('style="display: none;"'); ?>> 
                     <a class="pagination__page pagination__page_back" <?php if($QuantityPage==1 || $page==1)print('style="display: none;"');?>
                     href="../../catalog/page/<?php print($page-1)?>">
                         <span class="pagination__back-icon"><</span>

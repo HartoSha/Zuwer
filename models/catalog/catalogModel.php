@@ -76,7 +76,7 @@
             return self::query($query);
              
         }
-        public static function createAndDeleteCookie($filterName,$cookieName) 
+        Private static function createAndDeleteCookie($filterName,$cookieName) 
         {   
             #Удаление cookie
             if(isset($_COOKIE[$cookieName]) && isset($_POST["button"]))setcookie($cookieName,'',time()-3600,"/");
@@ -128,6 +128,19 @@
             $result = isset($_COOKIE[$cookieName]) ?  "IN(1)" : "IN (0,1)";
             
             return $result;
+        }
+        public static function manipulationCookie() 
+        {   
+            self::createAndDeleteCookie("filterPriceMin","priceMin");
+            self::createAndDeleteCookie("filterPriceMax","priceMax");
+            self::createAndDeleteCookie("filterWeightMin","weightMin");
+            self::createAndDeleteCookie("filterWeightMax","weightMax");
+            self::createAndDeleteCookie("filterManufacturer","arrManufacturer");
+            self::createAndDeleteCookie("filterMaterial","arrMaterial");
+            self::createAndDeleteCookie("filterColor","arrInkColor");
+            self::createAndDeleteCookie("filterType","arrType");
+            self::createAndDeleteCookie("filterTipThickness","arrTipThickness");
+            self::createAndDeleteCookie("filterNewProduct","Status");
         }
         public static function resetCookie() 
         {   

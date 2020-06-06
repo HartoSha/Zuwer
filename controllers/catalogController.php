@@ -55,16 +55,7 @@
             if(isset($_POST["button"]) || isset($_COOKIE['priceMin'])){
 
                 #создать и удалить cookie
-                catalogModel::createAndDeleteCookie("filterPriceMin","priceMin");
-                catalogModel::createAndDeleteCookie("filterPriceMax","priceMax");
-                catalogModel::createAndDeleteCookie("filterWeightMin","weightMin");
-                catalogModel::createAndDeleteCookie("filterWeightMax","weightMax");
-                catalogModel::createAndDeleteCookie("filterManufacturer","arrManufacturer");
-                catalogModel::createAndDeleteCookie("filterMaterial","arrMaterial");
-                catalogModel::createAndDeleteCookie("filterColor","arrInkColor");
-                catalogModel::createAndDeleteCookie("filterType","arrType");
-                catalogModel::createAndDeleteCookie("filterTipThickness","arrTipThickness");
-                catalogModel::createAndDeleteCookie("filterNewProduct","Status");
+                catalogModel::manipulationCookie();
 
                 #Переадресация для cookie
                 if(isset($_POST["button"]))header('Location: ../../catalog');
