@@ -129,5 +129,18 @@
             
             return $result;
         }
+        public static function resetCookie() 
+        {   
+            setcookie('priceMin','',time()-3600,'/');
+            setcookie('priceMax','',time()-3600,'/');
+            setcookie('weightMin','',time()-3600,'/');
+            setcookie('weightMax','',time()-3600,'/');
+            setcookie('arrManufacturer','',time()-3600,'/');
+            setcookie('arrMaterial','',time()-3600,'/');
+            setcookie('arrInkColor','',time()-3600,'/');
+            setcookie('arrType','',time()-3600,'/');
+            setcookie('arrTipThickness','',time()-3600,'/');
+            setcookie('Status','',time()-3600,'/');
+        }
 
     }

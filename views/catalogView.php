@@ -162,6 +162,8 @@
                     </section>
                     
                     <button class="catalog-page__btn-submit" name="button">Применить</button>
+                    <button class="catalog-page__btn-reset" name="reset"  <?php if(!isset($_COOKIE['priceMin']))print('style="display: none;"');?>>Cбросить</button>
+
                 </form>
             </aside>
             <section class="catalog-page__items-container">

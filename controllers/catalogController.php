@@ -16,7 +16,15 @@
             #Возвращает данные о минимальной и максимальной цене, весе
             $PriceWeightProducts = catalogModel::getPriceWeightProducts();
 
-            if(!isset($_POST["button"]) && !isset($_COOKIE['priceMin'])){
+            #Cброс фильтров
+            if(isset($_POST["reset"])){
+                catalogModel::resetCookie();
+                #Переадресация для cookie
+                header('Location: ../../catalog');
+                var_dump("");
+            }
+
+            if(!isset($_POST["button"]) && !isset($_COOKIE['priceMin']) ){
                 $products = catalogModel::getProducts($page,$PriceWeightProducts['priceMin'],$PriceWeightProducts['priceMax'],$PriceWeightProducts['weightMin'],$PriceWeightProducts['weightMax']);
                 # Если не получили информацию о товарах, отправляем пользователя на страницу каталога
                 

@@ -281,6 +281,24 @@ body {
     color: #212121;
     background-color: #cdb67c;
 }
+.catalog-page__btn-reset {
+    cursor: pointer;
+    font-size: 18px;
+    width: 130px;
+    height: 40px;
+    color: #ff6666;
+    border: 1px solid #ff6666;
+    background-color: #212121;
+    border-radius: 20px;
+    align-self: center;
+    margin: 10px 0 10px 0;
+}
+
+.catalog-page__btn-reset:hover {
+    border: none;
+    color: #212121;
+    background-color: #ff6666;
+}
 
 
 /* sidebar ends */
