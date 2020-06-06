@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/product-edit.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" herf="">
+    <title>Zuwer</title>
+</head>
+
+<body>
+    <main class="product-page">
+
+        <div class="container">
+            <form class="main-container" action="123.php" method="POST">
+                <div class="product">
+                    <label class="product-img-container">
+                        <div class="product-img-wrapper">
+                            <input type="file" id="file-input">
+                            <img class="camera-icon" src="../assets/img/product-edit/camera.svg" alt="product-img">
+                            <span class="photo">Загрузите фото</span>
+                        </div>
+                    </label>
+                    
+                    <div class="characteristics">
+                        <table>
+                        <tr>
+                            <td><span>Название:</span></td>
+                            <td><input class="entry-field"type="text">
+                                <datalist id="product-name">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Вес:</span></td>
+                            <td><input class="entry-field"type="text">
+                            <datalist id="product-weight">
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                                <option value=""></option>
+                            </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Тип:</span></td>
+                            <td><input class="entry-field"type="text">
+                                <datalist id="product-type">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Цвет:</span></td>
+                            <td><input class="entry-field"type="text">
+                                <datalist id="product-color">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Материал:</span></td>
+                            <td><input class="entry-field"type="text">
+                                <datalist id="product-material">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Толщина пишущей части:</span></td>
+                            <td><input class="entry-field"type="text">
+                                <datalist id="product-tip-thickness">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span>Производитель:</span></td>
+                            <td><input class="entry-field"type="text">
+                                <datalist id="product-manufacturer">
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                    <option value=""></option>
+                                </datalist>
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td><span>Количество:</span></td>
+                            <td><input class="entry-field"type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><span>Цена:</span></td>
+                            <td><input class="entry-field"type="text"></td>
+                        </tr>
+                        </table>
+                        <label>
+                            <div class="new">
+                                <span>Является ли товар новинкой:</span>
+                                <input class="new-checkbox" type="checkbox" size="40">
+                            </div>
+                        </label>
+                    </div>
+                    
+                </div>
+                <div class="description-wrapper">
+                    <span class="description-edit">Редактировать описание:</span>
+                    <textarea class="description-content"></textarea>
+                </div>
+                    <div class="delete-save-wrapper">
+                        <div class="delete-form-and-save" action="purchase.php"></form>
+                            <button class="delete">Удалить</button>
+                            <button class="save">Сохранить</button>
+                        </div>
+                    </div>
+
+                
+            </form>
+        </div>
+
+    </main>
+</body>
+
+</html>
