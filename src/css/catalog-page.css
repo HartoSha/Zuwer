@@ -1,23 +1,7 @@
-/* Fonts */
-
-@font-face {
-    src: url("../fonts/CaviarDreams.ttf");
-    font-family: 'Caviar Dreams', sans-serif;
-}
-
-@font-face {
-    src: url("../fonts/VeraCrouz.ttf");
-    font-family: 'Vera Crouz', serif;
-}
-
-
-/* Fonts */
-
 * {
     padding: 0;
     margin: 0;
 }
-
 
 /* Catalog page */
 

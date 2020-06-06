@@ -1,9 +1,8 @@
 <?php
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
 ?>
-<!-- Отображаем модальное окно сразу, если были ошибки в регистрации или авторизации -->
 <div class="modal-log-reg 
-  <?php
+  <?php # Отображаем модальное окно сразу, если были ошибки в регистрации или авторизации
     echo (isset($_SESSION["registration-errors"]) && count($_SESSION["registration-errors"])
         ||isset($_SESSION["login-errors"]) && count($_SESSION["login-errors"]) ) ? "" : "invisible";
   ?>
@@ -35,12 +34,13 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
     </section>
     <section class="form-container reg-container">
       <div class="form-registration">
-        <!-- Выводим ошибки регистрации, если они есть -->
         <?php if (isset($_SESSION["registration-errors"]) && count($_SESSION["registration-errors"])) : ?>
+          <!-- Выводим ошибки регистрации, если они есть -->
           <ul class="modal-errors">
             <?php foreach ($_SESSION["registration-errors"] as $error) echo '<li class="modal-error-text">' . array_shift($_SESSION["registration-errors"]) . '</li>'; ?>
           </ul>
         <?php endif; ?>
+        <!-- TODO: Добавить отображение полей логин, и пароль как обязательных и наоборот. -->
         <form action="/user/register" method="POST" class="modal-reg">
           <input type="text" placeholder="Имя" class="registration-field" name="reg-name" />
           <input type="text" placeholder="Фамилия" class="registration-field" name="reg-surname" />

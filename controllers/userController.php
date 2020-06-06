@@ -142,4 +142,12 @@ class userController
         }
         else header('Location: /');
     }
+    public function myfavorites() 
+    {
+        if(userModel::userIsLoggedIn())
+        {
+            require_once(VIEWS . "favoritesView.php");
+        }
+        else header('Location: /');
+    }
 }

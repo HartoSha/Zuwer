@@ -181,49 +181,35 @@
                 if (empty($errors)) {
                     if(!empty($_SESSION))
                     {
-                        //
-                        $userId = $_SESSION['user']["id_user"];
-                        $productInfo = productModel::getProductById($_SESSION["productId"]);
-                        $productId = $_SESSION["productId"];
-                        $totalQuantity = $productInfo["quantity"];
-                        $quantity = $_POST['order-product-quantity'];
-                        $productPrice = $productInfo["price"] * $quantity;
-
-                        //проверяем существует ли такой адрес в бд иначе создаем его
-                        $adressId = productModel::adressCheck(
-                            $_POST['city'], 
-                            $_POST['street'], 
-                            $_POST['house'], 
-                            $_POST['postal-code']
-                        );
-
-                        if(!$adressId)
+                        try
                         {
-                            $adressId = productModel::createDeliveryAddress(
+                            productModel::tryMakeAnOrder(
+                                $_SESSION["productId"], 
+                                $_SESSION['user']["id_user"],
+                                $_POST['name'], 
+                                $_POST["surname"], 
+                                $_POST['patronymic'],
                                 $_POST['city'], 
                                 $_POST['street'], 
                                 $_POST['house'], 
-                                $_POST['postal-code']
+                                $_POST['postal-code'],
+                                $_POST['phone'],
+                                $_POST['order-product-quantity']
                             );
                         }
-                        productModel::makeAnOrder(
-                            $productId, 
-                            $_POST['name'], 
-                            $_POST["surname"], 
-                            $_POST['patronymic'],  
-                            $adressId["id_deliveryAddress"], 
-                            $_POST['phone'],
-                            $quantity,
-                            $userId,
-                            $productPrice   
-                        );
-                        productModel::updateProductQuantity($productId, $totalQuantity, $quantity);
+                        catch (Exception $e) 
+                        {
+                            # Если произошла серверная ошибка при заказе (например, заказано продукта больше, чем его на складе), сохраняем их в сессии
+                            $_SESSION['order-errors'] = array();
+                            $_SESSION['order-errors'][] = $e->getMessage();
+                        }
+
                         header('Location: ' . $_SERVER['HTTP_REFERER']);
                     }
                 } 
                 else 
                 {
-                    // Сохраняем сообщения об ошибках в сессии и возвращаем пользователя обратно на страницу заказа
+                    # Сохраняем сообщения об ошибках в сессии и возвращаем пользователя обратно на страницу заказа
                     $_SESSION['order-errors'] = $errors;
                     header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }

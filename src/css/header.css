@@ -6,6 +6,20 @@ body {
     min-height: 100vh;
 }
 
+/* Fonts */
+
+@font-face {
+    src: url("../fonts/CaviarDreams.ttf");
+    font-family: 'Caviar Dreams', sans-serif;
+}
+
+@font-face {
+    src: url("../fonts/VeraCrouz.ttf");
+    font-family: 'Vera Crouz', serif;
+}
+
+/* Fonts */
+
 /* header */
 
 .header{

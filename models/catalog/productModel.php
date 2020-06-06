@@ -9,7 +9,7 @@
             return self::query($query);
         }
 
-        public static function adressCheck($city, $street, $house, $postalCode)
+        private static function adressCheck($city, $street, $house, $postalCode)
         {
             self::query("SET @p0='" . $city . "'");
             self::query("SET @p1='" . $street . "'");
@@ -20,7 +20,7 @@
             return $result;
         }
 
-        public static function createDeliveryAddress($city, $street, $house, $postalCode)
+        private static function createDeliveryAddress($city, $street, $house, $postalCode)
         {
             self::query("SET @p0='" . $city . "'");
             self::query("SET @p1='" . $street . "'");
@@ -34,27 +34,56 @@
             return $result;
         }
 
-        public static function makeAnOrder($productId, $name, $surname, $patronymic, $adressId, $phone, $quantity, $userId, $totalPrice)
-        {   
-            self::query("SET @p0='" . $productId . "'");
-            self::query("SET @p1='" . $userId . "'");
-            self::query("SET @p2='" . $quantity . "'");
-            self::query("SET @p3='" . $totalPrice . "'");
-            self::query("SET @p4='" . $name . "'");
-            self::query("SET @p5='" . $surname . "'");
-            self::query("SET @p6='" . $patronymic . "'");
-            self::query("SET @p7='" . $phone . "'");
-            self::query("SET @p8='" . $adressId . "'");
-
-            $result = self::query('CALL insertOrder(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)');
-        }
-
-        public static function updateProductQuantity($productId, $quantity, $sales)
+        private static function updateProductQuantity($productId, $quantityBecome)
         {
             self::query("SET @p0='" . $productId . "'");
-            self::query("SET @p1='" . $quantity . "'");
-            self::query("SET @p2='" . $sales . "'");
-
-            $result = self::query('CALL updateProductQuantity(@p0,@p1,@p2)');
+            self::query("SET @p1='" . $quantityBecome . "'");
+            self::query('CALL updateProductQuantity(@p0,@p1)');
         }
+
+        public static function tryMakeAnOrder($productId, $userId, $name, $surname, $patronymic, $city, $street, $house, $postalCode, $phone, $quantity)
+        {
+            if($quantity) {
+                $product = self::getProductById($productId);
+                $inStockQuantity = $product["quantity"];
+
+                if($inStockQuantity) 
+                {
+                    //проверяем существует ли такой адрес в бд иначе создаем его
+                    $adressId = self::adressCheck($city, $street, $house, $postalCode)["id_deliveryAddress"];
+                    if(!$adressId)
+                    {
+                        $adressId = productModel::createDeliveryAddress($city, $street, $house, $postalCode)["id_deliveryAddress"];
+                    }
+
+                    # Если покупается количество продукта больше, чем его на скаладе
+                    if($inStockQuantity - $quantity >= 0) 
+                    {
+                        // var_dump($adressId);
+                        $productPrice = $product["price"];
+                        $totalPrice = $quantity * $productPrice;
+                        self::query("SET @p0='" . $productId . "'");
+                        self::query("SET @p1='" . $userId . "'");
+                        self::query("SET @p2='" . $quantity . "'");
+                        self::query("SET @p3='" . $totalPrice . "'");
+                        self::query("SET @p4='" . $name . "'");
+                        self::query("SET @p5='" . $surname . "'");
+                        self::query("SET @p6='" . $patronymic . "'");
+                        self::query("SET @p7='" . $phone . "'");
+                        self::query("SET @p8='" . $adressId . "'");
+                        self::query('CALL insertOrder(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)');
+                        self::updateProductQuantity($productId, $inStockQuantity - $quantity);
+                    }
+                    else {
+                        throw new Exception("You can't purchase ".$quantity." of the product. There is only ".$quantity." left in the stock");
+                    }      
+                }
+                else {
+                    throw new Exception("Product is out of stock");
+                }
+            }
+            else {
+                throw new Exception("Quantity must be positive");
+            }
+        }      
     }

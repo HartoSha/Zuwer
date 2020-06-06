@@ -9,7 +9,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
             </div>
             <div class="product">
                 <div class="product-img-container">
-                    <label class="product-img-wrapper" for="like-checkbox">
+                    <label class="product-img-wrapper <?php echo !userModel::userIsLoggedIn() ? 'toggle-modal-log-reg' : '' ?>" for="like-checkbox">
                         <?php
                         $img = base64_encode($productInfo["picture"]);
                         echo "<img class=\"product-img\" src=\"data:image/jpeg; base64,$img\" alt=\"product image\" >";
