@@ -87,23 +87,30 @@
         }
         public function product($params) # Просмотр одного товара
         {
-            # Получаем данные пользователя если он есть (используем в productView.php)
-            $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
-            $userSurename = (!empty($_SESSION['user']['surname'])) ? $_SESSION['user']['surname'] : '';
-            $userPatronymic = (!empty($_SESSION['user']['patronymic'])) ? $_SESSION['user']['patronymic'] : '';
-            $userPhone = (!empty($_SESSION['user']['telephone'])) ? $_SESSION['user']['telephone'] : '';
             # Если id продукта не указан в запросе или не число, то считаем его равным 0 (следовательно продукт с id = 0 не будет найден и выполнится перенаправление на ../../catalog)
             $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
             $productInfo = productModel::getProductById($productId);
-
-            # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
+            
+            $isAdmin = false;
+            $userName = '';
+            $userPatronymic = '';
+            $userPhone = '';
+            $userSurename = '';
             if(userModel::userIsLoggedIn())
             {
-                if($_SESSION['user']['status'])
+                $isAdmin = $_SESSION['user']['status'];
+
+                if(!$isAdmin)
                 {
-                    require_once VIEWS . "productadminView.php";
+                    # Получаем данные пользователя если он есть (используем в productView.php)
+                    $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
+                    $userSurename = (!empty($_SESSION['user']['surname'])) ? $_SESSION['user']['surname'] : '';
+                    $userPatronymic = (!empty($_SESSION['user']['patronymic'])) ? $_SESSION['user']['patronymic'] : '';
+                    $userPhone = (!empty($_SESSION['user']['telephone'])) ? $_SESSION['user']['telephone'] : '';
                 }
             }
+
+            # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
             if($productInfo == NULL) {
                 header('Location: ../../catalog');
             }

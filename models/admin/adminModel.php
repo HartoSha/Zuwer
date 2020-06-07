@@ -1,8 +1,12 @@
 <?php 
-    require_once(ROOT. "models". DIRECTORY_SEPARATOR . "baseModel.php");
+    require_once(ROOT. "models". DIRECTORY_SEPARATOR . "userModel". DIRECTORY_SEPARATOR . "userModel.php");
 
-    class adminModel extends baseModel
+    class adminModel extends userModel
     {
+        public static function isAdmin() {
+            return boolval(self::userIsLoggedIn() && isset($_SESSION['user']['status']));
+        }
+
         private static function getIdProductInkColor($productColor)
         {
             // получаем id цвета если существует то сразу возвращаем его
@@ -117,15 +121,26 @@
             return $result;
         }
 
-        public static function saveProductChanges($productId, $productTitle, $productDescription, $productPrice, $productWeight, $productQuantity, $productTipThickness, $fileDir, $status, $productColor, $productMaterial, $productManufacturer, $typeId, $basePicture) 
+        public static function encodeImg($imgPath)
+        {
+            if (is_uploaded_file($imgPath))
+            {
+                $picture = addslashes(file_get_contents($imgPath));
+                var_dump($picture);
+                if($picture) return $picture;
+            }
+            return false;
+        }
+
+        public static function saveProductChanges($productId, $productTitle, $productDescription, $productPrice, $productWeight, $productQuantity, $productTipThickness, $encodedImg, $status, $productColor, $productMaterial, $productManufacturer, $typeId) 
         {
             $productIdInkColor = self::getIdProductInkColor($productColor);
             $productIdMaterial = self::getIdProductMaterial($productMaterial);
             $productIdManufacturer = self::checkProductManufecturer($productManufacturer);
             $productIdType = self::checkProductType($typeId);
-            if(!$fileDir) $picture = $basePicture;
-            else $picture = addslashes(file_get_contents($fileDir));
-            var_dump($picture);
+            // if(!$fileDir) $picture = $basePicture;
+            // else $picture = addslashes(file_get_contents($fileDir));
+            // var_dump($encodedImg);
 
             self::query("SET @p0='" . $productId . "'");
             self::query("SET @p1='" . $productTitle . "'");
@@ -134,7 +149,7 @@
             self::query("SET @p4='" . $productWeight . "'");
             self::query("SET @p5='" . $productQuantity . "'");
             self::query("SET @p6='" . $productTipThickness . "'");
-            self::query("SET @p7='" . $picture . "'");
+            self::query("SET @p7='" . $encodedImg . "'");
             self::query("SET @p8='" . $status . "'");
             self::query("SET @p9='" . $productIdInkColor . "'");
             self::query("SET @p10='" . $productIdMaterial . "'");

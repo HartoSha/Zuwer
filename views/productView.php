@@ -60,13 +60,17 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                 </div>
             </div>
             <div class="price-wrapper">
-                <form class="purchase-form">
+                <form class="purchase-form" method="POST">
+                    <?php if(!$isAdmin):?>
                     <span class="price">Цена: <output class="price__value"><?php echo $productInfo["price"]; ?></output> $</span>
                     <div class="quantity-wrapper">
                         <span class="quantity">Количество: </span>
                         <input class="quantity__value entry" type="number" min="1" max="<?php echo $productInfo["quantity"]; ?>" value="1">
                     </div>
                     <button class="buy <?php echo userModel::userIsLoggedIn() ? "toggle-modal-buy" : "toggle-modal-log-reg"; ?>">Купить</button>
+                    <?php else :?>
+                    <button class="change" formaction="/admin/editPage/<?php echo $productInfo["id_product"] ?>">Изменить</button>
+                    <?php endif;?>
                 </form>
             </div>
             <div class="description-wrapper">
