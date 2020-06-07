@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/modal-login-register.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/footer.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/my-orders.css">
+        <link rel="stylesheet" type="text/css" href="../../src/css/product-edit.css">
         <title>Zuwer</title>
     </head>
     <body>

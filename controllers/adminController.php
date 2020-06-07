@@ -19,6 +19,7 @@
                 $productTypes = catalogModel::getProductType();
                 $productColors = catalogModel::getProductInkColor();
                 $tipThiknesses = catalogModel::getProductsTipThickness();
+
                 require_once(VIEWS . "producteditView.php");
             }
             else header('Location: /');
