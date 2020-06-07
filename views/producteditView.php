@@ -16,11 +16,14 @@
             <label class="product-img-container">
                 <div class="product-img-wrapper">
                     <input type="file" id="file-input" name="photo" style="display: none;">
-                    <!-- <img class="camera-icon" src="/../src/assets/img/product-edit/camera.svg" alt="product-img"> -->
-                    <?php
+                    <?php if(!$productInfo["picture"]) :?>
+                    <img class="camera-icon" src="/../src/assets/img/product-edit/camera.svg" alt="product-img">
+                    <?php 
                         $img = base64_encode($productInfo["picture"]);
                         echo "<img class=\"product-img\" src=\"data:image/jpeg; base64,$img\" alt=\"product image\" >";
+                        else:
                     ?>
+                    <?php endif;?>
                     <span class="photo">Загрузите фото</span>
                 </div>
             </label>
@@ -29,12 +32,12 @@
                 <table>
                 <tr>
                     <td><span>Название:</span></td>
-                    <td><input class="entry-field" type="text"  required name="productName" value="<?php echo $productInfo['title']; ?>">
+                    <td><input class="entry-field" type="text"  required name="productName" value="<?php if(isset($productInfo)) echo $productInfo['title']; ?>">
                     </td>
                 </tr>
                 <tr>
                     <td><span>Вес:</span></td>
-                    <td><input class="entry-field" type="text"  required name="productWeight" value="<?php echo $productInfo["weight"]; ?>">
+                    <td><input class="entry-field" type="text"  required name="productWeight" value="<?php if(isset($productInfo)) echo $productInfo["weight"]; ?>">
                     </td>
                 </tr>
                 <tr>
@@ -47,7 +50,7 @@
                 </tr>
                 <tr>
                     <td><span>Цвет:</span></td>
-                    <td><input list="product-color" class="entry-field" required type="text" name="productColor" value="<?php echo $productInfo["colorName"]; ?>">
+                    <td><input list="product-color" class="entry-field" required type="text" name="productColor" value="<?php if(isset($productInfo)) echo $productInfo["colorName"]; ?>">
                         <datalist id="product-color">
                             <?php foreach ($productColors as $key => $value):?>
                                 <option value="<?php echo $value["colorName"] ?>"><?php echo $value["colorName"] ?></option>
@@ -57,17 +60,17 @@
                 </tr>
                 <tr>
                     <td><span>Материал:</span></td>
-                    <td><input list="product-material" required class="entry-field" type="text" name="productMaterial" value="<?php echo $productInfo["materialName"]; ?>">
+                    <td><input list="product-material" required class="entry-field" type="text" name="productMaterial" value="<?php if(isset($productInfo)) echo $productInfo["materialName"]; ?>">
                         <datalist id="product-material">
                         <?php foreach ($productMaterials as $key => $value):?>
-                                <option value="<?php echo $value["materialName"] ?>"><?php echo $value["materialName"] ?></option>
+                                <option value="<?php echo $value["materialName"] ?>"><?php if(isset($productInfo)) echo $value["materialName"] ?></option>
                             <?php endforeach; ?>
                         </datalist>
                     </td>
                 </tr>
                 <tr>
                     <td><span>Толщина пишущей части:</span></td>
-                    <td><input list="product-tip-thickness" required class="entry-field" type="text" name="productTipThickness" value="<?php echo $productInfo["tipThickness"]; ?>">
+                    <td><input list="product-tip-thickness" required class="entry-field" type="text" name="productTipThickness" value="<?php if(isset($productInfo)) echo $productInfo["tipThickness"]; ?>">
                         <datalist id="product-tip-thickness">
                             <?php foreach ($tipThiknesses as $key => $value):?>
                                 <option value="<?php echo $value["tipThickness"] ?>"><?php echo $value["tipThickness"] ?></option>
@@ -79,24 +82,24 @@
                     <td><span>Производитель:</span></td>
                     <td><select class="entry-field" required name="manufacturerName" value="<?php echo $productInfo["manufacturerName"]; ?>">
                         <?php foreach ($productManufacturers as $key => $value):?>
-                            <option value="<?php echo $value["manufacturerName"]?>" <?php echo $productInfo["manufacturerName"] == $value["manufacturerName"] ? "selected" : ""  ?>><?php echo $value["manufacturerName"] ?></option>
+                            <option value="<?php echo $value["manufacturerName"]?>" <?php if(isset($productInfo)) echo $productInfo["manufacturerName"] == $value["manufacturerName"] ? "selected" : ""  ?>><?php echo $value["manufacturerName"] ?></option>
                         <?php endforeach; ?>
                     </td>
                    
                 </tr>
                 <tr>
                     <td><span>Количество:</span></td>
-                    <td><input class="entry-field" require type="text" name="productQuantity" value="<?php if(isset($productInfo))echo $productInfo["quantity"]; ?>"></td>
+                    <td><input class="entry-field" require type="text" name="productQuantity" value="<?php if(isset($productInfo)) echo $productInfo["quantity"]; ?>"></td>
                 </tr>
                 <tr>
                     <td><span>Цена:</span></td>
-                    <td><input class="entry-field" require type="text" name="productPrice" value="<?php if(isset($productInfo))echo $productInfo["price"]; ?>"></td>
+                    <td><input class="entry-field" require type="text" name="productPrice" value="<?php if(isset($productInfo)) echo $productInfo["price"]; ?>"></td>
                 </tr>
                 </table>
                 <label>
                     <div class="new">
                         <span>Является ли товар новинкой:</span>
-                        <input class="new-checkbox" type="checkbox" size="40" name="checkbox" <?php echo $productInfo["status"] ? "checked" : "" ?>>
+                        <input class="new-checkbox" type="checkbox" size="40" name="checkbox" <?php if(isset($productInfo)) echo $productInfo["status"] ? "checked" : "" ?>>
                     </div>
                 </label>
             </div>
@@ -104,7 +107,7 @@
         </div>
         <div class="description-wrapper">
             <span class="description-edit">Редактировать описание:</span>
-            <textarea class="description-content" require name="textarea"><?php if(isset($productInfo))echo $productInfo["description"]; ?></textarea>
+            <textarea class="description-content" require name="textarea"><?php if(isset($productInfo)) echo $productInfo["description"]; ?></textarea>
         </div>
         <div class="delete-save-wrapper">
             <div class="delete-form-and-save">
