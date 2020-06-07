@@ -3,7 +3,7 @@
 
     class adminModel extends userModel
     {
-        public static function isAdmin() {
+        public static function userIsAdmin() {
             return boolval(self::userIsLoggedIn() && isset($_SESSION['user']['status']));
         }
 
@@ -126,13 +126,20 @@
             if (is_uploaded_file($imgPath))
             {
                 $picture = addslashes(file_get_contents($imgPath));
-                var_dump($picture);
+                // var_dump($picture);
                 if($picture) return $picture;
             }
             return false;
         }
 
-        public static function saveProductChanges($productId, $productTitle, $productDescription, $productPrice, $productWeight, $productQuantity, $productTipThickness, $encodedImg, $status, $productColor, $productMaterial, $productManufacturer, $typeId) 
+        public static function changeProductImage($productId, $newImage) 
+        {
+            self::query("SET @p0='$productId'");
+            self::query("SET @p1='$newImage'");
+            self::query('CALL updateProductImage(@p0, @p1)');
+        }
+
+        public static function changeProductDescription($productId, $productTitle, $productDescription, $productPrice, $productWeight, $productQuantity, $productTipThickness, $status, $productColor, $productMaterial, $productManufacturer, $typeId) 
         {
             $productIdInkColor = self::getIdProductInkColor($productColor);
             $productIdMaterial = self::getIdProductMaterial($productMaterial);
@@ -140,6 +147,7 @@
             $productIdType = self::checkProductType($typeId);
             // if(!$fileDir) $picture = $basePicture;
             // else $picture = addslashes(file_get_contents($fileDir));
+            // var_dump($encodedImg);
             // var_dump($encodedImg);
 
             self::query("SET @p0='" . $productId . "'");
@@ -149,14 +157,13 @@
             self::query("SET @p4='" . $productWeight . "'");
             self::query("SET @p5='" . $productQuantity . "'");
             self::query("SET @p6='" . $productTipThickness . "'");
-            self::query("SET @p7='" . $encodedImg . "'");
-            self::query("SET @p8='" . $status . "'");
-            self::query("SET @p9='" . $productIdInkColor . "'");
-            self::query("SET @p10='" . $productIdMaterial . "'");
-            self::query("SET @p11='" . $productIdManufacturer . "'");
-            self::query("SET @p12='" . $productIdType . "'");
+            self::query("SET @p7='" . $status . "'");
+            self::query("SET @p8='" . $productIdInkColor . "'");
+            self::query("SET @p9='" . $productIdMaterial . "'");
+            self::query("SET @p10='" . $productIdManufacturer . "'");
+            self::query("SET @p11='" . $productIdType . "'");
 
-            self::query('CALL updateProduct(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12)');
+            self::query('CALL updateProductDescription(@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11)');
         }
 
         public static function deleteProduct($productId)

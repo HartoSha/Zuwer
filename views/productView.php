@@ -69,7 +69,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                     </div>
                     <button class="buy <?php echo userModel::userIsLoggedIn() ? "toggle-modal-buy" : "toggle-modal-log-reg"; ?>">Купить</button>
                     <?php else :?>
-                    <button class="change" formaction="/admin/editPage/<?php echo $productInfo["id_product"] ?>">Изменить</button>
+                    <button class="change" formaction="/admin/editingPage/<?php echo $productInfo["id_product"] ?>">Изменить</button>
                     <?php endif;?>
                 </form>
             </div>

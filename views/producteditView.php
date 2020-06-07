@@ -16,7 +16,11 @@
             <label class="product-img-container">
                 <div class="product-img-wrapper">
                     <input type="file" id="file-input" name="photo" style="display: none;">
-                    <img class="camera-icon" src="/../src/assets/img/product-edit/camera.svg" alt="product-img">
+                    <!-- <img class="camera-icon" src="/../src/assets/img/product-edit/camera.svg" alt="product-img"> -->
+                    <?php
+                        $img = base64_encode($productInfo["picture"]);
+                        echo "<img class=\"product-img\" src=\"data:image/jpeg; base64,$img\" alt=\"product image\" >";
+                    ?>
                     <span class="photo">Загрузите фото</span>
                 </div>
             </label>
@@ -25,77 +29,58 @@
                 <table>
                 <tr>
                     <td><span>Название:</span></td>
-                    <td><input class="entry-field" require type="text" name="productName" value="<?php if(isset($productInfo))echo $productInfo['title']; ?>">
-                        <datalist id="product-name">
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </datalist>
+                    <td><input class="entry-field" type="text"  required name="productName" value="<?php echo $productInfo['title']; ?>">
                     </td>
                 </tr>
                 <tr>
                     <td><span>Вес:</span></td>
-                    <td><input class="entry-field" require type="text" name="productWeight" value="<?php if(isset($productInfo))echo $productInfo["weight"]; ?>">
-                    <datalist id="product-weight">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </datalist>
+                    <td><input class="entry-field" type="text"  required name="productWeight" value="<?php echo $productInfo["weight"]; ?>">
                     </td>
                 </tr>
                 <tr>
                     <td><span>Тип:</span></td>
-                    <td><input class="entry-field" require type="text" name="productType" value="<?php if(isset($productInfo))echo $productInfo["typeName"]; ?>">
-                        <datalist id="product-type">
+                    <td><select class="entry-field" required name="productType" value="<?php if(isset($productInfo))echo $productInfo["typeName"]; ?>">
                         <?php foreach ($productTypes as $key => $value):?>
-                            <option value="<?php echo $value["typeName"] ?>"></option>
+                            <option value="<?php echo $value["typeName"]; ?>" <?php echo $productInfo["typeName"] == $value["typeName"] ? "selected" : ""  ?>><?php echo $value["typeName"] ?></option>
                         <?php endforeach; ?>
-                        </datalist>
                     </td>
                 </tr>
                 <tr>
                     <td><span>Цвет:</span></td>
-                    <td><input class="entry-field" require type="text" name="productColor" value="<?php if(isset($productInfo))echo $productInfo["colorName"]; ?>">
+                    <td><input list="product-color" class="entry-field" required type="text" name="productColor" value="<?php echo $productInfo["colorName"]; ?>">
                         <datalist id="product-color">
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
+                            <?php foreach ($productColors as $key => $value):?>
+                                <option value="<?php echo $value["colorName"] ?>"><?php echo $value["colorName"] ?></option>
+                            <?php endforeach; ?>
                         </datalist>
                     </td>
                 </tr>
                 <tr>
                     <td><span>Материал:</span></td>
-                    <td><input class="entry-field" require type="text" name="productMaterial" value="<?php if(isset($productInfo))echo $productInfo["materialName"]; ?>">
+                    <td><input list="product-material" required class="entry-field" type="text" name="productMaterial" value="<?php echo $productInfo["materialName"]; ?>">
                         <datalist id="product-material">
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
+                        <?php foreach ($productMaterials as $key => $value):?>
+                                <option value="<?php echo $value["materialName"] ?>"><?php echo $value["materialName"] ?></option>
+                            <?php endforeach; ?>
                         </datalist>
                     </td>
                 </tr>
                 <tr>
                     <td><span>Толщина пишущей части:</span></td>
-                    <td><input class="entry-field" require type="text" name="productTipThickness" value="<?php if(isset($productInfo))echo $productInfo["tipThickness"]; ?>">
+                    <td><input list="product-tip-thickness" required class="entry-field" type="text" name="productTipThickness" value="<?php echo $productInfo["tipThickness"]; ?>">
                         <datalist id="product-tip-thickness">
-                            <option value="23"></option>
-                            <option value="32"></option>
-                            <option value="12"></option>
-                            <option value="21"></option>
+                            <?php foreach ($tipThiknesses as $key => $value):?>
+                                <option value="<?php echo $value["tipThickness"] ?>"><?php echo $value["tipThickness"] ?></option>
+                            <?php endforeach; ?>
                         </datalist>
                     </td>
                 </tr>
                 <tr>
                     <td><span>Производитель:</span></td>
-                    <td><input class="entry-field" require type="text" name="manufacturerName" value="<?php if(isset($productInfo))echo $productInfo["manufacturerName"]; ?>">
-                        <datalist id="product-manufacturer">
+                    <td><select class="entry-field" required name="manufacturerName" value="<?php echo $productInfo["manufacturerName"]; ?>">
                         <?php foreach ($productManufacturers as $key => $value):?>
-                            <option value="<?php echo $value["manufacturerName"] ?>">
+                            <option value="<?php echo $value["manufacturerName"]?>" <?php echo $productInfo["manufacturerName"] == $value["manufacturerName"] ? "selected" : ""  ?>><?php echo $value["manufacturerName"] ?></option>
                         <?php endforeach; ?>
-                        </datalist>
                     </td>
                    
                 </tr>
@@ -111,7 +96,7 @@
                 <label>
                     <div class="new">
                         <span>Является ли товар новинкой:</span>
-                        <input class="new-checkbox" type="checkbox" size="40" name="checkbox" value="yes">
+                        <input class="new-checkbox" type="checkbox" size="40" name="checkbox" <?php echo $productInfo["status"] ? "checked" : "" ?>>
                     </div>
                 </label>
             </div>
