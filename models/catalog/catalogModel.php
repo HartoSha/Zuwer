@@ -41,6 +41,9 @@
         }
         public static function getQuantityProducts($PriceMin,$PriceMax,$weightMin ,$weightMax, $resultTipThickness="",$resultStatus="IN (0,1)",$resultId_inkColor="", $resultId_material="",$resultId_manufacturer="",$resultId_type="") 
         {
+            $PriceMin--;
+            $PriceMax++;
+
             $query = 'SELECT COUNT(`products`.`id_product` ) AS `quantityProducts` FROM `products`
             WHERE `products`.`price` BETWEEN '.$PriceMin.' AND '.$PriceMax.' AND `products`.`weight`  BETWEEN '.$weightMin.' AND '.$weightMax.' AND
             `products`.`tipThickness` '.$resultTipThickness.' AND `products`.`status` '.$resultStatus.' AND `products`.`id_inkColor` '.$resultId_inkColor.' AND
@@ -52,8 +55,7 @@
             #Количество страниц
             $resultPage = ceil(($result['quantityProducts']) /6); 
             
-            if(isset($resultPage) && $resultPage!=0)return $resultPage;
-            else return 1;
+            return $resultPage;
         }
         public static function getPriceWeightProducts() 
         {
