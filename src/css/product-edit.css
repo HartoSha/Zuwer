@@ -102,7 +102,7 @@ tr{
     margin: 20px 20px 20px 20px;
 }
 
-.entry-field{
+.characteristics table .entry-field{
     font-family: "Caviar Dreams";
     background-color: inherit;
     color: #b6b6b6;
@@ -112,12 +112,12 @@ tr{
     width: 100%;
 }
 
-.entry-field:focus{
+.characteristics table .entry-field:focus{
     border-color:#cdb67c ;
     color: white;
 }
 
-.entry-field option {
+.characteristics table .entry-field option {
     color: black;
 }
 
@@ -221,6 +221,10 @@ tr{
         flex-grow: 1;
         padding: 0 2%;
     }
+    .description-content {
+        font-size: 18px;
+    }
+    
 }
 
 @media screen  and (max-width: 480px){
@@ -264,5 +268,8 @@ tr{
     .description-edit{
         font-size: 18px;
     }
-    
+    .description-content {
+        font-size: 14px;
+    }
+
 }

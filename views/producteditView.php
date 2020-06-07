@@ -16,12 +16,12 @@
             <label class="product-img-container">
                 <div class="product-img-wrapper">
                     <input type="file" id="file-input" name="photo" style="display: none;">
-                    <?php if(!$productInfo["picture"]) :?>
+                    <?php if(!isset($productInfo["picture"])) :?>
                     <img class="camera-icon" src="/../src/assets/img/product-edit/camera.svg" alt="product-img">
-                    <?php 
+                    <?php else: ?>
+                        <?php 
                         $img = base64_encode($productInfo["picture"]);
                         echo "<img class=\"product-img\" src=\"data:image/jpeg; base64,$img\" alt=\"product image\" >";
-                        else:
                     ?>
                     <?php endif;?>
                     <span class="photo">Загрузите фото</span>

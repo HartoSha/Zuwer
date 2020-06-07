@@ -101,7 +101,7 @@
   font-weight: 400;
 }
 
-input[type="text"],
+.modal-log-reg input[type="text"],
 input[type="password"] {
   flex-basis: 100%;
   flex-grow: 1;
@@ -119,13 +119,13 @@ input[type="password"] {
   font-weight: 400;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+.modal-log-reg input[type="text"]:focus,
+.modal-log-reg input[type="password"]:focus {
   border-bottom: 2px solid rgba(205, 182, 124, 0.67);
 }
 
-input[type="text"]::placeholder,
-input[type="password"]::placeholder {
+.modal-log-reg input[type="text"]::placeholder,
+.modal-log-reg input[type="password"]::placeholder {
   color: #b6b6b6;
 }
 
