@@ -85,31 +85,43 @@ class catalogController # Контроллер каталога
     }
     public function product($params) # Просмотр одного товара
     {
-        # Получаем данные пользователя если он есть (используем в productView.php)
-        $userIsLoggedIn = userModel::userIsLoggedIn();
-        $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
-        $userSurename = (!empty($_SESSION['user']['surname'])) ? $_SESSION['user']['surname'] : '';
-        $userPatronymic = (!empty($_SESSION['user']['patronymic'])) ? $_SESSION['user']['patronymic'] : '';
-        $userPhone = (!empty($_SESSION['user']['telephone'])) ? $_SESSION['user']['telephone'] : '';
-
         # Если id продукта не указан в запросе или не число, то считаем его равным 0 (следовательно продукт с id = 0 не будет найден и выполнится перенаправление на ../../catalog)
         $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
         $productInfo = productModel::getProductById($productId);
-
-        # Записываем id товара для addOrder() и switchFavorite()
-        $_SESSION['productId'] = $productId;
 
         # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
         if ($productInfo == NULL) {
             header('Location: ../../catalog');
         }
 
-        # Для отображения кнопки в активном состоянии при загрузке станицы
+        # Получаем данные пользователя если он есть (используем в productView.php)
+        $userIsLoggedIn = userModel::userIsLoggedIn();
+        $userName = '';
+        $userPatronymic = '';
+        $userPhone = '';
+        $userSurename = '';
         $isFavorite = false;
-        if ($userIsLoggedIn) {
+        $isAdmin = false;
+        if(userModel::userIsLoggedIn())
+        {
+            $isAdmin = $_SESSION['user']['status'];
+            # Записываем id товара для addOrder() и switchFavorite()
+
+            $_SESSION['productId'] = $productId;
+             # Для отображения кнопки лайка в активном состоянии при загрузке станицы
+
             $isFavorite = productModel::isProductFavoriteForUser($productId, $_SESSION['user']['id_user']);
+            if(!$isAdmin)
+            {
+                # Получаем данные пользователя если он есть (используем в productView.php)
+                $userName = (!empty($_SESSION['user']['name'])) ? $_SESSION['user']['name'] : '';
+                $userSurename = (!empty($_SESSION['user']['surname'])) ? $_SESSION['user']['surname'] : '';
+                $userPatronymic = (!empty($_SESSION['user']['patronymic'])) ? $_SESSION['user']['patronymic'] : '';
+                $userPhone = (!empty($_SESSION['user']['telephone'])) ? $_SESSION['user']['telephone'] : '';
+            }
         }
         require_once VIEWS . "productView.php";
+ 
     }
     public function addOrder()
     {
