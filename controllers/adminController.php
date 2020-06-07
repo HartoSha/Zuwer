@@ -29,7 +29,7 @@
 
                 if(isset($_FILES["photo"]["tmp_name"]))
                 {
-                    $encodedImg = adminModel::encodeImg($_FILES["photo"]["tmp_name"]);
+                    $finalImg = adminModel::encodeImg($_FILES["photo"]["tmp_name"]);
                     // if($encodedImg) $finalImg = base64_encode($encodedImg);
                 } 
                 adminModel::saveProductChanges(
@@ -63,7 +63,7 @@
         }  
         public function addProductPage()
         {
-            if(adminModel::userIsLoggedIn() && $_SESSION['user']['status']) require_once(VIEWS . "productaddView.php");
+            if(adminModel::userIsLoggedIn() && $_SESSION['user']['status']) require_once(VIEWS . "producteditView.php");;
         }
         public function addProduct()
         {
@@ -105,7 +105,7 @@
                 {
                     $_SESSION["addProduct-errors"] = $errors;
                 }
-                // header('Location: ' . $_SERVER['HTTP_REFERER']);
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
             }
         }
     }
