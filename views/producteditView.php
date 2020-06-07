@@ -44,7 +44,7 @@
                     <td><span>Тип:</span></td>
                     <td><select class="entry-field" required name="productType" value="<?php if(isset($productInfo))echo $productInfo["typeName"]; ?>">
                         <?php foreach ($productTypes as $key => $value):?>
-                            <option value="<?php echo $value["typeName"]; ?>" <?php echo $productInfo["typeName"] == $value["typeName"] ? "selected" : ""  ?>><?php echo $value["typeName"] ?></option>
+                            <option value="<?php echo $value["typeName"]; ?>" <?php echo isset($productInfo) && $productInfo["typeName"] == $value["typeName"] ? "selected" : ""  ?>><?php echo $value["typeName"] ?></option>
                         <?php endforeach; ?>
                     </td>
                 </tr>
@@ -82,18 +82,18 @@
                     <td><span>Производитель:</span></td>
                     <td><select class="entry-field" required name="manufacturerName" value="<?php echo $productInfo["manufacturerName"]; ?>">
                         <?php foreach ($productManufacturers as $key => $value):?>
-                            <option value="<?php echo $value["manufacturerName"]?>" <?php if(isset($productInfo)) echo $productInfo["manufacturerName"] == $value["manufacturerName"] ? "selected" : ""  ?>><?php echo $value["manufacturerName"] ?></option>
+                            <option value="<?php echo $value["manufacturerName"]?>" <?php echo isset($productInfo) && $productInfo["manufacturerName"] == $value["manufacturerName"] ? "selected" : ""  ?>><?php echo $value["manufacturerName"] ?></option>
                         <?php endforeach; ?>
                     </td>
                    
                 </tr>
                 <tr>
                     <td><span>Количество:</span></td>
-                    <td><input class="entry-field" require type="text" name="productQuantity" value="<?php if(isset($productInfo)) echo $productInfo["quantity"]; ?>"></td>
+                    <td><input class="entry-field" required type="text" name="productQuantity" value="<?php if(isset($productInfo)) echo $productInfo["quantity"]; ?>"></td>
                 </tr>
                 <tr>
                     <td><span>Цена:</span></td>
-                    <td><input class="entry-field" require type="text" name="productPrice" value="<?php if(isset($productInfo)) echo $productInfo["price"]; ?>"></td>
+                    <td><input class="entry-field" required type="text" name="productPrice" value="<?php if(isset($productInfo)) echo $productInfo["price"]; ?>"></td>
                 </tr>
                 </table>
                 <label>
@@ -107,7 +107,7 @@
         </div>
         <div class="description-wrapper">
             <span class="description-edit">Редактировать описание:</span>
-            <textarea class="description-content" require name="textarea"><?php if(isset($productInfo)) echo $productInfo["description"]; ?></textarea>
+            <textarea class="description-content" required name="textarea"><?php if(isset($productInfo)) echo $productInfo["description"]; ?></textarea>
         </div>
         <div class="delete-save-wrapper">
             <div class="delete-form-and-save">

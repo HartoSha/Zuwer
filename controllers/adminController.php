@@ -14,15 +14,13 @@
             {
                 $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
                 $productInfo = productModel::getProductById($productId);
-                if($productInfo)
-                {
-                    $productManufacturers = catalogModel::getProductManufacturers();
-                    $productMaterials = catalogModel::getProductMaterial();
-                    $productTypes = catalogModel::getProductType();
-                    $productColors = catalogModel::getProductInkColor();
-                    $tipThiknesses = catalogModel::getProductsTipThickness();
-                }
-                else header('Location: /');
+
+                $productManufacturers = catalogModel::getProductManufacturers();
+                $productMaterials = catalogModel::getProductMaterial();
+                $productTypes = catalogModel::getProductType();
+                $productColors = catalogModel::getProductInkColor();
+                $tipThiknesses = catalogModel::getProductsTipThickness();
+
                 require_once(VIEWS . "producteditView.php");
             }
             else header('Location: /');
@@ -102,7 +100,16 @@
         }  
         public function addProductPage()
         {
-            if(adminModel::userIsLoggedIn() && $_SESSION['user']['status']) require_once(VIEWS . "producteditView.php");;
+            if(adminModel::userIsAdmin())
+            {
+                $productManufacturers = catalogModel::getProductManufacturers();
+                $productMaterials = catalogModel::getProductMaterial();
+                $productTypes = catalogModel::getProductType();
+                $productColors = catalogModel::getProductInkColor();
+                $tipThiknesses = catalogModel::getProductsTipThickness();          
+                require_once(VIEWS . "producteditView.php");
+            }
+            else header('Location: /');
         }
         public function addProduct()
         {
