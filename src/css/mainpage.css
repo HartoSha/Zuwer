@@ -135,7 +135,7 @@ body {
     }
     .advantages {
         margin: 15px 0;
-        margin-right: 20px;
+        margin-right: 5px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
