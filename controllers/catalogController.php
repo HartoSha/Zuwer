@@ -96,16 +96,17 @@
             $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
             $productInfo = productModel::getProductById($productId);
 
-            # Записываем цену одного товара для отправки при совершении заказа addOrder()
-            $_SESSION['productId'] = $productId;
-
             # Если не получили информацию о товаре, отправляем пользователя на страницу каталога
+            if(userModel::userIsLoggedIn())
+            {
+                if($_SESSION['user']['status'])
+                {
+                    require_once VIEWS . "productadminView.php";
+                }
+            }
             if($productInfo == NULL) {
                 header('Location: ../../catalog');
             }
-            
-            // print "Просмотр Товара. ID: " . $productId . "<br>";
-            // var_dump($productInfo)
 
             require_once VIEWS . "productView.php";
         }

@@ -1,6 +1,8 @@
 <?php
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
+// <?php echo $ordersInfo[$i]["id_product"]
 ?>
+
 <main class="product-page">
     <div class="container">
         <div class="main-container">
