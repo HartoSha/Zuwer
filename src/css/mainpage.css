@@ -267,12 +267,22 @@ body {
 }
 
 .slider__item {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
 }
 
 .slider__item .slider-fix {
     flex-grow: 1;
+    transition-property: transform;
+    transition: 0.3s;
+}
+
+.slider__item:hover .slider-fix{
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+    transition-property: transform;
+    background-color: #484848;
 }
 
 .slider__content {
@@ -294,23 +304,13 @@ body {
     padding: 10px 20px 20px 20px;
     margin: 10px 20px;
     border-radius: 10px;
-    transition-property: transform;
-    transition-duration: 0.3s;
-}
-
-.slider-fix:hover {
-    cursor: pointer;
-    transition-duration: 0.3s;
-    transition-property: transform;
-    transform: scale(0.95);
-    background-color: #484848;
 }
 
 .slider-fix .item__line {
     transition: 0.3s;
 }
 
-.slider-fix:hover .item__line {
+.slider__item:hover .item__line {
     transition: 0.3s;
     transform: scale(0.6);
 }
