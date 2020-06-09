@@ -19,11 +19,10 @@ body {
 .my-orders .order-item {
   font-family: "Caviar Dreams";
   margin: 20px;
-  transition: 0.3s;
 }
 
 .my-orders .order-item:hover{
-  transform: scale(0.95);
+  cursor: pointer;
 }
 
 .order-item a{
@@ -33,10 +32,13 @@ body {
   background-color: #212121;
   border-radius: 10px;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .my-orders .order-item:hover a{
-  background-color: #484848;
+  transform:scale(0.95);
+  transition: 0.3s;
+   background-color: #484848;
 }
 
 .order-item a:visited {
