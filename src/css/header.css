@@ -78,6 +78,11 @@ body {
     text-align: center;
     background-color: #212121;
 }
+.navlink-active,
+.navlink-active span {
+    color: #cdb67c;    
+}
+
 .navlink-open-modal button {
     cursor: pointer;
     width: 100%;

@@ -34,8 +34,8 @@
                 </label>
                 <div class="burger-menu-nav-wrapper">
                     <nav class="burger-menu-nav">
-                        <a href="/"><span>Главная</span></a>
-                        <a href="/catalog"><span>Каталог</span></a>
+                        <a href="/" class="<?php if(!isset($_GET["url"])) print("navlink-active")?>"><span>Главная</span></a>
+                        <a href="/catalog" class="<?php if(isset($_GET["url"]) && (strpos($_GET["url"], "catalog") !== false)) print("navlink-active")?> "><span>Каталог</span></a>
                     </nav>
                 </div>
                 <label for="header-burger-menu-checkbox" class="burger-menu-background"></label>
@@ -45,16 +45,15 @@
                     <img class="logoimg" src="../../src/assets/img/shared/icons/logo.svg"></img> 
                 </a>
                 <nav class = "headernav">
-                    
                     <ul class="navlink">    
                         <!-- TODO: Добавить отображение текущей страницы -->
-                        <li class="navlink-item"><a href="/"><span>Главная</span></a></li>
-                        <li class="navlink-item"><a href="/catalog"><span>Каталог</span></a></li>
+                        <li class="navlink-item <?php if(!isset($_GET["url"])) print("navlink-active")?>"><a href="/"><span>Главная</span></a></li>
+                        <li class="navlink-item <?php if(isset($_GET["url"]) && (strpos($_GET["url"], "catalog") !== false) ) print("navlink-active")?>"><a href="/catalog"><span>Каталог</span></a></li>
                         <?php if(!userModel::userIsLoggedIn()):?>
-                        <li class="navlink-item navlink-open-modal"><button class="toggle-modal-log-reg">Логин</button></li>
+                        <li class="navlink-item navlink-open-modal "><button class="toggle-modal-log-reg">Логин</button></li>
                         <?php else:?>
-                        <li class="navlink-item navlink-item_dropdown">
-                            <span class="username">
+                        <li class="navlink-item navlink-item_dropdown ">
+                            <span class="username <?php if(isset($_GET["url"]) && (strpos($_GET["url"], "user") !== false)) print("navlink-active")?>">
                                 <?php
                                 # Отображаем имя и фамилию пользователя, если они у него есть, иначе, отображаем только фамилию или только логин.
                                     $headerUserName = "";
@@ -67,19 +66,19 @@
                             <ul class = "dropdown-menu">
                                 <!-- TODO: Починить высоту кликабильной части кнопок -->
                                 <li class="dropdown-menu-item">
-                                    <a class = "dropdown-menu-link" href="/user/myorders/">
+                                    <a class = "dropdown-menu-link <?php if(isset($_GET["url"]) && (strpos($_GET["url"], "myorders") !== false)) print("navlink-active")?>" href="/user/myorders/">
                                         <div class="icon-wrapper">
                                             <span class="my-orders-icon"></span>
                                         </div>
-                                        <span class="dropdown-menu-item-name">Мои заказы</span>
+                                        <span class="dropdown-menu-item-name ">Мои заказы</span>
                                     </a>
                                 </li>
                                 <li class="dropdown-menu-item">
-                                    <a class = "dropdown-menu-link" href="/user/myfavorites/">
+                                    <a class = "dropdown-menu-link <?php if(isset($_GET["url"]) && (strpos($_GET["url"], "myfavorites") !== false)) print("navlink-active")?>" href="/user/myfavorites/">
                                         <div class="icon-wrapper">
                                             <span class="favorites-icon"></span>
                                         </div>
-                                        <span class="dropdown-menu-item-name">Избранные</span>
+                                        <span class="dropdown-menu-item-name ">Избранные</span>
                                     </a>
                                 </li>
                                 <li class="dropdown-menu-item">
