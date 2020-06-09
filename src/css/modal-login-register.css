@@ -168,6 +168,30 @@ input[type="password"] {
   list-style-type: none;
   margin-bottom: 40px;
 }
+.modal-prompt{
+  display: flex;
+  flex-basis: 100%;
+}
+[data-tooltip] {
+  position: relative;
+ }
+[data-tooltip]::after {
+  content: attr(data-tooltip); 
+  position: absolute;
+  width: 150px;
+  left: 0;
+  top: 0;
+  padding: 0.5em;
+  pointer-events: none; 
+  opacity: 0;
+  transition: 1s; 
+  font-size: 18px;
+  color: #ff6666;
+} 
+[data-tooltip]:hover::after {
+  opacity: 1; 
+  left: 65%;
+}
 
 @media (max-width: 769px){
   .modal-log-reg-container {
@@ -199,5 +223,9 @@ input[type="password"] {
   .registration-btn {
     width: 50%;
     padding: 15px;
+  }
+  [data-tooltip]:hover::after {
+    top: -25%;
+    left: -5%;
   }
 }

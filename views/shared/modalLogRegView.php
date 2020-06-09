@@ -45,9 +45,9 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
           <input type="text" placeholder="Имя" class="registration-field" name="reg-name" />
           <input type="text" placeholder="Фамилия" class="registration-field" name="reg-surname" />
           <input type="text" placeholder="Отчество" class="registration-field" name="reg-middlename" />
-          <input type="text" placeholder="Логин" required class="registration-field" name="reg-account-name" />
-          <input type="password" placeholder="Пароль" required class="registration-field" name="reg-pass" />
-          <input type="password" placeholder="Пароль повторно" required class="registration-field" name="reg-pass-again" />
+          <div class="modal-prompt" data-tooltip="Обязательно"><input type="text" placeholder="Логин" required class="registration-field" name="reg-account-name" /></div>
+          <div class="modal-prompt" data-tooltip="Обязательно"><input type="password" placeholder="Пароль" required class="registration-field" name="reg-pass" /></div>
+          <div class="modal-prompt" data-tooltip="Обязательно"><input type="password" placeholder="Пароль повторно" required class="registration-field" name="reg-pass-again" /></div>
           <input type="text" placeholder="Телефон" class="registration-field" name="reg-telephone" />
           <button class="registration">
             <span class="btn-text">Зарегистрироваться</span>
