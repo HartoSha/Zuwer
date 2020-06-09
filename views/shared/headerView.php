@@ -79,7 +79,7 @@
                                         <div class="icon-wrapper">
                                             <span class="favorites-icon"></span>
                                         </div>
-                                        <span class="dropdown-menu-item-name">Избранное</span>
+                                        <span class="dropdown-menu-item-name">Избранные</span>
                                     </a>
                                 </li>
                                 <li class="dropdown-menu-item">
