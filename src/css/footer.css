@@ -21,6 +21,7 @@ footer{
     grid-row-gap: 20px;
     display:flex;
     justify-content: space-between;
+    margin:0 0 25px 0;
   }
   
   .social-img{
@@ -170,6 +171,7 @@ footer{
       }
       .social{
         display: flex;
+        margin:0;
       }
       .social a{
         margin: 0 5px;
