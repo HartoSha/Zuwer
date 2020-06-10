@@ -171,22 +171,22 @@
                             <div class="filter-criteria__content">
                             <p class="filter-criteria__option-section">Цена</p>
                                 <label class="filter-criteria__option">
-                                    <span  class="filter-criteria__option-caption"> </span>
-                                        <input  type="radio" name="sortOrder" value="descendingPrice" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="descendingPrice")print('checked="checked"')?>><p>По убыванию</p>
+                                    <span class="filter-criteria__option-caption">По убыванию</span>
+                                    <input type="radio" name="sortOrder" value="descendingPrice" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="descendingPrice")print('checked="checked"')?>>
                                 </label>
                                 <label class="filter-criteria__option">
-                                    <span  class="filter-criteria__option-caption"> </span>
-                                        <input  type="radio" name="sortOrder" value="ascendingPrice" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="ascendingPrice")print('checked="checked"')?>><p>По возрастанию</p>
+                                    <span class="filter-criteria__option-caption">По возрастанию</span>
+                                    <input type="radio" name="sortOrder" value="ascendingPrice" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="ascendingPrice")print('checked="checked"')?>>
                                 </label>
                             
                             <p class="filter-criteria__option-section">Вес</p>
                                 <label class="filter-criteria__option">
-                                    <span  class="filter-criteria__option-caption"> </span>
-                                        <input type="radio" name="sortOrder" value="descendingWeight" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="descendingWeight")print('checked="checked"')?>><p>По убыванию</p>
+                                    <span class="filter-criteria__option-caption">По убыванию</span>
+                                    <input type="radio" name="sortOrder" value="descendingWeight" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="descendingWeight")print('checked="checked"')?>>
                                 </label>
                                 <label class="filter-criteria__option">
-                                    <span  class="filter-criteria__option-caption"> </span>
-                                        <input  type="radio" name="sortOrder" value="ascendingWeight" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="ascendingWeight")print('checked="checked"')?>><p>По возрастанию</p>
+                                    <span class="filter-criteria__option-caption">По возрастанию</span>
+                                    <input type="radio" name="sortOrder" value="ascendingWeight" <?php if(isset($_COOKIE['sortOrder']) && $_COOKIE['sortOrder']=="ascendingWeight")print('checked="checked"')?>>
                                 </label>
                             </div>
                         </label>
