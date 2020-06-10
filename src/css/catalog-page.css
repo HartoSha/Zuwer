@@ -90,6 +90,13 @@ body {
     margin-top: 15px;
 }
 
+.filter-criteria_accordion .filter-criteria__content {
+   display: none;
+}
+
+.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__content {
+  display: block;
+}
 .filter-criteria__option-caption {
     font-size: 14px;
     order: 2;
@@ -205,13 +212,8 @@ body {
     cursor: pointer;
 }
 
-.filter-criteria_accordion .filter-criteria__content {
-    display: none;
-}
 
-.filter-criteria_accordion .filter-criteria__accordion-checkbox:checked~.filter-criteria__content {
-    display: block;
-}
+
 
 
 /* иконка в закрытом состоянии */
@@ -223,6 +225,7 @@ body {
     width: 25px;
     height: 25px;
     border-radius: 25px;
+    transition: 0.3s;
 }
 
 .filter-criteria_accordion .filter-criteria__accordion-icon::after {
