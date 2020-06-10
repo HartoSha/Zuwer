@@ -205,12 +205,14 @@ input[type="password"] {
 }
 
 @media (max-width: 480px){
+  .modal-header {
+  } 
   .modal-header .login-btn,
   .modal-header .registration-btn {
     padding: 15px;
   }
   .modal-log-reg-container {
-    margin: 0 10px;
+    margin: 0 20px;
   }
   .form-container {
     padding: 50px 30px;
