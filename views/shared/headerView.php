@@ -18,6 +18,8 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/favorites.css"/>
         <link rel="stylesheet" type="text/css" href="../../src/css/my-orders.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/product-edit.css">
+        <!-- <link rel="preload" href="../../src/fonts/CaviarDreams.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="../../src/fonts/VeraCrouz.ttf" as="font" type="font/ttf" crossorigin> -->
         <title>Zuwer</title>
     </head>
     <body>

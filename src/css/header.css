@@ -1,24 +1,39 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Caviar Dreams';
+    src: url("/src/fonts/CaviarDreams.ttf"),
+         url('/src/fonts/caviardreams-webfont.woff2') format('woff2'),
+         url('/src/fonts/caviardreams-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vera Crouz';
+    src: url("/src/fonts/VeraCrouz.ttf"),
+         url('/src/fonts/veracrouz-webfont.woff2') format('woff2'),
+         url('/src/fonts/veracrouz-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Fonts */
+
+*{
+    padding: 0;
+    margin: 0; 
+} 
+
 body {
-    margin:0;
-    font-family: "Caviar Dreams";
+    font-family: Caviar Dreams;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: rgb(48, 48, 48);
 }
-
-/* Fonts */
-
-@font-face {
-    src: url("../fonts/CaviarDreams.ttf");
-    font-family: 'Caviar Dreams', sans-serif;
-}
-
-@font-face {
-    src: url("../fonts/VeraCrouz.ttf");
-    font-family: 'Vera Crouz', serif;
-}
-
-/* Fonts */
 
 /* header */
 
@@ -403,3 +418,62 @@ body {
 }
 
 /* header */
+
+/* no-items starts */
+
+/* Для надписи "здесь ничего нет, закажите что-нибудь" на стр. моих заказов и избранных */
+
+.no-items {
+    color: white;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.no-items-wrapper {
+    width: 60%;
+}
+
+.no-items .no-items-title {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.no-items .emoji {
+    white-space: nowrap;
+}
+
+.no-items p {
+    padding: 0;
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
+}
+    .no-items p a,
+    .no-items p a:visited {
+    font-weight: normal;
+    color: white;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 769px) {
+    .no-items-title {
+      font-size: 16px;
+    }
+    .no-items-wrapper {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .no-items {
+        display: block;
+    }
+    .no-items-title {
+        text-align: center;
+    }
+}
+
+  /* no-items ends */

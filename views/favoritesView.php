@@ -33,7 +33,13 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
                     </article>
                 <?php endforeach; ?>
             <?php else : ?>
-                <h1 style="color: white; font-size: 25px;">Здесь пусто.<br> <span style="font-size: 16px; font-weight: 200;"> <a href="/catalog/" style="color: white;">Добавьте</a> что-нибудь в избранное. </span> </h1>
+                <div class="no-items">
+                    <div class="no-items-wrapper">
+                        <h1 class="no-items-title">Здесь пусто.</h1>
+                        <p>Вы можете добавить товар в избранное на странице <a href="/catalog/">каталога</a>.</p>
+                    </div>
+                </div>
+                <!-- <h1 style="color: white; font-size: 25px;">Здесь пусто.<br> <span style="font-size: 16px; font-weight: 200;"> <a href="/catalog/" style="color: white;">Добавьте</a> что-нибудь в избранное. </span> </h1> -->
             <?php endif; ?>
         </div>
 

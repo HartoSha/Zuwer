@@ -34,9 +34,7 @@ footer{
   
   .contact-info{
     color: #ffffff;
-    font-family: "Caviar Dreams";
     font-size: 18px;
-    font-weight: 400;
     display: flex;
     grid-row: 2;
     grid-column: 2/13;
@@ -47,9 +45,7 @@ footer{
   
   .time{
     color: #ffffff;
-    font-family: "Caviar Dreams";
     font-size: 18px;
-    font-weight: 400;
     grid-row: 3;
     grid-column: 2/12;
     display:flex;
