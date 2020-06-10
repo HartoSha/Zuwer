@@ -1,7 +1,4 @@
 /* My orders starts */
-body {
-  margin: 0;
-}
 .my-orders{
   display: flex;
   flex-direction: column;
@@ -17,7 +14,6 @@ body {
 }
 
 .my-orders .order-item {
-  font-family: "Caviar Dreams";
   margin: 20px;
 }
 
@@ -113,7 +109,6 @@ body {
 }
 
 @media screen and (max-width: 769px) {
-  
   .my-orders .order-item-img-wrapper img {
     width: 80px;
     height: 85px;

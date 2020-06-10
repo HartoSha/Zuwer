@@ -1,7 +1,4 @@
 /* favorites starts */
-body {
-  margin: 0;
-}
 .favorite-items{
   display: flex;
   flex-direction: column;
@@ -57,7 +54,6 @@ body {
 .item-title {
   margin: 0;
   color: #fff;
-  font-family: "Caviar Dreams";
   font-weight: 400;
   align-self: center;
   
@@ -69,11 +65,9 @@ body {
 }
 .item-price {
   color: #ffffff;
-  font-family: "Caviar Dreams";
   font-weight: 400;
 }
 .btn-text {
-  font-family: "Caviar Dreams";
   font-size: 19px;
   font-weight: 400;
 }
@@ -81,7 +75,6 @@ body {
   border: 0;
   background: transparent;
   color: #ff6666;
-  font-family: "Caviar Dreams";
   font-weight: 400;
   cursor: pointer;
 }

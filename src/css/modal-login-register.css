@@ -54,7 +54,6 @@
   outline: none;
   opacity: 0.7;
   color: #fff;
-  font-family: "Caviar Dreams";
   font-size: 18px;
   font-weight: 400;
 }
@@ -96,7 +95,6 @@
 
 .registration-field {
   color: #b6b6b6;
-  font-family: "Caviar Dreams";
   font-size: 16px;
   font-weight: 400;
 }
@@ -112,9 +110,7 @@ input[type="password"] {
   padding: 5px 16px;
   border-bottom: 1px solid white;
   transition: 0.3s;
-
   color: #ffffff;
-  font-family: "Caviar Dreams";
   font-size: 18px;
   font-weight: 400;
 }
@@ -141,7 +137,6 @@ input[type="password"] {
   margin: 138px 0 70px 0;
   padding: 15px 50px;
   color: #cdb67c;
-  font-family: "Caviar Dreams";
   font-size: 18px;
   font-weight: 400;
   border-radius: 20px;
@@ -153,7 +148,6 @@ input[type="password"] {
   margin-top: calc(52px - 15px);
   padding: 15px 50px;
   color: #cdb67c;
-  font-family: "Caviar Dreams";
   font-size: 18px;
   font-weight: 400;
   border-radius: 20px;
