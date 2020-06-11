@@ -37,12 +37,12 @@ body {
 	margin-top: 5px;
 }
 
-.slider {
+.catalog-page .slider {
 	position: relative;
 	z-index: 1;
 	height: 10px;
 }
-.slider > .track {
+.catalog-page .slider > .track {
 	position: absolute;
 	z-index: 1;
 	left: 0;
@@ -52,7 +52,7 @@ body {
 	height: 3px;
 	background-color: #ffffff;
 }
-.slider > .range {
+.catalog-page .slider > .range {
 	position: absolute;
 	z-index: 2;
 	left: 25%;
@@ -62,7 +62,7 @@ body {
 	height: 3px;
 	background-color: #cdb67c;
 }
-.slider > .thumb {
+.catalog-page .slider > .thumb {
 	position: absolute;
 	z-index: 3;
 	width: 15px;

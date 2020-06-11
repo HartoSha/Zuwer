@@ -61,21 +61,6 @@
                                     value="<?php print( isset($_COOKIE['weightMax']) ? $_COOKIE['weightMax'] : $PriceWeightProducts['weightMax'])?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
-                                <label>
-                                    <div class="price-slider">
-                                        <div class="multi-range-slider">
-                                            <input type="range" class="input-left" id="input-left" min="<?php echo round($PriceWeightProducts['priceMin']) ?>" max="<?php echo round($PriceWeightProducts['priceMax']) ?>" value="<?php  print( ceil( isset($_COOKIE['priceMin']) ? $_COOKIE['priceMin'] : $PriceWeightProducts['priceMin']))?>">
-                                            <input type="range" class="input-right" id="input-right" min="<?php echo round($PriceWeightProducts['priceMin']) ?>" max="<?php echo round($PriceWeightProducts['priceMax']) ?>" value="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] : $PriceWeightProducts['priceMax']))?>">
-
-                                            <div class="slider">
-                                                <div class="track"></div>
-                                                <div class="range"></div>
-                                                <div class="thumb left"></div>
-                                                <div class="thumb right"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </label>
                             </div>
                         </label>
                     </section>
