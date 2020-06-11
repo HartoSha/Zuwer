@@ -41,7 +41,6 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
               <?php foreach ($_SESSION["registration-errors"] as $error) echo '<li class="modal-error-text">' . array_shift($_SESSION["registration-errors"]) . '</li>'; ?>
             </ul>
           <?php endif; ?>
-          <!-- TODO: Добавить отображение полей логин, и пароль как обязательных и наоборот. -->
           <form action="/user/register" method="POST" class="modal-reg">
             <input type="text" placeholder="Имя" class="registration-field" name="reg-name" />
             <input type="text" placeholder="Фамилия" class="registration-field" name="reg-surname" />

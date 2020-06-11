@@ -47,8 +47,7 @@
                     <img class="logoimg" src="../../src/assets/img/shared/icons/logo.svg"></img> 
                 </a>
                 <nav class = "headernav">
-                    <ul class="navlink">    
-                        <!-- TODO: Добавить отображение текущей страницы -->
+                    <ul class="navlink">
                         <li class="navlink-item <?php if(!isset($_GET["url"])) print("navlink-active")?>"><a href="/"><span>Главная</span></a></li>
                         <li class="navlink-item <?php if(isset($_GET["url"]) && (strpos($_GET["url"], "catalog") !== false) ) print("navlink-active")?>"><a href="/catalog"><span>Каталог</span></a></li>
                         <?php if(!userModel::userIsLoggedIn()):?>
@@ -66,7 +65,6 @@
                                 ?>
                             </span>
                             <ul class = "dropdown-menu">
-                                <!-- TODO: Починить высоту кликабильной части кнопок -->
                                 <li class="dropdown-menu-item">
                                     <a class = "dropdown-menu-link <?php if(isset($_GET["url"]) && (strpos($_GET["url"], "myorders") !== false)) print("navlink-active")?>" href="/user/myorders/">
                                         <div class="icon-wrapper">
