@@ -63,24 +63,40 @@
 
 .form-container {
   /* Изначально выключен, включается при нажатии на кнопки переключения окон регистрации/авторизации */
-  display: none;
+  opacity:0;
+  height: 0;
   padding: 50px 82px;
+  transition: 0.3s;
+  transition-property: opacity;
+  overflow:hidden;
 }
 
 .modal-log-reg-container.js-inLogin .login-btn {
   opacity: 1;
+  transition: opacity 0.3s;
 }
 
 .modal-log-reg-container.js-inReg .registration-btn {
   opacity: 1;
+  transition: opacity 0.3s;
 }
 
 .modal-log-reg-container.js-inLogin .form-container.login-container {
-  display: block;
+  opacity: 1;
+  height: 100%;
 }
 
 .modal-log-reg-container.js-inReg .form-container.reg-container {
-  display: block;
+  opacity: 1;
+  height:100%;
+} 
+ /* Заставляем невидимую форму исчезать мгновенно */
+.modal-log-reg-container.js-inReg .form-container.login-container {
+  transition: opacity 0s;
+}
+
+.modal-log-reg-container.js-inLogin .form-container.reg-container {
+  transition: opacity 0s;
 } 
 
 .modal-reg{
