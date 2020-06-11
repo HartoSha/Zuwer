@@ -16,15 +16,30 @@
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
-                                    <input name="filterPriceMin" type="number"
+                                    <input name="filterPriceMin" type="number" class="minPrice"
                                       value="<?php  print( ceil( isset($_COOKIE['priceMin']) ? $_COOKIE['priceMin'] : $PriceWeightProducts['priceMin']))?>">
                                     <span class="filter-criteria__option-underline"></span> <!-- было решено добавить пустой span после input для создания золотистого подчеркивания, т.к. input::after не поддерживается -->
                                 </label>
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">До:</span>
-                                    <input name="filterPriceMax" type="number"
+                                    <input name="filterPriceMax" type="number" class="maxPrice"
                                       value="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] : $PriceWeightProducts['priceMax']))?>">
                                     <span class="filter-criteria__option-underline"></span>
+                                </label>
+                                <label class="filter-criteria__option">
+                                    <div class="price-slider">
+                                        <div class="multi-range-slider">
+                                            <input type="range" class="input-left" id="input-left" min="<?php echo round($PriceWeightProducts['priceMin']) ?>" max="<?php echo round($PriceWeightProducts['priceMax']) ?>" value="<?php  print( ceil( isset($_COOKIE['priceMin']) ? $_COOKIE['priceMin'] : $PriceWeightProducts['priceMin']))?>">
+                                            <input type="range" class="input-right" id="input-right" min="<?php echo round($PriceWeightProducts['priceMin']) ?>" max="<?php echo round($PriceWeightProducts['priceMax']) ?>" value="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] : $PriceWeightProducts['priceMax']))?>">
+
+                                            <div class="slider">
+                                                <div class="track"></div>
+                                                <div class="range"></div>
+                                                <div class="thumb left"></div>
+                                                <div class="thumb right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </label>
                             </div>
                         </label>
@@ -45,6 +60,21 @@
                                     <input name="filterWeightMax" type="number" min="<?php print($PriceWeightProducts['weightMin'])?>" max="<?php print($PriceWeightProducts['weightMax'])?>" 
                                     value="<?php print( isset($_COOKIE['weightMax']) ? $_COOKIE['weightMax'] : $PriceWeightProducts['weightMax'])?>">
                                     <span class="filter-criteria__option-underline"></span>
+                                </label>
+                                <label>
+                                    <div class="price-slider">
+                                        <div class="multi-range-slider">
+                                            <input type="range" class="input-left" id="input-left" min="<?php echo round($PriceWeightProducts['priceMin']) ?>" max="<?php echo round($PriceWeightProducts['priceMax']) ?>" value="<?php  print( ceil( isset($_COOKIE['priceMin']) ? $_COOKIE['priceMin'] : $PriceWeightProducts['priceMin']))?>">
+                                            <input type="range" class="input-right" id="input-right" min="<?php echo round($PriceWeightProducts['priceMin']) ?>" max="<?php echo round($PriceWeightProducts['priceMax']) ?>" value="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] : $PriceWeightProducts['priceMax']))?>">
+
+                                            <div class="slider">
+                                                <div class="track"></div>
+                                                <div class="range"></div>
+                                                <div class="thumb left"></div>
+                                                <div class="thumb right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </label>
                             </div>
                         </label>
@@ -255,6 +285,6 @@
             </section>
         </div>
     </main>
-
+    <script src="../../src/js/slider.js"></script>
 <?php
 require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "footerView.php");

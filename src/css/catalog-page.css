@@ -31,6 +31,69 @@ body {
 
 /* Catalog page */
 
+.price-slider {
+	position: relative;
+	width: 100%;
+	margin-top: 5px;
+}
+
+.slider {
+	position: relative;
+	z-index: 1;
+	height: 10px;
+}
+.slider > .track {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 3px;
+	background-color: #ffffff;
+}
+.slider > .range {
+	position: absolute;
+	z-index: 2;
+	left: 25%;
+	right: 25%;
+	top: 0;
+	bottom: 0;
+	height: 3px;
+	background-color: #cdb67c;
+}
+.slider > .thumb {
+	position: absolute;
+	z-index: 3;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+    transition: box-shadow .3s ease-in-out;
+    opacity: 0;
+}
+.input-left {
+	transform: translate(-1px, -6px);
+}
+.input-right {
+	transform: translate(1px, -6px);
+}
+
+input[type=range] {
+	position: absolute;
+	pointer-events: none;
+	-webkit-appearance: none;
+	z-index: 2;
+}
+input[type=range]::-webkit-slider-thumb {
+	pointer-events: all;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	border: 0 none;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+}
 
 /* Catalog page sidebar (filter) */
 
