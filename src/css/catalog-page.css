@@ -31,7 +31,7 @@ body {
 
 /* Catalog page */
 
-.price-slider {
+.range-slider {
 	position: relative;
 	width: 100%;
 	margin-top: 5px;
@@ -568,6 +568,9 @@ input[type=range]::-webkit-slider-thumb {
     .filter-criteria {
         flex-basis: 20%;
         flex-grow: 1;
+    }
+    .filter-criteria_range .slider{
+        display:none;
     }
     .catalog-page__btn-submit {
         margin: 0 calc(50% - (140px / 2));
