@@ -5,10 +5,10 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   z-index: 999;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
+  background: rgba(59, 59, 59, 0.82);
 }
 
 .invisible {
@@ -16,13 +16,13 @@
 }
 
 .background{
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(59, 59, 59, 0.82);
   z-index: 1;
+  overflow-y: auto;
 }
 
 .modal-log-reg-container{
@@ -32,21 +32,21 @@
   font-weight: normal;
   text-align: center;
   color: #cdb67c;
-  z-index: 10;
-  margin: 0 62px;
-  z-index: 2;
+  margin: auto 62px;
   width: 100%;
   max-width: 769px;
-  overflow-y: auto;
 }
 
 .form-wrapper {
   background-color: #212121;
+  z-index: 2;
 }
 
 .modal-header {
-  margin-top: auto;;
+  align-self: flex-start;
   display: flex;
+  justify-content: flex-start;
+  z-index: 2;
 }
 
 .modal-header .login-btn,
@@ -60,10 +60,6 @@
   color: #fff;
   font-size: 18px;
   font-weight: 400;
-}
-
-.form-wrapper {
-  margin-bottom: auto;
 }
 
 .form-container {
@@ -197,7 +193,7 @@ input[type="password"] {
 
 @media (max-width: 769px){
   .modal-log-reg-container {
-    margin: 0 20px;
+    margin: auto 20px;
   }
   .form-container {
     padding: 50px 40px;
@@ -206,21 +202,18 @@ input[type="password"] {
 
 @media (max-width: 480px){
   .modal-header {
-  } 
+    align-self: auto;
+  }
   .modal-header .login-btn,
   .modal-header .registration-btn {
+    width: 50%;
     padding: 15px;
   }
   .modal-log-reg-container {
-    margin: 0 20px;
+    margin: auto 10px;
   }
   .form-container {
     padding: 50px 30px;
-  }
-  .login-btn,
-  .registration-btn {
-    width: 50%;
-    padding: 15px;
   }
   [data-tooltip]:hover::after {
     top: -25%;
