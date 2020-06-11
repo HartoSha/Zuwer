@@ -61,7 +61,8 @@ body {
 .header a:visited{
     text-decoration: none;
     font-size: 18px;
-    color:white;
+    color:white; 
+    padding:0 20px;
 }
 .logo {
     display: flex;
@@ -88,8 +89,7 @@ body {
     align-items: center;
     list-style-type: none;
     cursor:pointer;
-    color:white;
-    padding: 0 20px;
+    color:white;  
     text-align: center;
     background-color: #212121;
 }
@@ -115,11 +115,23 @@ body {
 }
 .navlink-item_dropdown{
     position: relative;
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+    list-style-type: none;
+    cursor:pointer;
+    padding:0 20px;
+    color:white;
+    text-align: center;
+    background-color: #212121;
 }
 .navlink-item:hover{
     background-color: #7c7c7c;
 }
 
+.navlink-item.navlink-item_dropdown a {
+    padding:15px 0;
+}
 .navlink-item_dropdown:hover > .dropdown-menu{
     display: flex;
     flex-direction: column;
@@ -145,16 +157,12 @@ body {
     left:0;
     min-width:100%;
     background:rgba(59, 59, 59, 0.37);
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.53);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.53);
     z-index: -1; /* z-index -1 Для отображения тени под header'ом */
 }
 
 .header .dropdown-menu:hover {
     z-index: -1;
-}
-
-.dropdown-menu-item {
-    padding: 15px 10px;
 }
 
 .dropdown-menu-item:hover {
