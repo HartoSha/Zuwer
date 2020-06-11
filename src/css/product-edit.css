@@ -9,7 +9,7 @@
 
 .product{
     color: #ffffff;
-    font-style: 18px;
+    font-size: 18px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -162,7 +162,7 @@ tr{
 .description-content{
     outline: none;
     resize: vertical;
-    font-size: 24px;
+    font-size: 18px;
     background-color: inherit;
     color: white;
     border-color: #b6b6b6;
@@ -190,14 +190,13 @@ tr{
     }
 
     .photo{
-    font-size: 24px;
-    width: 60%;
-    text-align: center;
+        font-size: 24px;
+        width: 60%;
+        text-align: center;
     }
 
     td{
         padding-top: 15px;
-        font-size: 14px;
     }
 
     .characteristics{
@@ -221,7 +220,6 @@ tr{
 
     td{
         padding-top: 15px;
-        font-size: 14px; 
     }
 
     .photo{
@@ -245,16 +243,10 @@ tr{
         margin: 20px 0 20px 10px;
         font-size: 18px;
     }
-
     .description-wrapper{
-        margin-top: 20px;
-    }
-
-    .description-edit{
-        font-size: 18px;
+        margin: 0;
     }
     .description-content {
-        font-size: 14px;
+        font-size: 16px;
     }
-
 }
