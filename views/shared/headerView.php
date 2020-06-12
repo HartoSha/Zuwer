@@ -10,7 +10,6 @@
         <link rel="stylesheet" type="text/css" href="../../src/css/normalize.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/header.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/mainpage.css">
-        <link rel="stylesheet" type="text/css" href="../../src/css/product-admin.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/catalog-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/product-page.css">
         <link rel="stylesheet" type="text/css" href="../../src/css/modal-login-register.css">

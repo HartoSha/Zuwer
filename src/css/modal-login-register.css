@@ -119,7 +119,8 @@
 }
 
 .modal-log-reg input[type="text"],
-input[type="password"] {
+.modal-log-reg input[type="password"],
+.modal-log-reg input[type="tel"]  {
   flex-basis: 100%;
   flex-grow: 1;
   background: 0;
@@ -135,15 +136,18 @@ input[type="password"] {
 }
 
 .modal-log-reg input[type="text"]:focus,
+.modal-log-reg input[type="tel"]:focus,
 .modal-log-reg input[type="password"]:focus {
   border-bottom: 2px solid rgba(205, 182, 124, 0.67);
 }
 
 .modal-log-reg input[type="text"]::placeholder,
+.modal-log-reg input[type="tel"]::placeholder,
 .modal-log-reg input[type="password"]::placeholder {
   color: #b6b6b6;
 }
 
+.form-container .login-btn:hover,
 .form-container .login-btn:hover,
 .form-container .registration-btn:hover {
   border: none;
