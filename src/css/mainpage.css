@@ -212,6 +212,9 @@
         align-items: center;
         background: url(../assets/img/mainpage/main-background/background-smartphone.png) no-repeat center center;
         background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
     }
     .slogan {
         flex-direction: column;
