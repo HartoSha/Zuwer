@@ -135,7 +135,7 @@ class catalogController # Контроллер каталога
             }
                         
             if ($_POST["surname"] == '') {
-                $errors[] = "Введите Фамилию";
+                $errors[] = "Введите фамилию";
             } elseif (mb_strlen($_POST["surname"]) > 20) {
                 $errors[] = "Фамилия слишком длинная";
             }

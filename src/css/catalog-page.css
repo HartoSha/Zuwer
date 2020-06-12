@@ -42,6 +42,44 @@ body {
 	z-index: 1;
 	height: 10px;
 }
+
+
+.catalog-page .slider input[type=range] {
+	position: absolute;
+	pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance:none;
+	z-index: 10;
+}
+.catalog-page .slider input[type=range]::-webkit-slider-thumb {
+	pointer-events: all;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	border: 0 none;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Mozilla fix EZ */
+.catalog-page .slider input[type=range]::-moz-range-thumb {
+	pointer-events: all;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	border: 0 none;
+    background-color: #ffffff;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.catalog-page .slider input[type=range]::-moz-range-track {
+    background: transparent;
+}
+
 .catalog-page .slider > .track {
 	position: absolute;
 	z-index: 1;
@@ -64,36 +102,21 @@ body {
 }
 .catalog-page .slider > .thumb {
 	position: absolute;
-	z-index: 3;
+	z-index: 999;
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
     transition: box-shadow .3s ease-in-out;
-    opacity: 0;
+    /* opacity: 0; */
+    background-color: red;
 }
-.input-left {
+.catalog-page .slider .input-left {
 	transform: translate(-1px, -6px);
 }
-.input-right {
+.catalog-page .slider .input-right {
 	transform: translate(1px, -6px);
 }
 
-input[type=range] {
-	position: absolute;
-	pointer-events: none;
-	-webkit-appearance: none;
-	z-index: 2;
-}
-input[type=range]::-webkit-slider-thumb {
-	pointer-events: all;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	border: 0 none;
-    background-color: #ffffff;
-    border: 1px solid #000;
-    -webkit-appearance: none;
-}
 
 /* Catalog page sidebar (filter) */
 

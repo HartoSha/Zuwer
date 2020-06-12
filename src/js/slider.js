@@ -48,18 +48,19 @@ class Slider{
 		this.range.className = "range";
 		this.sliderView.appendChild(this.range);
 
-		this.thumbLeft = document.createElement("div");
-		this.thumbLeft.className = "thumb";
-		this.sliderView.appendChild(this.thumbLeft);
-		this.thumbRight = document.createElement("div");
-		this.thumbRight.className = "thumb";
-		this.sliderView.appendChild(this.thumbRight);
-
 		this.minOffset = minOffset; // Минимальная разница значений ползунков 
 		this.setLeftValue();
 		this.setRightValue();
 		this.inputLeft.addEventListener("input", this.setLeftValue.bind(this));
 		this.inputRight.addEventListener("input", this.setRightValue.bind(this));
+
+
+		// const iL = this.inputLeft;
+		// const leftInput = this.fromInput;
+		// const leftMove = this.setLeftValue.bind(this);
+		this.fromInput.addEventListener("change", this.syncIRangeToINumberLeft.bind(this));
+		this.toInput.addEventListener("change", this.syncIRangeToINumberRight.bind(this));
+		// this.toInput.addEventListener("change", this.setRightValue.bind(this));
 	}
 	
 	setLeftValue() {
@@ -78,8 +79,7 @@ class Slider{
 		// console.log(`percent (max/li value): ${percent}`);
 
 		// Меняем числовое поле ввода в зависимости от текущего пройденного расстояния ползунком (прибавляем min, чтобы значения были не меньше минимального). // max - min доступное смещение
-		this.fromInput.value =  min + Math.floor((max - min) * percent / 100);
-		this.thumbLeft.style.left = percent + "%";
+		this.fromInput.value =  min + Math.round((max - min) * percent / 100);
 		this.range.style.left = percent + "%";
 	}
 	
@@ -91,9 +91,49 @@ class Slider{
 
 		const percent = ((this.inputRight.value - min) / (max - min)) * 100;
 	
-		this.toInput.value =  min + Math.floor((max - min) * percent / 100);
-		this.thumbRight.style.right = (100 - percent) + "%";
+		this.toInput.value =  min + Math.round((max - min) * percent / 100);
 		this.range.style.right = (100 - percent) + "%";
+	}
+
+	syncIRangeToINumberLeft() {
+		// Синхронизирует значение в цифровом input'e с его отображением на ползунке
+		const INumberLeft = this.fromInput;
+		const IRangeLeft = this.inputLeft;
+
+		// Валидация введенных значений на соответствие допустимому диапазону
+		const inputValue = parseInt(INumberLeft.value);
+		const minPossible = parseInt(INumberLeft.min);
+		const maxPossible = parseInt(INumberLeft.max);
+		const isValueInRange = inputValue >= minPossible && inputValue <= maxPossible;
+		let finalValue = minPossible;
+		if(isValueInRange) {
+			finalValue = inputValue;
+		}
+
+		// Перемещаяем левый ползунок
+		INumberLeft.value = finalValue;
+		IRangeLeft.value = finalValue;
+		this.setLeftValue();
+	}
+	syncIRangeToINumberRight() {
+		// Синхронизирует значение в цифровом input'e с его отображением на ползунке
+		const INumberRight = this.toInput;
+		const IRangeRight = this.inputRight;
+
+		// Валидация введенных значений на соответствие допустимому диапазону
+		const inputValue = parseInt(INumberRight.value);
+		const minPossible = parseInt(INumberRight.min);
+		const maxPossible = parseInt(INumberRight.max);
+		const isValueInRange = inputValue >= minPossible && inputValue <= maxPossible;
+		let finalValue = maxPossible;
+		if(isValueInRange) {
+			finalValue = inputValue;
+		}
+
+		// Перемещаяем правый ползунок
+		INumberRight.value = finalValue;
+		IRangeRight.value = finalValue;
+		this.setRightValue();
 	}
 }
 
