@@ -88,13 +88,8 @@ class userController
             if($_POST['reg-pass-again'] != $_POST['reg-pass']) {
                 $errors[] = "Введены разные пароли";
             }
-            
-            //TODO: сделать нормальную проверку телефона
-            if(mb_strlen($_POST['reg-telephone']) > 11) {
-                $errors[] = "Телефон слишком длинный";
-            }
-            if($_POST['reg-telephone'] && mb_strlen($_POST['reg-telephone']) < 11) {
-                $errors[] = "Телефон слишком короткий";
+            if (!preg_match("/^((\+7|7|8)+([0-9]){10})$/", $_POST['phone'])) { # regex tests https://www.regexpal.com/94215
+                $errors[] = "Введенный номер телефона не соответствует формату";
             }
 
             if (empty($errors)) {

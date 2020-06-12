@@ -172,14 +172,11 @@ class catalogController # Контроллер каталога
             if (!preg_match("/^\d{6}$/", $_POST['postal-code'])) {
                 $errors[] = "Почтовый индекс должен состоять из 6 цифр";
             }
-
-            //TODO: сделать нормальную проверку телефона
+            
             if ($_POST['phone'] == '') {
                 $errors[] = "Введите Телефон";
-            } elseif (mb_strlen($_POST['phone']) > 11) {
-                $errors[] = "Телефон слишком длинный";
-            } elseif (mb_strlen($_POST['phone']) < 11) {
-                $errors[] = "Телефон слишком короткий";
+            } elseif (!preg_match("/^((\+7|7|8)+([0-9]){10})$/", $_POST['phone'])) { # regex tests https://www.regexpal.com/94215
+                $errors[] = "Введенный номер телефона не соответствует формату";
             }
 
             if (empty($errors)) {

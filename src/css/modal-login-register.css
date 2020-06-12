@@ -226,6 +226,7 @@ input[type="password"] {
   }
   .modal-log-reg-container {
     margin: auto 10px;
+    width: calc(100% - 20px);
   }
   .form-container {
     padding: 50px 30px;

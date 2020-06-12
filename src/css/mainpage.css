@@ -40,6 +40,10 @@
     padding: 0 20px;
     padding-top: 207px;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .mainpage .center {

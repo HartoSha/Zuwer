@@ -48,7 +48,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
             <div class="modal-prompt" data-tooltip="Обязательно"><input type="text" placeholder="Логин" required class="registration-field" name="reg-account-name" /></div>
             <div class="modal-prompt" data-tooltip="Обязательно"><input type="password" placeholder="Пароль" required class="registration-field" name="reg-pass" /></div>
             <div class="modal-prompt" data-tooltip="Обязательно"><input type="password" placeholder="Пароль повторно" required class="registration-field" name="reg-pass-again" /></div>
-            <input type="text" placeholder="Телефон" class="registration-field" name="reg-telephone" />
+            <input type="tel" pattern="^((\+7|7|8)+([0-9]){10})$" placeholder="Телефон"  class="registration-field" name="reg-telephone" />
             <button class="registration">
               <span class="btn-text">Зарегистрироваться</span>
             </button>

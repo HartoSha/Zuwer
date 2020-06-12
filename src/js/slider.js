@@ -1,11 +1,13 @@
 const priceFrom = document.querySelectorAll(".filter-criteria_range .filter-criteria__option-from");
 const priceTo = document.querySelectorAll(".filter-criteria_range .filter-criteria__option-to");
 const priceContainer = document.querySelectorAll(".filter-criteria_range .filter-criteria__option.slider");
+const offsets = [5, 1];
 
 // debugger;
 class Slider{
-
-	constructor(fromInput, toInput, inputsContainer){
+	constructor(fromInput, toInput, inputsContainer, minOffset){
+		
+		
 		this.fromInput = fromInput;
 		this.toInput = toInput;
 
@@ -53,6 +55,7 @@ class Slider{
 		this.thumbRight.className = "thumb";
 		this.sliderView.appendChild(this.thumbRight);
 
+		this.minOffset = minOffset; // Минимальная разница значений ползунков 
 		this.setLeftValue();
 		this.setRightValue();
 		this.inputLeft.addEventListener("input", this.setLeftValue.bind(this));
@@ -61,30 +64,39 @@ class Slider{
 	
 	setLeftValue() {
 		const max = parseInt(this.inputLeft.max);
+		const min = parseInt(this.inputLeft.min);
 	
-		this.inputLeft.value = Math.min(parseInt(this.inputLeft.value), parseInt(this.inputRight.value) - 5);
+		// Запрещает левому ползунку сдвигаться дальше правого минус смещение
+		this.inputLeft.value = Math.min(parseInt(this.inputLeft.value), parseInt(this.inputRight.value) - this.minOffset);
 	
-		const percent = this.inputLeft.value / max;
-	
-		this.fromInput.value = Math.floor(max * percent) + parseInt(this.fromInput.min);
-	
-		this.thumbLeft.style.left = (percent * 100) + "%";
-		this.range.style.left = (percent * 100) + "%";
+		// percent - процентное соотношение пройденой дистанции ползунка (слева) к общей доступной 
+		const percent = (((this.inputLeft.value - min) / (max - min))) * 100; // max - min доступное смещение
+		
+		// console.log(`min: ${min}`);
+		// console.log(`max: ${max}`);
+		// console.log(`il value: ${this.inputLeft.value}`);
+		// console.log(`percent (max/li value): ${percent}`);
+
+		// Меняем числовое поле ввода в зависимости от текущего пройденного расстояния ползунком (прибавляем min, чтобы значения были не меньше минимального). // max - min доступное смещение
+		this.fromInput.value =  min + Math.floor((max - min) * percent / 100);
+		this.thumbLeft.style.left = percent + "%";
+		this.range.style.left = percent + "%";
 	}
 	
 	setRightValue() {
 		const max = parseInt(this.inputRight.max);
+		const min = parseInt(this.inputRight.min);
 	
-		this.inputRight.value = Math.max(parseInt(this.inputRight.value), parseInt(this.inputLeft.value) + 5);
+		this.inputRight.value = Math.max(parseInt(this.inputRight.value), parseInt(this.inputLeft.value) + this.minOffset);
+
+		const percent = ((this.inputRight.value - min) / (max - min)) * 100;
 	
-		const percent = this.inputRight.value  / max;
-	
-		this.toInput.value = Math.floor(max * percent);
-	
-		this.thumbRight.style.right = (100 - (percent * 100)) + "%";
-		this.range.style.right = (100 - (percent * 100)) + "%";
+		this.toInput.value =  min + Math.floor((max - min) * percent / 100);
+		this.thumbRight.style.right = (100 - percent) + "%";
+		this.range.style.right = (100 - percent) + "%";
 	}
 }
+
 priceContainer.forEach((item, i)=>{
-	new Slider(priceFrom[i], priceTo[i], item);
+	new Slider(priceFrom[i], priceTo[i], item, offsets[i]);
 });

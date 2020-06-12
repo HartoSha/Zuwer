@@ -17,17 +17,17 @@
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
                                     <input name="filterPriceMin" type="number" class="filter-criteria__option-from"
-                                      min="1"
+                                      min="<?php  print( ceil($PriceWeightProducts['priceMin']))?>"
                                       value="<?php  print( ceil( isset($_COOKIE['priceMin']) ? $_COOKIE['priceMin'] : $PriceWeightProducts['priceMin']))?>"
-                                      max="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] - 1 : $PriceWeightProducts['priceMax'] - 1))?>">
+                                      max="<?php  print( ceil($PriceWeightProducts['priceMax']))?>">
                                     <span class="filter-criteria__option-underline"></span> <!-- было решено добавить пустой span после input для создания золотистого подчеркивания, т.к. input::after не поддерживается -->
                                 </label>
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">До:</span>
                                     <input name="filterPriceMax" type="number" class="filter-criteria__option-to"
-                                      min="2"
+                                      min="<?php  print( ceil($PriceWeightProducts['priceMin']))?>"
                                       value="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] : $PriceWeightProducts['priceMax']))?>"
-                                      max="<?php  print( ceil( isset($_COOKIE['priceMax']) ? $_COOKIE['priceMax'] : $PriceWeightProducts['priceMax']))?>">
+                                      max="<?php  print( ceil($PriceWeightProducts['priceMax']))?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
                                 <label class="filter-criteria__option slider">
@@ -38,20 +38,20 @@
                     <section class="filter-criteria filter-criteria_accordion filter-criteria_range">
                         <label class="filter-criteria__accordion-click-wrapper"><!-- Визуальное отображение выбранных фильтров -->
                             <input class="filter-criteria__accordion-checkbox" type="checkbox" <?php if(isset($_COOKIE['weightMin']) || isset($_COOKIE['weightMax']))print('checked="checked"')?>> <!-- accordion на css, чтобы не загружать js -->
-                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['priceMax']) || isset($_COOKIE['weightMin']) ? print('style="color:#cdb67c"'):""?>>Вес, г<span class="filter-criteria__accordion-icon"></span></h3>
+                            <h3 class="filter-criteria__caption" <?php isset($_COOKIE['weightMax']) || isset($_COOKIE['weightMin']) ? print('style="color:#cdb67c"'):""?>>Вес, г<span class="filter-criteria__accordion-icon"></span></h3>
                             <div class="filter-criteria__content">
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">От:</span>
                                     <input name="filterWeightMin" type="number" class="filter-criteria__option-from" 
-                                    min="1"  
+                                    min="<?php print $PriceWeightProducts['weightMin'];?>"  
                                     value="<?php print( isset($_COOKIE['weightMin']) ? $_COOKIE['weightMin'] : $PriceWeightProducts['weightMin'])?>"
-                                    max="<?php print($PriceWeightProducts['weightMax'])?>">
+                                    max="<?php print $PriceWeightProducts['weightMax'];?>">
                                     <span class="filter-criteria__option-underline"></span>
                                 </label>
                                 <label class="filter-criteria__option">
                                     <span class="filter-criteria__option-caption">До:</span>
                                     <input name="filterWeightMax" type="number" class="filter-criteria__option-to" 
-                                    min="2" 
+                                    min="<?php print $PriceWeightProducts['weightMin'];?>" 
                                     value="<?php print( isset($_COOKIE['weightMax']) ? $_COOKIE['weightMax'] : $PriceWeightProducts['weightMax'])?>"
                                     max="<?php print($PriceWeightProducts['weightMax'])?>">
                                     <span class="filter-criteria__option-underline"></span>

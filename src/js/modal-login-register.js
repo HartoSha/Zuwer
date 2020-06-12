@@ -26,7 +26,7 @@ RegBtn.addEventListener("click", (e)=> {
   const modalTogglers = document.querySelectorAll(".toggle-modal-log-reg");
 
   modalTogglers.forEach((item) => {
-    item.addEventListener("click", (e) => {  //TODO: пофиксить краш скрипта при залогиненом пользователе
+    item.addEventListener("click", (e) => {
       e.preventDefault();
       modal.classList.toggle("invisible");
     });
