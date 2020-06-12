@@ -15,12 +15,14 @@
                 $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
                 $productInfo = productModel::getProductById($productId);
 
+                if (isset($productInfo)) $productInfoStatus = true;
+
                 $productManufacturers = catalogModel::getProductManufacturers();
                 $productMaterials = catalogModel::getProductMaterial();
                 $productTypes = catalogModel::getProductType();
                 $productColors = catalogModel::getProductInkColor();
                 $tipThiknesses = catalogModel::getProductsTipThickness();
-
+                
                 require_once(VIEWS . "producteditView.php");
             }
             else header('Location: /');
