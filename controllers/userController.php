@@ -88,7 +88,7 @@ class userController
             if($_POST['reg-pass-again'] != $_POST['reg-pass']) {
                 $errors[] = "Введены разные пароли";
             }
-            if (!preg_match("/^((\+7|7|8)+([0-9]){10})$/", $_POST['phone'])) { # regex tests https://www.regexpal.com/94215
+            if (!preg_match("/^((\+7|7|8)+([0-9]){10})$/", $_POST['reg-telephone'])) { # regex tests https://www.regexpal.com/94215
                 $errors[] = "Введенный номер телефона не соответствует формату";
             }
 
