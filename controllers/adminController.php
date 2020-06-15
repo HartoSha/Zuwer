@@ -15,14 +15,13 @@
                 $productId = (isset($params[0]) && !empty($params[0]) && is_numeric($params[0])) ? $params[0] : 0;
                 $productInfo = productModel::getProductById($productId);
 
-                if (isset($productInfo)) $productInfoStatus = true;
-
+                $inEdit = isset($productInfo) ? true : false;
                 $productManufacturers = catalogModel::getProductManufacturers();
                 $productMaterials = catalogModel::getProductMaterial();
                 $productTypes = catalogModel::getProductType();
                 $productColors = catalogModel::getProductInkColor();
                 $tipThiknesses = catalogModel::getProductsTipThickness();
-                
+
                 require_once(VIEWS . "producteditView.php");
             }
             else header('Location: /');
@@ -115,7 +114,7 @@
         }
         public function addProduct()
         {
-            if(isset($_POST['save']) && adminModel::userIsLoggedIn() && $_SESSION['user']['status'])
+            if(isset($_POST['save']) && adminModel::userIsAdmin())
             {
                 $productStatus = 0;
                 if(isset($_POST["checkbox"])) $productStatus = 1;
@@ -148,12 +147,13 @@
                         $_POST['manufacturerName'],
                         $_POST['productType']
                     );
+                    header("Location: /catalog/");
                 }
                 else
                 {
                     $_SESSION["admin-product-errors"] = $errors;
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
                 }
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
             }
         }
     }

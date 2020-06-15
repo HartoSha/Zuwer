@@ -126,7 +126,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
     </div>
     <script src="../../src/js/purchase-modal.js"></script>
 <?php endif;?>
-<?php if($userIsLoggedIn && !$isAdmin):?>
+<?php if($userIsLoggedIn):?>
     <script src="../../src/js/switch-favorite-product.js"></script>
 <?php endif;?>
 <?php

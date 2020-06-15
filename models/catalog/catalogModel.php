@@ -53,7 +53,7 @@
             $result = self::query($query);
 
             #Количество страниц
-            $resultPage = ceil(($result['quantityProducts']) /6); 
+            $resultPage = ceil(($result['quantityProducts']) / self::DEFAULT_QUANTITY); 
             
             return $resultPage;
         }
