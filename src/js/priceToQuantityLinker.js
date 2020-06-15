@@ -24,9 +24,4 @@ linkPriceAndQuantity (
     document.querySelector('.price__value'),
 );
 
-// Соединяемя цену с количеством в модальном окне покупки
-linkPriceAndQuantity(
-    document.querySelector('.purchase-form-modal__quantity'),
-    document.querySelector('.purchase-form-modal__price-value'),
-    document.querySelector('.purchase-form-modal__price-value'),
-);
+

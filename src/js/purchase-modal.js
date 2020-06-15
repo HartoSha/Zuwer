@@ -1,3 +1,10 @@
+// Соединяемя цену с количеством в модальном окне покупки
+linkPriceAndQuantity(
+    document.querySelector('.purchase-form-modal__quantity'),
+    document.querySelector('.purchase-form-modal__price-value'),
+    document.querySelector('.purchase-form-modal__price-value'),
+);
+
 'use strict'
 
 const modalWidnow = document.querySelector('.purchase-modal');

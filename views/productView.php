@@ -82,6 +82,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
         </div>
     </div>
 </main>
+<script src="../../src/js/priceToQuantityLinker.js"></script>
 <?php if($userIsLoggedIn && !$isAdmin):?>
     <div class="purchase-modal <?php echo isset($_SESSION["order-errors"]) && count($_SESSION["order-errors"]) ? "": "purchase-modal_hidden" ?>">
         <div class="background"></div>
@@ -122,7 +123,6 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
         </section>
     </div>
     <script src="../../src/js/purchase-modal.js"></script>
-    <script src="../../src/js/priceToQuantityLinker.js"></script>
 <?php endif;?>
 <?php if($userIsLoggedIn):?>
     <script src="../../src/js/switch-favorite-product.js"></script>
