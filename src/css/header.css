@@ -1,9 +1,38 @@
+/* Fonts */
+
+@font-face {
+    font-family: 'Caviar Dreams';
+    src: url("/src/fonts/CaviarDreams.ttf"),
+         url('/src/fonts/caviardreams-webfont.woff2') format('woff2'),
+         url('/src/fonts/caviardreams-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vera Crouz';
+    src: url("/src/fonts/VeraCrouz.ttf"),
+         url('/src/fonts/veracrouz-webfont.woff2') format('woff2'),
+         url('/src/fonts/veracrouz-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Fonts */
+
+*{
+    padding: 0;
+    margin: 0; 
+} 
+
 body {
-    margin:0;
-    font-family: "Caviar Dreams";
+    font-family: Caviar Dreams;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: rgb(48, 48, 48);
 }
 
 /* header */
@@ -28,17 +57,20 @@ body {
     padding: 0;
     list-style: none;
 }
+.navlink-item .toggle-modal-log-reg,
 .header a,
 .header a:visited{
     text-decoration: none;
     font-size: 18px;
-    color:white;
+    color:white; 
+    padding:0 20px;
 }
-.logo {
+.header .logo {
     display: flex;
     align-items: center;
     cursor: pointer;
     margin: 17px 0;
+    padding: 0;
 }
 .logoimg {
     cursor: pointer;
@@ -59,12 +91,16 @@ body {
     align-items: center;
     list-style-type: none;
     cursor:pointer;
-    color:white;
-    padding: 0 20px;
+    color:white;  
     text-align: center;
     background-color: #212121;
 }
-.open-modal {
+.navlink-active,
+.navlink-active span {
+    color: #cdb67c;    
+}
+
+.navlink-open-modal button {
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -81,11 +117,24 @@ body {
 }
 .navlink-item_dropdown{
     position: relative;
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+    list-style-type: none;
+    cursor:pointer;
+    padding:0 20px;
+    color:white;
+    text-align: center;
+    background-color: #212121;
 }
 .navlink-item:hover{
     background-color: #7c7c7c;
 }
 
+
+.navlink-item.navlink-item_dropdown a {
+    padding:15px 0;
+}
 .navlink-item_dropdown:hover > .dropdown-menu{
     display: flex;
     flex-direction: column;
@@ -111,16 +160,12 @@ body {
     left:0;
     min-width:100%;
     background:rgba(59, 59, 59, 0.37);
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.53);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.53);
     z-index: -1; /* z-index -1 Для отображения тени под header'ом */
 }
 
 .header .dropdown-menu:hover {
     z-index: -1;
-}
-
-.dropdown-menu-item {
-    padding: 15px 10px;
 }
 
 .dropdown-menu-item:hover {
@@ -384,3 +429,62 @@ body {
 }
 
 /* header */
+
+/* no-items starts */
+
+/* Для надписи "здесь ничего нет, закажите что-нибудь" на стр. моих заказов и избранных */
+
+.no-items {
+    color: white;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.no-items-wrapper {
+    width: 60%;
+}
+
+.no-items .no-items-title {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.no-items .emoji {
+    white-space: nowrap;
+}
+
+.no-items p {
+    padding: 0;
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
+}
+    .no-items p a,
+    .no-items p a:visited {
+    font-weight: normal;
+    color: white;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 769px) {
+    .no-items-title {
+      font-size: 16px;
+    }
+    .no-items-wrapper {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .no-items {
+        display: block;
+    }
+    .no-items-title {
+        text-align: center;
+    }
+}
+
+  /* no-items ends */

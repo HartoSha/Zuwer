@@ -1,39 +1,126 @@
 .modal-log-reg{
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  z-index: 999;
+  overflow-y: auto;
+  background: rgba(59, 59, 59, 0.82);
 }
+
 .invisible {
   display: none;
 }
+
 .background{
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(59, 59, 59, 0.82);
   z-index: 1;
 }
-.modal-registration,
-.modal-login{
-  z-index: 100;
-}
-.modal-header {
+
+.modal-log-reg-container{
   display: flex;
-  position: absolute;
-  bottom: 100%;
-  left: 0%;
-  /* width: 100%; */
+  flex-direction: column;
+  font-size: 24px;
+  font-weight: normal;
+  text-align: center;
+  color: #cdb67c;
+  margin: auto 62px;
+  width: 100%;
+  max-width: 769px;
 }
 
-input[type="text"],
-input[type="password"] {
+.form-wrapper {
+  background-color: #212121;
+  z-index: 2;
+}
+
+.modal-header {
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+.modal-header .login-btn,
+.modal-header .registration-btn {
+  cursor: pointer;
+  border: 0;
+  background-color: #212121;
+  padding: 15px 50px;
+  outline: none;
+  opacity: 0.7;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.form-container {
+  /* Изначально выключен, включается при нажатии на кнопки переключения окон регистрации/авторизации */
+  opacity:0;
+  height: 0;
+  padding: 50px 82px;
+  transition: 0.3s;
+  transition-property: opacity;
+  overflow:hidden;
+}
+
+.modal-log-reg-container.js-inLogin .login-btn {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.modal-log-reg-container.js-inReg .registration-btn {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.modal-log-reg-container.js-inLogin .form-container.login-container {
+  opacity: 1;
+  height: 100%;
+}
+
+.modal-log-reg-container.js-inReg .form-container.reg-container {
+  opacity: 1;
+  height:100%;
+} 
+ /* Заставляем невидимую форму исчезать мгновенно */
+.modal-log-reg-container.js-inReg .form-container.login-container {
+  transition: opacity 0s;
+}
+
+.modal-log-reg-container.js-inLogin .form-container.reg-container {
+  transition: opacity 0s;
+} 
+
+.modal-reg{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.modal-login{
+  margin-top: 134px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.registration-field {
+  color: #b6b6b6;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.modal-log-reg input[type="text"],
+.modal-log-reg input[type="password"],
+.modal-log-reg input[type="tel"]  {
   flex-basis: 100%;
   flex-grow: 1;
   background: 0;
@@ -43,176 +130,113 @@ input[type="password"] {
   padding: 5px 16px;
   border-bottom: 1px solid white;
   transition: 0.3s;
-
   color: #ffffff;
-  font-family: "Caviar Dreams";
   font-size: 18px;
   font-weight: 400;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+.modal-log-reg input[type="text"]:focus,
+.modal-log-reg input[type="tel"]:focus,
+.modal-log-reg input[type="password"]:focus {
   border-bottom: 2px solid rgba(205, 182, 124, 0.67);
 }
 
-input[type="text"]::placeholder,
-input[type="password"]::placeholder {
+.modal-log-reg input[type="text"]::placeholder,
+.modal-log-reg input[type="tel"]::placeholder,
+.modal-log-reg input[type="password"]::placeholder {
   color: #b6b6b6;
 }
 
-.login-btn,
-.registration-btn {
-  cursor: pointer;
-  border: 0;
-  background-color: #212121;
-  padding: 15px 50px;
-  outline: none;
-  opacity: 0.7;
-  color: #fff;
-  font-family: "Caviar Dreams";
-  font-size: 18px;
-  font-weight: 400;
-}
-.login:hover,
-.registration:hover {
+.form-container .login-btn:hover,
+.form-container .login-btn:hover,
+.form-container .registration-btn:hover {
   border: none;
   color: #212121;
   background-color: #cdb67c;
 }
-.selected-btn {
-  opacity: 1;
-}
 
 .login{
-  margin-top: 140px;
   cursor: pointer;
+  margin: 138px 0 70px 0;
+  padding: 15px 50px;
+  color: #cdb67c;
+  font-size: 18px;
+  font-weight: 400;
   border-radius: 20px;
   border: 1px solid #cdb67c;
   background-color: transparent;
-  padding: 15px 50px;
-
-  color: #cdb67c;
-  font-family: "Caviar Dreams";
-  font-size: 18px;
-  font-weight: 400;
-}
-
-.form-login,
-.form-registration{
-  position: relative;
-}
-
-.modal-log,
-.form-container,
-.modal-reg{
-  max-width: 640px;
-  max-height: 605px;
-  background-color: #212121;
-  z-index: 10;
-}
-
-.modal-log{
-  font-size: 24px;
-  font-weight: normal;
-  text-align: center;
-  color: #cdb67c;
-}
-
-.modal-login{
-  margin: 0 80px;
-  padding-top: 170px;
-  padding-bottom: 130px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.modal-reg{
-  margin: 0 80px;
-  padding-top: 35px;
-  padding-bottom: 45px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.registration-field {
-  color: #b6b6b6;
-  font-family: "Caviar Dreams";
-  font-size: 16px;
-  font-weight: 400;
 }
 .registration {
-  margin-top: 35px;
   cursor: pointer;
+  margin-top: calc(52px - 15px);
+  padding: 15px 50px;
+  color: #cdb67c;
+  font-size: 18px;
+  font-weight: 400;
   border-radius: 20px;
   border: 1px solid #cdb67c;
   background-color: transparent;
-  padding: 15px 50px;
+}
 
-  color: #cdb67c;
-  font-family: "Caviar Dreams";
+.modal-errors {
+  color: red;
+  font-size: 20px;
+  text-decoration: none;
+  list-style-type: none;
+  margin-bottom: 40px;
+}
+.modal-prompt{
+  display: flex;
+  flex-basis: 100%;
+}
+[data-tooltip] {
+  position: relative;
+ }
+[data-tooltip]::after {
+  content: attr(data-tooltip); 
+  position: absolute;
+  width: 150px;
+  left: 0;
+  top: 0;
+  padding: 0.5em;
+  pointer-events: none; 
+  opacity: 0;
+  transition: 1s; 
   font-size: 18px;
-  font-weight: 400;
+  color: #ff6666;
+} 
+[data-tooltip]:hover::after {
+  opacity: 1; 
+  left: 65%;
 }
 
 @media (max-width: 769px){
-  .modal-log,
-  .form-container,
-  .modal-reg{
-    max-width: 440px;
-    background-color: #212121;
-    z-index: 10;
+  .modal-log-reg-container {
+    margin: auto 20px;
   }
-  .modal-login{
-    margin: 0 40px;
-    padding-top: 55px;
-    padding-bottom: 20px;
-  }
-
-  .modal-reg{
-    margin: 0 40px;
-    padding-top: 35px;
-    padding-bottom: 45px;
-    max-height: 575px;
-  }
-
-  .login{
-    margin-top: 55px;
+  .form-container {
+    padding: 50px 40px;
   }
 }
 
 @media (max-width: 480px){
-  .modal-log,
-  .form-container,
-  .modal-reg{
-    max-width: 280px;
-    background-color: #212121;
-    z-index: 10;
-  }
   .modal-header {
-    position: absolute;
-    bottom: 100%;
-    left: 0%;
-    width: 100%;
+    align-self: auto;
   }
-  .login-btn,
-  .registration-btn {
-  width: 50%;
-  padding: 15px;
+  .modal-header .login-btn,
+  .modal-header .registration-btn {
+    width: 50%;
+    padding: 15px;
   }
-  .modal-login{
-    margin: 0 30px;
-    padding-top: 75px;
-    padding-bottom: 95px;
+  .modal-log-reg-container {
+    margin: auto 10px;
+    width: calc(100% - 20px);
   }
-
-  .modal-reg{
-    margin: 0 30px;
-    padding-top: 35px;
-    padding-bottom: 45px;
-    max-height: 575px;
+  .form-container {
+    padding: 50px 30px;
   }
-  .registration{
-    padding: 15px 20px;
+  [data-tooltip]:hover::after {
+    top: -25%;
+    left: -5%;
   }
 }

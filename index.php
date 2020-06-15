@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 define("ROOT", dirname(__FILE__) . DIRECTORY_SEPARATOR);
 define("CONTROLLERS", ROOT . "controllers" . DIRECTORY_SEPARATOR);
 define("VIEWS", ROOT . "views" . DIRECTORY_SEPARATOR);

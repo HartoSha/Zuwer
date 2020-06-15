@@ -1,29 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const changeLogin = document.getElementById("registr-btn");
-  const changeReg = document.getElementById("login-btn");
-  const modalLogin = document.querySelector(".modal-log");
-  const modalRegistration = document.querySelector(".modal-registration");
+  const container = document.querySelector(".modal-log-reg-container")
+
+
   const loginBtn = document.querySelector(".modal-header .login-btn");
-  const RegBtn = document.querySelector(
-    ".modal-registration .registration-btn"
-  );
-  const openModal = document.querySelector(".open-modal");
-  const modal = document.querySelector(".modal-log-reg");
-  const background = document.querySelector(".modal-log-reg .background");
+  const RegBtn = document.querySelector(".modal-header .registration-btn");
 
-  changeLogin.addEventListener("click", switchWindow);
-  changeReg.addEventListener("click", switchWindow);
-  openModal.addEventListener("click", function () {
-    modal.classList.toggle("invisible");
-  });
-  background.addEventListener("click", function () {
-    modal.classList.toggle("invisible");
-  });
-
-  function switchWindow() {
-    modalLogin.classList.toggle("invisible");
-    loginBtn.classList.toggle("selected-btn");
-    modalRegistration.classList.toggle("invisible");
-    RegBtn.classList.toggle("selected-btn");
+loginBtn.addEventListener("click", (e)=> {
+  e.preventDefault();
+  if(!container.classList.contains("js-inLogin")) {
+    container.classList.add("js-inLogin");
+    container.classList.remove("js-inReg");
   }
+});
+RegBtn.addEventListener("click", (e)=> {
+  e.preventDefault();
+  if(!container.classList.contains("js-inReg")) {
+    container.classList.add("js-inReg");
+    container.classList.remove("js-inLogin");
+  }
+});
+  // changeLogin.addEventListener("click", switchWindow);
+  // changeReg.addEventListener("click", switchWindow);
+
+  const modal = document.querySelector(".modal-log-reg");
+  const modalTogglers = document.querySelectorAll(".toggle-modal-log-reg");
+
+  modalTogglers.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal.classList.toggle("invisible");
+    });
+  })
 });

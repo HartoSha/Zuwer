@@ -1,7 +1,4 @@
 /* My orders starts */
-body {
-  margin: 0;
-}
 .my-orders{
   display: flex;
   flex-direction: column;
@@ -12,19 +9,16 @@ body {
 }
 
 .my-orders .orders-container {
-  width: calc(100% - 40px);
-  margin: 0 20px;
   max-width: 769px;
+  width: 100%;
 }
 
 .my-orders .order-item {
-  font-family: "Caviar Dreams";
-  margin: 10px 0;
-  transition: 0.3s;
+  margin: 20px;
 }
 
 .my-orders .order-item:hover{
-  transform: scale(0.95);
+  cursor: pointer;
 }
 
 .order-item a{
@@ -34,10 +28,13 @@ body {
   background-color: #212121;
   border-radius: 10px;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .my-orders .order-item:hover a{
-  background-color: #484848;
+  transform:scale(0.95);
+  transition: 0.3s;
+   background-color: #484848;
 }
 
 .order-item a:visited {
@@ -112,7 +109,6 @@ body {
 }
 
 @media screen and (max-width: 769px) {
-  
   .my-orders .order-item-img-wrapper img {
     width: 80px;
     height: 85px;
