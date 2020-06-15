@@ -11,7 +11,7 @@ const priceOutputModal = document.querySelector('.purchase-form-modal__price-val
 // При загрузке страницы модальное окно получает значение цены
 priceOutputModal.innerHTML = priceOutputNotModal.innerHTML;
 
-const modalShowBtn = document.querySelector('.buy').addEventListener('click', (e) => {
+const modalShowBtn = document.querySelector('.toggle-modal-buy').addEventListener('click', (e) => {
     // Отменяем обновление страницы
     e.preventDefault();
     toggleModal();

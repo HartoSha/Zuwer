@@ -2,7 +2,7 @@
 
 const START_INDEX = 1;                                          //Стартовый индекс
 const TRANSITION_TIME = 0.8;                                    //Время смещения в секундах
-
+const FLIP_TIME = 3;
                                              
 const slider      = document.getElementById("slider");    
 const leftButton  = slider.querySelector(".slider__leftButton"); 
@@ -32,7 +32,7 @@ function moveItems(){
     checkOffset();                     
     items.forEach(item => {
         item.style.transform = `translateX(${-(100 * currentOffset - centering_var)}%)`;   // Двигаем элементы на 100% их ширины * currentOffset (отрицательное значение, тк.к currentOffset положительный)
-        console.log("Все элементы смещены на = " + item.style.transform);
+        // console.log("Все элементы смещены на = " + item.style.transform);
     });   
     
 }
@@ -40,7 +40,7 @@ function moveItems(){
 function initMove(){ // Если это первое смещение, то смещаем без анимации
     items.forEach(item => {
         item.style.transform = `translateX(${-(100 * currentOffset - centering_var)}%)`;    // Двигаем элементы на 100% их ширины * currentOffset
-        console.log("Стартовое смещение = " + item.style.transform);
+        // console.log("Стартовое смещение = " + item.style.transform);
         setTimeout(function(){ // Ставим стиль с transition'ом для элементов через определенное время, чтобы при загрузке стр. они не двигались 
             item.style.transition = `transform ${TRANSITION_TIME}s`; // transform, чтобы заданное время влияло только на смену слайдов, а не на всё (не на наведение на элементы)
         },TRANSITION_TIME * 100);
@@ -57,12 +57,12 @@ function checkOffset(){
     else if(currentOffset > (items.length - itemsInRow)){
         currentOffset = 0;
     }
-    console.log("itemsInRow = " + itemsInRow);
+    // console.log("itemsInRow = " + itemsInRow);
 }
 
 function calcCenteringVar() { // заметки расчетов https://i.imgur.com/1MoBiKB.png
     const diffPx = contentRoot.offsetWidth - items[0].offsetWidth; // Разница в px между контейнером и 1 элементом
-    console.log(diffPx); 
+    // console.log(diffPx); 
     const offsetToCenter = ((diffPx / 2) / items[0].offsetWidth) * 100; // для центровки делим разницу на 2 и находим ее "количество" в элементе. Умножаем на 100 для получения процентов
     return offsetToCenter;
 }
@@ -70,5 +70,10 @@ function calcCenteringVar() { // заметки расчетов https://i.imgur
 window.onresize = () => {
     centering_var = calcCenteringVar();
     initMove();
-    console.log("resize");
+    // console.log("resize");
 }
+
+setInterval(function(){
+    currentOffset++;
+    moveItems();
+}, FLIP_TIME * 1000);

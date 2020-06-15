@@ -29,7 +29,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
 <div class="slider-decoration">
     <div id="slider" class="slider">
         <button class="slider__leftButton">
-            <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 253.02 476.74">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 253.02 476.74">
                 <defs>
                     <style>
                         .cls-1 {
@@ -66,7 +66,7 @@ require_once(VIEWS . "shared" . DIRECTORY_SEPARATOR . "headerView.php");
             <?php endforeach; ?>
         </div>
         <button class="slider__rightButton">
-            <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252.06 477.18">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252.06 477.18">
                 <defs>
                     <style>
                         .cls-1 {
