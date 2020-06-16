@@ -512,6 +512,9 @@ tr{
     .bottom-row .purchase-btn {
         margin-top: 20px;   
     }
+    .product-page .purchase-form {
+        margin: 20px 0;
+    }
   }
 
 /* modal ends */
