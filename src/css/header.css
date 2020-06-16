@@ -149,6 +149,7 @@ body {
 /* Для нормального отображения у пользователей с короткими именами */
 .username {
     min-width: 130px;
+    padding: 0 10px;
 }
 
 /* dropdownd-menu starts */
