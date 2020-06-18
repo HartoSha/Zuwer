@@ -79,19 +79,18 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    transform: scale(0);
     cursor: default;
 }
 
 /* анимация */
  input[type="checkbox"]:checked + .like-animation .like .like-active{
-    display: block;
     transition: 0.3s;
     transform: scale(1);
   }
   
     input[type="checkbox"]:not(:checked) + .like-animation .like .like-active{
     transition: 0.3s;
+    transform: scale(0);
   }
 /* анимация */
   .product-img-container input[type="checkbox"] {
