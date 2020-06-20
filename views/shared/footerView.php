@@ -17,9 +17,7 @@
             </div>
             <div class="time" id="clock">
                 <div class="date">
-                    <span class="year"></span>
-                    <span class="month"></span>
-                    <span class="day"></span>
+
                 </div>
                 <span class="weekday"></span>
                 <div class="hour-mins">
@@ -31,6 +29,9 @@
         </div>
     </footer>
     <audio src="../../src/assets/sounds/tik-tak/tik.mp3" loop="loop" id="tik-tak"></audio>
+    <script type="text/javascript">
+    var dateFromPhp = "<?php echo date("Y-m-d") ?>";
+    </script>
     <script src="../../src/js/data-time.js"></script>
     </body>
 </html>

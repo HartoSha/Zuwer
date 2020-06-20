@@ -1,32 +1,16 @@
-const year = document.querySelector("#clock .year");
-const month = document.querySelector("#clock .month");
-const day = document.querySelector("#clock .day");
+const date = document.querySelector("#clock .date");
 const weekday = document.querySelector("#clock .weekday");
 const hour = document.querySelector("#clock .hour");
 const minutes = document.querySelector("#clock .min");
 
-let date = new Date();
-let dateTotal
 
-function currentDate() {
-  dateTotal = date.getFullYear();
-  year.innerHTML = `${dateTotal}-`;
+function setCurrentDate() {
+  date.innerHTML = dateFromPhp;
 
-  dateTotal = date.getMonth();
-  if (dateTotal < 10) {
-    month.innerHTML = `0${dateTotal}-`;
-  } else month.innerHTML = `0${dateTotal}-`;
-
-  dateTotal = date.getDate();
-  if (dateTotal < 10) {
-    day.innerHTML = `0${dateTotal}`;
-  } else day.innerHTML = dateTotal;
-
-  dateTotal = getWeekDay(date);
-  weekday.innerHTML = dateTotal;
+  weekday.innerHTML = getCurrentWeekDay();
 }
 
-function getWeekDay(date) {
+function getCurrentWeekDay() {
   let days = [
     "Воскресенье",
     "Понедельник",
@@ -37,9 +21,9 @@ function getWeekDay(date) {
     "Суббота",
   ];
 
-  return days[date.getDay()];
+  return days[new Date().getDay()];
 }
-currentDate();
+setCurrentDate();
 
 function currentTime() {
   let time = new Date();
