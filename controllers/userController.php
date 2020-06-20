@@ -45,7 +45,7 @@ class userController
     public function register() //метод который будет вызываться при регистрации
     {
         # аналогично проверке оправки логина
-        if(!userModel::userIsLoggedIn() && isset($_POST['reg-name']) && isset($_POST['reg-surname'])
+        if(!userModel::userIsLoggedIn() && isset($_POST['reg-name'])
         && isset($_POST['reg-surname']) && isset($_POST['reg-middlename'])
         && isset($_POST['reg-account-name']) && isset($_POST['reg-pass'])
         && isset($_POST['reg-pass-again']) && isset($_POST['reg-telephone'])) 
