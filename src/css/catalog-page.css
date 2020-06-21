@@ -163,6 +163,7 @@ body {
 .filter-criteria__option input[type="checkbox"] {
     width: 8px;
     border-radius: 2px;
+    flex-shrink: 0;
     order: 1;
 }
 
